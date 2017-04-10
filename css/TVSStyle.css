@@ -1,0 +1,962 @@
+﻿body {
+}
+.Header
+{
+	height:60px;
+	min-height:60px;
+	background-color:#fff;
+	display:table;
+	width:100%;
+}
+.HeaderLogo
+{
+	float:left;
+	width:160px;
+	height:60px;
+	display:table;
+	margin-bottom:-8px;
+}
+.HeaderSearchBg
+{
+	float:left;
+	width:404px;
+	background-image:url('../Images/SearchBg.png');
+	background-repeat:no-repeat;
+	height:60px;
+	display:table;
+	margin-bottom:-8px;
+	padding-left:20px;
+	padding-top:18px;
+}
+.HeaderSearchBg1 {
+	float:left;
+}
+.HeaderSearchBg2{
+	float:right;
+}
+.txtTextBoxSearch
+{
+	border:none;
+	width:330px !important;
+	max-width:330px !important;
+}
+.btnImgSearch
+{
+	margin-top:-2px;
+	margin-right:18px;
+}
+.HeaderPostBg
+{
+	float:left;
+	width:140px;
+	height:60px;
+	display:table;
+	margin-bottom:-8px;
+}
+.HeaderPostRight
+{
+	float:right;
+	width:260px;
+	height:60px;
+	text-align:right;
+	display:table;
+	margin-bottom:-8px;
+}
+.HomeIconImg
+{
+	margin-top:-10px;
+}
+.Menu
+{
+	border-top:#fff;
+	background-color:#1b7cbd;
+	min-height:42px;
+	max-height:42px;
+}
+/*DEFAULT*/
+.DeafaultHeader
+{
+	border-bottom:solid 1px #4996ca;
+}
+.DeafaultHeaderName
+{
+	font-size:18px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#fff;
+	background-color:#1b7dbc;
+	width:135px;
+	padding-left:5px;
+	padding-top:1px;
+}
+.DeafaultRow
+{
+	width:100%;
+	min-height:190px;
+	height:190px;
+	border-bottom:solid 1px #999999;
+	display:table;
+}
+.DeafaultItem
+{
+	width:100%;
+	min-height:140px;
+	display:table;
+}
+.DeafaultItemLeft
+{
+	width:200px;
+	min-height:140px;
+	float:left;
+}
+.DeafaultItemRight
+{
+	width:485px;
+	min-height:140px;
+	float:right;
+}
+.DeafaultItemRight1
+{
+	width:485px;
+	height:41px;
+	font-size:16px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#114f78;
+	margin-top:-6px;
+	text-align:justify;
+}
+.DeafaultItemRight2
+{
+	width:485px;
+	height:35px;
+	min-height:35px;
+}
+.DeafaultItemRight3
+{
+	width:485px;
+	height:35px;
+	min-height:35px;
+}
+.DeafaultItemRight4
+{
+	width:485px;
+	height:35px;
+	min-height:35px;
+}
+.DeafaultItemRightSub1
+{
+	width:33%;
+	height:35px;
+	line-height:35px;
+	min-height:35px;
+	float:left;
+	background-image:url('../Images/Item1.png');
+	background-repeat:no-repeat;
+	background-position:0 center;
+	padding-left:25px;
+}
+.DeafaultItemRightSub2
+{
+	width:34%;
+	height:35px;
+	line-height:35px;
+	min-height:35px;
+	float:left;
+	background-image:url('../Images/Item2.png');
+	background-repeat:no-repeat;
+	background-position:0 center;
+	padding-left:25px;
+}
+.DeafaultItemRightSub3
+{
+	width:33%;
+	height:35px;
+	line-height:35px;
+	min-height:35px;
+	float:right;
+	background-image:url('../Images/Item4.png');
+	background-repeat:no-repeat;
+	background-position:0 center;
+	padding-left:25px;
+}
+.DeafaultItemRightSub4
+{
+	width:33%;
+	height:35px;
+	line-height:35px;
+	min-height:35px;
+	float:left;
+	background-image:url('../Images/Item4.png');
+	background-repeat:no-repeat;
+	background-position:0 center;
+	padding-left:25px;
+}
+.DeafaultItemRightSub5
+{
+	width:34%;
+	height:35px;
+	line-height:35px;
+	min-height:35px;
+	float:left;
+	background-image:url('../Images/Item5.png');
+	background-repeat:no-repeat;
+	background-position:0 center;
+	padding-left:25px;
+}
+.DeafaultItemRightSub6
+{
+	width:33%;
+	height:35px;
+	line-height:35px;
+	min-height:35px;
+	float:right;
+	background-image:url('../Images/Item6.png');
+	background-repeat:no-repeat;
+	background-position:0 center;
+	padding-left:25px;
+}
+.DeafaultItemRightSub7
+{
+	width:33%;
+	height:30px;
+	line-height:30px;
+	min-height:30px;
+	float:left;
+}
+.DeafaultItemRightSub7Content
+{
+	height:30px;
+	line-height:30px;
+	min-height:30px;
+	width:120px !important;
+	max-width:100% !important;
+	background-image:url('../Images/Item7.png');
+	background-repeat:no-repeat;
+	background-position:0 center;
+	padding-left:25px;
+	margin-top:5px;
+	border: 1px solid;
+    border-radius: 5px;
+}
+.DeafaultItemRightSub8
+{
+	width:34%;
+	height:30px;
+	line-height:30px;
+	min-height:30px;
+	float:left;
+}
+.DeafaultItemRightSub8Content
+{
+	height:30px;
+	line-height:30px;
+	min-height:30px;
+	width:130px !important;
+	max-width:100% !important;
+	background-image:url('../Images/Item8.png');
+	background-repeat:no-repeat;
+	background-position:0 center;
+	padding-left:25px;
+	margin-top:5px;
+	border: 1px solid;
+    border-radius: 5px;
+}
+.DeafaultItemRightSub9
+{
+	width:33%;
+	height:30px;
+	line-height:30px;
+	min-height:30px;
+	float:right;
+}
+.DeafaultItemRightSub9Content
+{
+	height:30px;
+	line-height:30px;
+	min-height:30px;
+	width:130px !important;
+	max-width:100% !important;
+	background-image:url('../Images/Item9.png');
+	background-repeat:no-repeat;
+	background-position:0 center;
+	padding-left:25px;
+	margin-top:5px;
+	border: 1px solid;
+    border-radius: 5px;
+}
+.CarPrice
+{
+	height:30px;
+	line-height:30px;
+	min-height:30px;
+	width:100px !important;
+	max-width:100% !important;
+	margin-top:5px;
+	border: 1px solid #4ab845;
+    border-radius: 5px;
+	background-color:#4ab845;
+	font-size:16px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#fff;
+	float:right;
+	text-align:center;
+}
+.NewsHotImg img
+{
+	display:table;
+	max-width:100% ;
+    width:100%;
+	max-height:300px;
+}
+.NewsHotTitle
+{
+	margin-top:10px;
+	font-size:15px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#0f0f0f;
+	text-align:justify;
+}
+.TimePost
+{
+	font-size:12px;
+	font-family:Arial;
+	color:#989090;
+}
+.NewsShortContent
+{
+	margin-top:10px;
+	font-size:15px;
+	font-family:Arial;
+	color:#0f0f0f;
+	text-align:justify;
+}
+.NewsHomeItem
+{
+	width:100%;
+	display:table;
+	max-height:80px;
+}
+.NewsHomeItemLeft
+{
+	width:100px;
+	display:table;
+	max-height:80px;
+	float:left;
+}
+.NewsHomeItemRight
+{
+	width:290px;
+	display:table;
+	max-height:80px;
+	float:right;
+	padding-right:0px !important;
+}
+.NewsHomeItemRightTitle
+{
+	margin-top:-5px;
+	width:290px;
+	display:table;
+	max-height:80px;
+	float:right;
+	font-size:14px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#0f0f0f;
+	text-align:justify;
+}
+.NewsHomeItemRightShortContent
+{
+	width:290px;
+	display:table;
+	max-height:80px;
+	float:right;
+	font-size:14px;
+	font-family:Arial;
+	color:#0f0f0f;
+	text-align:justify;
+    overflow:hidden;
+}
+
+.NewsHomeItemRightShortContent p{
+    height:32px;
+}
+
+.DeafaultHeaderRight
+{
+	border-bottom:solid 1px #4996ca;
+}
+.DeafaultHeaderRightName
+{
+	font-size:18px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#4db749;
+	padding-top:1px;
+}
+.DeafaultHeaderRightItem
+{
+	margin-bottom:6px;
+	width:100%;
+	min-height:30px;
+	display:table;
+}
+.DeafaultHeaderRightLeft
+{
+	width:115px;
+	min-height:30px;
+	float:left;
+}
+.DeafaultHeaderRightRight
+{
+	width:115px;
+	min-height:30px;
+	float:right;
+}
+.DeafaultHeaderRightCombobox
+{
+	width:115px;
+	min-height:28px;
+	border:solid 1px #e8e8e8;
+	line-height:28px;
+	height:28px;
+	border-radius:2px;
+}
+.DefaultRightSearchBg
+{
+	width:235px;
+	min-height:30px;
+	border:solid 1px #e8e8e8;
+	line-height:30px;
+	height:30px;
+	border-radius:3px;
+	margin-bottom:8px;
+}
+.DefaultRightSearchText
+{
+	width:200px;
+	min-height:30px;
+	line-height:30px;
+	height:30px;
+}
+.DefaultRightSearchButton
+{
+	width:32px;
+	min-height:30px;
+	line-height:30px;
+	height:30px;
+	float:right;
+	margin-top:2px;
+	margin-right:-4px;
+}
+.txtTextBoxSearchSmall
+{
+	border:none;
+	width:200px !important;
+	max-width:200px !important;
+	float:left;
+	min-height:25px;
+	line-height:25px;
+	height:25px;
+	margin-left:2px;
+	margin-top:1px;
+}
+.DeafaultHeaderRightAsBrand
+{
+	margin-top:-4px;
+	width:100%;
+	min-height:30px;
+	display:table;
+}
+.DeafaultHeaderRightAsBrand1
+{
+	width:115px;
+	min-height:30px;
+	float:left;
+}
+.DeafaultHeaderRightAsBrand2
+{
+	width:115px;
+	min-height:30px;
+	float:right;
+}
+.NewsHomeItemBlock
+{
+	width:100%;
+	display:table;
+	max-height:120px;
+	border-bottom:solid 1px #e8e8e8;
+	padding-bottom:8px;
+	margin-bottom:15px;
+}
+.NewsHomeItemLeftBlock
+{
+	width:70px;
+	max-width:70px;
+	display:table;
+	max-height:80px;
+	float:left;
+}
+.NewsHomeItemLeftBlock img
+{
+	width:70px;
+	max-width:70px;
+}
+.NewsHomeItemRightBlock
+{
+	width:155px;
+	display:table;
+	max-height:80px;
+	float:right;
+	padding-right:0px !important;
+}
+.NewsHomeItemRightBlockTitle
+{
+	margin-top:-5px;
+	width:155px;
+	display:table;
+	max-height:80px;
+	float:right;
+	font-size:14px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#0f0f0f;
+	text-align:justify;
+}
+.NewsHomeItemRightBlockShortContent
+{
+	width:155px;
+	display:table;
+	max-height:80px;
+	float:right;
+	font-size:14px;
+	font-family:Arial;
+	color:#0f0f0f;
+	text-align:justify;
+}
+.NewsHomeItemRightBlockTitle1
+{
+	margin-top:-5px;
+	width:155px;
+	display:table;
+	max-height:120px;
+	float:right;
+	font-size:14px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#0f0f0f;
+	text-align:justify;
+    overflow:hidden;
+}
+.NewsHomeItemRightBlockTitle1 a
+{
+    max-height:120px;
+}
+
+.DivP20L
+{
+	width:20%;
+	float:left;
+}
+.DivP20R
+{
+	width:20%;
+	float:right
+}
+.MainFooter
+{
+	height:250px;
+	max-height:250px;
+	width:100%;
+	background-color:#1260ab;
+}
+
+/*Begin Register page*/
+.RowRegister
+{
+	width:100%;
+	display:table;
+	margin-bottom:10px;
+}
+.LeftRegister
+{
+	width:20%;
+	float:left;
+	padding-top:6px;
+}
+.RightRegister
+{
+	width:80%;
+	float:right;
+}
+.LeftRegister1
+{
+	width:30%;
+	float:left;
+	padding-top:6px;
+}
+.RightRegister1
+{
+	width:70%;
+	float:right;
+}
+.LoginBanner
+{
+	width:100%;
+}
+.LoginBanner img{
+	width:100%;
+}
+/*End Register page*/
+
+/*Begin Post Page*/
+.RowPost
+{
+	width:100%;
+	display:table;
+	margin-bottom:10px;
+}
+.LeftPost
+{
+	width:35%;
+	float:left;
+	padding-top:6px;
+}
+.RightPost
+{
+	width:65%;
+	float:right;
+}
+
+.LeftPost1
+{
+	width:17%;
+	float:left;
+	padding-top:6px;
+}
+.RightPost1
+{
+	width:83%;
+	float:right;
+}
+
+/*End Register page*/
+
+.OtoTitleDetail
+{
+	font-family:Arial;
+	font-size:20px;
+	color:#1260ab;
+}
+.OtoImageDetail
+{
+	font-family:Arial;
+	font-size:20px;
+	color:#fff;
+	font-weight:bold;
+	background-color:#1b7cbd;
+	text-transform:uppercase;
+	padding:5px;
+	padding-left:10px;
+	padding-right:10px;
+}
+.OtoBodyDetail1
+{
+	margin-top:2px;
+	width:100%;
+	display:table;
+	border:solid 1px #9fd8fe;
+}
+.OtoBodyDetail11
+{
+	width:60%;
+	float:left;
+}
+.OtoBodyDetail11 img{
+	padding:15px;
+}
+.OtoBodyDetail11ImgMore
+{
+	padding-left:15px;
+}
+.OtoBodyDetail11ImgMore img
+{
+	padding:0px;
+	margin-right:10px;
+}
+.OtoBodyDetail12
+{
+	width:40%;
+	float:right;
+}
+.OtoBodyDetailPrice
+{
+	padding-top:8px;
+	font-family:Arial;
+	font-size:20px;
+}
+.OtoTinhTrangTrai
+{
+	width:40%;
+	float:left;
+	background-image:url('../images/Item1.png');
+	background-repeat:no-repeat;
+	background-position:0px 3px;
+	padding-left:25px;
+	height:26px;
+	line-height:26px;
+}
+.OtoTinhTrangPhai
+{
+	width:60%;
+	float:right;
+	height:26px;
+	line-height:26px;
+}
+.OtoXuatXuTrai
+{
+	width:40%;
+	float:left;
+	background-image:url('../images/Item7.png');
+	background-repeat:no-repeat;
+	background-position:0px 3px;
+	padding-left:25px;
+	background-color:#f7f7f7;
+	height:26px;
+	line-height:26px;
+}
+.OtoXuatXuPhai
+{
+	width:60%;
+	float:right;
+	background-color:#f7f7f7;
+	height:26px;
+	line-height:26px;
+}
+
+.OtoNamSanXuatTrai
+{
+	width:40%;
+	float:left;
+	background-image:url('../images/Item4.png');
+	background-repeat:no-repeat;
+	background-position:0px 3px;
+	padding-left:25px;
+	height:26px;
+	line-height:26px;
+}
+.OtoNamSanXuatPhai
+{
+	width:60%;
+	float:right;
+	height:26px;
+	line-height:26px;
+}
+
+.OtoKieuDangTrai
+{
+	width:40%;
+	float:left;
+	background-image:url('../images/Item5.png');
+	background-repeat:no-repeat;
+	background-position:0px 3px;
+	padding-left:25px;
+	height:26px;
+	line-height:26px;
+	background-color:#f7f7f7;
+}
+.OtoKieuDangPhai
+{
+	width:60%;
+	float:right;
+	height:26px;
+	line-height:26px;
+	background-color:#f7f7f7;
+}
+
+.OtoHopSoTrai
+{
+	width:40%;
+	float:left;
+	background-image:url('../images/Item3.png');
+	background-repeat:no-repeat;
+	background-position:0px 3px;
+	padding-left:25px;
+	height:26px;
+	line-height:26px;
+}
+.OtoHopSoPhai
+{
+	width:60%;
+	float:right;
+	height:26px;
+	line-height:26px;
+}
+
+.OtoContact
+{
+	margin-top:18px;
+	width:94%;
+	display:table;
+	border:solid 3px #bed0e1;
+	height:30px;
+	line-height:30px;
+	padding-left:10px;
+	font-size:16px;
+	font-weight:bold;
+}
+
+.OtoDetail
+{
+	font-family:Arial;
+	font-size:20px;
+	color:#fff;
+	background-color:#1b7cbd;
+	text-transform:uppercase;
+	padding:5px;
+	padding-left:10px;
+	padding-right:10px;
+}
+.OtoDetailMoTa
+{
+	font-family:Arial;
+	font-size:14px;
+	text-align:justify;
+}
+
+
+/*PHAN TRANG*/
+.ProductPage
+{
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+}
+.ProductPage b
+{
+	border:solid 1px #f998ef;
+	padding:3px;
+	padding-left:10px;
+	padding-right:10px;
+	background-color:#c6d5e2;
+}
+.ProductPage a
+{
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	border:solid 1px #f998ef;
+}
+.ProductPage a:link
+{
+	border:solid 1px #f998ef;
+	padding:3px;
+	padding-left:10px;
+	padding-right:10px;
+}
+.ProductPage a:hover
+{
+	border:solid 1px #ff5400;
+	text-decoration:none;
+	background-color:red;
+	color:#fff;
+}
+.ProductPage a:visited
+{
+	border:solid 1px #f998ef;
+}
+
+
+/*Default.aspx*/
+.BodyTitle {
+	font-family: Arial;
+	font-size: 14px;
+	color: #00923f;
+	text-transform: uppercase;
+}
+.BodyTitle a
+{
+	color: #00923f;
+	text-decoration:none;
+}
+.BodyTitle a:link
+{
+	color: #00923f;
+	text-decoration:none;
+}
+.BodyTitle a:hover
+{
+	color: #00923f;
+	text-decoration:none;
+}
+.BodyTitle a:visited
+{
+	color: #00923f;
+	text-decoration:none;
+}
+
+.dtlNewsProduct {
+	width: 100%;
+	margin-top: 15px;
+}
+
+.Product {
+	margin-right: 18px;
+	margin-bottom: 25px;
+}
+
+.ProductImg {
+	width: 165px;
+	height: 220px;
+}
+
+.ProductName {
+	margin-top: 10px;
+	font-family: Arial;
+	font-size: 14px;
+	text-align: justify;
+	color: #454040;
+	max-height: 40px;
+	overflow: hidden;
+}
+
+.ProductName a {
+	color: #454040;
+	max-height: 40px;
+	overflow: hidden;
+	text-decoration: none;
+}
+
+.ProductName a:link {
+	color: #454040;
+	max-height: 40px;
+	overflow: hidden;
+	text-decoration: none;
+}
+
+.ProductName a:hover {
+	color: #454040;
+	max-height: 40px;
+	overflow: hidden;
+	text-decoration: none;
+}
+
+.ProductName a:visited {
+	color: #454040;
+	max-height: 40px;
+	overflow: hidden;
+	text-decoration: none;
+}
+
+.ProductPrice {
+	margin-top: 8px;
+	font-family: Arial;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: justify;
+	color: #e51e02;
+	max-height: 40px;
+	overflow: hidden;
+}
