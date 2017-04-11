@@ -212,4 +212,31 @@ public class DataAccount : DataClass
         }
     }
     #endregion
+
+    #region method delAccount
+    public void delAccount(int id)
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "DELETE FROM tblAccountInfo WHERE ACCT_ID = @ID";
+            Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
+
+            Cmd.ExecuteNonQuery();
+
+            Cmd = this.getSQLConnect();
+            Cmd.CommandText = "DELETE FROM tblAccount WHERE ACCT_ID = @ID";
+            Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
+
+            Cmd.ExecuteNonQuery();
+
+            this.SQLClose();
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+        }
+    }
+    #endregion
 }
