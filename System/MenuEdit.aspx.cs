@@ -6,13 +6,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class System_GroupAcctEdit : System.Web.UI.Page
+public partial class System_MenuEdit : System.Web.UI.Page
 {
     #region declare
-    public int itemId = 0;
-
-    private DataGroupAcct objGroupAcct = new DataGroupAcct();
+    private DataMenu objMenu = new DataMenu();
     private SystemClass objSystemClass = new SystemClass();
+
+    public int itemId = 0;
     #endregion
 
     #region method Page_Load
@@ -26,16 +26,17 @@ public partial class System_GroupAcctEdit : System.Web.UI.Page
 
         if (!Page.IsPostBack && this.itemId != 0)
         {
-            DataRow objData = objGroupAcct.getData(this.itemId);
-            if(objData == null)
+            DataRow objData = objMenu.getData(this.itemId);
+            if (objData == null)
             {
-                objSystemClass.addMessage("Bạn cần chọn nhóm để sửa.");
-                Response.Redirect("GroupAcctList.aspx");
+                objSystemClass.addMessage("Bạn cần chọn menu để sửa.");
+                Response.Redirect("Menu.aspx");
                 return;
             }
 
             txtName.Text = objData["NAME"].ToString();
             txtDescribe.Text = objData["DESCRIBE"].ToString();
+            txtLink.Text = objData["LINK"].ToString();
         }
     }
     #endregion
@@ -43,23 +44,23 @@ public partial class System_GroupAcctEdit : System.Web.UI.Page
     #region method btnSaver_Click
     protected void btnSaver_Click(object sender, EventArgs e)
     {
-        if(txtName.Text.Trim() == "")
+        if (txtName.Text.Trim() == "")
         {
-            objSystemClass.addMessage("Không được để trông tên nhóm");
+            objSystemClass.addMessage("Không được để trông tên menu");
             return;
         }
 
+        int ret = objMenu.UpdateData(itemId,txtName.Text, txtDescribe.Text, txtLink.Text);
 
-        int ret = objGroupAcct.setGroupAcct(this.itemId, txtName.Text, txtDescribe.Text);
-
-        if(ret != 0)
+        if (ret != 0)
         {
-            objSystemClass.addMessage("Cập nhật thành công");
-            Response.Redirect("GroupAcctEdit.aspx?id=" + ret);
-        } else {
-            objSystemClass.addMessage("Có lỗi xảy ra! (" + objGroupAcct.Message + ")");
+            objSystemClass.addMessage("Cập nhật menu thành công");
+            Response.Redirect("MenuEdit.aspx?id=" + ret);
         }
-
+        else
+        {
+            objSystemClass.addMessage("Có lỗi xảy ra! (" + objMenu.Message + ")");
+        }
     }
     #endregion
 }

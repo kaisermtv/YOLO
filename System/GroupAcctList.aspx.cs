@@ -14,24 +14,63 @@ public partial class System_GroupAcctList : System.Web.UI.Page
     public int index = 0;
     #endregion
 
+    #region method Page_Load
     protected void Page_Load(object sender, EventArgs e)
     {
         Context.Items["strTitle"] = "DANH SÁCH NHÓM TÀI KHOẢN";
 
-        //if (!Page.IsPostBack)
-        //{
-            DataTable objData = objGroupAcct.getList();
-
-            //dtlAccount.DataSource = objData.DefaultView;
-            //dtlAccount.DataBind();
-
-            cpData.MaxPages = 1000;
-            cpData.PageSize = 15;
-            cpData.DataSource = objData.DefaultView;
-            cpData.BindToControl = dtlData;
-            dtlData.DataSource = cpData.DataSourcePaged;
-            dtlData.DataBind();
-            index = 1;
-        //}
+        if (!Page.IsPostBack)
+        {
+            getData();
+        }
     }
+    #endregion
+
+    #region method getData()
+    private void getData()
+    {
+        DataTable objData = objGroupAcct.getList();
+
+        //dtlAccount.DataSource = objData.DefaultView;
+        //dtlAccount.DataBind();
+
+        cpData.MaxPages = 1000;
+        cpData.PageSize = 15;
+        cpData.DataSource = objData.DefaultView;
+        cpData.BindToControl = dtlData;
+        dtlData.DataSource = cpData.DataSourcePaged;
+        dtlData.DataBind();
+        index = 1;
+    }
+    #endregion
+
+    #region method btnDel_Click
+    protected void btnDel_Click(object sender, EventArgs e)
+    {
+        int id;
+        try
+        {
+            id = int.Parse(idDel.Value);
+        }
+        catch
+        {
+            SystemClass objSystemClass = new SystemClass();
+            objSystemClass.addMessage("Có lỗi xảy ra!");
+            return;
+        }
+
+        if (id != 0)
+        {
+            objGroupAcct.delData(id);
+
+            getData();
+        }
+        else
+        {
+            SystemClass objSystemClass = new SystemClass();
+            objSystemClass.addMessage("Có lỗi xảy ra!");
+            return;
+        }
+    }
+    #endregion
 }

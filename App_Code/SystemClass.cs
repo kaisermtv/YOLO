@@ -74,6 +74,7 @@ public class SystemClass
                 {
                     if (objData["ACCT_PASS"].ToString() == context.Session["LoginPass"].ToString())
                     {
+                        context.Items["login"] = (int)context.Session["Login"];
                         context.Items["loginAcct"] = objData;
                         context.Items["islogin"] = 1;
                         context.Items["loginGroup"] = group;
@@ -107,6 +108,21 @@ public class SystemClass
             return null;
         }
         
+    }
+    #endregion
+
+    #region getIDAccount()
+    public int getIDAccount()
+    {
+        if (isLogin())
+        {
+            return (int)context.Items["login"];
+        }
+        else
+        {
+            return 0;
+        }
+
     }
     #endregion
 

@@ -73,6 +73,19 @@ INSERT INTO tblStatus(NAME,[DESCRIBE]) VALUES (N'-/-',N'Chờ xử lý');
 INSERT INTO tblStatus(NAME,[DESCRIBE]) VALUES (N'Kích hoạt',N'Được chia sẻ');
 INSERT INTO tblStatus(NAME,[DESCRIBE]) VALUES (N'Lưu trữ',N'Đã xóa, nhưng chưa chả khỏi sql');
 
+CREATE TABLE tblMenu(
+	ID INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	NAME NVARCHAR(256) NOT NULL,
+	[DESCRIBE]	NTEXT NULL,
+
+	NTYPE INT NULL,
+	LINK NVARCHAR(512) NULL,
+
+	IORDER INT NULL,
+		
+	CREATEDATE		DATETIME DEFAULT(GETDATE())
+);
+
 CREATE  TABLE tblFacebookPost (
 			PostId int identity(1,1)  not null primary key,
 			id int ,
