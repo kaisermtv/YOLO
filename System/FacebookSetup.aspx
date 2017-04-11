@@ -174,8 +174,6 @@ a.visitor:hover * { color:#FFF; }
         width: auto;
     }    
 }
-
-
 .panel-facebook-plus .btn {
     border-radius: 3px;   
 }
@@ -218,7 +216,6 @@ a.visitor:hover * { color:#FFF; }
                 <a href="#" class="list-group-item visitor">
                     <h3 class="pull-right">
             <img src="../images/article.png" height="40" />
-                      
                     </h3>
                     <h4 class="list-group-item-heading count">
                        Tương tác từ facebook</h4>
@@ -233,7 +230,8 @@ a.visitor:hover * { color:#FFF; }
                         1000</h4>
                     <p class="list-group-item-text">
                         Facebook Likes</p>
-                </a><a href="#" class="list-group-item ">
+                </a>
+                <a href="#" class="list-group-item ">
                     <h3 class="pull-right">
                         <img src="../images/message.png" height="40"  />
                       
@@ -244,8 +242,55 @@ a.visitor:hover * { color:#FFF; }
                         Bình luận</p>
                 </a>
                 
-            </div>
-        </div>
+              
+                 <a href="#" class="list-group-item " data-toggle="modal" data-target=".smallModalRefresh">
+                    <h3 class="pull-right">
+                  
+                        <img src="../images/refresh-512.png" height="40"  />
+                    </h3>
+                    <h4 class="list-group-item-heading " >&nbsp;
+                        </h4>
+                    <p class="list-group-item-text">
+                      Cập nhật bài mới</p>
+                </a>
+                        <!-- Cập nhật lại các bài mới thêm từ facebook -->
+                        <div class="modal fade smallModalRefresh" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                              <div class="modal-dialog modal-sm" role="document">
+                                <div class="modal-content">
+                                <div class="alert info">   Các bài viết mới sẻ được thêm vào website </div>
+                                  
+                                    <div class="center" >  
+               <asp:Button ID="btnRefresh" CssClass="btn btn-success" Width="300" runat="server" Text="Cập nhật" OnClick="btnRefresh_Click" /></div>  
+                                    <div style="width:100%;height:10px;"></div>
+                                </div>
+                              </div>
+                            </div>
+
+
+                <a href="#" class="list-group-item " data-toggle="modal" data-target=".smallModalUpdate">
+                    <h3 class="pull-right">
+                      <img src="../images/ico_sync.png"   height="40"  />
+                    </h3>
+                    <h4 class="list-group-item-heading ">&nbsp;
+                        </h4>
+                    <p class="list-group-item-text">
+                       Đồng bộ lại tất cả </p>
+                </a>
+                        <!-- Xác nhận lại - Thao tác làm cập nhật toàn bộ dử liệu-->
+                        <div class="modal fade smallModalUpdate" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                              <div class="modal-dialog modal-sm" role="document">
+                                  
+                                <div class="modal-content">
+                                <div class="alert info">    Thao tác sẻ cập nhật lại toàn bộ dử liệu bài viết từ facebook , những bài viết đã tồn tại có thể bị mất</div>
+                                  
+                                    <div class="center-block" > 
+          <asp:Button ID="btnUpdate" CssClass="btn btn-danger" Width="300" runat="server" Text="Xác nhận"  OnClick="btnUpdate_Click" /></div>  
+                                    <div style="width:100%;height:10px;"></div>
+                                </div>
+                              </div>
+                            </div>
+                    </div>
+                </div>
          <!--đóng menu bên -->
 
         <!-- Nội dung bên phải -->
@@ -300,7 +345,7 @@ a.visitor:hover * { color:#FFF; }
             </div>
 
 
-                 <div class="[ panel panel-default ] panel-facebook-plus">
+            <div class="[ panel panel-default ] panel-facebook-plus">
                 <div class="dropdown">
                     <span class="dropdown-toggle" type="button" data-toggle="dropdown">
                         <span class="[ glyphicon glyphicon-chevron-down ]"></span>
@@ -350,9 +395,7 @@ a.visitor:hover * { color:#FFF; }
             </div>
         </div>
     </div>
-
-
     </div>
-</div>
+
 </asp:Content>
 
