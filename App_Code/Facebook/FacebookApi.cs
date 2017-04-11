@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
@@ -40,10 +41,10 @@ public class FacebookApi
         // refresh database here !
     }
 
-    #region saveToDb                        || Save getJson -> Parse Object -> saveto SqlServer
-    public int saveToDb(string url)
+    #region saveToDb                        || Save getJson -> Parse Object -> saveto SqlServer || run in first time
+    public int saveToDb()
     {
-        string json = getJsonString(url);
+        string json = getJsonString(this.url);
         FbPosts post = null;
         try { 
          post = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<FbPosts>(json);
@@ -66,7 +67,7 @@ public class FacebookApi
         foreach (var item in post.data)
         {
             FbPosts p = new FbPosts(item.id, item.message, item.full_picture, item.picture, item.link, item.created_time);
-            value += @"( " + item.id.Split('_')[2].ToString() + ", N' " + item.message + " ' , " + item.full_picture + " , " + item.picture + " , " + item.link + " , " + item.created_time + ") ,";
+            value += @"( " + item.id.Split('_')[1].ToString() + ", N' " + item.message + " ' , " + item.full_picture + " , " + item.picture + " , " + item.link + " , " + item.created_time + ") ,";
         }
         value = value.Substring(0,value.Length - 1);        // xóa bớt ký tự cuối cùng
         if (insertMultiValue(value) != 1) return -1;
@@ -74,7 +75,7 @@ public class FacebookApi
     }
     #endregion
     // facebook auto change token by time
-    #region getNewAccessToken()                 || Cố lấy lại Token key khi hết hạn
+    #region getNewAccessToken()                 || try to get new token when not valin
     public string getNewAccessToken()
     {
 
@@ -122,6 +123,41 @@ public class FacebookApi
     }
 #endregion
 
+    #region insertValueWithCheckExist()           | Đưa vào cơ sở dử liệu , kiểm tra xem bài viết tồn tại chưa
+    public int insertValueWithCheckExist(string id,string message,string full_picure,string picture, string link , string create_time)
+    {
+        try
+        {
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["CONNECTION_NAME"].ConnectionString);
+            conn.Open();
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.CommandText = @" 
+                            IF NOT EXISTS (SELECT * FROM tblFacebookPost WHERE tblFacebookPost.id = @id )
+                            BEGIN
+                INSERT INTO tblFacebookPost (id,message,full_picture,picture,link,created_time) VALUES 
+                        (  @id , @message , @full_picture , @picture , @link , @create_time )
+                            END
+                                ";
+            sqlCommand.Parameters.Add("id",SqlDbType.Int).Value = id;
+            sqlCommand.Parameters.Add("message", SqlDbType.NVarChar).Value = message;
+            sqlCommand.Parameters.Add("full_picture", SqlDbType.Char).Value = full_picure;
+            sqlCommand.Parameters.Add("picture", SqlDbType.Char).Value = picture;
+            sqlCommand.Parameters.Add("link", SqlDbType.Char).Value = link;
+            sqlCommand.Parameters.Add("created_time", SqlDbType.Char).Value = create_time;
+            sqlCommand.ExecuteNonQuery();
+            conn.Close();
+            conn.Dispose();
+            return 1;
+        }
+        catch (Exception e)
+        {
+            Debug.WriteLine("[ERROR] FB POST UPDATE TO DATABASE : " + e.GetBaseException());
+            return -1;
+        }
+
+    }
+    #endregion
+
     #region getJsonString                       
     public string getJsonString(string url)
     {
@@ -143,6 +179,6 @@ public class FacebookApi
     }
     #endregion
 
-
+   
 
 }
