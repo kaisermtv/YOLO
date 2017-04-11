@@ -69,6 +69,18 @@ CREATE TABLE tblStatus(
 	CREATEDATE		DATETIME DEFAULT(GETDATE())
 )
 
+
+CREATE  TABLE tblFacebookPost (
+			PostId int identity(1,1)  not null primary key,
+			id int ,
+			message nvarchar(max) ,
+			full_picture char(450) ,
+			picture char(450) ,
+			link char(500),
+			created_time char(30) ,
+			 time_sync datetime default getdate()  
+			 ) ; 
+
 INSERT INTO tblStatus(NAME,[DESCRIBE]) VALUES (N'-/-',N'Chờ xử lý');
 INSERT INTO tblStatus(NAME,[DESCRIBE]) VALUES (N'Kích hoạt',N'Được chia sẻ');
 INSERT INTO tblStatus(NAME,[DESCRIBE]) VALUES (N'Lưu trữ',N'Đã xóa, nhưng chưa chả khỏi sql');

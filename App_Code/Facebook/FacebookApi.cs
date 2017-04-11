@@ -101,7 +101,7 @@ public class FacebookApi
                                                             )   ;  
                                             END 
                                         ELSE BEGIN    
-                                            CREATE OR REPLACE TABLE tblFacebookPost (PostId int identity(1,1)  not null primary key,id int ,message nvarchar(max) ,full_picture char(450) ,picture char(450) ,link char(500),created_time char(30) , time_sync datetime default getdate()  )   ;                           
+                                            CREATE  TABLE tblFacebookPost (PostId int identity(1,1)  not null primary key,id int ,message nvarchar(max) ,full_picture char(450) ,picture char(450) ,link char(500),created_time char(30) , time_sync datetime default getdate()  )   ;                           
                                                INSERT INTO tblFacebookPost (id,message,full_picture,picture,link,created_time) VALUES         
                                                            (
                                                             " + value + @"
