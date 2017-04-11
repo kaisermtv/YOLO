@@ -12,6 +12,7 @@ public partial class System_AccountEdit : System.Web.UI.Page
     private int itemId = 0;
 
     private DataAccount objAccount = new DataAccount();
+    private SystemClass objSystemClass = new SystemClass();
     #endregion
 
     protected void Page_Load(object sender, EventArgs e)
@@ -24,9 +25,75 @@ public partial class System_AccountEdit : System.Web.UI.Page
 
         if(!Page.IsPostBack)
         {
-            //DataRow objData = objAccount.getAccount(this.itemId);
+            DataGroupAcct objGroupAcct = new DataGroupAcct();
+            ddlGroup.DataSource = objGroupAcct.getDataToCombobox();
+            ddlGroup.DataValueField = "ID";
+            ddlGroup.DataTextField = "NAME";
+            ddlGroup.DataBind();
 
+            DataRow objData = objAccount.getAccountInfo(this.itemId);
+            if (objData == null) Response.Redirect("ListAccount.aspx");
 
+            txtUserName.Text = objData["ACCT_NAME"].ToString();
+            ddlGroup.SelectedValue = objData["ACCT_GROUP"].ToString();
+            txtFullName.Text = objData["FULLNAME"].ToString();
+            txtEmail.Text = objData["EMAIL"].ToString();
+            txtNgaySinh.Value = objData["AGE"].ToString();
+            ddlGioiTinh.SelectedValue = objData["SEX"].ToString();
         }
+    }
+    protected void btnSaver_Click(object sender, EventArgs e)
+    {
+        int group = 0;
+        try
+        {
+            group = int.Parse(ddlGroup.SelectedValue);
+        }
+        catch { }
+
+        DateTime age;
+        try
+        {
+            age = DateTime.Parse(txtNgaySinh.Value);
+        }
+        catch
+        {
+            objSystemClass.addMessage("Định dạng ngày sinh không đúng!");
+            txtNgaySinh.Focus();
+            return;
+        }
+
+        int sex = 0;
+        try
+        {
+            sex = int.Parse(ddlGioiTinh.Text);
+        }
+        catch
+        {
+            objSystemClass.addMessage("Bạn cần chọn giới tính");
+            ddlGioiTinh.Focus();
+            return;
+        }
+
+        if (sex < 0 && sex > 1)
+        {
+            objSystemClass.addMessage("Bạn cần chọn giới tính");
+            ddlGioiTinh.Focus();
+            return;
+        }
+        
+        objAccount.setAccountInfo(itemId, txtEmail.Text.Trim(), txtFullName.Text, age, sex, group);
+
+        if (objAccount.Message != "")
+        {
+            objSystemClass.addMessage(objAccount.Message);
+        }
+        else
+        {
+            objSystemClass.addMessage("Cập nhật thành công.");
+            Response.Redirect("AccountEdit.aspx?id=" + itemId);
+        }
+
+
     }
 }

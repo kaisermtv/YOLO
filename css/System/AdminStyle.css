@@ -320,7 +320,7 @@ a {
 	height: 30px;
 	border:solid 1px #dde8ec;
 	border-top:none;
-	margin-bottom:-2px;
+	/*margin-bottom:-2px;*/
 }
 .DataListTableTdItemTT {
 	text-align: center;

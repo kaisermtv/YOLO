@@ -21,8 +21,7 @@ public class DataAccount : DataClass
 
             if (delacct)
             {
-                Cmd.CommandText += " AND ACCT_STATUS != @delacct";
-                Cmd.Parameters.Add("delacct", SqlDbType.NVarChar).Value = "delete";
+                Cmd.CommandText += " AND ACCT_STATUS != 2";
             }
 
             DataRow ret = this.findFirst(Cmd);
@@ -50,8 +49,7 @@ public class DataAccount : DataClass
 
             if (delacct)
             {
-                Cmd.CommandText += " AND ACCT_STATUS != @delacct";
-                Cmd.Parameters.Add("delacct", SqlDbType.NVarChar).Value = "delete";
+                Cmd.CommandText += " AND ACCT_STATUS != 2";
             }
 
             //Console.Out("Create sql");
@@ -78,13 +76,15 @@ public class DataAccount : DataClass
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "SELECT p.ACCT_ID,pl.FULLNAME,pl.AGE,pl.SEX,pl.EMAIL FROM tblAccount AS p LEFT JOIN tblAccountInfo AS pl ON p.ACCT_ID = pl.ACCT_ID WHERE p.ACCT_ID = @ID";
+            Cmd.CommandText = "SELECT p.ACCT_ID,p.ACCT_NAME,p.ACCT_GROUP,g.NAME AS GROUPNAME,pl.FULLNAME,pl.AGE,pl.SEX,pl.EMAIL FROM tblAccount AS p";
+            Cmd.CommandText += " LEFT JOIN tblAcctGroup AS g ON p.ACCT_GROUP = g.ID";
+            Cmd.CommandText += " LEFT JOIN tblAccountInfo AS pl ON p.ACCT_ID = pl.ACCT_ID";
+            Cmd.CommandText += " WHERE p.ACCT_ID = @ID";
             Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
 
             if (delacct)
             {
-                Cmd.CommandText += " AND p.ACCT_STATUS != @delacct";
-                Cmd.Parameters.Add("delacct", SqlDbType.NVarChar).Value = "delete";
+                Cmd.CommandText += " AND p.ACCT_STATUS != 2";
             }
 
             DataRow ret = this.findFirst(Cmd);
@@ -109,7 +109,7 @@ public class DataAccount : DataClass
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "SELECT * FROM tblAccount";
+            Cmd.CommandText = "SELECT P.ACCT_ID,P.ACCT_NAME,G.NAME AS GROUPNAME,PL.NAME AS STATUS FROM tblAccount AS P LEFT JOIN tblAcctGroup AS G ON P.ACCT_GROUP = G.ID LEFT JOIN tblStatus AS PL ON P.NSTATUS = PL.ID";
 
             DataTable ret = this.findAll(Cmd);
 
@@ -121,6 +121,94 @@ public class DataAccount : DataClass
             this.Message = ex.Message;
             this.ErrorCode = ex.HResult;
             return null;
+        }
+    }
+    #endregion
+
+    #region method addAccount
+    public int addAccount(String Acct, String pass,int group)
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "INSERT INTO tblAccount(ACCT_NAME,ACCT_PASS,ACCT_GROUP) OUTPUT INSERTED.ACCT_ID VALUES (@ACCOUNT,@PASSWORD,@GROUP);";
+
+            Cmd.Parameters.Add("ACCOUNT", SqlDbType.NVarChar).Value = Acct;
+            Cmd.Parameters.Add("PASSWORD", SqlDbType.NVarChar).Value = pass;
+            Cmd.Parameters.Add("GROUP", SqlDbType.Int).Value = group;
+
+            int ret = (int)Cmd.ExecuteScalar();
+
+            this.SQLClose();
+            return ret;
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+            return 0;
+        }
+    }
+    #endregion
+
+    #region method setAccountInfo
+    public void setAccountInfo(int id,String email, String fullname, DateTime ngaysinh,int gioitinh)
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "IF NOT EXISTS (SELECT * FROM tblAccountInfo WHERE ACCT_ID = @ID)";
+            Cmd.CommandText += " BEGIN INSERT INTO tblAccountInfo(ACCT_ID,FULLNAME,AGE,SEX,EMAIL) VALUES (@ID,@FULLNAME,@AGE,@SEX,@EMAIL) END";
+            Cmd.CommandText += " ELSE BEGIN UPDATE tblAccountInfo SET FULLNAME = @FULLNAME, AGE = @AGE, SEX = @SEX, EMAIL = @EMAIL WHERE ACCT_ID = @ID END";
+
+            Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
+            Cmd.Parameters.Add("FULLNAME", SqlDbType.NVarChar).Value = fullname;
+            Cmd.Parameters.Add("AGE", SqlDbType.DateTime).Value = ngaysinh;
+            Cmd.Parameters.Add("SEX", SqlDbType.Bit).Value = gioitinh;
+            Cmd.Parameters.Add("EMAIL", SqlDbType.NVarChar).Value = email;
+
+            Cmd.ExecuteNonQuery();
+
+            this.SQLClose();
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+        }
+    }
+
+    public void setAccountInfo(int id, String email, String fullname, DateTime ngaysinh, int gioitinh, int group)
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "UPDATE tblAccount SET ACCT_GROUP = @GROUP WHERE ACCT_ID = @ID";
+
+            Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
+            Cmd.Parameters.Add("GROUP", SqlDbType.Int).Value = group;
+
+            Cmd.ExecuteNonQuery();
+
+            Cmd = this.getSQLConnect();
+            Cmd.CommandText = "IF NOT EXISTS (SELECT * FROM tblAccountInfo WHERE ACCT_ID = @ID)";
+            Cmd.CommandText += " BEGIN INSERT INTO tblAccountInfo(ACCT_ID,FULLNAME,AGE,SEX,EMAIL) VALUES (@ID,@FULLNAME,@AGE,@SEX,@EMAIL) END";
+            Cmd.CommandText += " ELSE BEGIN UPDATE tblAccountInfo SET FULLNAME = @FULLNAME, AGE = @AGE, SEX = @SEX, EMAIL = @EMAIL WHERE ACCT_ID = @ID END";
+
+            Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
+            Cmd.Parameters.Add("FULLNAME", SqlDbType.NVarChar).Value = fullname;
+            Cmd.Parameters.Add("AGE", SqlDbType.DateTime).Value = ngaysinh;
+            Cmd.Parameters.Add("SEX", SqlDbType.Bit).Value = gioitinh;
+            Cmd.Parameters.Add("EMAIL", SqlDbType.NVarChar).Value = email;
+
+            Cmd.ExecuteNonQuery();
+
+            this.SQLClose();
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
         }
     }
     #endregion

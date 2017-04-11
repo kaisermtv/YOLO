@@ -14,7 +14,7 @@ public class SystemClass
     private DataRemember objDataRemember = new DataRemember();
 
     private HttpContext context = HttpContext.Current;
-    public String SessionKey = HttpContext.Current.Request.Cookies["LoginCookie"].Value;
+    public String SessionKey = "";
 
     private DataRow loginAcct;
     private int islogin = 0;
@@ -23,6 +23,15 @@ public class SystemClass
     public String Message = "";
 
     #endregion
+
+    public SystemClass()
+    {
+        try
+        {
+            SessionKey = HttpContext.Current.Request.Cookies["LoginCookie"].Value;
+        }
+        catch { }
+    }
 
     #region isLogin
     public bool isLogin(int group = 0)
@@ -202,6 +211,21 @@ public class SystemClass
         }
 
         return arr;
+    }
+    #endregion
+
+    #region method CVDate()
+    public static DateTime CVDate(String dt)
+    {
+        try
+        {
+            return new DateTime(int.Parse(dt.Substring(6, 4)), int.Parse(dt.Substring(3, 2)), int.Parse(dt.Substring(0, 2)));
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+
     }
     #endregion
 }

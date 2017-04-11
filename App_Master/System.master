@@ -39,6 +39,15 @@
     <!-- Meters graphs -->
     <script src="/js/jquery-1.10.2.min.js"></script>
     <!-- Placed js at the end of the document so the pages load faster -->
+
+    <!-- DateTime Picker -->
+    <link href="/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <script src="/js/jquery-2.1.1.min.js"></script>
+    <script src="/js/moment-with-locales.js"></script>
+    <script src="/js/bootstrap-datetimepicker.js"></script>
+    <!-- -->
+
+
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 
@@ -55,7 +64,7 @@
                     <h1><a href="/Admin/index.html">TVS <span>Admin</span></a></h1>
                 </div>
                 <div class="logo-icon text-center">
-                    <a href="/Admin/default.aspx"><i class="lnr lnr-home"></i></a>
+                    <a href="/System/default.aspx"><i class="lnr lnr-home"></i></a>
                 </div>
 
                 <!--logo and iconic logo end-->
@@ -67,7 +76,7 @@
                                 <span>Hệ thống</span></a>
                             <ul class="sub-menu-list">
                                 <li><a href="/System/AboutUs.aspx">Thông tin đơn vị</a></li>
-                                <li><a href="/System/GroupAccountList.aspx">Nhóm tài khoản</a></li>
+                                <li><a href="/System/GroupAcctList.aspx">Nhóm tài khoản</a></li>
                                 <li><a href="/System/ListAccount.aspx">Tài khoản người dùng</a></li>
                             </ul>
                         </li>
@@ -75,7 +84,7 @@
                             <ul class="sub-menu-list">
                                 <li><a href="/Directory/Category.aspx">Menu, danh mục</a></li>
                                 <%--<li><a href="/Admin/ListCategory.aspx">Nhóm hàng hóa</a></li>--%>
-                                <li><a href="/Admin/ListProduct.aspx">Quản lý bán xe</a></li>
+                                <%--<li><a href="/Admin/ListProduct.aspx">Quản lý bán xe</a></li>--%>
                                 <li><a href="/Admin/ListNews.aspx">Tin tức - Bài viết</a></li>
                                 <%--<li><a href="/Admin/ListNational.aspx">Xuất xứ hàng hóa</a></li>--%>
                                 <%--<li><a href="/Admin/ListQuotation.aspx">Báo giá sản phẩm</a></li>--%>
@@ -85,7 +94,7 @@
                         </li>
                         <li class="menu-list"><a href="#"><i class="lnr lnr-book"></i><span>Danh mục</span></a>
                             <ul class="sub-menu-list">
-                                <li><a href="/Directory/HangXe.aspx">Danh mục hãng xe</a> </li>
+                                <%--<li><a href="/Directory/HangXe.aspx">Danh mục hãng xe</a> </li>
                                 <li><a href="/Directory/DongXe.aspx">Danh mục dòng xe</a> </li>
                                 <li><a href="/Directory/MucGia.aspx">Danh mục mức giá</a> </li>
                                 <li><a href="/Directory/NamSanXuat.aspx">Danh mục năm sản xuất</a> </li>
@@ -94,7 +103,7 @@
                                 <li><a href="/Directory/KieuDang.aspx">Danh mục kiểu dáng</a> </li>
                                 <li><a href="/Directory/MauSac.aspx">Danh mục màu sắc</a> </li>
                                 <li><a href="/Directory/SoCho.aspx">Danh mục số chỗ</a> </li>
-                                <li><a href="/Directory/SoCua.aspx">Danh mục số cửa</a> </li>
+                                <li><a href="/Directory/SoCua.aspx">Danh mục số cửa</a> </li>--%>
                             </ul>
                         </li>
                     </ul>
@@ -163,7 +172,7 @@
 
                 <div id="page-wrapper">
                     <div class="graphs">
-                        <% foreach(String val in message){ %>
+                        <% foreach (String val in objSystemClass.getMessage()){ %>
                             <div class="alert alert-success" role="alert">
 							        <%= val %>
 						    </div>

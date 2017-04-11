@@ -14,6 +14,7 @@ public partial class App_Master_System : System.Web.UI.MasterPage
     public String account = "";
 
     public ArrayList message = new ArrayList();
+    public SystemClass objSystemClass = new SystemClass();
     #endregion
 
     #region method Page_Init
@@ -48,8 +49,7 @@ public partial class App_Master_System : System.Web.UI.MasterPage
             style += "QUẢN TRỊ HỆ THỐNG"; 
         }
 
-        SystemClass objSystemClass = new SystemClass();
-        message = objSystemClass.getMessage();
+        
     }
     #endregion
 }

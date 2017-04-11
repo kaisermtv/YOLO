@@ -2,12 +2,13 @@
 
 <%@ Register TagPrefix="cc1" Namespace="SiteUtils" Assembly="CollectionPager" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
-    <asp:Repeater ID="dtlAccount" runat="server" EnableViewState="False">
+    <asp:Repeater ID="dtlData" runat="server" EnableViewState="False">
         <HeaderTemplate>
             <table class="DataListTable">
                 <tr class="DataListTableHeader">
                     <th class="DataListTableHeaderTdItemTT" style="width: 4%;">TT</th>
-                    <th class="DataListTableHeaderTdItemJustify">Tài khoản</th>
+                    <th class="DataListTableHeaderTdItemJustify" style="width: 20%;">Tên nhóm</th>
+                    <th class="DataListTableHeaderTdItemJustify">Mô tả</th>
                     <th class="DataListTableHeaderTdItemJustify" style="width: 10%;">Trạng thái</th>
                     <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Sửa</th>
                     <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Xóa</th>
@@ -16,15 +17,15 @@
         <ItemTemplate>
             <tr>
                 <td class="DataListTableTdItemTT"><%# this.index++ %></td>
-                <td class="DataListTableTdItemJustify"><%# Eval("ACCT_NAME") %></td>
-                <%--<td class="DataListTableTdItemJustify"><%# Eval("ACCT_EMAIL") %></td>--%>
-                <td class="DataListTableTdItemJustify"><%# Eval("ACCT_STATUS") %></td>
+                <td class="DataListTableTdItemJustify"><%# Eval("NAME") %></td>
+                <td class="DataListTableTdItemJustify"><%# Eval("DESCRIBE") %></td>
+                <td class="DataListTableTdItemJustify"><%# Eval("STATUS") %></td>
                 <td class="DataListTableTdItemCenter">
-                    <a href="AccountEdit.aspx?id=<%# Eval("ACCT_ID") %>">
+                    <a href="GroupAccountEdit.aspx?id=<%# Eval("ID") %>">
                         <img src="/Images/Edit.png" alt=""></a>
                 </td>
                 <td class="DataListTableTdItemCenter">
-                    <a href="AccountDel.aspx?id=<%# Eval("ACCT_ID") %>">
+                    <a href="GroupAccountDel.aspx?id=<%# Eval("ID") %>">
                         <img src="/Images/delete.png" alt=""></a>
                 </td>
             </tr>
@@ -33,7 +34,7 @@
             </table>
         </FooterTemplate>
     </asp:Repeater>
-    <cc1:CollectionPager ID="cpAccount" runat="server" BackText="" FirstText="Đầu"
+    <cc1:CollectionPager ID="cpData" runat="server" BackText="" FirstText="Đầu"
         ControlCssClass="ProductPage" LabelText="" LastText="Cuối" NextText="" UseSlider="true"
         ResultsFormat="" BackNextLinkSeparator="" ResultsLocation="None" BackNextLocation="None"
         PageNumbersSeparator="&nbsp;">

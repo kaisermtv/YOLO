@@ -3,7 +3,7 @@ CREATE TABLE tblAcctGroup(
 	NAME		NVARCHAR(256) NOT NULL UNIQUE,
 	DESCRIBE	NVARCHAR(50) NULL,
 	
-	NSTATUS		NVARCHAR(30) NULL,
+	NSTATUS		INT NOT NULL DEFAULT(0),
 	EDITTIME	DATETIME NULL,
 	EDITUSER	INT NULL,
 	CREATETIME	DATETIME DEFAULT(GETDATE()) -- Ngày khởi tạo
@@ -17,13 +17,13 @@ CREATE TABLE tblAccount(
 	ACCT_NAME		NVARCHAR(30) NOT NULL UNIQUE,
 	ACCT_PASS		NVARCHAR(50) NOT NULL,
 	
-	ACCT_STATUS		NVARCHAR(30) NULL,		
+	NSTATUS		INT NOT NULL DEFAULT(0),	
 	ACCT_GROUP		INT NULL FOREIGN KEY REFERENCES dbo.tblAcctGroup(ID),
 	ACCT_CREATE		DATETIME DEFAULT(GETDATE()) -- Ngày khởi tạo
 );
 
-INSERT INTO tblAccount(ACCT_NAME,ACCT_PASS,ACCT_GROUP)
-	VALUES ('kaisermtv','123123',1);
+INSERT INTO tblAccount(ACCT_NAME,ACCT_PASS,ACCT_GROUP) VALUES ('kaisermtv','123123',1);
+INSERT INTO tblAccount(ACCT_NAME,ACCT_PASS,ACCT_GROUP) VALUES ('admin','123',1);
 
 CREATE TABLE tblAccountInfo(
 	ACCT_ID			INT PRIMARY KEY NOT NULL FOREIGN KEY REFERENCES dbo.tblAccount(ACCT_ID),
@@ -60,3 +60,27 @@ CREATE TABLE tblCategory(
 	LINK		NVARCHAR(256),
 	CREATEDATE		DATETIME DEFAULT(GETDATE())
 )
+
+CREATE TABLE tblStatus(
+	ID			INT PRIMARY KEY NOT NULL IDENTITY(0,1),
+	NAME		NVARCHAR(256) NULL,
+	[DESCRIBE]	NTEXT NULL,
+
+	CREATEDATE		DATETIME DEFAULT(GETDATE())
+)
+
+
+CREATE  TABLE tblFacebookPost (
+			PostId int identity(1,1)  not null primary key,
+			id int ,
+			message nvarchar(max) ,
+			full_picture char(450) ,
+			picture char(450) ,
+			link char(500),
+			created_time char(30) ,
+			 time_sync datetime default getdate()  
+			 ) ; 
+
+INSERT INTO tblStatus(NAME,[DESCRIBE]) VALUES (N'-/-',N'Chờ xử lý');
+INSERT INTO tblStatus(NAME,[DESCRIBE]) VALUES (N'Kích hoạt',N'Được chia sẻ');
+INSERT INTO tblStatus(NAME,[DESCRIBE]) VALUES (N'Lưu trữ',N'Đã xóa, nhưng chưa chả khỏi sql');
