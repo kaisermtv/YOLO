@@ -2,6 +2,17 @@
 <%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/App_Master/System.master" CodeFile="ListAccount.aspx.cs" Inherits="System_ListAccount" %>
 
 <%@ Register TagPrefix="cc1" Namespace="SiteUtils" Assembly="CollectionPager" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="Server">
+    <script>
+        function delmodal(id,name)
+        {
+            idDel
+            $("#idDel").val(id);
+            $("#myModal").modal("show");
+        }
+    </script>
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:Repeater ID="dtlAccount" runat="server" EnableViewState="False">
         <HeaderTemplate>
@@ -28,7 +39,7 @@
                         </a>
                     </td>
                     <td class="DataListTableTdItemCenter">
-                        <a href="AccountDel.aspx?id=<%# Eval("ACCT_ID") %>">
+                        <a href="#myModal" onclick="delmodal(<%# Eval("ACCT_ID") %>,'<%# Eval("ACCT_NAME") %>')">
                             <img src="/Images/delete.png" alt="">
                         </a>
                     </td>
@@ -46,4 +57,26 @@
     </cc1:CollectionPager>
     <br />
     <a href="AccountNew.aspx" class="btn btn-primary">Tạo tài khoản</a>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <input id="idDel" type="hidden" runat="server" />
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Xóa tài khoản</h4>
+          </div>
+          <div class="modal-body">
+            <p>Bạn xác nhận xóa tài khoản <b id="ttk"></b></p>
+          </div>
+          <div class="modal-footer">
+            <asp:Button ID="btnDel" runat ="server" CssClass="btn btn-primary" Text="Xác nhận xóa" OnClick="btnDel_Click" />
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
 </asp:Content>

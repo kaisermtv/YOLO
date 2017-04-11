@@ -38,4 +38,11 @@ public partial class System_ListAccount : System.Web.UI.Page
         }
     }
     #endregion
+
+    #region method btnDel_Click
+    protected void btnDel_Click(object sender, EventArgs e)
+    {
+
+    }
+    #endregion
 }
