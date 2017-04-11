@@ -1,20 +1,51 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="App_Master_Site" %>
 
+<%@ Register Src="~/FrontEnd/Controls/Common/PageStyle.ascx" TagPrefix="uc1" TagName="PageStyle" %>
+<%@ Register Src="~/FrontEnd/Controls/Common/PageScript.ascx" TagPrefix="uc1" TagName="PageScript" %>
+<%@ Register Src="~/FrontEnd/Controls/Common/Header.ascx" TagPrefix="uc1" TagName="Header" %>
+<%@ Register Src="~/FrontEnd/Controls/Common/Menu.ascx" TagPrefix="uc1" TagName="Menu" %>
+<%@ Register Src="~/FrontEnd/Controls/Common/Banner.ascx" TagPrefix="uc1" TagName="Banner" %>
+
+
+
+
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <asp:ContentPlaceHolder id="head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=1020px, initial-scale=1.0" />
+    <meta name="Language" content="vi" />
+    <meta name="copyright" content="Copyright © 2017 by Mobiphone" />
+
+
+    <%--PageStyle--%>
+    <uc1:PageStyle runat="server" ID="PageStyle" />
+    <%--PageScript--%>
+    <uc1:PageScript runat="server" ID="PageScript" />
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-        
+        <div class="YoloWraper container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="main">
+                        <uc1:Header runat="server" ID="Header" />
+                        <uc1:Menu runat="server" ID="Menu" />
+                        <uc1:Banner runat="server" ID="Banner" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <asp:ContentPlaceHolder ID="MasterPageContent" runat="server">
         </asp:ContentPlaceHolder>
-    </div>
     </form>
 </body>
 </html>
