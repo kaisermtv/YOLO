@@ -9,27 +9,30 @@
                 <table class="DataListTable" <%--style="min-width:1500px"--%>>
                     <tr class="DataListTableHeader">
                         <th class="DataListTableHeaderTdItemTT" style="width: 4%;">TT</th>
-                        <th class="DataListTableHeaderTdItemJustify">Tài khoản</th>
+                        <th class="DataListTableHeaderTdItemJustify" >Tài khoản</th>
+                        <th class="DataListTableHeaderTdItemJustify" style="width: 20%;">Nhóm</th>
                         <th class="DataListTableHeaderTdItemJustify" style="width: 10%;">Trạng thái</th>
                         <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Sửa</th>
                         <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Xóa</th>
                     </tr>
         </HeaderTemplate>
         <ItemTemplate>
-            <tr>
-                <td class="DataListTableTdItemTT"><%# this.index++ %></td>
-                <td class="DataListTableTdItemJustify"><%# Eval("ACCT_NAME") %></td>
-                <%--<td class="DataListTableTdItemJustify"><%# Eval("ACCT_EMAIL") %></td>--%>
-                <td class="DataListTableTdItemJustify"><%# Eval("ACCT_STATUS") %></td>
-                <td class="DataListTableTdItemCenter">
-                    <a href="AccountEdit.aspx?id=<%# Eval("ACCT_ID") %>">
-                        <img src="/Images/Edit.png" alt=""></a>
-                </td>
-                <td class="DataListTableTdItemCenter">
-                    <a href="AccountDel.aspx?id=<%# Eval("ACCT_ID") %>">
-                        <img src="/Images/delete.png" alt=""></a>
-                </td>
-            </tr>
+                <tr>
+                    <td class="DataListTableTdItemTT"><%# this.index++ %></td>
+                    <td class="DataListTableTdItemJustify"><%# Eval("ACCT_NAME") %></td>
+                    <td class="DataListTableTdItemJustify"><%# Eval("GROUPNAME") %></td>
+                    <td class="DataListTableTdItemJustify"><%# Eval("STATUS") %></td>
+                    <td class="DataListTableTdItemCenter">
+                        <a href="AccountEdit.aspx?id=<%# Eval("ACCT_ID") %>">
+                            <img src="/Images/Edit.png" alt="">
+                        </a>
+                    </td>
+                    <td class="DataListTableTdItemCenter">
+                        <a href="AccountDel.aspx?id=<%# Eval("ACCT_ID") %>">
+                            <img src="/Images/delete.png" alt="">
+                        </a>
+                    </td>
+                </tr>
         </ItemTemplate>
         <FooterTemplate>
                 </table>
@@ -41,4 +44,6 @@
         ResultsFormat="" BackNextLinkSeparator="" ResultsLocation="None" BackNextLocation="None"
         PageNumbersSeparator="&nbsp;" PagingMode="PostBack">
     </cc1:CollectionPager>
+    <br />
+    <a href="AccountNew.aspx" class="btn btn-primary">Tạo tài khoản</a>
 </asp:Content>

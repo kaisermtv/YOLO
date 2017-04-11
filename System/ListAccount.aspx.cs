@@ -30,8 +30,11 @@ public partial class System_ListAccount : System.Web.UI.Page
             cpAccount.PageSize = 15;
             cpAccount.DataSource = objData.DefaultView;
             cpAccount.BindToControl = dtlAccount;
+            
             dtlAccount.DataSource = cpAccount.DataSourcePaged;
             dtlAccount.DataBind();
+
+            index = 1;
         }
     }
     #endregion

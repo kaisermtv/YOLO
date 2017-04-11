@@ -20,6 +20,9 @@ public class DataClass
     #region method SQLConnect
     protected SqlCommand getSQLConnect()
     {
+        this.Message = "";
+        this.ErrorCode = 0;
+
         try
         {
             if (this.sqlCon == null)

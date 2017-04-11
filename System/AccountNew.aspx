@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/App_Master/System.master" CodeFile="AccountEdit.aspx.cs" Inherits="System_AccountEdit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/App_Master/System.master" CodeFile="AccountNew.aspx.cs" Inherits="System_AccountNew" %>
 
 <%@ Register TagPrefix="cc1" Namespace="SiteUtils" Assembly="CollectionPager" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
@@ -8,7 +8,7 @@
             Tài khoản:
         </div>
         <div class="AdminRightItem">
-            <asp:TextBox ID="txtUserName" runat="server" class="AdminTextControl" ReadOnly="true"></asp:TextBox>
+            <asp:TextBox ID="txtUserName" runat="server" class="AdminTextControl"></asp:TextBox>
         </div>
     </div>
 
@@ -18,6 +18,24 @@
         </div>
         <div class="AdminRightItem">
             <asp:DropDownList ID="ddlGroup" runat="server" Style="width: 100%; height: 26px; line-height: 26px; margin-top: 3px;"></asp:DropDownList>
+        </div>
+    </div>
+
+    <div class="AdminItem">
+        <div class="AdminLeftItem">
+            Mật khẩu:
+        </div>
+        <div class="AdminRightItem">
+            <asp:TextBox ID="txtPassword" type="password" runat="server" class="AdminTextControl"></asp:TextBox>
+        </div>
+    </div>
+
+    <div class="AdminItem">
+        <div class="AdminLeftItem">
+            Nhập lại mật khẩu:
+        </div>
+        <div class="AdminRightItem">
+            <asp:TextBox ID="txtPassword2" type="password" runat="server" class="AdminTextControl"></asp:TextBox>
         </div>
     </div>
     <br />
