@@ -21,11 +21,11 @@
                 <td class="DataListTableTdItemJustify"><%# Eval("DESCRIBE") %></td>
                 <td class="DataListTableTdItemJustify"><%# Eval("STATUS") %></td>
                 <td class="DataListTableTdItemCenter">
-                    <a href="GroupAccountEdit.aspx?id=<%# Eval("ID") %>">
+                    <a href="GroupAcctEdit.aspx?id=<%# Eval("ID") %>">
                         <img src="/Images/Edit.png" alt=""></a>
                 </td>
                 <td class="DataListTableTdItemCenter">
-                    <a href="GroupAccountDel.aspx?id=<%# Eval("ID") %>">
+                    <a href="GroupAcctDel.aspx?id=<%# Eval("ID") %>">
                         <img src="/Images/delete.png" alt=""></a>
                 </td>
             </tr>
@@ -39,4 +39,7 @@
         ResultsFormat="" BackNextLinkSeparator="" ResultsLocation="None" BackNextLocation="None"
         PageNumbersSeparator="&nbsp;">
     </cc1:CollectionPager>
+
+    <br />
+    <a href="GroupAcctEdit.aspx" class="btn btn-primary">Tạo nhóm mới</a>
 </asp:Content>
