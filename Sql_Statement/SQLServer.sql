@@ -3,7 +3,7 @@ CREATE TABLE tblAcctGroup(
 	NAME		NVARCHAR(256) NOT NULL UNIQUE,
 	DESCRIBE	NVARCHAR(50) NULL,
 	
-	NSTATUS		INT NOT NULL DEFAULT(0),
+	NSTATUS		INT NOT NULL DEFAULT(0) FOREIGN KEY REFERENCES dbo.tblStatus(ID),
 	EDITTIME	DATETIME NULL,
 	EDITUSER	INT NULL,
 	CREATETIME	DATETIME DEFAULT(GETDATE()) -- Ngày khởi tạo
@@ -17,7 +17,7 @@ CREATE TABLE tblAccount(
 	ACCT_NAME		NVARCHAR(30) NOT NULL UNIQUE,
 	ACCT_PASS		NVARCHAR(50) NOT NULL,
 	
-	NSTATUS		INT NOT NULL DEFAULT(0),	
+	NSTATUS		INT NOT NULL DEFAULT(0) FOREIGN KEY REFERENCES dbo.tblStatus(ID),	
 	ACCT_GROUP		INT NULL FOREIGN KEY REFERENCES dbo.tblAcctGroup(ID),
 	ACCT_CREATE		DATETIME DEFAULT(GETDATE()) -- Ngày khởi tạo
 );
@@ -69,6 +69,9 @@ CREATE TABLE tblStatus(
 	CREATEDATE		DATETIME DEFAULT(GETDATE())
 )
 
+INSERT INTO tblStatus(NAME,[DESCRIBE]) VALUES (N'-/-',N'Chờ xử lý');
+INSERT INTO tblStatus(NAME,[DESCRIBE]) VALUES (N'Kích hoạt',N'Được chia sẻ');
+INSERT INTO tblStatus(NAME,[DESCRIBE]) VALUES (N'Lưu trữ',N'Đã xóa, nhưng chưa chả khỏi sql');
 
 CREATE  TABLE tblFacebookPost (
 			PostId int identity(1,1)  not null primary key,
@@ -81,6 +84,3 @@ CREATE  TABLE tblFacebookPost (
 			 time_sync datetime default getdate()  
 			 ) ; 
 
-INSERT INTO tblStatus(NAME,[DESCRIBE]) VALUES (N'-/-',N'Chờ xử lý');
-INSERT INTO tblStatus(NAME,[DESCRIBE]) VALUES (N'Kích hoạt',N'Được chia sẻ');
-INSERT INTO tblStatus(NAME,[DESCRIBE]) VALUES (N'Lưu trữ',N'Đã xóa, nhưng chưa chả khỏi sql');

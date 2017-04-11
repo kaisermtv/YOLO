@@ -7,8 +7,9 @@
     <script>
         function delmodal(id,name)
         {
-            idDel
-            $("#idDel").val(id);
+            $("#MainContent_idDel").val(id);
+            $("#ttk").html(name);
+            
             $("#myModal").modal("show");
         }
     </script>
