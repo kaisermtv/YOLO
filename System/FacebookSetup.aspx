@@ -5,7 +5,7 @@
     <style>
        
 body { margin-top:20px; }
-.fa { font-size: 50px;text-align: right;position: absolute;top: 7px;right: 27px;outline: none; }
+
 a { transition: all .3s ease;-webkit-transition: all .3s ease;-moz-transition: all .3s ease;-o-transition: all .3s ease; }
 /* Visitor */
 a.visitor i,.visitor h4.list-group-item-heading { color:#E48A07; }
@@ -187,7 +187,9 @@ a.visitor:hover * { color:#FFF; }
 
     </style>
 
-    <script>
+
+    <!-- animation text-->
+   <%-- <script>
         $({ someValue: 0 }).animate({
             someValue: Math.floor(Math.random() * 3000)
         }, {
@@ -206,7 +208,7 @@ a.visitor:hover * { color:#FFF; }
             }
             return val;
         }
-    </script>
+    </script>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <div class="container">
@@ -218,7 +220,7 @@ a.visitor:hover * { color:#FFF; }
             <img src="../images/article.png" height="40" />
                     </h3>
                     <h4 class="list-group-item-heading count">
-                       Tương tác từ facebook</h4>
+                           <%=objTblFbPost.Rows.Count %> </h4>
                     <p class="list-group-item-text">
                        Bài viết</p>
                 </a><a href="#modal" class="list-group-item facebook-like">
@@ -226,20 +228,10 @@ a.visitor:hover * { color:#FFF; }
                         <img src="../images/Facebook.png" height="40" />
                        
                     </h3>
-                    <script>
-                        $({ someValue: 0 }).animate({
-                             someValue: Math.floor(Math.random() * 3000)
-                        }, {
-                            duration: 1000,
-                            easing: 'swing', // can be anything
-                            step: function () { // called on every step
-                                // Update the element's text with rounded-up value:
-                                $('.count').text(commaSeparateNumber((someValue)));
-                            }
-                        });
-                   </script>
+                   
                     <h4 class="list-group-item-heading count">
-                        1000</h4>
+                         <%=objTblFbPost.Rows.Count %>
+                        </h4>
                     <p class="list-group-item-text">
                         Facebook Likes</p>
                     
@@ -250,7 +242,7 @@ a.visitor:hover * { color:#FFF; }
                       
                     </h3>
                     <h4 class="list-group-item-heading count">
-                        1000</h4>
+                              <%=objTblFbPost.Rows.Count %></h4>
                     <p class="list-group-item-text">
                         Bình luận</p>
                 </a>
@@ -328,20 +320,22 @@ a.visitor:hover * { color:#FFF; }
                 <div class="panel-heading">
                     <img class="[ img-circle pull-left ]"  src="../" alt="Web " />
                     <h3>...?</h3>
-                    <h5 ><span style="margin-left:-80px !important">Thời gian đăng </span> - <span><%=row["create_time"].ToString().Substring(0,10) %></span> </h5>
+                    <h5 ><span style="margin-left:-80px !important">Thời gian đăng </span> - 
+                        <span><%=row["create_time"].ToString().Substring(0,10) %></span> </h5>
                 </div>
                 <div class="panel-body">
                     <p>
                       <%=row["message"] %>                
                     </p>
+                    <br />
                     <a class="panel-facebook-plus-image" href="#">
                        <img src="<%=row["full_picture"] %>" />
                            </a>
                 </div>
                 <div class="panel-footer">
-                    <button type="button" class="[ btn btn-default ]">100 Thích</button>
-                     <button type="button" class="[ btn btn-default ]">100 Bình luận</button>
-                    <button type="button" class="[ btn btn-default ]">100 Chia sẻ
+                    <button type="button" class="[ btn btn-default ]"><%=row["likes"] %> Thích</button>
+                     <button type="button" class="[ btn btn-default ]"><%=row["comments"] %>  Bình luận</button>
+                    <button type="button" class="[ btn btn-default ]">x Chia sẻ
                     </button>
                  
                 </div>
