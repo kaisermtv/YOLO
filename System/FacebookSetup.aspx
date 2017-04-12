@@ -12,9 +12,6 @@ a.visitor i,.visitor h4.list-group-item-heading { color:#E48A07; }
 a.visitor:hover { background-color:#E48A07; }
 a.visitor:hover * { color:#FFF; }
 /* Facebook */
-
-
-
 .panel-facebook-plus {
     position: relative;
     border-radius: 0px;
@@ -191,7 +188,9 @@ a.visitor:hover * { color:#FFF; }
     </style>
 
     <script>
-        $({ someValue: 0 }).animate({ someValue: Math.floor(Math.random() * 3000) }, {
+        $({ someValue: 0 }).animate({
+            someValue: Math.floor(Math.random() * 3000)
+        }, {
             duration: 3000,
             easing: 'swing', // can be anything
             step: function () { // called on every step
@@ -200,6 +199,7 @@ a.visitor:hover * { color:#FFF; }
             }
         });
 
+        // chia số hàng nghìn , triệu 
         function commaSeparateNumber(val) {
             while (/(\d+)(\d{3})/.test(val.toString())) {
                 val = val.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
@@ -226,10 +226,23 @@ a.visitor:hover * { color:#FFF; }
                         <img src="../images/Facebook.png" height="40" />
                        
                     </h3>
+                    <script>
+                        $({ someValue: 0 }).animate({
+                             someValue: Math.floor(Math.random() * 3000)
+                        }, {
+                            duration: 1000,
+                            easing: 'swing', // can be anything
+                            step: function () { // called on every step
+                                // Update the element's text with rounded-up value:
+                                $('.count').text(commaSeparateNumber((someValue)));
+                            }
+                        });
+                   </script>
                     <h4 class="list-group-item-heading count">
                         1000</h4>
                     <p class="list-group-item-text">
                         Facebook Likes</p>
+                    
                 </a>
                 <a href="#" class="list-group-item ">
                     <h3 class="pull-right">
@@ -241,8 +254,6 @@ a.visitor:hover * { color:#FFF; }
                     <p class="list-group-item-text">
                         Bình luận</p>
                 </a>
-                
-              
                  <a href="#" class="list-group-item " data-toggle="modal" data-target=".smallModalRefresh">
                     <h3 class="pull-right">
                   
@@ -265,9 +276,7 @@ a.visitor:hover * { color:#FFF; }
                                 </div>
                               </div>
                             </div>
-
-
-                <a href="#" class="list-group-item " data-toggle="modal" data-target=".smallModalUpdate">
+                 <a href="#" class="list-group-item " data-toggle="modal" data-target=".smallModalUpdate">
                     <h3 class="pull-right">
                       <img src="../images/ico_sync.png"   height="40"  />
                     </h3>
@@ -293,8 +302,12 @@ a.visitor:hover * { color:#FFF; }
                 </div>
          <!--đóng menu bên -->
 
-        <!-- Nội dung bên phải -->
+        <!-- Nội dung  các bài viết bên phải -->
          <div class="col-xs-12 col-sm-9 ]">
+
+            
+             <% foreach(System.Data.DataRow row in objTblFbPost.Rows) { %>
+
             <div class="[ panel panel-default ] panel-facebook-plus">
                 <div class="dropdown">
                     <span class="dropdown-toggle" type="button" data-toggle="dropdown">
@@ -309,30 +322,21 @@ a.visitor:hover * { color:#FFF; }
                 </div>
                 <div class="panel-facebook-plus-tags">
                     <ul>
-                        <li>#1 - Số thứ tự</li>
+                        <li>#<%=row["id"] %> - id bài viết </li>
                     </ul>
                 </div>
                 <div class="panel-heading">
-                    <img class="[ img-circle pull-left ]" src="../" alt="Trạng thái " />
-
+                    <img class="[ img-circle pull-left ]"  src="../" alt="Web " />
                     <h3>...?</h3>
-                    <h5><span>Ngày viết </span> - <span>Jun 25, 2017</span> </h5>
+                    <h5 ><span style="margin-left:-80px !important">Thời gian đăng </span> - <span><%=row["create_time"].ToString().Substring(0,10) %></span> </h5>
                 </div>
                 <div class="panel-body">
                     <p>
-
-                                        [KẾT QUẢ MINIGAME 04] Chúc mừng tất cả các bạn có tên trong danh sách sau đã may mắn nhận được TẤM VÉ CỰC HOT XEM LIVESHOW NOO VÀ CÁC CA SĨ NỔI TIẾNG KHÁC TẠI HÀ TĨNH
-                Địa điểm nhận vé:
-                👉Cửa hàng MobiFone - 161 đường Trần Phú, thành phố Hà Tĩnh
-                👉Các bạn cung cấp thông tin cá nhân cho giao dịch viên tại CH để nhận vé nhé
-                -----------------------------------
-                Yolo - Dám chia sẻ - MobiFone đồng hành cùng tuổi trẻ miền Trung!
-
-
+                      <%=row["message"] %>                
                     </p>
                     <a class="panel-facebook-plus-image" href="#">
-                        <img src="https://scontent.fhan4-1.fna.fbcdn.net/v/t1.0-0/c0.18.960.505/s526x296/17634687_280142129100341_3008362609302930607_n.jpg?oh=284097cf79b464bee30106a0018ef126&oe=59975E40" />
-                    </a>
+                       <img src="<%=row["full_picture"] %>" />
+                           </a>
                 </div>
                 <div class="panel-footer">
                     <button type="button" class="[ btn btn-default ]">100 Thích</button>
@@ -343,6 +347,10 @@ a.visitor:hover * { color:#FFF; }
                 </div>
               
             </div>
+
+
+             <% } %>
+           
 
 
             <div class="[ panel panel-default ] panel-facebook-plus">
