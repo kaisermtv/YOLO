@@ -81,6 +81,7 @@
         <div class="AdminRightItem">
             <asp:Button ID="btnSaver" runat ="server" CssClass="btn btn-primary" Text="Ghi Nhận" OnClick="btnSaver_Click" />
             <a href="/System/ListAccount.aspx" class="btn btn-default">Thoát</a>
+            <a href="/System/ChangPass.aspx?id=<%= itemId %>" class="btn btn-danger">Đổi mật khẩu</a>
         </div>
     </div>
 

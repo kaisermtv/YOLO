@@ -124,7 +124,8 @@ public class DataMenu : DataClass
                 Cmd = this.getSQLConnect();
                 Cmd.CommandText = "UPDATE tblMenu SET IORDER = @IORDER WHERE ID = @ID";
                 Cmd.Parameters.Add("ID", SqlDbType.Int).Value = a;
-                Cmd.Parameters.Add("IORDER", SqlDbType.Int).Value = i;
+                Cmd.Parameters.Add("IORDER", SqlDbType.Int).Value = i++;
+                Cmd.ExecuteNonQuery();
             }
 
             this.SQLClose();

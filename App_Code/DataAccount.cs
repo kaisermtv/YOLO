@@ -239,4 +239,40 @@ public class DataAccount : DataClass
         }
     }
     #endregion
+
+    #region method changPass
+    public bool changPass(int id,String pass)
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "UPDATE tblAccount SET ACCT_PASS = @PASS OUTPUT INSERTED.ACCT_ID WHERE ACCT_ID = @ID";
+
+            Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
+            Cmd.Parameters.Add("PASS", SqlDbType.NVarChar).Value = pass;
+
+            int ret = (int)Cmd.ExecuteScalar();
+
+            this.SQLClose();
+
+            if (ret > 0)
+            {
+                return true;
+            }
+            else
+            {
+                this.Message = "Không tìm thấy tài khoản";
+                this.ErrorCode = -1;
+                return false;
+            }
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+
+            return false;
+        }
+    }
+    #endregion
 }
