@@ -86,6 +86,21 @@ CREATE TABLE tblMenu(
 	CREATEDATE		DATETIME DEFAULT(GETDATE())
 );
 
+
+CREATE TABLE [dbo].[tblContact](
+	[Id] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[FullName] [nvarchar](250) NULL,
+	[Email] [nvarchar](250) NULL,
+	[Title] [nvarchar](250) NULL,
+	[Question] [nvarchar](500) NULL,
+	[Answer] [ntext] NULL,
+	NSTATUS		INT NOT NULL DEFAULT(0) FOREIGN KEY REFERENCES dbo.tblStatus(ID),
+	[DayPost] [datetime] NULL  DEFAULT (getdate()),
+	[DayAnswer] [datetime] NULL,
+	[UserAnswer] [nvarchar](250) NULL
+);
+
+
 CREATE  TABLE tblFacebookPost (
 			PostId int identity(1,1)  not null primary key,
 			id char(100) ,

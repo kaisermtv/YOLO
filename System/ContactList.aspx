@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/App_Master/System.master" CodeFile="Menu.aspx.cs" Inherits="System_Menu" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/App_Master/System.master" CodeFile="ContactList.aspx.cs" Inherits="System_ContactList" %>
 
 <%@ Register TagPrefix="cc1" Namespace="SiteUtils" Assembly="CollectionPager" %>
 
@@ -12,7 +12,6 @@
         }
     </script>
 </asp:Content>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:Repeater ID="dtlData" runat="server" EnableViewState="False">
         <HeaderTemplate>
@@ -20,10 +19,9 @@
                 <table class="DataListTable" <%--style="min-width:1500px"--%>>
                     <tr class="DataListTableHeader">
                         <th class="DataListTableHeaderTdItemTT" style="width: 4%;">TT</th>
-                        <th class="DataListTableHeaderTdItemJustify" style="width: 20%;">Tên Menu</th>
-                        <th class="DataListTableHeaderTdItemJustify">Link</th>
-                        <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Up</th>
-                        <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Down</th>
+                        <th class="DataListTableHeaderTdItemJustify" >Tiêu đề</th>
+                        <th class="DataListTableHeaderTdItemJustify" style="width: 20%;">Ngày đăng</th>
+                        <th class="DataListTableHeaderTdItemJustify" style="width: 10%;">Trạng thái</th>
                         <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Sửa</th>
                         <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Xóa</th>
                     </tr>
@@ -31,26 +29,16 @@
         <ItemTemplate>
                 <tr>
                     <td class="DataListTableTdItemTT"><%# this.index++ %></td>
-                    <td class="DataListTableTdItemJustify"><%# Eval("NAME") %></td>
-                    <td class="DataListTableTdItemJustify"><%# Eval("LINK") %></td>
+                    <td class="DataListTableTdItemJustify"><%# Eval("Title") %></td>
+                    <td class="DataListTableTdItemJustify"><%# Eval("DayPost") %></td>
+                    <td class="DataListTableTdItemJustify"><%# Eval("STATUS") %></td>
                     <td class="DataListTableTdItemCenter">
-                        <center>
-                        <a href="MenuMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index-2 %>">
-                            <div class="arrow-up"></div>
-                        </a></center>
-                    </td>
-                    <td class="DataListTableTdItemCenter">
-                        <center><a href="MenuMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index %>">
-                            <div class="arrow-down"></div>
-                        </a></center>
-                    </td>
-                    <td class="DataListTableTdItemCenter">
-                        <a href="MenuEdit.aspx?id=<%# Eval("ID") %>">
+                        <a href="AccountEdit.aspx?id=<%# Eval("Id") %>">
                             <img src="/Images/Edit.png" alt="">
                         </a>
                     </td>
                     <td class="DataListTableTdItemCenter">
-                        <a href="#myModal" onclick="delmodal(<%# Eval("ID") %>,'<%# Eval("NAME") %>')">
+                        <a href="#myModal" onclick="delmodal(<%# Eval("Id") %>,'<%# Eval("Title") %>')">
                             <img src="/Images/delete.png" alt="">
                         </a>
                     </td>
@@ -61,8 +49,11 @@
             </div>
         </FooterTemplate>
     </asp:Repeater>
-    <br />
-    <a href="MenuNew.aspx" class="btn btn-primary">Thêm menu</a>
+    <cc1:CollectionPager ID="cpData" runat="server" BackText="" FirstText="Đầu"
+        ControlCssClass="ProductPage" LabelText="" LastText="Cuối" NextText="" UseSlider="true"
+        ResultsFormat="" BackNextLinkSeparator="" ResultsLocation="None" BackNextLocation="None"
+        PageNumbersSeparator="&nbsp;" PagingMode="PostBack">
+    </cc1:CollectionPager>
 
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
@@ -72,10 +63,10 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Xóa menu</h4>
+            <h4 class="modal-title">Xóa liên hệ</h4>
           </div>
           <div class="modal-body">
-            <p>Bạn xác nhận xóa menu <b id="ttk"></b></p>
+            <p>Bạn xác nhận xóa liên hệ <b id="ttk"></b></p>
           </div>
           <div class="modal-footer">
             <asp:Button ID="btnDel" runat ="server" CssClass="btn btn-primary" Text="Xác nhận xóa" OnClick="btnDel_Click" />

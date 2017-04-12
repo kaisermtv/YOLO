@@ -9,12 +9,13 @@ using System.Web.UI.WebControls;
 public partial class System_AccountEdit : System.Web.UI.Page
 {
     #region declare
-    private int itemId = 0;
+    public int itemId = 0;
 
     private DataAccount objAccount = new DataAccount();
     private SystemClass objSystemClass = new SystemClass();
     #endregion
 
+    #region method Page_Load
     protected void Page_Load(object sender, EventArgs e)
     {
         try
@@ -42,6 +43,9 @@ public partial class System_AccountEdit : System.Web.UI.Page
             ddlGioiTinh.SelectedValue = objData["SEX"].ToString();
         }
     }
+    #endregion 
+
+    #region method btnSaver_Click
     protected void btnSaver_Click(object sender, EventArgs e)
     {
         int group = 0;
@@ -96,4 +100,5 @@ public partial class System_AccountEdit : System.Web.UI.Page
 
 
     }
+    #endregion
 }

@@ -322,6 +322,12 @@ a {
 	border-top:none;
 	/*margin-bottom:-2px;*/
 }
+
+.DataListTable td {
+	padding-top:5px;
+    padding-bottom:5px;
+}
+
 .DataListTableTdItemTT {
 	text-align: center;
 	vertical-align: middle;
@@ -404,4 +410,38 @@ a {
         padding-right: 0px;
     }
 
+}
+
+
+/* Tạo tam mũi tên hướng lên trên */
+.arrow-up {
+    width: 0px;
+    height: 0px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #caaddc; /* Tam giác phía dưới được đổ màu */
+}
+/* Tạo mũi tên hướng xuống */
+.arrow-down {
+    width: 0px;
+    height: 0px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #caaddc; /* Tam giác phía trên được đổ màu */
+}
+/* Tạo mũi tên hướng bên trái */
+.arrow-left {
+    width: 0px;
+    height: 0px;
+    border-bottom: 16px solid transparent;
+    border-top: 16px solid transparent;
+    border-right: 16px solid #2f2f2f; /* Tam giác phải được đổ màu */
+}
+/* Tạo mũi tên hướng bên phải */
+.arrow-right {
+    width: 0px;
+    height: 0px;
+    border-bottom: 16px solid transparent;
+    border-top: 50px solid transparent;
+    border-left: 50px solid #2f2f2f; /* Tam giác trái được đổ màu */
 }
