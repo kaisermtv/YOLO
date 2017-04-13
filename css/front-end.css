@@ -205,7 +205,7 @@
         .login-w .user { display: none; }
         .login-w .login-ul li a { padding: 0 5px; }
 
-    #menu-wraper { left: 0; position: absolute; background: #fff; top: 115px; width: 100%; z-index: 9999; box-shadow: 0px 3px 10px 0px #676161; }
+    #menu-wraper { position: relative; background: #fff; width: 100%; float: left; margin-bottom: 10px; }
         #menu-wraper .menu { display: inline-block; width: 100%; }
             #menu-wraper .menu > li { position: relative; font-weight: 700; text-transform: uppercase; font-family: Myriad Pro; font-size: 14px; }
                 #menu-wraper .menu > li a { color: #282828; line-height: 30px; border-bottom: 1px solid #ddd; display: inline-block; width: 100%; padding-left: 10px; }
@@ -220,8 +220,8 @@
                 #menu-wraper .menu > li.active i { color: #ffffff !important; }
             #menu-wraper .menu:last-child > li a { }
 
-        #menu-wraper #bar-menu { position: relative; display: none; }
-        #menu-wraper.active #bar-menu { display: block; }
+        #menu-wraper #bar-menu { position: relative;  overflow: hidden; max-height: 0; transition: max-height 0.5s ease-in-out 0s; -o-transition: max-height 0.5s ease-in-out 0s; -webkit-transition: max-height 0.5s ease-in-out 0s; -moz-transition: max-height 0.5s ease-in-out 0s; }
+        #menu-wraper.active #bar-menu { max-height: 500px; }
 
     #news { padding-top: 25px; padding-bottom: 25px; }
         #news > h3 { font-size: 25px; width: 110px; }
