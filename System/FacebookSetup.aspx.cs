@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -37,5 +38,23 @@ public partial class System_FacebookSetup : System.Web.UI.Page
         objfb_post.delAllData();
         api.saveAllToDb();
         Response.Redirect(Request.RawUrl);
+    }
+    protected void btnUpdateToken_Click(object sender, EventArgs e)
+    {
+        if(txtNewToken.Value.Trim() == "" || txtNewToken.Value.Trim().Length <= 30) 
+        {
+            return;
+        }
+        else
+        {
+            if(api.setNewAccessToken(txtNewToken.Value.Trim()) == 1)
+            {
+                Page.ClientScript.RegisterStartupScript(GetType(), "alert", "confirm('Cập nhật thất bại')", true);
+                Debug.WriteLine("TOKEN ĐẢ ĐƯỢC THAY ĐỔI");
+                return;
+            }
+            Page.ClientScript.RegisterStartupScript(GetType(), "alert", "confirm('Cập nhật Token thành công !')", true);
+            return;
+        }
     }
 }

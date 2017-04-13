@@ -111,8 +111,10 @@
                                         <button class="btn btn-default" type="button">Facebook Token</button>
                                       </span>
                                         
-                                      <input type="text" class="form-control" placeholder="<%=last_token %>"/>
+                                      <input type="text" runat="server" id="txtNewToken" class="form-control" placeholder="'<%=last_token %>'"/>
+                                     
                                     </div><!-- /input-group -->
+                                           <asp:Button ID="btnUpdateToken" CssClass="btn btn-success" runat="server" OnClick="btnUpdateToken_Click" Text="Cập nhật " Height="35" />  
                                      </div>
                                
                                     <div style="width:100%;height:100px;clear:both">
@@ -169,8 +171,7 @@
                         <span><%=row["create_time"].ToString().Substring(0,10) %></span> </h5>
                 </div>
                 <div id="collapse<%=row["id"].ToString().Trim()%>"  class="panel-body in">
-
-                  
+                    <br />
                     <p>
                       <%=row["message"] %>                
                     </p>
