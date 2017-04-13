@@ -12,6 +12,7 @@ public partial class System_FacebookSetup : System.Web.UI.Page
     FacebookApi api = new FacebookApi();
     FbPosts objfb_post = new FbPosts();
     public  int count_like = 0,count_comment= 0 , count_post=0;
+    public string last_token = "";
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -22,6 +23,7 @@ public partial class System_FacebookSetup : System.Web.UI.Page
             count_like = objfb_post.countLikes();
             count_comment = objfb_post.countComments();
             //count like , count comment , count xxx
+            last_token = api.getNewAccessToken();
         }
 
     }
