@@ -29,35 +29,35 @@
                     </tr>
         </HeaderTemplate>
         <ItemTemplate>
-                <tr>
-                    <td class="DataListTableTdItemTT"><%# this.index++ %></td>
-                    <td class="DataListTableTdItemJustify"><%# Eval("NAME") %></td>
-                    <td class="DataListTableTdItemJustify"><%# Eval("LINK") %></td>
-                    <td class="DataListTableTdItemCenter">
-                        <center>
+            <tr>
+                <td class="DataListTableTdItemTT"><%# this.index++ %></td>
+                <td class="DataListTableTdItemJustify"><%# Eval("NAME") %></td>
+                <td class="DataListTableTdItemJustify"><%# Eval("LINK") %></td>
+                <td class="DataListTableTdItemCenter">
+                    <center>
                         <a href="MenuMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index-2 %>">
                             <div class="arrow-up"></div>
                         </a></center>
-                    </td>
-                    <td class="DataListTableTdItemCenter">
-                        <center><a href="MenuMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index %>">
+                </td>
+                <td class="DataListTableTdItemCenter">
+                    <center><a href="MenuMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index %>">
                             <div class="arrow-down"></div>
                         </a></center>
-                    </td>
-                    <td class="DataListTableTdItemCenter">
-                        <a href="MenuEdit.aspx?id=<%# Eval("ID") %>">
-                            <img src="/Images/Edit.png" alt="">
-                        </a>
-                    </td>
-                    <td class="DataListTableTdItemCenter">
-                        <a href="#myModal" onclick="delmodal(<%# Eval("ID") %>,'<%# Eval("NAME") %>')">
-                            <img src="/Images/delete.png" alt="">
-                        </a>
-                    </td>
-                </tr>
+                </td>
+                <td class="DataListTableTdItemCenter">
+                    <a href="MenuEdit.aspx?id=<%# Eval("ID") %>">
+                        <img src="/Images/Edit.png" alt="">
+                    </a>
+                </td>
+                <td class="DataListTableTdItemCenter">
+                    <a href="#myModal" onclick="delmodal(<%# Eval("ID") %>,'<%# Eval("NAME") %>')">
+                        <img src="/Images/delete.png" alt="">
+                    </a>
+                </td>
+            </tr>
         </ItemTemplate>
         <FooterTemplate>
-                </table>
+            </table>
             </div>
         </FooterTemplate>
     </asp:Repeater>
@@ -66,23 +66,23 @@
 
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <input id="idDel" type="hidden" runat="server" />
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Xóa menu</h4>
-          </div>
-          <div class="modal-body">
-            <p>Bạn xác nhận xóa menu <b id="ttk"></b></p>
-          </div>
-          <div class="modal-footer">
-            <asp:Button ID="btnDel" runat ="server" CssClass="btn btn-primary" Text="Xác nhận xóa" OnClick="btnDel_Click" />
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
+        <div class="modal-dialog">
+            <input id="idDel" type="hidden" runat="server" />
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Xóa menu</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn xác nhận xóa menu <b id="ttk"></b></p>
+                </div>
+                <div class="modal-footer">
+                    <asp:Button ID="btnDel" runat="server" CssClass="btn btn-primary" Text="Xác nhận xóa" OnClick="btnDel_Click" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
 
-      </div>
+        </div>
     </div>
 </asp:Content>
