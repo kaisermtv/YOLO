@@ -33,7 +33,7 @@
                     <td class="DataListTableTdItemJustify"><%# Eval("DayPost") %></td>
                     <td class="DataListTableTdItemJustify"><%# Eval("STATUS") %></td>
                     <td class="DataListTableTdItemCenter">
-                        <a href="AccountEdit.aspx?id=<%# Eval("Id") %>">
+                        <a href="ContactEdit.aspx?id=<%# Eval("Id") %>">
                             <img src="/Images/Edit.png" alt="">
                         </a>
                     </td>
