@@ -36,15 +36,17 @@ public class FbPosts:DataClass
         this.created_time = _create_time;
         this.likes = ll;
         this.comments = lc;
+        Debug.WriteLine("=[SUCCESS] CREATE NEW OBJECT FBPost  ");
     }
     public DataTable getData()
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = " SELECT TOP 100 tblFacebookPost.PostId,tblFacebookPost.id,tblFacebookPost.message,tblFacebookPost.full_picture,tblFacebookPost.picture,tblFacebookPost.link,tblFacebookPost.create_time,tblFacebookPost.comments,tblFacebookPost.likes FROM tblFacebookPost  order by PostId DESC  ";
+            Cmd.CommandText = " SELECT TOP 100 tblFacebookPost.PostId,tblFacebookPost.id,tblFacebookPost.message,tblFacebookPost.full_picture,tblFacebookPost.picture,tblFacebookPost.link,tblFacebookPost.create_time,tblFacebookPost.comments,tblFacebookPost.likes FROM tblFacebookPost  order by tblFacebookPost.id DESC  ";
             DataTable ret = this.findAll(Cmd);
             this.SQLClose();
+            Debug.WriteLine("=[SUCCESS] GET FB POST DATA TABLE : " );
             return ret;
         }
         catch (Exception e)
@@ -56,6 +58,59 @@ public class FbPosts:DataClass
 
     }
 
+    public int countComments()
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "   SELECT [comments] FROM [tblFacebookPost] ";
+            DataTable ret = this.findAll(Cmd);
+
+            int x = 0;
+            foreach(DataRow row in ret.Rows)
+            {
+                x += Int32.Parse(row[0].ToString());
+            }
+
+            this.SQLClose();
+            Debug.WriteLine("=[SUCCESS] GET FB POST DATA comments : " + x) ;
+            return x;
+        }
+        catch (Exception e)
+        {
+            Debug.WriteLine("===[ERROR] GET FB POST comments : " + e.GetBaseException());
+            return 0;
+        }
+    }
+    public int countLikes()
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "   SELECT [likes]  FROM [tblFacebookPost] ";
+
+            DataTable ret = this.findAll(Cmd);
+
+            int x = 0;
+            foreach (DataRow row in ret.Rows)
+            {
+                x += Int32.Parse(row[0].ToString());
+            }
+            
+
+            this.SQLClose();
+            Debug.WriteLine("=[SUCCESS] GET FB POST DATA likes : " + x);
+            return x;
+        }
+        catch (Exception e)
+        {
+            Debug.WriteLine("===[ERROR] GET FB POST likes : " + e.GetBaseException());
+            return 0;
+        }
+    }
+
+
+
     #region method delAllData
     public void delAllData()
     {
@@ -63,7 +118,8 @@ public class FbPosts:DataClass
         {
             SqlCommand Cmd = this.getSQLConnect();
             Cmd.CommandText = "DELETE * FROM tblFacebookPost ";
-            Cmd.ExecuteNonQuery();   
+            Cmd.ExecuteNonQuery();
+            Debug.WriteLine(" ===[SUCCESS] DELETE ALL DATA NOT  : ");
             this.SQLClose();
         }
         catch (Exception ex)

@@ -148,8 +148,9 @@ CREATE  TABLE tblFacebookPost (
 			picture char(450) ,
 			link char(500),
 			created_time char(30) ,
-			comments nvarchar(300),
-			likes nvarchar(100),
-			 time_sync datetime default getdate()  
+			comments nvarchar(30),
+			likes nvarchar(10),
+			 time_sync datetime default getdate()  ,
+			 state int default 1,
 			 ) ; 
 
