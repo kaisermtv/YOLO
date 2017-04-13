@@ -85,9 +85,10 @@
                                 <%--<li><a href="/Admin/ListCategory.aspx">Nhóm hàng hóa</a></li>--%>
                                 <%--<li><a href="/Admin/ListProduct.aspx">Quản lý bán xe</a></li>--%>
 
-                                <li><a href="/Admin/ListNews.aspx">Tin tức - Bài viết</a></li>
-                                <li><a href="/Admin/ListContact.aspx">Quản lý liên hệ</a></li>
-                                <li><a href="/Admin/Ads.aspx">Quảng cáo</a></li>
+                                <li><a href="/System/NewsList.aspx">Tin tức - Bài viết</a></li>
+                                <li><a href="/System/ContactList.aspx">Quản lý liên hệ</a></li>
+                                <li><a href="/System/SliderList.aspx">Quản lý Slider</a></li>
+                                <li><a href="/System/Ads.aspx">Quảng cáo</a></li>
                             </ul>
                         </li>
                         <li class="menu-list"><a href="#"><i class="lnr lnr-book"></i><span>Danh mục khác</span></a>
