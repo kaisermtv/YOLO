@@ -13,7 +13,7 @@ public class DataClass
     #region declare value
     protected SqlConnection sqlCon;
 
-    public String Message = "";
+    public string Message = "";
     public int ErrorCode = 0;
     #endregion
 

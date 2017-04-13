@@ -17,13 +17,16 @@ public class FbPosts:DataClass
     public string picture { get; set; }             // link ảnh nhỏ
     public string link { get; set; }              // link bài viết để embed
     public string created_time { get; set; }         // Ngày viết bài 
-
+    public string access_token { get; set; }
+    public List<likes> likes { get; set; }
+    public List<comments> comments { get; set; }
     public List<FbPosts> data { get; set; }
 	public FbPosts()
 	{
       
 	}
-    public FbPosts(string _id,string _message, string _full_picture,string _picture, string _link , string _create_time)
+
+    public FbPosts(string _id,string _message, string _full_picture,string _picture, string _link , string _create_time , List<comments> lc , List<likes> ll)
 	{
         this.id = _id;
         this.message = _message;
@@ -31,14 +34,15 @@ public class FbPosts:DataClass
         this.picture = _picture;
         this.link = _link;
         this.created_time = _create_time;
+        this.likes = ll;
+        this.comments = lc;
     }
-
     public DataTable getData()
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = " SELECT TOP 100 tblFacebookPost.PostId,tblFacebookPost.id,tblFacebookPost.message,tblFacebookPost.full_picture,tblFacebookPost.picture,tblFacebookPost.link,tblFacebookPost.create_time FROM tblFacebookPost";
+            Cmd.CommandText = " SELECT TOP 100 tblFacebookPost.PostId,tblFacebookPost.id,tblFacebookPost.message,tblFacebookPost.full_picture,tblFacebookPost.picture,tblFacebookPost.link,tblFacebookPost.create_time,tblFacebookPost.comments,tblFacebookPost.likes FROM tblFacebookPost  order by PostId DESC  ";
             DataTable ret = this.findAll(Cmd);
             this.SQLClose();
             return ret;
@@ -58,7 +62,7 @@ public class FbPosts:DataClass
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "DELETE * FROM tblAccountInfo ";
+            Cmd.CommandText = "DELETE * FROM tblFacebookPost ";
             Cmd.ExecuteNonQuery();   
             this.SQLClose();
         }
