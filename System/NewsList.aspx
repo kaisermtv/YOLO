@@ -17,8 +17,8 @@
             <table class="DataListTable">
                 <tr class="DataListTableHeader">
                     <th class="DataListTableHeaderTdItemTT" style="width: 4%;">TT</th>
-                    <th class="DataListTableHeaderTdItemJustify" style="width: 20%;">Tiêu đề</th>
-                    <th class="DataListTableHeaderTdItemJustify">Nhóm tin</th>
+                    <th class="DataListTableHeaderTdItemJustify">Tiêu đề</th>
+                    <th class="DataListTableHeaderTdItemJustify" style="width: 20%;">Nhóm tin</th>
                     <th class="DataListTableHeaderTdItemJustify" style="width: 10%;">Trạng thái</th>
                     <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Sửa</th>
                     <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Xóa</th>

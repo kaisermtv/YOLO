@@ -24,17 +24,17 @@ public partial class System_NewsEdit : System.Web.UI.Page
         }
         catch { }
 
+        if (!Page.IsPostBack)
+        {
+            DataNewsGroup objGroup = new DataNewsGroup();
+            ddlGroup.DataSource = objGroup.getDataToCombobox("");
+            ddlGroup.DataValueField = "ID";
+            ddlGroup.DataTextField = "NAME";
+            ddlGroup.DataBind();
+        }
+
         if (!Page.IsPostBack && this.itemId != 0)
         {
-            if (!Page.IsPostBack)
-            {
-                DataNewsGroup objGroup = new DataNewsGroup();
-                ddlGroup.DataSource = objGroup.getDataToCombobox();
-                ddlGroup.DataValueField = "ID";
-                ddlGroup.DataTextField = "NAME";
-                ddlGroup.DataBind();
-            }
-
             DataRow objData = objNews.getData(this.itemId);
             if (objData == null)
             {
@@ -66,6 +66,15 @@ public partial class System_NewsEdit : System.Web.UI.Page
             this.txtTitle.Focus();
             return;
         }
+
+        int group = int.Parse(this.ddlGroup.SelectedValue.ToString());
+        if (group == 0)
+        {
+            objSystemClass.addMessage("Bạn cần chọn nhóm tin tức.");
+            this.ddlGroup.Focus();
+            return;
+        }
+
 
         if (this.txtShortContent.Text.Trim() == "")
         {
