@@ -117,12 +117,14 @@ CREATE TABLE [dbo].[tblContact](
 
 CREATE  TABLE tblFacebookPost (
 			PostId int identity(1,1)  not null primary key,
-			id int ,
+			id char(100) ,
 			message nvarchar(max) ,
 			full_picture char(450) ,
 			picture char(450) ,
 			link char(500),
 			created_time char(30) ,
+			comments nvarchar(300),
+			likes nvarchar(100),
 			 time_sync datetime default getdate()  
 			 ) ; 
 
