@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class System_NewGroupEdit : System.Web.UI.Page
+public partial class System_NewsGroupEdit : System.Web.UI.Page
 {
     #region declare
     public int itemId = 0;

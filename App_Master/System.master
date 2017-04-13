@@ -47,7 +47,15 @@
     <script src="/js/bootstrap-datetimepicker.js"></script>
     <!-- -->
 
+    <script>
+        function imgCatchError(src) {
+            src.onerror = "";
+            src.src = "/Images/design/no_img.jpg";
+            return true;
+        }
+    </script>
 
+    
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 
