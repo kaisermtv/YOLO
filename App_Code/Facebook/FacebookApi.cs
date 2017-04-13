@@ -47,33 +47,67 @@ public class FacebookApi : DataClass
     public int saveAllToDb()
     {
         string json = getJsonString(30);
-        if (json == "") return 0;
-         FbPosts post = null;
-            post.data = new List<FbPosts>();
-        try { 
-         post = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<FbPosts>(json);
+      //  string json = getJsonString(5); // lấy 5 bài mới nhất thôi
+        FbPosts lpost = new FbPosts("", "", "", "", "", "", new List<comments>(), new List<likes>());
+        lpost.data = new List<FbPosts>();
+        try
+        {
+            //  lpost = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<FbPosts>(json);
+            dynamic struff = JsonConvert.DeserializeObject(json);
+
+            JArray data = struff.data;
+
+            foreach (JObject element in data)
+            {
+                List<comments> lc = new List<comments>();
+                List<likes> ll = new List<likes>();
+                if (element["comments"] != null)
+                {
+                    Debug.WriteLine(element["comments"].ToString());
+                    string comments = element["comments"].ToString();
+                    dynamic struff_comment = JsonConvert.DeserializeObject(comments);
+                    lc = new List<comments>();
+                    foreach (JObject element2 in struff_comment.data)
+                    {
+                        lc.Add(new comments(element2["message"].ToString(), element2["id"].ToString(), element2["from"].ToString(), element2["created_time"].ToString()));
+                        Debug.WriteLine(element2["message"].ToString());
+                    }
+                }
+                if (element["likes"] != null)
+                {
+                    string likes = element["likes"].ToString();
+                    dynamic struff_likes = JsonConvert.DeserializeObject(likes);
+                    foreach (JObject element3 in struff_likes.data)
+                    {
+                        ll.Add(new likes(element3["id"].ToString(), element3["name"].ToString()));
+                        Debug.WriteLine(element3["name"].ToString());
+                    }
+                }
+                lpost.data.Add(new FbPosts(
+                    element["id"] == null ? " " : element["id"].ToString(),
+                    element["message"] == null ? " " : element["message"].ToString(),
+                    element["full_picture"] == null ? " " : element["full_picture"].ToString(),
+                    element["picture"] == null ? " " : element["picture"].ToString(),
+                    element["link"] == null ? " " : element["link"].ToString(),
+                    element["created_time"] == null ? " " : element["created_time"].ToString(),
+                      lc == null ? new List<comments>() : lc,
+                      ll == null ? new List<likes>() : ll
+                    ));
             }
-        catch
-        {
-            // sự cố , lấy mới token bằng đệ trình token củ còn hợp lệ
-           try{
-             string url_try = @"https://graph.facebook.com/"+site_id+"/posts?fields=" + fields + "&limit=" + limit + "&access_token=" +getNewAccessToken() + "";
-             json = getJsonString(30,url_try);
-             post = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<FbPosts>(json);
-           }
-           catch
-           {
-               Debug.WriteLine("[ERROR ] - CANNOT parse URL , TOKEN Maybe not valin");
-               return -1;
-           }
-         }
-        string value = "";
-        foreach (var item in post.data)
-        {
-            value += @"( " + item.id.Split('_')[1].ToString() + ", N' " + item.message + " ' , " + item.full_picture + " , " + item.picture + " , " + item.link + " , " + item.created_time + ") ,";
+            if (lpost.data.Count < 1) return 0;
         }
-        value = value.Substring(0,value.Length - 1);        // xóa bớt ký tự cuối cùng
-        if (insertMultiValue(value) != 1) return -1;
+        catch(Exception e)
+        {
+            Debug.WriteLine("[ERROR]" + e.GetBaseException() );
+        }
+      //  string value = "";
+        foreach (var item in lpost.data)
+        {
+         //   value += @"( " + item.id.Split('_')[1].ToString() + ", N' " + item.message + " ' , " + item.full_picture + " , " + item.picture + " , " + item.link + " , " + item.created_time + "," + item.comments.Count.ToString() + "," + item.likes.Count.ToString() + "),";
+            insertValueWithCheckExist(item.id.Split('_')[1].ToString(), item.message, item.full_picture, item.picture, item.link, item.created_time, item.comments.Count.ToString(), item.likes.Count.ToString());   
+        }
+        // value = value.Substring(0,value.Length - 1);        // xóa bớt ký tự cuối cùng
+        //if (insertMultiValue(value) != 1) return -1;
        return 1;
     }
     #endregion
@@ -88,9 +122,7 @@ public class FacebookApi : DataClass
         {
           //  lpost = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<FbPosts>(json);
             dynamic struff = JsonConvert.DeserializeObject(json);
-
             JArray data = struff.data;
-          
             foreach (JObject element in data)
            {
                List<comments> lc = new List<comments>();
@@ -111,8 +143,6 @@ public class FacebookApi : DataClass
                {
                    string likes = element["likes"].ToString();
                    dynamic struff_likes = JsonConvert.DeserializeObject(likes);
-
-
                    foreach (JObject element3 in struff_likes.data)
                    {
                        ll.Add(new likes(element3["id"].ToString(), element3["name"].ToString()));
@@ -151,9 +181,9 @@ public class FacebookApi : DataClass
         foreach (var item in lpost.data)
         {
          //   FbPosts p = new FbPosts(item.id, item.message, item.full_picture, item.picture, item.link, item.created_time);
-            insertValueWithCheckExist(item.id.Split('_')[1].ToString(), item.message, item.full_picture, item.picture, item.link, item.created_time,item.comments.Count.ToString(), lpost.likes.Count.ToString() );   
+
+            insertValueWithCheckExist(item.id.Split('_')[1].ToString(), item.message, item.full_picture, item.picture, item.link, item.created_time, item.comments.Count.ToString(), item.likes.Count.ToString());   
         }
-    
         return 1;
     }
     #endregion
@@ -179,13 +209,13 @@ public class FacebookApi : DataClass
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.CommandText = @" IF (OBJECT_ID('tblFacebookPost') is not null )
                                             BEGIN  
-                                                           INSERT INTO tblFacebookPost (id,message,full_picture,picture,link,created_time) VALUES         
+                                                           INSERT INTO tblFacebookPost (id,message,full_picture,picture,link,created_time,comments,likes) VALUES         
                                                            (
-                                                            "+value + @"
+                                                            " + value + @"
                                                             )   ;  
                                             END 
                                         ELSE BEGIN    
-                                            CREATE  TABLE tblFacebookPost (PostId int identity(1,1)  not null primary key,id char(30) ,message nvarchar(max) ,full_picture char(450) ,picture char(450) ,link char(500),created_time char(30) , time_sync datetime default getdate()  )   ;                           
+                                            CREATE  TABLE tblFacebookPost (PostId int identity(1,1)  not null primary key,id char(30) ,message nvarchar(max) ,full_picture char(450) ,picture char(450) ,link char(500),created_time char(30) ,comments nvarchar(10),likes nvarchar(10), time_sync datetime default getdate()  )   ;                           
                                              
                                               END   
                                                     ";
