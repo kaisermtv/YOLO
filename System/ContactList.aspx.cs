@@ -20,15 +20,11 @@ public partial class System_ContactList : System.Web.UI.Page
     {
         Context.Items["strTitle"] = "DANH SÁCH LIÊN HỆ";
 
-        if (!Page.IsPostBack)
-        {
-            getData();
-        }
     }
     #endregion
 
-    #region method getData()
-    private void getData()
+    #region method Page_PreRender()
+    public void Page_PreRender(object sender, EventArgs e)
     {
         DataTable objData = objContact.getList();
 
@@ -66,7 +62,6 @@ public partial class System_ContactList : System.Web.UI.Page
         {
             objContact.delData(id);
 
-            getData();
         }
         else
         {

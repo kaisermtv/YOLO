@@ -11,7 +11,7 @@ public partial class System_NewsList : System.Web.UI.Page
     #region declare
     private DataNews objNews = new DataNews();
 
-    public int index = 0;
+    public int index = 1;
     #endregion
 
     #region method Page_Load
@@ -21,15 +21,22 @@ public partial class System_NewsList : System.Web.UI.Page
 
         if (!Page.IsPostBack)
         {
-            getData();
+            DataNewsGroup objGroup = new DataNewsGroup();
+            ddlGroup.DataSource = objGroup.getDataToCombobox("Tất cả");
+            ddlGroup.DataValueField = "ID";
+            ddlGroup.DataTextField = "NAME";
+            ddlGroup.DataBind();
+
+            ddlGroup.SelectedValue = "0";
         }
+        
     }
     #endregion
 
-    #region method getData()
-    private void getData()
+    #region Page_PreRender
+    public void Page_PreRender(object sender, EventArgs e)
     {
-        DataTable objData = objNews.getList();
+        DataTable objData = objNews.getList(int.Parse(ddlGroup.SelectedValue), txtSearch.Value.Trim());
 
         //dtlAccount.DataSource = objData.DefaultView;
         //dtlAccount.DataBind();
@@ -40,6 +47,7 @@ public partial class System_NewsList : System.Web.UI.Page
         cpData.BindToControl = dtlData;
         dtlData.DataSource = cpData.DataSourcePaged;
         dtlData.DataBind();
+
         index = 1;
     }
     #endregion
@@ -63,7 +71,7 @@ public partial class System_NewsList : System.Web.UI.Page
         {
             objNews.delData(id);
 
-            getData();
+            //getData();
         }
         else
         {
@@ -73,4 +81,8 @@ public partial class System_NewsList : System.Web.UI.Page
         }
     }
     #endregion
+    protected void btnSearch_Click(object sender, ImageClickEventArgs e)
+    {
+        
+    }
 }

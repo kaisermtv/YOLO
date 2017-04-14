@@ -19,18 +19,24 @@ public partial class System_ListAccount : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Context.Items["strTitle"] = "DANH SÁCH TÀI KHOẢN";
-
+        
         if (!Page.IsPostBack)
         {
-            getData();
+            DataGroupAcct objGroupAcct = new DataGroupAcct();
+            ddlGroup.DataSource = objGroupAcct.getDataToCombobox();
+            ddlGroup.DataValueField = "ID";
+            ddlGroup.DataTextField = "NAME";
+            ddlGroup.DataBind();
+
+            ddlGroup.SelectedValue = "0";
         }
     }
     #endregion
 
-    #region method getData()
-    private void getData()
+    #region method Page_PreRender()
+    public void Page_PreRender(object sender, EventArgs e)
     {
-        DataTable objData = objAccount.getList();
+        DataTable objData = objAccount.getList(int.Parse(ddlGroup.SelectedValue), txtSearch.Value.Trim());
 
         //dtlAccount.DataSource = objData.DefaultView;
         //dtlAccount.DataBind();
@@ -65,8 +71,6 @@ public partial class System_ListAccount : System.Web.UI.Page
         if (id != 0)
         {
             objAccount.delAccount(id);
-
-            getData();
         }
         else
         {
@@ -78,4 +82,8 @@ public partial class System_ListAccount : System.Web.UI.Page
         
     }
     #endregion
+    protected void btnSearch_Click(object sender, ImageClickEventArgs e)
+    {
+
+    }
 }
