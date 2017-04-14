@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/App_Master/System.master" CodeFile="NewsList.aspx.cs" Inherits="System_NewsList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/App_Master/System.master" CodeFile="QuestionList.aspx.cs" Inherits="System_QuestionList" %>
 
 <%@ Register TagPrefix="cc1" Namespace="SiteUtils" Assembly="CollectionPager" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="Server">
@@ -12,31 +12,16 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
-    <table class="table" border ="0" style ="margin-top:-20px;">
-        <tr>
-            <td>
-                <input type="text" id="txtSearch" placeholder="Nhập tên bài viết cần tìm kiếm" runat="server" class="form-control" />
-            </td>
-            <td style="width:25%">
-                <asp:DropDownList ID="ddlGroup" runat="server" class="form-control">
-
-                </asp:DropDownList>
-            </td>
-            <td style="width: 40px !important; text-align: center;">
-                <asp:ImageButton ID="btnSearch" ImageUrl="/images/Search.png" runat="server" Style="margin-bottom: -15px; margin-left: -15px;" OnClick="btnSearch_Click" />
-            </td>
-        </tr>
-    </table>
-
-
     <asp:Repeater ID="dtlData" runat="server" EnableViewState="False">
         <HeaderTemplate>
             <table class="DataListTable">
                 <tr class="DataListTableHeader">
                     <th class="DataListTableHeaderTdItemTT" style="width: 4%;">TT</th>
-                    <th class="DataListTableHeaderTdItemJustify">Tiêu đề</th>
-                    <th class="DataListTableHeaderTdItemJustify" style="width: 20%;">Nhóm tin</th>
+                    <th class="DataListTableHeaderTdItemJustify">Câu hỏi</th>
                     <th class="DataListTableHeaderTdItemJustify" style="width: 10%;">Trạng thái</th>
+                    <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Answer</th>
+                    <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Up</th>
+                    <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Down</th>
                     <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Sửa</th>
                     <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Xóa</th>
                 </tr>
@@ -44,19 +29,34 @@
         <ItemTemplate>
             <tr>
                 <td class="DataListTableTdItemTT"><%# this.index++ %></td>
-                <td class="DataListTableTdItemJustify"><%# Eval("Title") %></td>
-                <td class="DataListTableTdItemJustify"><%# Eval("GroupName") %></td>
+                <td class="DataListTableTdItemJustify"><%# Eval("Question") %></td>
                 <td class="DataListTableTdItemJustify"><%# Eval("STATUS") %></td>
                 <td class="DataListTableTdItemCenter">
-                    <a href="NewsEdit.aspx?id=<%# Eval("Id") %>">
+                    <a href="AnswerEdit.aspx?id=<%# Eval("Id") %>">
                         <img src="/Images/Edit.png" alt="Chỉnh sửa thông tin">
                     </a>
-                &nbsp;&nbsp;</td>
+                </td>
                 <td class="DataListTableTdItemCenter">
-                    <a href="#myModal" onclick="delmodal(<%# Eval("Id") %>,'<%# Eval("Title") %>')">
+                        <center>
+                        <a href="QuestionMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index-2 %>">
+                            <div class="arrow-up"></div>
+                        </a></center>
+                    </td>
+                    <td class="DataListTableTdItemCenter">
+                        <center><a href="QuestionMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index %>">
+                            <div class="arrow-down"></div>
+                        </a></center>
+                    </td>
+                <td class="DataListTableTdItemCenter">
+                    <a href="QuestionEdit.aspx?id=<%# Eval("Id") %>">
+                        <img src="/Images/Edit.png" alt="Chỉnh sửa thông tin">
+                    </a>
+                </td>
+                <td class="DataListTableTdItemCenter">
+                    <a href="#myModal" onclick="delmodal(<%# Eval("Id") %>,'<%# Eval("Question") %>')">
                         <img src="/Images/delete.png" alt="Xóa nhóm">
                     </a>
-                &nbsp;&nbsp;</td>
+                </td>
             </tr>
         </ItemTemplate>
         <FooterTemplate>
@@ -79,10 +79,10 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Xóa bài viết</h4>
+            <h4 class="modal-title">Xóa câu hỏi</h4>
           </div>
           <div class="modal-body">
-            <p>Bạn xác nhận xóa bài viết: <b id="ttk"></b></p>
+            <p>Bạn xác nhận xóa câu hỏi: <b id="ttk"></b></p>
           </div>
           <div class="modal-footer">
             <asp:Button ID="btnDel" runat ="server" CssClass="btn btn-primary" Text="Xác nhận xóa" OnClick="btnDel_Click" />

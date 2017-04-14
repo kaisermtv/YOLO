@@ -6,48 +6,36 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class System_ListAccount : System.Web.UI.Page
+public partial class System_QuestionList : System.Web.UI.Page
 {
     #region declare
-    private DataAccount objAccount = new DataAccount();
+    private DataQuestion objQuestion = new DataQuestion();
 
-    public int index = 0;
-
+    public int index = 1;
     #endregion
 
-    #region Page_Load
+    #region method Page_Load
     protected void Page_Load(object sender, EventArgs e)
     {
-        Context.Items["strTitle"] = "DANH SÁCH TÀI KHOẢN";
-        
-        if (!Page.IsPostBack)
-        {
-            DataGroupAcct objGroupAcct = new DataGroupAcct();
-            ddlGroup.DataSource = objGroupAcct.getDataToCombobox();
-            ddlGroup.DataValueField = "ID";
-            ddlGroup.DataTextField = "NAME";
-            ddlGroup.DataBind();
+        Context.Items["strTitle"] = "DANH SÁCH CÂU HỎI THĂM DÒ";
 
-            ddlGroup.SelectedValue = "0";
-        }
     }
     #endregion
 
-    #region method Page_PreRender()
+    #region Page_PreRender
     public void Page_PreRender(object sender, EventArgs e)
     {
-        DataTable objData = objAccount.getList(int.Parse(ddlGroup.SelectedValue), txtSearch.Value.Trim());
+        DataTable objData = objQuestion.getList();
 
         //dtlAccount.DataSource = objData.DefaultView;
         //dtlAccount.DataBind();
 
-        cpAccount.MaxPages = 1000;
-        cpAccount.PageSize = 15;
-        cpAccount.DataSource = objData.DefaultView;
-        cpAccount.BindToControl = dtlAccount;
-
-        dtlAccount.DataSource = cpAccount.DataSourcePaged;
-        dtlAccount.DataBind();
+        cpData.MaxPages = 1000;
+        cpData.PageSize = 15;
+        cpData.DataSource = objData.DefaultView;
+        cpData.BindToControl = dtlData;
+        dtlData.DataSource = cpData.DataSourcePaged;
+        dtlData.DataBind();
 
         index = 1;
     }
@@ -70,7 +58,9 @@ public partial class System_ListAccount : System.Web.UI.Page
 
         if (id != 0)
         {
-            objAccount.delAccount(id);
+            objQuestion.delData(id);
+
+            //getData();
         }
         else
         {
@@ -78,8 +68,6 @@ public partial class System_ListAccount : System.Web.UI.Page
             objSystemClass.addMessage("Có lỗi xảy ra!");
             return;
         }
-
-        
     }
     #endregion
     protected void btnSearch_Click(object sender, ImageClickEventArgs e)
