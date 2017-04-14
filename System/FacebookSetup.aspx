@@ -110,7 +110,8 @@
                                       <input type="text" runat="server" id="txtNewToken" class="form-control" placeholder="'<%=last_token %>'"/>
                                     </div><!-- /input-group -->
                                            <asp:Button ID="btnUpdateToken" CssClass="btn btn-success" runat="server" OnClick="btnUpdateToken_Click" Text="Cập nhật " Height="35" />  
-                                     </div>
+                                 <span class="input-group-btn" id="result" runat="server"></span>
+                                          </div>
                                     <div style="width:100%;height:100px;clear:both">
                                         <p style="float:right;margin:1%"> Nhóm phát triễn
                                             </p>
@@ -166,17 +167,24 @@
                     </p>
                     <br />
                     <a class="panel-facebook-plus-image" href="#">
+                       
                        <img src="<%=row["full_picture"] %>" />
+                            
                     </a>
                 </div>
                 <div class="panel-footer">
+                   
                     <button type="button" class="[ btn btn-default ]"><%=row["likes"] %>  <span class="alert info">likes</span> </button>
                      <button type="button" class="[ btn btn-default ]"><%=row["comments"] %> <span class="alert info">comment</span> </button>
                 </div>
             </div>
              <% } %>
+
+            
         </div>
     </div>
     </div>
+   
+      
 </asp:Content>
 
