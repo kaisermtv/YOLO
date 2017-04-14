@@ -47,7 +47,15 @@
     <script src="/js/bootstrap-datetimepicker.js"></script>
     <!-- -->
 
+    <script>
+        function imgCatchError(src) {
+            src.onerror = "";
+            src.src = "/Images/design/no_img.jpg";
+            return true;
+        }
+    </script>
 
+    
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 
@@ -75,13 +83,14 @@
                                 <span>Hệ thống</span></a>
                             <ul class="sub-menu-list">
                                 <li><a href="/System/AboutUs.aspx">Thông tin đơn vị</a></li>
+                                <li><a href="/System/Menu.aspx">Menu</a></li>
                                 <li><a href="/System/GroupAcctList.aspx">Nhóm tài khoản</a></li>
                                 <li><a href="/System/ListAccount.aspx">Tài khoản người dùng</a></li>
                             </ul>
                         </li>
                         <li class="menu-list"><a href="#"><i class="lnr lnr-indent-increase"></i><span>Quản lý nội dung</span></a>
                             <ul class="sub-menu-list">
-                                <li><a href="/System/Menu.aspx">Menu, danh mục</a></li>
+                                <li><a href="/System/NewsGroupList.aspx">Nhóm tin tức</a></li>
                                 <%--<li><a href="/Admin/ListCategory.aspx">Nhóm hàng hóa</a></li>--%>
                                 <%--<li><a href="/Admin/ListProduct.aspx">Quản lý bán xe</a></li>--%>
 
@@ -91,9 +100,10 @@
                                 <li><a href="/System/Ads.aspx">Quảng cáo</a></li>
                             </ul>
                         </li>
-                        <li class="menu-list"><a href="#"><i class="lnr lnr-book"></i><span>Danh mục khác</span></a>
+                        <li class="menu-list"><a href="#"><i class="lnr lnr-book"></i><span>Danh mục khác</span> </a>
                             <ul class="sub-menu-list">
-                                <li><a href="/System/FacebookSetup.aspx"><img src="../images/Facebook.png" height="30" />Đồng bộ  </a></li>
+                                <li><a href="/System/FacebookSetup.aspx"><img src="../images/Facebook.png" height="30" /> &nbsp;&nbsp;Facebook </a></li>
+                               <li><a href="/System/SeoOptimization.aspx"><img src="../images/seo.jpg" height="30" /> &nbsp;&nbsp;SEO Optimization </a></li>
 
 
                             </ul>

@@ -26,6 +26,7 @@ public class FacebookApi : DataClass
     private static String access_token = @"EAAbazmfYd8gBAEeLHQuUZC61YRka9XEOU4eUOtuSmFaZAVF1i6vDuUQk752xfZANGpZCJjOtqm0ZBR91ZCH6zR64QvNsfYxcyRJaQTIXrF1C6Fnfxe4gfLmxMTmzmtsSLJyfZBPPcHx6o9wSxgyeOTdWF2EramU6S4ZD";
     private static string site_id = "ngheansunshine";
     private string url = @"https://graph.facebook.com/"+site_id+"/posts?fields=" + fields + "&limit=" + limit + "&access_token=" +access_token + "";
+    private static string key_db = "Facebook_Token";
     private string url2 = @"https://graph.facebook.com/ngheansunshine/posts?fields=full_picture,picture,link,message,created_time&limit=5&access_token=https://graph.facebook.com/ngheansunshine/posts?fields=full_picture,picture,link,message,created_time&limit=5&access_token=EAAbazmfYd8gBAEeLHQuUZC61YRka9XEOU4eUOtuSmFaZAVF1i6vDuUQk752xfZANGpZCJjOtqm0ZBR91ZCH6zR64QvNsfYxcyRJaQTIXrF1C6Fnfxe4gfLmxMTmzmtsSLJyfZBPPcHx6o9wSxgyeOTdWF2EramU6S4ZD";
     /*
         Thực hiện lấy dử liệu và đưa vào database
@@ -168,7 +169,7 @@ public class FacebookApi : DataClass
             // sự cố , lấy mới token bằng đệ trình token củ còn hợp lệ
             try
             {
-                string url_try = @"https://graph.facebook.com/"+site_id+"/posts?fields=" + fields + "&limit=" + limit + "&access_token=" + getNewAccessToken() + "";
+                string url_try = @"https://graph.facebook.com/" + site_id + "/posts?fields=" + fields + "&limit=" + limit + "&access_token=" + getNewAccessToken() + "";
                 json = getJsonString(10, url_try);      // lấy 10 bài mới nhất
                 lpost = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<FbPosts>(json);
             }
@@ -188,17 +189,39 @@ public class FacebookApi : DataClass
     }
     #endregion
     // facebook auto change token by time
+    #region setNewAccessToken()                 || try to set new token when not valin
+    public int setNewAccessToken(string new_token)
+    {
+        // hoặc nhờ người quản trị nhập vào ... 
+        // lấy từ 1 dòng nào đó của cơ sở dữ liệu 
+        // và do người dùng nhập vào
+        DataSetting setting = new DataSetting();
+        if (setting.setValue(key_db, new_token))
+        {
+            Debug.WriteLine("=[SUCCESS] UPDATE NEW TOKEN TO DATABASE IN SETTING SUCCESS " + new_token);
+            return 1;
+        }
+        Debug.WriteLine("=[EURROR] CANNOT UPDATE TO SETTING FB TOKEN WITH KEY :  " + key_db );
+        return 0;
+    }
+    #endregion
+
     #region getNewAccessToken()                 || try to get new token when not valin
     public string getNewAccessToken()
     {
-        // hoặc nhờ người quản trị nhập vào ... 
-        string urlGetToken = @"https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id=1929429900621768&client_secret=f772af8c938d9b284ee22022b791c78b&fb_exchange_token=EAAbazmfYd8gBAMx3rezhTwBkSviDkZAzIXS4SZCt8kRBExskhu5rnp2HAlxoD9V0ZAOMA7JQUHytypegPDanjQ07ZCwh7ZBMnn3uaAAzbJB7NCknGkLUSgC0Kg3LV7U1b39fsKJNqUzZButRnbEbldrN2CpsdstRZBT8tZC8UTBVFMa7JnRwZBaeCHJZCjmnQxwCAZD";
-
-        var objTmp = Newtonsoft.Json.Linq.JObject.Parse(getJsonString(0,urlGetToken));
-        var token =(string) objTmp["access_token"];
-        return token;
-    }
+        DataSetting setting = new DataSetting();
+              string token = " ";
+            token= setting.getValue(key_db);
+        // lấy từ 1 dòng nào đó của cơ sở dữ liệu 
+        // và do người dùng nhập vào
+         if(token!= null || token.Trim() !=""){
+            Debug.WriteLine("=[SUCCESS] GET ACCESS TOKEN FROM DATATABLE  " + token);
+           }
+            Debug.WriteLine("! [ERROR] GET ACCESS TOKEN FROM DATATABLE  IS NULL OR  " + token);
+            return token;
+     }
     #endregion
+
 
     #region insertMutiLineValue()           ||Cấu hình bảng || Đưa vào cơ sở dử liệu
     public int insertMultiValue(string value)

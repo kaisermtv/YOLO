@@ -100,6 +100,31 @@ CREATE TABLE tblSlider(
 	CREATEDATE		DATETIME DEFAULT(GETDATE())
 );
 
+CREATE TABLE tblNewsGroup(
+	ID			INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	NAME		NVARCHAR(256) NOT NULL UNIQUE,
+	DESCRIBE	NVARCHAR(50) NULL,
+	
+	NSTATUS		INT NOT NULL DEFAULT(0) FOREIGN KEY REFERENCES dbo.tblStatus(ID),
+	EDITTIME	DATETIME NULL,
+	EDITUSER	INT NULL,
+	CREATETIME	DATETIME DEFAULT(GETDATE()) -- Ngày khởi tạo
+);
+
+CREATE TABLE [dbo].[tblNews](
+	[Id] INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	[CatId] INT NULL FOREIGN KEY REFERENCES dbo.tblNewsGroup(ID),
+	[Title] NVARCHAR(500) NULL,
+	[ShortContent] NVARCHAR(1500) NULL,
+	[Content] NTEXT NULL,
+	[ImgUrl] NVARCHAR(250) NULL,
+	NSTATUS		INT NOT NULL DEFAULT(0) FOREIGN KEY REFERENCES dbo.tblStatus(ID),
+	[DayPost] DATETIME NULL DEFAULT(GETDATE()),
+	[DayEdit] DATETIME NULL,
+	[UserPost] INT  NULL FOREIGN KEY REFERENCES dbo.tblAccount(ACCT_ID),
+	[UserEdit] INT NULL FOREIGN KEY REFERENCES dbo.tblAccount(ACCT_ID),
+	[Author] NVARCHAR(150) NULL,
+);
 
 CREATE TABLE [dbo].[tblContact](
 	[Id] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
@@ -128,4 +153,16 @@ CREATE  TABLE tblFacebookPost (
 			 time_sync datetime default getdate()  ,
 			 state int default 1,
 			 ) ; 
+/* SEO Optimization */
+CREATE   PROCEDURE GetSiteMapContent
+	-- Tạo mới procedure tạo các dữ liệu để seo---
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+SELECT TOP 100  create_time FROM tblFacebookPost ORDER BY id DESC
+SELECT id,tblFacebookPost.link  FROM tblFacebookPost ORDER BY create_time DESC
+
+END
 

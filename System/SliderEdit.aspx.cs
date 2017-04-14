@@ -11,4 +11,8 @@ public partial class System_SliderEdit : System.Web.UI.Page
     {
 
     }
+    protected void btnSaver_Click(object sender, EventArgs e)
+    {
+
+    }
 }

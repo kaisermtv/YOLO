@@ -25,13 +25,13 @@ public class DataSetting :DataClass
 
             if (ret != null) return ret["VALUE"].ToString();
 
-            return null;
+            return "";
         }
         catch (Exception ex)
         {
             this.Message = ex.Message;
             this.ErrorCode = ex.HResult;
-            return null;
+            return "";
         }
     }
 
