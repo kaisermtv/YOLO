@@ -5,6 +5,8 @@
 <%@ Register Src="~/FrontEnd/Controls/Common/Header.ascx" TagPrefix="uc1" TagName="Header" %>
 <%@ Register Src="~/FrontEnd/Controls/Common/Menu.ascx" TagPrefix="uc1" TagName="Menu" %>
 <%@ Register Src="~/FrontEnd/Controls/Common/Banner.ascx" TagPrefix="uc1" TagName="Banner" %>
+<%@ Register Src="~/FrontEnd/Controls/Common/Footer.ascx" TagPrefix="uc1" TagName="Footer" %>
+
 
 
 
@@ -20,7 +22,7 @@
     </asp:ContentPlaceHolder>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=1020px, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="Language" content="vi" />
     <meta name="copyright" content="Copyright © 2017 by Mobiphone" />
 
@@ -38,7 +40,7 @@
                     <div class="main">
                         <uc1:Header runat="server" ID="Header" />
                         <uc1:Menu runat="server" ID="Menu" />
-                        <uc1:Banner runat="server" ID="Banner" />
+                       
 
                     </div>
                 </div>
@@ -46,6 +48,7 @@
         </div>
         <asp:ContentPlaceHolder ID="MasterPageContent" runat="server">
         </asp:ContentPlaceHolder>
+        <uc1:Footer runat="server" ID="Footer" />
     </form>
 </body>
 </html>

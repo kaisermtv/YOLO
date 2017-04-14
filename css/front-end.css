@@ -4,6 +4,8 @@
 @font-face { font-family: CondLightItalic; src: url(../css/fonts/opensans_condlightitalic.ttf); }
 @font-face { font-family: Amherst; src: url(../css/fonts/utm_amherst.ttf); }
 
+img { max-width: 100%; }
+p { text-align: justify; line-height: 20px; }
 
 .main { width: 100%; max-width: 1288px; display: block; margin: 0 auto; position: relative; }
 
@@ -115,6 +117,38 @@
                 #footer .footer-nav li a:not(.footer-no):hover { color: #ff6a00; }
                 #footer .footer-nav li a.footer-no { pointer-events: none; font-weight: 700; font-size: 15px; }
 
+
+#danhmuc-tintuc .header, #list-tin-tieu-diem .header { font-family: CondBold; height: 50px; background: #0A70C4; color: #FFF; line-height: 50px; font-size: 17px; padding: 0 20px; margin-bottom: 5px; }
+#danhmuc-tintuc ul li { height: 40px; line-height: 40px; }
+    #danhmuc-tintuc ul li .zs { display: inline-block; height: 100%; width: 10px; background: #eeeeee; float: left; }
+    #danhmuc-tintuc ul li .zc { display: inline-block; height: 100%; float: left; width: 100%; padding-left: 20px; position: relative; }
+        #danhmuc-tintuc ul li .zc:before { content: " "; position: absolute; top: 0; left: 0; width: 10px; background: #eeeeee; height: 100%; border-bottom: 1px solid #fff; }
+        #danhmuc-tintuc ul li .zc:after { content: " "; position: absolute; bottom: 0; right: 0; width: 93%; background: url(../images/FrontEnd/line-net-dut.png) no-repeat scroll center center; height: 1px; }
+    #danhmuc-tintuc ul li:last-child .zc:after { background: none; }
+    #danhmuc-tintuc ul li .zc a { font-weight: 700; font-size: 16px; text-decoration: none !important; color: #888888; display: inline-block; width: 100%; font-family: CondLight; }
+    #danhmuc-tintuc ul li .zc.active { font-weight: 700; }
+        #danhmuc-tintuc ul li .zc:hover a, #danhmuc-tintuc ul li .zc.active a { color: #FF6A00; font-weight: 400; font-family: CondBold; }
+        #danhmuc-tintuc ul li .zc:hover:before, #danhmuc-tintuc ul li .zc.active:before { background: #FF6A00; }
+
+
+#list-tin-tieu-diem div.zx { height: 110px; margin: 5px 0; }
+
+#tin-trung-binh img { width: 100%; }
+.time { font-size: 14px; color: #888888; width: 100%; font-weight: normal; color: #555555; font-style: italic; font-family: CondLight; }
+.tieu-de { display: inline-block; font-size: 20px; margin: 5px 0; text-overflow: ellipsis; font-family: CondBold; }
+.dr { border-bottom: 1px solid #dedede; margin: 20px 0 20px; }
+
+#list-tin-tuc { }
+    #list-tin-tuc li { float: left; border-bottom: 1px dotted #ccc; padding: 10px 0; }
+        #list-tin-tuc li .thumb { float: left; width: 25%; height: auto; margin: 0 10px 9px 0; }
+            #list-tin-tuc li .thumb img { width: 100%; height: auto; float: left; }
+.sapo { font-size: 15px; color: #0F0F0F; margin: 5px 0; font-family: CondLight; }
+
+.pager { text-align: right; padding: 15px 0; font-size: 14px; }
+
+.cleft { padding-top: 20px; }
+
+
 @media (min-width:320px) { /* smartphones, iPhone, portrait 480x320 phones */
 
 }
@@ -220,7 +254,7 @@
                 #menu-wraper .menu > li.active i { color: #ffffff !important; }
             #menu-wraper .menu:last-child > li a { }
 
-        #menu-wraper #bar-menu { position: relative;  overflow: hidden; max-height: 0; transition: max-height 0.5s ease-in-out 0s; -o-transition: max-height 0.5s ease-in-out 0s; -webkit-transition: max-height 0.5s ease-in-out 0s; -moz-transition: max-height 0.5s ease-in-out 0s; }
+        #menu-wraper #bar-menu { position: relative; overflow: hidden; max-height: 0; transition: max-height 0.5s ease-in-out 0s; -o-transition: max-height 0.5s ease-in-out 0s; -webkit-transition: max-height 0.5s ease-in-out 0s; -moz-transition: max-height 0.5s ease-in-out 0s; }
         #menu-wraper.active #bar-menu { max-height: 500px; }
 
     #news { padding-top: 25px; padding-bottom: 25px; }
@@ -267,6 +301,14 @@
         .news-r-detail li:first-child label { width: 100%; }
         .news-r-detail li:first-child p { display: block; }
         .news-r-detail li:first-child .img-w { width: 100%; height: 220px; }
+
+
+    #tin-chinh { position: relative; }
+        #tin-chinh:before { z-index: 1; content: ' '; position: absolute; bottom: 0; left: 15px; height: 50%; display: inline-block; background: url(../images/Front-End/overlay-img.png) no-repeat scroll center 100%/100%; right: 15px; }
+    .tinchinh-h3 { right: 10px; z-index: 3; font-family: CondBold; color: #fff; position: absolute; bottom: 30px; left: 20px; width: calc(100% - 50px); }
+        .tinchinh-h3 .sapo { color: #fff; font-size: 17px; font-family: CondBold; }
+        .tinchinh-h3 .tieu-de { color: #fff; font-size: 20px; }
+        .tinchinh-h3 .time { color: #fff; font-size: 12px; }
 }
 
 /*md*/
