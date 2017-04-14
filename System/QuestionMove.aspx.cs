@@ -5,10 +5,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class System_MenuMove : System.Web.UI.Page
+public partial class System_QuestionMove : System.Web.UI.Page
 {
     #region declare
-    private DataMenu objMenu = new DataMenu();
+    private DataQuestion objQuestion = new DataQuestion();
     //private SystemClass objSystemClass = new SystemClass();
 
     public int itemId = 0;
@@ -31,9 +31,9 @@ public partial class System_MenuMove : System.Web.UI.Page
 
         if (!Page.IsPostBack && this.itemId != 0)
         {
-            objMenu.MenuMove(itemId, vtId);
+            objQuestion.MenuMove(itemId, vtId);
         }
 
-        Response.Redirect("Menu.aspx");
+        Response.Redirect("QuestionList.aspx");
     }
 }

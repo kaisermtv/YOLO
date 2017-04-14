@@ -7,9 +7,9 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for DataMenu
+/// Summary description for DataQuestion
 /// </summary>
-public class DataMenu : DataClass
+public class DataQuestion : DataClass
 {
     #region method getData
     public DataRow getData(int id)
@@ -17,7 +17,7 @@ public class DataMenu : DataClass
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "SELECT * FROM tblMenu WHERE ID = @ID";
+            Cmd.CommandText = "SELECT * FROM tblQuestion WHERE ID = @ID";
             Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
 
             DataRow ret = this.findFirst(Cmd);
@@ -34,24 +34,17 @@ public class DataMenu : DataClass
     }
     #endregion
 
-    #region method addData
-    public int addData(String Name, String Describe,String link,int type = 0)
+    #region method getList
+    public DataTable getList()
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "INSERT INTO tblMenu(NAME,DESCRIBE,LINK,NTYPE) OUTPUT INSERTED.ID VALUES (@NAME,@DESCRIBE,@LINK,@NTYPE)";
+            Cmd.CommandText = "SELECT P.ID,P.Question,PL.NAME AS STATUS FROM tblQuestion AS P";
+            Cmd.CommandText += " LEFT JOIN tblStatus AS PL ON P.NSTATUS = PL.ID";
+            Cmd.CommandText += " ORDER BY P.IORDER ASC";
 
-            Cmd.Parameters.Add("NAME", SqlDbType.NVarChar).Value = Name;
-            Cmd.Parameters.Add("DESCRIBE", SqlDbType.NVarChar).Value = Describe;
-            Cmd.Parameters.Add("LINK", SqlDbType.NVarChar).Value = link;
-            Cmd.Parameters.Add("NTYPE", SqlDbType.Int).Value = type;
-            int ret = (int)Cmd.ExecuteScalar();
-
-            Cmd = this.getSQLConnect();
-            Cmd.CommandText = "UPDATE tblMenu SET IORDER = @ID WHERE ID = @ID AND IORDER IS NULL";
-            Cmd.Parameters.Add("ID", SqlDbType.Int).Value = ret;
-            Cmd.ExecuteNonQuery();
+            DataTable ret = this.findAll(Cmd);
 
             this.SQLClose();
             return ret;
@@ -60,45 +53,43 @@ public class DataMenu : DataClass
         {
             this.Message = ex.Message;
             this.ErrorCode = ex.HResult;
-            return 0;
+            return null;
         }
     }
     #endregion
 
-    #region method UpdateData
-    public int UpdateData(int Id,String Name, String Describe, String link, int type = 0)
+    #region Method getDataToCombobox
+    public DataTable getDataToCombobox(String kcstr = "Không chọn")
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "UPDATE tblMenu SET NAME = @NAME, DESCRIBE = @DESCRIBE,LINK = @LINK, NTYPE = @NTYPE OUTPUT INSERTED.ID WHERE ID = @ID";
+            Cmd.CommandText = "SELECT ID,Question FROM tblQuestion WHERE NSTATUS != 2";
 
-            Cmd.Parameters.Add("ID", SqlDbType.Int).Value = Id;
-            Cmd.Parameters.Add("NAME", SqlDbType.NVarChar).Value = Name;
-            Cmd.Parameters.Add("DESCRIBE", SqlDbType.NVarChar).Value = Describe;
-            Cmd.Parameters.Add("LINK", SqlDbType.NVarChar).Value = link;
-            Cmd.Parameters.Add("NTYPE", SqlDbType.Int).Value = type;
-            int ret = (int)Cmd.ExecuteScalar();
+            DataTable ret = this.findAll(Cmd);
 
             this.SQLClose();
+
+            if (kcstr != null && kcstr != "") { ret.Rows.Add(0, kcstr); }
+
             return ret;
         }
         catch (Exception ex)
         {
             this.Message = ex.Message;
             this.ErrorCode = ex.HResult;
-            return 0;
+            return null;
         }
     }
     #endregion
 
     #region method MenuMove
-    public bool MenuMove(int Id,int vtid)
+    public bool MenuMove(int Id, int vtid)
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "SELECT ID FROM tblMenu WHERE ID != @ID ORDER BY IORDER ASC";
+            Cmd.CommandText = "SELECT ID FROM tblQuestion WHERE ID != @ID ORDER BY IORDER ASC";
             Cmd.Parameters.Add("ID", SqlDbType.Int).Value = Id;
             DataTable ret = this.findAll(Cmd);
 
@@ -122,7 +113,7 @@ public class DataMenu : DataClass
             foreach (int a in arr)
             {
                 Cmd = this.getSQLConnect();
-                Cmd.CommandText = "UPDATE tblMenu SET IORDER = @IORDER WHERE ID = @ID";
+                Cmd.CommandText = "UPDATE tblQuestion SET IORDER = @IORDER WHERE ID = @ID";
                 Cmd.Parameters.Add("ID", SqlDbType.Int).Value = a;
                 Cmd.Parameters.Add("IORDER", SqlDbType.Int).Value = i++;
                 Cmd.ExecuteNonQuery();
@@ -141,24 +132,35 @@ public class DataMenu : DataClass
     }
     #endregion
 
-    #region method getList
-    public DataTable getList()
+    #region method setData
+    public int setData(int id, String Question, String Describe)
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "SELECT ID,NAME,LINK,IORDER FROM tblMenu ORDER BY IORDER ASC";
+            Cmd.CommandText = "IF NOT EXISTS (SELECT * FROM tblQuestion WHERE ID = @ID)";
+            Cmd.CommandText += " BEGIN INSERT INTO tblQuestion(Question,DESCRIBE,CREATEUSER) OUTPUT INSERTED.ID VALUES (@Question,@DESCRIBE,@CREATEUSER) END";
+            Cmd.CommandText += " ELSE BEGIN UPDATE tblQuestion SET Question = @Question, DESCRIBE = @DESCRIBE,EDITUSER = @CREATEUSER ,EDITTIME = GETDATE() OUTPUT INSERTED.ID WHERE ID = @ID END";
 
-            DataTable ret = this.findAll(Cmd);
+            Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
+            Cmd.Parameters.Add("Question", SqlDbType.NVarChar).Value = Question;
+            Cmd.Parameters.Add("DESCRIBE", SqlDbType.NText).Value = Describe;
+
+            SystemClass objSystemClass = new SystemClass();
+            Cmd.Parameters.Add("CREATEUSER", SqlDbType.Int).Value = objSystemClass.getIDAccount();
+
+            int ret = (int)Cmd.ExecuteScalar();
 
             this.SQLClose();
+
             return ret;
         }
         catch (Exception ex)
         {
             this.Message = ex.Message;
             this.ErrorCode = ex.HResult;
-            return null;
+
+            return 0;
         }
     }
     #endregion
@@ -169,7 +171,7 @@ public class DataMenu : DataClass
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "DELETE FROM tblMenu WHERE Id = @ID";
+            Cmd.CommandText = "DELETE FROM tblQuestion WHERE ID = @ID";
             Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
 
             Cmd.ExecuteNonQuery();

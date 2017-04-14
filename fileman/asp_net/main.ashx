@@ -181,7 +181,7 @@ public class RoxyFilemanHandler : IHttpHandler, System.Web.SessionState.IRequire
 		try{
 			json = File.ReadAllText(_context.Server.MapPath(file), System.Text.Encoding.UTF8);
 		}
-		catch(Exception ex){}
+		catch{}
 
 		json = json.Trim();
 		if(json != ""){
@@ -319,7 +319,7 @@ public class RoxyFilemanHandler : IHttpHandler, System.Web.SessionState.IRequire
 				File.Copy(file.FullName, Path.Combine(newPath, newName));
 				_r.Write(GetSuccessRes());
 			}
-			catch(Exception ex){
+			catch{
 				throw new Exception(LangRes("E_CopyFile"));
 			}
 		}
@@ -338,7 +338,7 @@ public class RoxyFilemanHandler : IHttpHandler, System.Web.SessionState.IRequire
 					Directory.CreateDirectory(path);
 				_r.Write(GetSuccessRes());
 			}
-			catch (Exception ex)
+			catch 
 			{
 				throw new Exception(LangRes("E_CreateDirFailed"));
 			}
@@ -361,7 +361,7 @@ public class RoxyFilemanHandler : IHttpHandler, System.Web.SessionState.IRequire
 				Directory.Delete(path);
 				_r.Write(GetSuccessRes());
 			}
-			catch (Exception ex)
+			catch
 			{
 				throw new Exception(LangRes("E_CannotDeleteDir"));
 			}
@@ -380,7 +380,7 @@ public class RoxyFilemanHandler : IHttpHandler, System.Web.SessionState.IRequire
 				File.Delete(path);
 				_r.Write(GetSuccessRes());
 			}
-			catch (Exception ex)
+			catch 
 			{
 				throw new Exception(LangRes("E_DeletеFile"));
 			}
@@ -513,7 +513,7 @@ public class RoxyFilemanHandler : IHttpHandler, System.Web.SessionState.IRequire
 				source.MoveTo(dest.FullName);
 				_r.Write(GetSuccessRes());
 			}
-			catch(Exception ex){
+			catch{
 				throw new Exception(LangRes("E_MoveDir") + " \"" + path + "\"");
 			}
 		}
@@ -539,7 +539,7 @@ public class RoxyFilemanHandler : IHttpHandler, System.Web.SessionState.IRequire
 				source.MoveTo(dest.FullName);
 				_r.Write(GetSuccessRes());
 			}
-			catch (Exception ex)
+			catch 
 			{
 				throw new Exception(LangRes("E_MoveFile") + " \"" + path + "\"");
 			}
@@ -563,7 +563,7 @@ public class RoxyFilemanHandler : IHttpHandler, System.Web.SessionState.IRequire
 				source.MoveTo(dest.FullName);
 				_r.Write(GetSuccessRes());
 			}
-			catch (Exception ex)
+			catch 
 			{
 				throw new Exception(LangRes("E_RenameDir") + " \"" + path + "\"");
 			}
