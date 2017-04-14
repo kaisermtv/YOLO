@@ -192,7 +192,7 @@
                             </div>
                         </div>
                         <div class="cright col-xs-6 col-sm-4 col-md-4 hidden-xs">
-                            <uc1:DanhMuc runat="server" ID="DanhMuc" />
+                            <%--<uc1:DanhMuc runat="server" ID="DanhMuc" />--%>
                             <uc1:QuangCao runat="server" ID="QuangCao1" />
                         </div>
                     </div>
