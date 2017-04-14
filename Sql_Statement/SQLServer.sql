@@ -153,4 +153,16 @@ CREATE  TABLE tblFacebookPost (
 			 time_sync datetime default getdate()  ,
 			 state int default 1,
 			 ) ; 
+/* SEO Optimization */
+CREATE   PROCEDURE GetSiteMapContent
+	-- Tạo mới procedure tạo các dữ liệu để seo---
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+SELECT TOP 100  create_time FROM tblFacebookPost ORDER BY id DESC
+SELECT id,tblFacebookPost.link  FROM tblFacebookPost ORDER BY create_time DESC
+
+END
 
