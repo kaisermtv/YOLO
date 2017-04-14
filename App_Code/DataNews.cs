@@ -34,7 +34,7 @@ public class DataNews : DataClass
     #endregion
 
     #region method getList
-    public DataTable getList()
+    public DataTable getList(int group = 0,String seach = "")
     {
         try
         {
@@ -42,8 +42,21 @@ public class DataNews : DataClass
             Cmd.CommandText = "SELECT P.Id,P.Title,G.NAME AS GroupName,PL.NAME AS STATUS FROM tblNews AS P";
             Cmd.CommandText += " LEFT JOIN tblStatus AS PL ON P.NSTATUS = PL.ID";
             Cmd.CommandText += " LEFT JOIN tblNewsGroup AS G ON P.CatId = G.ID";
-            Cmd.CommandText += " ORDER BY DayPost DESC";
+            Cmd.CommandText += " WHERE 1=1";
 
+            if(group != 0)
+            {
+                Cmd.CommandText += " AND P.CatId = @GROUP";
+                Cmd.Parameters.Add("GROUP", SqlDbType.Int).Value = group;
+            }
+
+            if (seach != null && seach != "")
+            {
+                Cmd.CommandText += " AND UPPER(RTRIM(LTRIM(P.Title))) LIKE  N'%'+UPPER(RTRIM(LTRIM(@Seach)))+'%'";
+                Cmd.Parameters.Add("Seach", SqlDbType.NVarChar).Value = seach;
+            }
+
+            Cmd.CommandText += " ORDER BY DayPost DESC";
 
             DataTable ret = this.findAll(Cmd);
 

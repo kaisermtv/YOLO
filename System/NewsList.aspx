@@ -12,6 +12,23 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
+    <table class="table" border ="0" style ="margin-top:-20px;">
+        <tr>
+            <td>
+                <input type="text" id="txtSearch" placeholder="Nhập tên bài viết cần tìm kiếm" runat="server" class="form-control" />
+            </td>
+            <td style="width:25%">
+                <asp:DropDownList ID="ddlGroup" runat="server" class="form-control">
+
+                </asp:DropDownList>
+            </td>
+            <td style="width: 40px !important; text-align: center;">
+                <asp:ImageButton ID="btnSearch" ImageUrl="/images/Search.png" runat="server" Style="margin-bottom: -15px; margin-left: -15px;" OnClick="btnSearch_Click" />
+            </td>
+        </tr>
+    </table>
+
+
     <asp:Repeater ID="dtlData" runat="server" EnableViewState="False">
         <HeaderTemplate>
             <table class="DataListTable">
@@ -34,12 +51,12 @@
                     <a href="NewsEdit.aspx?id=<%# Eval("Id") %>">
                         <img src="/Images/Edit.png" alt="Chỉnh sửa thông tin">
                     </a>
-                </td>
+                &nbsp;&nbsp;</td>
                 <td class="DataListTableTdItemCenter">
                     <a href="#myModal" onclick="delmodal(<%# Eval("Id") %>,'<%# Eval("Title") %>')">
                         <img src="/Images/delete.png" alt="Xóa nhóm">
                     </a>
-                </td>
+                &nbsp;&nbsp;</td>
             </tr>
         </ItemTemplate>
         <FooterTemplate>
@@ -49,12 +66,11 @@
     <cc1:CollectionPager ID="cpData" runat="server" BackText="" FirstText="Đầu"
         ControlCssClass="ProductPage" LabelText="" LastText="Cuối" NextText="" UseSlider="true"
         ResultsFormat="" BackNextLinkSeparator="" ResultsLocation="None" BackNextLocation="None"
-        PageNumbersSeparator="&nbsp;">
+        PageNumbersSeparator="&nbsp;" PagingMode="PostBack">
     </cc1:CollectionPager>
 
     <br />
     <a href="NewsEdit.aspx" class="btn btn-primary">Đăng bài viết</a>
-
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">

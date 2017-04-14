@@ -18,16 +18,11 @@ public partial class System_GroupAcctList : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Context.Items["strTitle"] = "DANH SÁCH NHÓM TÀI KHOẢN";
-
-        if (!Page.IsPostBack)
-        {
-            getData();
-        }
     }
     #endregion
 
-    #region method getData()
-    private void getData()
+    #region method Page_PreRender()
+    public void Page_PreRender(object sender, EventArgs e)
     {
         DataTable objData = objGroupAcct.getList();
 
@@ -62,8 +57,6 @@ public partial class System_GroupAcctList : System.Web.UI.Page
         if (id != 0)
         {
             objGroupAcct.delData(id);
-
-            getData();
         }
         else
         {

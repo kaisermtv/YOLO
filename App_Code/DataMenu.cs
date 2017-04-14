@@ -163,4 +163,25 @@ public class DataMenu : DataClass
         }
     }
     #endregion
+
+    #region method delData
+    public void delData(int id)
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "DELETE FROM tblMenu WHERE Id = @ID";
+            Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
+
+            Cmd.ExecuteNonQuery();
+
+            this.SQLClose();
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+        }
+    }
+    #endregion
 }

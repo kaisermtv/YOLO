@@ -104,12 +104,25 @@ public class DataAccount : DataClass
     #endregion
 
     #region method getList
-    public DataTable getList()
+    public DataTable getList(int group = 0, String seach = "")
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
             Cmd.CommandText = "SELECT P.ACCT_ID,P.ACCT_NAME,G.NAME AS GROUPNAME,PL.NAME AS STATUS FROM tblAccount AS P LEFT JOIN tblAcctGroup AS G ON P.ACCT_GROUP = G.ID LEFT JOIN tblStatus AS PL ON P.NSTATUS = PL.ID";
+            Cmd.CommandText += " WHERE 1=1";
+
+            if (group != 0)
+            {
+                Cmd.CommandText += " AND P.ACCT_GROUP = @GROUP";
+                Cmd.Parameters.Add("GROUP", SqlDbType.Int).Value = group;
+            }
+
+            if (seach != null && seach != "")
+            {
+                Cmd.CommandText += " AND UPPER(RTRIM(LTRIM(P.ACCT_NAME))) LIKE  N'%'+UPPER(RTRIM(LTRIM(@Seach)))+'%'";
+                Cmd.Parameters.Add("Seach", SqlDbType.NVarChar).Value = seach;
+            }
 
             DataTable ret = this.findAll(Cmd);
 

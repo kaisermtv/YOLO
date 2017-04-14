@@ -15,6 +15,22 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
+    <table class="table" border ="0" style ="margin-top:-20px;">
+        <tr>
+            <td>
+                <input type="text" id="txtSearch" placeholder="Nhập tên tài khoản cần tìm kiếm" runat="server" class="form-control" />
+            </td>
+            <td style="width:25%">
+                <asp:DropDownList ID="ddlGroup" runat="server" class="form-control">
+
+                </asp:DropDownList>
+            </td>
+            <td style="width: 40px !important; text-align: center;">
+                <asp:ImageButton ID="btnSearch" ImageUrl="/images/Search.png" runat="server" Style="margin-bottom: -15px; margin-left: -15px;" OnClick="btnSearch_Click" />
+            </td>
+        </tr>
+    </table>
+
     <asp:Repeater ID="dtlAccount" runat="server" EnableViewState="False">
         <HeaderTemplate>
             <div class="table-responsive" <%--style="max-height:100px"--%>>

@@ -18,18 +18,12 @@ public partial class System_Menu : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        if(!Page.IsPostBack)
-        {
-
-            getData();
-        }
-
 
     }
     #endregion
 
-    #region method getData()
-    private void getData()
+    #region method Page_PreRender()
+    public void Page_PreRender(object sender, EventArgs e)
     {
         DataTable objData = objMenu.getList();
 
@@ -43,7 +37,29 @@ public partial class System_Menu : System.Web.UI.Page
     #region method btnDel_Click
     protected void btnDel_Click(object sender, EventArgs e)
     {
+        int id;
+        try
+        {
+            id = int.Parse(idDel.Value);
+        }
+        catch
+        {
+            SystemClass objSystemClass = new SystemClass();
+            objSystemClass.addMessage("Có lỗi xảy ra!");
+            return;
+        }
 
+        if (id != 0)
+        {
+            objMenu.delData(id);
+
+        }
+        else
+        {
+            SystemClass objSystemClass = new SystemClass();
+            objSystemClass.addMessage("Có lỗi xảy ra!");
+            return;
+        }
     }
     #endregion
 }
