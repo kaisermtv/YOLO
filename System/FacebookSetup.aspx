@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-3  ">
             <div class="list-group">
-                <a href="#" class="list-group-item visitor">
+                <a href="#" class="list-group-item">        <!---thêm các thuộc tính mouser over cho đẹp-->
                     <h3 class="pull-right">
             <img src="../images/article.png" height="40" />
                     </h3>
@@ -17,7 +17,7 @@
                            <%=count_post %> </h4>
                     <p class="list-group-item-text">
                        Bài viết</p>
-                </a><a href="#modal" class="list-group-item facebook-like">
+                </a><a href="#modal" class="list-group-item  facebook-like">
                     <h3 class="pull-right">
                         <img src="../images/Facebook.png" height="40" />
                     </h3>
@@ -95,9 +95,7 @@
                                 <div class="modal-content">
                                 <div class="alert info"> MỘT SỐ LƯU Ý   </div>
                                     <div class="center-block" > 
-                                      
-                                       
-                                        <div style="margin:1%">
+                                  <div style="margin:1%">
                                          <p>   " Facebook là một hệ thống bảo mật , mạnh mẽ  hàng đầu  nên các yêu cầu khai thác,truy cập dử liệu của họ thường rất chặt chẽ .
                                             </p>
                                             <p>  Vì thế chúng ta phải tuân theo các chính sách đó của họ. "</p>
@@ -105,18 +103,14 @@
                                            <p> Token thường có giá trị sử dụng trong vài ngày , nó thay đổi thường xuyên và là một chuổi mã hóa rất dài tự động tạo ra.</p>
                                            <p > Vì thế quản lý Token rất khó khăn, và thường bị thay đổi theo thời gian thực hoặc khi có các tác động như tài khoản đổi mật khẫu , fanpage đổi id định danh , ...vv</p>
                                            <p > Vì thế nếu có vấn đề khi không thể cập nhật các bài viết mới hay đồng bộ tài khoản hãy thử làm theo các hướng dẫn tại  <a href="docs/fb.pdf" style="color:red">ĐÂY </a> và nhập Token vào ô dưới đây :</p>
-                                            
                                             <div class="input-group">
                                       <span class="input-group-btn">
                                         <button class="btn btn-default" type="button">Facebook Token</button>
                                       </span>
-                                        
                                       <input type="text" runat="server" id="txtNewToken" class="form-control" placeholder="'<%=last_token %>'"/>
-                                     
                                     </div><!-- /input-group -->
                                            <asp:Button ID="btnUpdateToken" CssClass="btn btn-success" runat="server" OnClick="btnUpdateToken_Click" Text="Cập nhật " Height="35" />  
                                      </div>
-                               
                                     <div style="width:100%;height:100px;clear:both">
                                         <p style="float:right;margin:1%"> Nhóm phát triễn
                                             </p>
@@ -125,11 +119,7 @@
                               </div>
                             </div>
                             </div>
-                       
                       <!-- / -->
-
-
-
                     </div>
                 </div>
          <!--đóng menu bên -->
@@ -149,12 +139,12 @@
                          </li>
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Bỏ đăng trên web</a></li>
                         <li role="presentation" class="divider"></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Chỉnh sửa thêm</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Chỉnh sửa lại</a></li>
                     </ul>
                 </div>
                 <div class="panel-facebook-plus-tags">
                     <ul>
-                        <li>#<%=row["id"] %> - id bài viết </li>
+                        <li><a href="https://www.facebook.com/ngheansunshine/posts/<%=row["id"]+"" %>:0"> #<%=row["id"] %> </a></li>
                     </ul>
                 </div>
                 <div class="panel-heading">
@@ -164,7 +154,6 @@
     					<a class="btn btn-primary btn-sm radio_active" data-toggle="happy" data-title="Y"> FACEBOOK  </a>
     				</div>
                         </div>
-                
                     <h3> [<%=i%> ]</h3>
                     <%i++; %>
                     <h5 ><span style="margin-left:-6% !important">Ngày đăng </span> - 
@@ -178,12 +167,11 @@
                     <br />
                     <a class="panel-facebook-plus-image" href="#">
                        <img src="<%=row["full_picture"] %>" />
-                           </a>
+                    </a>
                 </div>
                 <div class="panel-footer">
                     <button type="button" class="[ btn btn-default ]"><%=row["likes"] %>  <span class="alert info">likes</span> </button>
                      <button type="button" class="[ btn btn-default ]"><%=row["comments"] %> <span class="alert info">comment</span> </button>
-                 
                 </div>
             </div>
              <% } %>
