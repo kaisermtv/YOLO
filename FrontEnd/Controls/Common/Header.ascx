@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="Header.ascx.cs" Inherits="FrontEnd_Controls_Common_Header" %>
 
 
-<div class="header">
+<div class="main-header">
     <div class="logo img-w">
         <img src="/images/Front-End/logo.png" />
     </div>

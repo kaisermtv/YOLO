@@ -129,7 +129,7 @@
                                     <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                 </div>
                                 <div class="lst-news-detail">
-                                    <a class="title" href="#"><%# Eval("Title") %></a>
+                                    <a class="tieu-de" href="#"><%# Eval("Title") %></a>
                                     <i><%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyyy") %></i>
                                     <p><%# Eval("ShortContent") %></p>
                                     <a href="#" class="view-more"></a>
@@ -151,7 +151,7 @@
                                             <div class="img-w">
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
-                                            <label><%# Eval("Title") %></label>
+                                            <a href="#" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%# Eval("ShortContent") %></p>
                                         </li>
                                     </ItemTemplate>
@@ -167,7 +167,7 @@
                                             <div class="img-w">
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
-                                            <label><%# Eval("Title") %></label>
+                                            <a href="#" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%# Eval("ShortContent") %></p>
                                         </li>
                                     </ItemTemplate>
@@ -183,7 +183,7 @@
                                             <div class="img-w">
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
-                                            <label><%# Eval("Title") %></label>
+                                            <a href="#" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%# Eval("ShortContent") %></p>
                                         </li>
                                     </ItemTemplate>
@@ -199,7 +199,7 @@
                                             <div class="img-w">
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
-                                            <label><%# Eval("Title") %></label>
+                                            <a href="#" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%# Eval("ShortContent") %></p>
                                         </li>
                                     </ItemTemplate>

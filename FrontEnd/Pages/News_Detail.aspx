@@ -15,7 +15,7 @@
                 <div class="news-wraper col-xs-12 col-md-12">
                     <div class="row show-grid">
                         <div class="clearfix visible"></div>
-                        <div class="cleft col-xs-12 col-sm-8 col-md-8 ">
+                        <div class="cleft col-xs-12 col-sm-8 col-md-8 " style="padding-top: 20px;">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <label class="time">Ngày đăng: 21/04/2016 11:01:01 AM</label>
@@ -33,21 +33,26 @@
                                         <p><span style="font-size: 14px"><strong>Bước 1:</strong></span></p>
 
                                         <p style="text-align: center">
-                                            <img alt="" src="http://admin.taxi24h.vn/Upload/Images/paradelparking1.1.jpg" style="height: 735px; width: 317px"></p>
+                                            <img alt="" src="http://admin.taxi24h.vn/Upload/Images/paradelparking1.1.jpg" style="height: 735px; width: 317px">
+                                        </p>
 
                                         <p style="text-align: center">&nbsp;</p>
 
                                         <p><span style="font-size: 14px"><strong>Bước 2:&nbsp;</strong></span></p>
 
-                                        <p style="text-align: center"><span style="font-size: 14px"><strong>
-                                            <img alt="" src="http://admin.taxi24h.vn/Upload/Images/paradelparking1.2.jpg" style="height: 735px; width: 320px"></strong></span></p>
+                                        <p style="text-align: center">
+                                            <span style="font-size: 14px"><strong>
+                                                <img alt="" src="http://admin.taxi24h.vn/Upload/Images/paradelparking1.2.jpg" style="height: 735px; width: 320px"></strong></span>
+                                        </p>
 
                                         <p style="text-align: center">&nbsp;</p>
 
                                         <p><span style="font-size: 14px"><strong>Bước 3:&nbsp;</strong></span></p>
 
-                                        <p style="text-align: center"><strong>
-                                            <img alt="" src="http://admin.taxi24h.vn/Upload/Images/paradelparking1.3.jpg" style="height: 735px; width: 324px"></strong></p>
+                                        <p style="text-align: center">
+                                            <strong>
+                                                <img alt="" src="http://admin.taxi24h.vn/Upload/Images/paradelparking1.3.jpg" style="height: 735px; width: 324px"></strong>
+                                        </p>
 
                                         <p style="text-align: center">&nbsp;</p>
 
@@ -55,8 +60,10 @@
 
                                         <p>&nbsp;</p>
 
-                                        <p style="text-align: center"><strong>
-                                            <img alt="" src="http://admin.taxi24h.vn/Upload/Images/paradelparking1.4.jpg" style="height: 735px; width: 341px"></strong></p>
+                                        <p style="text-align: center">
+                                            <strong>
+                                                <img alt="" src="http://admin.taxi24h.vn/Upload/Images/paradelparking1.4.jpg" style="height: 735px; width: 341px"></strong>
+                                        </p>
 
                                         <p style="text-align: center">&nbsp;</p>
 
@@ -64,8 +71,10 @@
 
                                         <p>&nbsp;</p>
 
-                                        <p style="text-align: center"><strong>
-                                            <img alt="" src="http://admin.taxi24h.vn/Upload/Images/paradelparking1.5.jpg" style="height: 735px; width: 373px"></strong></p>
+                                        <p style="text-align: center">
+                                            <strong>
+                                                <img alt="" src="http://admin.taxi24h.vn/Upload/Images/paradelparking1.5.jpg" style="height: 735px; width: 373px"></strong>
+                                        </p>
 
                                         <p style="text-align: center">&nbsp;</p>
 
@@ -73,8 +82,10 @@
 
                                         <p>&nbsp;</p>
 
-                                        <p style="text-align: center"><strong>
-                                            <img alt="" src="http://admin.taxi24h.vn/Upload/Images/paradelparking1.6.jpg" style="height: 733px; width: 378px"></strong></p>
+                                        <p style="text-align: center">
+                                            <strong>
+                                                <img alt="" src="http://admin.taxi24h.vn/Upload/Images/paradelparking1.6.jpg" style="height: 733px; width: 378px"></strong>
+                                        </p>
 
                                         <p style="text-align: center">&nbsp;</p>
 
@@ -82,8 +93,10 @@
 
                                         <p>&nbsp;</p>
 
-                                        <p style="text-align: center"><strong>
-                                            <img alt="" src="http://admin.taxi24h.vn/Upload/Images/paradelparking1.7.jpg" style="height: 735px; width: 363px"></strong></p>
+                                        <p style="text-align: center">
+                                            <strong>
+                                                <img alt="" src="http://admin.taxi24h.vn/Upload/Images/paradelparking1.7.jpg" style="height: 735px; width: 363px"></strong>
+                                        </p>
 
                                         <p style="text-align: center">&nbsp;</p>
 
@@ -109,7 +122,7 @@
 
                                         <p>&nbsp;</p>
 
-                                       
+
                                     </div>
 
                                 </div>
