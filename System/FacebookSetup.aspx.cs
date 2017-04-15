@@ -43,18 +43,23 @@ public partial class System_FacebookSetup : System.Web.UI.Page
     {
         if(txtNewToken.Value.Trim() == "" || txtNewToken.Value.Trim().Length <= 30) 
         {
+            Page.ClientScript.RegisterStartupScript(GetType(), "alert", "confirm('Định  dạng không đúng ')", true);
             return;
         }
         else
         {
-            if(api.setNewAccessToken(txtNewToken.Value.Trim()) == 1)
+            if (api.setNewAccessToken(txtNewToken.Value.Trim()) == 1)
             {
-                Page.ClientScript.RegisterStartupScript(GetType(), "alert", "confirm('Cập nhật thất bại')", true);
+                Page.ClientScript.RegisterStartupScript(GetType(), "alert", "if(confirm('Cập nhật Token thành công !')){window.location.reload()}", true);
+                result.InnerText = "Cập nhật Token thành công !";
                 Debug.WriteLine("TOKEN ĐẢ ĐƯỢC THAY ĐỔI");
-                return;
+                Response.Redirect(Request.RawUrl);
+               return;
             }
-            Page.ClientScript.RegisterStartupScript(GetType(), "alert", "confirm('Cập nhật Token thành công !')", true);
-            return;
+            Page.ClientScript.RegisterStartupScript(GetType(), "alert", "confirm('Cập nhật thất bại')", true);
+            result.InnerText = "Cập nhật thất bại";
+         //  Response.Redirect(Request.RawUrl);
+           return;
         }
     }
 }
