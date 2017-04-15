@@ -7,9 +7,9 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for DataQuestion
+/// Summary description for DataAnswer
 /// </summary>
-public class DataQuestion : DataClass
+public class DataAnswer :DataClass
 {
     #region method getData
     public DataRow getData(int id)
@@ -17,7 +17,7 @@ public class DataQuestion : DataClass
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "SELECT * FROM tblQuestion WHERE ID = @ID";
+            Cmd.CommandText = "SELECT * FROM tblAnswer WHERE ID = @ID";
             Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
 
             DataRow ret = this.findFirst(Cmd);
@@ -35,13 +35,18 @@ public class DataQuestion : DataClass
     #endregion
 
     #region method getList
-    public DataTable getList()
+    public DataTable getList(int QuestionID = 0)
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "SELECT P.ID,P.Question,PL.NAME AS STATUS FROM tblQuestion AS P";
-            Cmd.CommandText += " LEFT JOIN tblStatus AS PL ON P.NSTATUS = PL.ID";
+            Cmd.CommandText = "SELECT P.ID,P.[Content] FROM tblAnswer AS P";
+            if (QuestionID != 0)
+            {
+                Cmd.CommandText += " WHERE QuestionID = @QuestionID";
+                Cmd.Parameters.Add("QuestionID", SqlDbType.Int).Value = QuestionID;
+            }
+
             Cmd.CommandText += " ORDER BY P.IORDER ASC";
 
             DataTable ret = this.findAll(Cmd);
@@ -58,38 +63,14 @@ public class DataQuestion : DataClass
     }
     #endregion
 
-    #region Method getDataToCombobox
-    public DataTable getDataToCombobox(String kcstr = "Không chọn")
-    {
-        try
-        {
-            SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "SELECT ID,Question FROM tblQuestion WHERE NSTATUS != 2";
-
-            DataTable ret = this.findAll(Cmd);
-
-            this.SQLClose();
-
-            if (kcstr != null && kcstr != "") { ret.Rows.Add(0, kcstr); }
-
-            return ret;
-        }
-        catch (Exception ex)
-        {
-            this.Message = ex.Message;
-            this.ErrorCode = ex.HResult;
-            return null;
-        }
-    }
-    #endregion
-
     #region method DataMove
-    public bool DataMove(int Id, int vtid)
+    public bool DataMove(int Id, int vtid, int QuestionID)
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "SELECT ID FROM tblQuestion WHERE ID != @ID ORDER BY IORDER ASC";
+            Cmd.CommandText = "SELECT ID FROM tblAnswer WHERE ID != @ID && QuestionID = @QuestionID ORDER BY IORDER ASC";
+            Cmd.Parameters.Add("QuestionID", SqlDbType.Int).Value = QuestionID;
             Cmd.Parameters.Add("ID", SqlDbType.Int).Value = Id;
             DataTable ret = this.findAll(Cmd);
 
@@ -113,7 +94,7 @@ public class DataQuestion : DataClass
             foreach (int a in arr)
             {
                 Cmd = this.getSQLConnect();
-                Cmd.CommandText = "UPDATE tblQuestion SET IORDER = @IORDER WHERE ID = @ID";
+                Cmd.CommandText = "UPDATE tblAnswer SET IORDER = @IORDER WHERE ID = @ID";
                 Cmd.Parameters.Add("ID", SqlDbType.Int).Value = a;
                 Cmd.Parameters.Add("IORDER", SqlDbType.Int).Value = i++;
                 Cmd.ExecuteNonQuery();
