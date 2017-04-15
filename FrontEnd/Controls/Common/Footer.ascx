@@ -35,7 +35,7 @@
     </div>
 </div>
 <div class="container-fluid" style="background: #e5e5e5;">
-    <div class="main" style="font-size: 14px; color: #222; font-family: Helvetica; padding: 0px 0 15px; line-height: 50px;">
+    <div class="main" style="font-size: 14px;color: #222;font-family: Helvetica;padding: 0px 0 15px;margin-top: 15px;">
         © Copyright 2017 MobiFone. Bản beta đang xin giấy phép.
     </div>
 </div>

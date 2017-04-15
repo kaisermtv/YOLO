@@ -124,7 +124,7 @@
                                 <img src="../../images/Front-End/banner-1.png" alt="" />
                             </div>
                             <div class="lst-news-detail">
-                                <a class="title" href="#">Nếu nhà nước không thu phí, bảo kê sẽ thu tiền sử dụng vỉa hè</a>
+                                <a class="tieu-de" href="#">Nếu nhà nước không thu phí, bảo kê sẽ thu tiền sử dụng vỉa hè</a>
                                 <i>27/03/2017</i>
                                 <p>Tiến sĩ Lương Hoài Nam, chuyên gia giao thông khẳng định nếu nhà nước không cho thuê vỉa hè để thu phí thì sẽ có lực lượng ‘bảo kê’ ngầm đến thu tiền của...</p>
                                 <a href="#" class="view-more"></a>
@@ -135,7 +135,7 @@
                                 <img src="../../images/Front-End/banner-1.png" alt="" />
                             </div>
                             <div class="lst-news-detail">
-                                <a class="title" href="#">Nếu nhà nước không thu phí, bảo kê sẽ thu tiền sử dụng vỉa hè</a>
+                                <a class="tieu-de" href="#">Nếu nhà nước không thu phí, bảo kê sẽ thu tiền sử dụng vỉa hè</a>
                                 <i>27/03/2017</i>
                                 <p>Tiến sĩ Lương Hoài Nam, chuyên gia giao thông khẳng định nếu nhà nước không cho thuê vỉa hè để thu phí thì sẽ có lực lượng ‘bảo kê’ ngầm đến thu tiền của...</p>
                                 <a href="#" class="view-more"></a>
@@ -146,7 +146,7 @@
                                 <img src="../../images/Front-End/banner-1.png" alt="" />
                             </div>
                             <div class="lst-news-detail">
-                                <a class="title" href="#">Nếu nhà nước không thu phí, bảo kê sẽ thu tiền sử dụng vỉa hè</a>
+                                <a class="tieu-de" href="#">Nếu nhà nước không thu phí, bảo kê sẽ thu tiền sử dụng vỉa hè</a>
                                 <i>27/03/2017</i>
                                 <p>Tiến sĩ Lương Hoài Nam, chuyên gia giao thông khẳng định nếu nhà nước không cho thuê vỉa hè để thu phí thì sẽ có lực lượng ‘bảo kê’ ngầm đến thu tiền của...</p>
                                 <a href="#" class="view-more"></a>
@@ -157,7 +157,7 @@
                                 <img src="../../images/Front-End/banner-1.png" alt="" />
                             </div>
                             <div class="lst-news-detail">
-                                <a class="title" href="#">Nếu nhà nước không thu phí, bảo kê sẽ thu tiền sử dụng vỉa hè</a>
+                                <a class="tieu-de" href="#">Nếu nhà nước không thu phí, bảo kê sẽ thu tiền sử dụng vỉa hè</a>
                                 <i>27/03/2017</i>
                                 <p>Tiến sĩ Lương Hoài Nam, chuyên gia giao thông khẳng định nếu nhà nước không cho thuê vỉa hè để thu phí thì sẽ có lực lượng ‘bảo kê’ ngầm đến thu tiền của...</p>
                                 <a href="#" class="view-more"></a>
@@ -172,21 +172,21 @@
                                     <div class="img-w">
                                         <img src="../../images/Front-End/banner-1.png" alt="" />
                                     </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
+                                    <a href="#" class="tieu-de">Bí kíp giải quyết những lời nhờ...</a>
                                     <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
                                 </li>
                                 <li>
                                     <div class="img-w">
                                         <img src="../../images/Front-End/banner-1.png" alt="" />
                                     </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
+                                    <a href="#" class="tieu-de">Bí kíp giải quyết những lời nhờ...</a>
                                     <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
                                 </li>
                                 <li>
                                     <div class="img-w">
                                         <img src="../../images/Front-End/banner-1.png" alt="" />
                                     </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
+                                    <a href="#" class="tieu-de">Bí kíp giải quyết những lời nhờ...</a>
                                     <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
                                 </li>
                             </ul>
@@ -198,21 +198,21 @@
                                     <div class="img-w">
                                         <img src="../../images/Front-End/banner-1.png" alt="" />
                                     </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
+                                    <a href="#" class="tieu-de">Bí kíp giải quyết những lời nhờ...</a>
                                     <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
                                 </li>
                                 <li>
                                     <div class="img-w">
                                         <img src="../../images/Front-End/banner-1.png" alt="" />
                                     </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
+                                    <a href="#" class="tieu-de">Bí kíp giải quyết những lời nhờ...</a>
                                     <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
                                 </li>
                                 <li>
                                     <div class="img-w">
                                         <img src="../../images/Front-End/banner-1.png" alt="" />
                                     </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
+                                    <a href="#" class="tieu-de">Bí kíp giải quyết những lời nhờ...</a>
                                     <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
                                 </li>
                             </ul>
@@ -224,21 +224,21 @@
                                     <div class="img-w">
                                         <img src="../../images/Front-End/banner-1.png" alt="" />
                                     </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
+                                    <a href="#" class="tieu-de">Bí kíp giải quyết những lời nhờ...</a>
                                     <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
                                 </li>
                                 <li>
                                     <div class="img-w">
                                         <img src="../../images/Front-End/banner-1.png" alt="" />
                                     </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
+                                    <a href="#" class="tieu-de">Bí kíp giải quyết những lời nhờ...</a>
                                     <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
                                 </li>
                                 <li>
                                     <div class="img-w">
                                         <img src="../../images/Front-End/banner-1.png" alt="" />
                                     </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
+                                    <a href="#" class="tieu-de">Bí kíp giải quyết những lời nhờ...</a>
                                     <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
                                 </li>
                             </ul>
@@ -250,21 +250,21 @@
                                     <div class="img-w">
                                         <img src="../../images/Front-End/banner-1.png" alt="" />
                                     </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
+                                    <a href="#" class="tieu-de">Bí kíp giải quyết những lời nhờ...</a>
                                     <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
                                 </li>
                                 <li>
                                     <div class="img-w">
                                         <img src="../../images/Front-End/banner-1.png" alt="" />
                                     </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
+                                    <a href="#" class="tieu-de">Bí kíp giải quyết những lời nhờ...</a>
                                     <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
                                 </li>
                                 <li>
                                     <div class="img-w">
                                         <img src="../../images/Front-End/banner-1.png" alt="" />
                                     </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
+                                    <a href="#" class="tieu-de">Bí kíp giải quyết những lời nhờ...</a>
                                     <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
                                 </li>
                             </ul>
