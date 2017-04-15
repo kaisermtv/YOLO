@@ -142,11 +142,12 @@ p { text-align: justify; line-height: 20px; }
     #list-tin-tuc li { float: left; border-bottom: 1px dotted #ccc; padding: 10px 0; }
         #list-tin-tuc li .thumb { float: left; width: 25%; height: auto; margin: 0 10px 9px 0; }
             #list-tin-tuc li .thumb img { width: 100%; height: auto; float: left; }
+        #list-tin-tuc li .tieu-de { width: calc(75% - 10px); }
 .sapo { font-size: 15px; color: #0F0F0F; margin: 5px 0; font-family: CondLight; }
 
 .pager { text-align: right; padding: 15px 0; font-size: 14px; }
 
-.cleft { padding-top: 20px; }
+
 
 
 @media (min-width:320px) { /* smartphones, iPhone, portrait 480x320 phones */
@@ -217,6 +218,7 @@ p { text-align: justify; line-height: 20px; }
 }
 /*sm*/
 @media screen and (min-width: 769px) {
+    .cleft { padding-top: 20px; }
 }
 
 @media screen and (max-width:870px) {
