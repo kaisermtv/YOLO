@@ -101,7 +101,6 @@ public class Sitemap
                          {
                              writer.WriteStartElement("url");
                              writer.WriteElementString("loc", string.Format("{0}Detailts.aspx?id={1}", url, rdr[0]));
-
                              if (rdr[1] != DBNull.Value)
                                  writer.WriteElementString("lastmod", string.Format("{0:yyyy-MM-dd}", rdr[1]));
                              writer.WriteElementString("changefreq", "monthly");
@@ -122,9 +121,8 @@ public class Sitemap
      }
 
 
-        public bool IsReusable {
-            get {
-                return false;
-            }
+        public string UrlRewrite() {
+            return " ";
         }
+
     }

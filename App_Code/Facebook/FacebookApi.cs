@@ -24,7 +24,6 @@ public class FacebookApi : DataClass
     private static String fields = "full_picture,picture,link,message,likes{name,id},comments,created_time";
     private static String limit = "15";
     private static String access_token = @"EAAbazmfYd8gBAEeLHQuUZC61YRka9XEOU4eUOtuSmFaZAVF1i6vDuUQk752xfZANGpZCJjOtqm0ZBR91ZCH6zR64QvNsfYxcyRJaQTIXrF1C6Fnfxe4gfLmxMTmzmtsSLJyfZBPPcHx6o9wSxgyeOTdWF2EramU6S4ZD";
-    private static String access_token2 = new DataSetting().getValue(key_db);
     private static string site_id = "ngheansunshine";
     private string url = @"https://graph.facebook.com/"+site_id+"/posts?fields=" + fields + "&limit=" + limit + "&access_token=" +access_token + "";
     private static string key_db = "Facebook_Token";
@@ -38,7 +37,7 @@ public class FacebookApi : DataClass
 
 	public FacebookApi()
 	{
-
+      
 	}
     public void refress()
     {
@@ -102,14 +101,10 @@ public class FacebookApi : DataClass
         {
             Debug.WriteLine("[ERROR]" + e.GetBaseException() );
         }
-      //  string value = "";
         foreach (var item in lpost.data)
         {
-         //   value += @"( " + item.id.Split('_')[1].ToString() + ", N' " + item.message + " ' , " + item.full_picture + " , " + item.picture + " , " + item.link + " , " + item.created_time + "," + item.comments.Count.ToString() + "," + item.likes.Count.ToString() + "),";
             insertValueWithCheckExist(item.id.Split('_')[1].ToString(), item.message, item.full_picture, item.picture, item.link, item.created_time, item.comments.Count.ToString(), item.likes.Count.ToString());   
         }
-        // value = value.Substring(0,value.Length - 1);        // xóa bớt ký tự cuối cùng
-        //if (insertMultiValue(value) != 1) return -1;
        return 1;
     }
     #endregion
@@ -117,7 +112,7 @@ public class FacebookApi : DataClass
     #region refresh                        || Save getJson -> Parse Object -> update for SqlServer || run in first time
     public int refresh()
     {
-        string json = getJsonString(5); // lấy 5 bài mới nhất thôi
+        string json = getJsonString(15); // lấy 15 bài mới nhất thôi
         FbPosts lpost =  new FbPosts("","","","","","",new List<comments>() ,new List<likes>());
         lpost.data = new List<FbPosts>();
         try
@@ -168,22 +163,9 @@ public class FacebookApi : DataClass
         {
             Debug.WriteLine("[ERROR ] - ADD OBJECT " + e.GetBaseException());
             // sự cố , lấy mới token bằng đệ trình token củ còn hợp lệ
-            try
-            {
-                string url_try = @"https://graph.facebook.com/" + site_id + "/posts?fields=" + fields + "&limit=" + limit + "&access_token=" + getNewAccessToken() + "";
-                json = getJsonString(10, url_try);      // lấy 10 bài mới nhất
-                lpost = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<FbPosts>(json);
-            }
-            catch
-            {
-                Debug.WriteLine("[ERROR ] - CANNOT parse URL , TOKEN Maybe not valin");
-                return -1;
-            }
         }
         foreach (var item in lpost.data)
         {
-         //   FbPosts p = new FbPosts(item.id, item.message, item.full_picture, item.picture, item.link, item.created_time);
-
             insertValueWithCheckExist(item.id.Split('_')[1].ToString(), item.message, item.full_picture, item.picture, item.link, item.created_time, item.comments.Count.ToString(), item.likes.Count.ToString());   
         }
         return 1;
@@ -298,8 +280,10 @@ public class FacebookApi : DataClass
     #endregion
 
     #region getJsonString                       
-    public string getJsonString( int limits = 200 , string urls= "")
+    public string getJsonString( int limits = 50 , string urls= "")
     {
+        access_token = new DataSetting().getValue(key_db).Trim();
+        if (access_token == "") return null ;
         if(urls == "") url = @"https://graph.facebook.com/"+site_id+"/posts?fields=" + fields + "&limit=" + limits + "&access_token=" + access_token + "";
         else { url = urls; }
         try

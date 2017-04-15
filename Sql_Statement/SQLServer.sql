@@ -160,6 +160,8 @@ CREATE TABLE tblAnswer(
 
 	[Content]	NTEXT NULL,
 
+	IORDER		INT NULL,
+
 	CREATETIME	DATETIME DEFAULT(GETDATE()) -- Ngày khởi tạo
 );
 
