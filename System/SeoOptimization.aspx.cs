@@ -29,7 +29,8 @@ public partial class System_SeoOptimization : System.Web.UI.Page
     }
     protected void btnChecking_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("https://www.google.com/webmasters/sitemaps/ping?sitemap="+path);
+        return;
     }
     protected void btnXmlWatch_Click(object sender, EventArgs e)
     {
