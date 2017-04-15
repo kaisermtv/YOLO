@@ -10,7 +10,9 @@ public partial class FrontEnd_Pages_Home : System.Web.UI.Page
 {
     #region declare
     private DataNews objNews = new DataNews();
+    private DataNewsGroup objNewsGroup = new DataNewsGroup();
 
+    public String cat1, cat2, cat3, cat4;
     #endregion
 
     protected void Page_Load(object sender, EventArgs e)
@@ -22,20 +24,25 @@ public partial class FrontEnd_Pages_Home : System.Web.UI.Page
             dtlNews.DataSource = objData.DefaultView;
             dtlNews.DataBind();
 
-            DataTable objData1 = objNews.getDataTop(3);
-            dtlData1.DataSource = objData.DefaultView;
+
+            cat1 = objNewsGroup.getNameById(3);
+            DataTable objData1 = objNews.getDataTop(3,3);
+            dtlData1.DataSource = objData1.DefaultView;
             dtlData1.DataBind();
 
-            DataTable objData2 = objNews.getDataTop(3);
-            dtlData2.DataSource = objData.DefaultView;
+            cat2 = objNewsGroup.getNameById(4);
+            DataTable objData2 = objNews.getDataTop(3,4);
+            dtlData2.DataSource = objData2.DefaultView;
             dtlData2.DataBind();
 
-            DataTable objData3 = objNews.getDataTop(3);
-            dtlData3.DataSource = objData.DefaultView;
+            cat3 = objNewsGroup.getNameById(5);
+            DataTable objData3 = objNews.getDataTop(3,5);
+            dtlData3.DataSource = objData3.DefaultView;
             dtlData3.DataBind();
 
-            DataTable objData4 = objNews.getDataTop(3);
-            dtlData4.DataSource = objData.DefaultView;
+            cat4 = objNewsGroup.getNameById(2);
+            DataTable objData4 = objNews.getDataTop(3,2);
+            dtlData4.DataSource = objData4.DefaultView;
             dtlData4.DataBind();
         }
     }

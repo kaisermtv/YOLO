@@ -33,6 +33,29 @@ public class DataNewsGroup :DataClass
     }
     #endregion
 
+    #region method getNameById
+    public String getNameById(int ID)
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "SELECT NAME FROM tblNewsGroup WHERE ID = @ID";
+            Cmd.Parameters.Add("ID", SqlDbType.Int).Value = ID;
+
+            String ret = (String)Cmd.ExecuteScalar();
+
+            this.SQLClose();
+            return ret;
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+            return null;
+        }
+    }
+    #endregion
+
     #region method getList
     public DataTable getList()
     {
