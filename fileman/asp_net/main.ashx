@@ -198,7 +198,7 @@ public class RoxyFilemanHandler : IHttpHandler, System.Web.SessionState.IRequire
 						ret.Add(tmp[0], tmp[1]);
 					}
 				}
-				catch(Exception ex){}
+				catch{}
 			}
 		}
 		return ret;

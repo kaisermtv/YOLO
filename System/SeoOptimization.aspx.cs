@@ -12,28 +12,30 @@ using System.Xml.Linq;
 public partial class System_SeoOptimization : System.Web.UI.Page
 {
     public string ss = "";
-   private string path = "~/sitemap2.xml";
+    private string path = "http://yolo.com/sitemap.xml";
     protected void Page_Load(object sender, EventArgs e)
     {
-      Sitemap site = new Sitemap();
-      site.ProcessRequest(this.Context);
-      writeSiteMapFile(site.sitemap);
+    
+
+
     }
-    public int writeSiteMapFile(String s)
+   
+    protected void btnXmlDownload_Click(object sender, EventArgs e)
     {
-        try { 
-        using(StreamWriter  writer  = new StreamWriter(Server.MapPath(path),true))
-        {
-            writer.WriteLine(s);
-        }
-            return 1;
-            }
-        catch(IOException e)
-        {
-            System.Diagnostics.Debug.WriteLine("[ ERROR ] CANNOT WRITE STRING TO FILE :   " + e.GetBaseException());
-            return 0;   
-        }
+        Sitemap site = new Sitemap();
+        site.ProcessFileRequest(this.Context);
+        Page.ClientScript.RegisterStartupScript(GetType(),"confirm","confirm('sitemap.xml biên dịch thành công tại địa chỉ : "+path+" .')",true);
+        return;
     }
+    protected void btnChecking_Click(object sender, EventArgs e)
+    {
 
-
+    }
+    protected void btnXmlWatch_Click(object sender, EventArgs e)
+    {
+        Sitemap site = new Sitemap();
+        site.ProcessTextRequest(this.Context);
+        Page.ClientScript.RegisterStartupScript(GetType(), "confirm", "confirm('sitemap.xml biên dịch thành công tại địa chỉ : " + path + " .')", true);
+        return;
+    }
 }
