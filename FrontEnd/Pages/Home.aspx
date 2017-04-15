@@ -116,157 +116,94 @@
         <div class="main">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" id="news">
-                    <h3>Tin tức</h3>
-                    <div class="line"></div>
-                    <ul class="lst-news">
-                        <li>
-                            <div class="img-w">
-                                <img src="../../images/Front-End/banner-1.png" alt="" />
-                            </div>
-                            <div class="lst-news-detail">
-                                <a class="title" href="#">Nếu nhà nước không thu phí, bảo kê sẽ thu tiền sử dụng vỉa hè</a>
-                                <i>27/03/2017</i>
-                                <p>Tiến sĩ Lương Hoài Nam, chuyên gia giao thông khẳng định nếu nhà nước không cho thuê vỉa hè để thu phí thì sẽ có lực lượng ‘bảo kê’ ngầm đến thu tiền của...</p>
-                                <a href="#" class="view-more"></a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img-w">
-                                <img src="../../images/Front-End/banner-1.png" alt="" />
-                            </div>
-                            <div class="lst-news-detail">
-                                <a class="title" href="#">Nếu nhà nước không thu phí, bảo kê sẽ thu tiền sử dụng vỉa hè</a>
-                                <i>27/03/2017</i>
-                                <p>Tiến sĩ Lương Hoài Nam, chuyên gia giao thông khẳng định nếu nhà nước không cho thuê vỉa hè để thu phí thì sẽ có lực lượng ‘bảo kê’ ngầm đến thu tiền của...</p>
-                                <a href="#" class="view-more"></a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img-w">
-                                <img src="../../images/Front-End/banner-1.png" alt="" />
-                            </div>
-                            <div class="lst-news-detail">
-                                <a class="title" href="#">Nếu nhà nước không thu phí, bảo kê sẽ thu tiền sử dụng vỉa hè</a>
-                                <i>27/03/2017</i>
-                                <p>Tiến sĩ Lương Hoài Nam, chuyên gia giao thông khẳng định nếu nhà nước không cho thuê vỉa hè để thu phí thì sẽ có lực lượng ‘bảo kê’ ngầm đến thu tiền của...</p>
-                                <a href="#" class="view-more"></a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img-w">
-                                <img src="../../images/Front-End/banner-1.png" alt="" />
-                            </div>
-                            <div class="lst-news-detail">
-                                <a class="title" href="#">Nếu nhà nước không thu phí, bảo kê sẽ thu tiền sử dụng vỉa hè</a>
-                                <i>27/03/2017</i>
-                                <p>Tiến sĩ Lương Hoài Nam, chuyên gia giao thông khẳng định nếu nhà nước không cho thuê vỉa hè để thu phí thì sẽ có lực lượng ‘bảo kê’ ngầm đến thu tiền của...</p>
-                                <a href="#" class="view-more"></a>
-                            </div>
-                        </li>
-                    </ul>
+                    <asp:Repeater ID="dtlNews" runat="server" EnableViewState="False">
+                        <HeaderTemplate>
+                            <h3>Tin tức</h3>
+                            <div class="line"></div>
+
+                            <ul class="lst-news">
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li>
+                                <div class="img-w">
+                                    <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
+                                </div>
+                                <div class="lst-news-detail">
+                                    <a class="title" href="#"><%# Eval("Title") %></a>
+                                    <i><%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyyy") %></i>
+                                    <p><%# Eval("ShortContent") %></p>
+                                    <a href="#" class="view-more"></a>
+                                </div>
+                            </li>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
+
                     <div class="row" id="news-r">
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                             <h3>Sống nơi công sở</h3>
                             <ul class="news-r-detail">
-                                <li>
-                                    <div class="img-w">
-                                        <img src="../../images/Front-End/banner-1.png" alt="" />
-                                    </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
-                                    <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
-                                </li>
-                                <li>
-                                    <div class="img-w">
-                                        <img src="../../images/Front-End/banner-1.png" alt="" />
-                                    </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
-                                    <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
-                                </li>
-                                <li>
-                                    <div class="img-w">
-                                        <img src="../../images/Front-End/banner-1.png" alt="" />
-                                    </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
-                                    <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
-                                </li>
+                                <asp:Repeater ID="dtlData1" runat="server" EnableViewState="False">
+                                    <ItemTemplate>
+                                        <li>
+                                            <div class="img-w">
+                                                <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
+                                            </div>
+                                            <label><%# Eval("Title") %></label>
+                                            <p><%# Eval("ShortContent") %></p>
+                                        </li>
+                                    </ItemTemplate>
+                                </asp:Repeater>
                             </ul>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                             <h3>LET’S WORK</h3>
                             <ul class="news-r-detail">
-                                <li>
-                                    <div class="img-w">
-                                        <img src="../../images/Front-End/banner-1.png" alt="" />
-                                    </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
-                                    <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
-                                </li>
-                                <li>
-                                    <div class="img-w">
-                                        <img src="../../images/Front-End/banner-1.png" alt="" />
-                                    </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
-                                    <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
-                                </li>
-                                <li>
-                                    <div class="img-w">
-                                        <img src="../../images/Front-End/banner-1.png" alt="" />
-                                    </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
-                                    <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
-                                </li>
+                                <asp:Repeater ID="dtlData2" runat="server" EnableViewState="False">
+                                    <ItemTemplate>
+                                        <li>
+                                            <div class="img-w">
+                                                <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
+                                            </div>
+                                            <label><%# Eval("Title") %></label>
+                                            <p><%# Eval("ShortContent") %></p>
+                                        </li>
+                                    </ItemTemplate>
+                                </asp:Repeater>
                             </ul>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                             <h3>Cafe lắng</h3>
                             <ul class="news-r-detail">
-                                <li>
-                                    <div class="img-w">
-                                        <img src="../../images/Front-End/banner-1.png" alt="" />
-                                    </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
-                                    <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
-                                </li>
-                                <li>
-                                    <div class="img-w">
-                                        <img src="../../images/Front-End/banner-1.png" alt="" />
-                                    </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
-                                    <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
-                                </li>
-                                <li>
-                                    <div class="img-w">
-                                        <img src="../../images/Front-End/banner-1.png" alt="" />
-                                    </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
-                                    <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
-                                </li>
+                                <asp:Repeater ID="dtlData3" runat="server" EnableViewState="False">
+                                    <ItemTemplate>
+                                        <li>
+                                            <div class="img-w">
+                                                <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
+                                            </div>
+                                            <label><%# Eval("Title") %></label>
+                                            <p><%# Eval("ShortContent") %></p>
+                                        </li>
+                                    </ItemTemplate>
+                                </asp:Repeater>
                             </ul>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                             <h3>Du lịch</h3>
                             <ul class="news-r-detail">
-                                <li>
-                                    <div class="img-w">
-                                        <img src="../../images/Front-End/banner-1.png" alt="" />
-                                    </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
-                                    <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
-                                </li>
-                                <li>
-                                    <div class="img-w">
-                                        <img src="../../images/Front-End/banner-1.png" alt="" />
-                                    </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
-                                    <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
-                                </li>
-                                <li>
-                                    <div class="img-w">
-                                        <img src="../../images/Front-End/banner-1.png" alt="" />
-                                    </div>
-                                    <label>Bí kíp giải quyết những lời nhờ...</label>
-                                    <p>Khi đi làm bạn khó mà tránh được những lời nhờ vả của đồng nghiệp xung quanh. Lời nhờ vả như thế nào và bao giờ thì bạn nên chấp nhận? Hãy cùng lắng...</p>
-                                </li>
+                                <asp:Repeater ID="dtlData4" runat="server" EnableViewState="False">
+                                    <ItemTemplate>
+                                        <li>
+                                            <div class="img-w">
+                                                <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
+                                            </div>
+                                            <label><%# Eval("Title") %></label>
+                                            <p><%# Eval("ShortContent") %></p>
+                                        </li>
+                                    </ItemTemplate>
+                                </asp:Repeater>
                             </ul>
                         </div>
                     </div>

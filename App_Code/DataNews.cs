@@ -106,13 +106,13 @@ public class DataNews : DataClass
     }
     #endregion
 
-    #region Method addData
+    #region Method UpdateData
     public int UpdateData(int id,String title, int catid, String shortcontent, String content, String img, String author)
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "UPDATE tblNewsGroup SET Title = @TITLE, CatId = @GROUP,ShortContent = @SHORTCONTENT ,Content = @CONTENT,[UserEdit] = @USEREDIT, [DayEdit] = GETDATE() OUTPUT INSERTED.Id WHERE Id = @ID";
+            Cmd.CommandText = "UPDATE tblNews SET Title = @TITLE, CatId = @GROUP,ShortContent = @SHORTCONTENT ,Content = @CONTENT, ImgUrl = @IMG,Author = @AUTHOR, [UserEdit] = @USEREDIT, [DayEdit] = GETDATE() OUTPUT INSERTED.Id WHERE Id = @ID";
 
             Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
             Cmd.Parameters.Add("TITLE", SqlDbType.NVarChar).Value = title;
@@ -157,6 +157,52 @@ public class DataNews : DataClass
             this.Message = ex.Message;
             this.ErrorCode = ex.HResult;
         }
+    }
+    #endregion
+
+    #region Method getDataTop()
+    public DataTable getDataTop(int limit = 0,int group = 0)
+    {
+        try
+        {
+            
+            String top = "";
+            if(limit != 0)
+            {
+                top = " TOP " + limit + " ";
+            }
+
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "SELECT " + top + " P.Id,P.Title,P.[ShortContent],P.ImgUrl,G.NAME AS GroupName,P.DayPost FROM tblNews AS P";
+            Cmd.CommandText += " LEFT JOIN tblNewsGroup AS G ON P.CatId = G.ID";
+            Cmd.CommandText += " WHERE P.NSTATUS != 2";
+
+            if (group != 0)
+            {
+                Cmd.CommandText += " AND P.CatId = @GROUP";
+                Cmd.Parameters.Add("GROUP", SqlDbType.Int).Value = group;
+            }
+
+            //if (seach != null && seach != "")
+            //{
+            //    Cmd.CommandText += " AND UPPER(RTRIM(LTRIM(P.Title))) LIKE  N'%'+UPPER(RTRIM(LTRIM(@Seach)))+'%'";
+            //    Cmd.Parameters.Add("Seach", SqlDbType.NVarChar).Value = seach;
+            //}
+
+            Cmd.CommandText += " ORDER BY P.DayPost DESC";
+
+            DataTable ret = this.findAll(Cmd);
+
+            this.SQLClose();
+            return ret;
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+            return null;
+        }
+
     }
     #endregion
 }
