@@ -31,7 +31,7 @@ public partial class System_QuestionMove : System.Web.UI.Page
 
         if (!Page.IsPostBack && this.itemId != 0)
         {
-            objQuestion.MenuMove(itemId, vtId);
+            objQuestion.DataMove(itemId, vtId);
         }
 
         Response.Redirect("QuestionList.aspx");
