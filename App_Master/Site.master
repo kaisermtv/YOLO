@@ -7,12 +7,6 @@
 <%@ Register Src="~/FrontEnd/Controls/Common/Banner.ascx" TagPrefix="uc1" TagName="Banner" %>
 <%@ Register Src="~/FrontEnd/Controls/Common/Footer.ascx" TagPrefix="uc1" TagName="Footer" %>
 
-
-
-
-
-
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
