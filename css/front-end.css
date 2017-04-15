@@ -59,7 +59,7 @@ p { text-align: justify; line-height: 20px; }
     #slide-w .slide { }
 
 .swiper-pagination-bullet { width: 12px; height: 12px; opacity: 0.8; background: #fff; }
-.swiper-pagination-bullet.swiper-pagination-bullet-active { opacity: 1; background: #007aff; }
+    .swiper-pagination-bullet.swiper-pagination-bullet-active { opacity: 1; background: #007aff; }
 
 .swiper-container { padding-bottom: 40px; width: 100%; height: 306px; margin: 20px auto; }
 .swiper-slide { font-size: 18px; background: #fff; width: 240px; padding: 15px; box-shadow: 4px 3px 6px 0px #313030; }
@@ -85,8 +85,8 @@ p { text-align: justify; line-height: 20px; }
     #news > .line { display: inline-block; width: calc(100% - 170px); border-bottom: 2px solid #c2c2c2; }
     #news > .lst-news { margin: 30px 0; font-family: Helvetica; }
         #news > .lst-news li { text-align: justify; display: inline-block; width: 100%; padding: 25px 0px; border-bottom: 1px solid #e3e3e3; position: relative; }
-            #news > .lst-news li .img-w { float: left; width: 150px; height: 115px; }
-            #news > .lst-news li .lst-news-detail { float: left; width: calc(100% - 170px); margin-left: 20px; }
+            #news > .lst-news li .img-w { float: left; width: 200px; height: 140px; }
+            #news > .lst-news li .lst-news-detail { float: left; width: calc(100% - 220px); margin-left: 20px; }
             #news > .lst-news li .title { clear: both; font-size: 16px; color: #333; font-weight: 700; display: inline-block; width: 100%; line-height: 30px; }
             #news > .lst-news li i { color: #555555; font-size: 12px; font-family: CondLight; }
             #news > .lst-news li p { line-height: 20px; color: #555555; font-size: 17px; margin-top: 10px; font-family: CondLight; }
@@ -289,6 +289,9 @@ p { text-align: justify; line-height: 20px; }
         .news-r-detail li .img-w img { position: relative; height: auto; }
     #news > .lst-news li .view-more { margin-right: 0; }
     .main-header { /*background: #0B60B0;*/ }
+
+    .news-r-detail li .img-w { width: 200px; }
+    .news-r-detail li .tieu-de { width: calc(100% - 215px); }
 }
 
 @media screen and (min-width: 992px) {
