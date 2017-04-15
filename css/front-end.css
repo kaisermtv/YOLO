@@ -89,7 +89,7 @@ p { text-align: justify; line-height: 20px; }
             #news > .lst-news li .lst-news-detail { float: left; width: calc(100% - 170px); margin-left: 20px; }
             #news > .lst-news li .title { clear: both; font-size: 16px; color: #333; font-weight: 700; display: inline-block; width: 100%; line-height: 30px; }
             #news > .lst-news li i { color: #555555; font-size: 12px; font-family: CondLight; }
-            #news > .lst-news li p { line-height: 20px; color: #555555; font-size: 16px; margin-top: 10px; font-family: CondLight; }
+            #news > .lst-news li p { line-height: 20px; color: #555555; font-size: 17px; margin-top: 10px; font-family: CondLight; }
             #news > .lst-news li .view-more { background: url(../images/Front-End/xemtiep.png) no-repeat scroll center center/50px; width: 47px; height: 9px; display: inline-block; right: 0; bottom: 30px; float: right; }
             #news > .lst-news li:last-child { border: none; }
 
@@ -112,7 +112,7 @@ p { text-align: justify; line-height: 20px; }
     .news-r-detail li { padding: 20px 0; display: inline-block; width: 100%; line-height: 20px; border-bottom: 1px solid #e1e1e1; }
         .news-r-detail li .tieu-de { display: inline-block; width: calc(100% - 175px); margin-bottom: 10px; }
 
-        .news-r-detail li p { text-align: justify; font-size: 16px; color: #555; font-family: CondLight; }
+        .news-r-detail li p { text-align: justify; font-size: 17px; color: #555; font-family: CondLight; }
         .news-r-detail li .img-w { width: 160px; height: 99px; float: left; margin-right: 15px; margin-bottom: 10px; }
             .news-r-detail li .img-w img { width: 100%; height: 100%; }
 

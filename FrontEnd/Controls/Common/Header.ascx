@@ -3,7 +3,9 @@
 
 <div class="main-header">
     <div class="logo img-w">
-        <img src="/images/Front-End/logo.png" />
+        <a href="/">
+            <img src="/images/Front-End/logo.png" />
+        </a>
     </div>
     <div class="search-w hidden-xs hidden-sm">
         <input id="txt-search" placeholder="Nhập từ khóa tìm kiếm.." />
