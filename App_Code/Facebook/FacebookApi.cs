@@ -35,13 +35,13 @@ public class FacebookApi : DataClass
     {
         string json = getJsonString(2, limits);              // kiểu số 2          
         if (json == null || json.Trim() == "") return 0;
-        FbPhotoAlbum lPpost = new FbPhotoAlbum("", "", "", "", new List<comments>(), new List<likes>());
+        FbPhotoAlbum lPpost = new FbPhotoAlbum("", "", "", "","", new List<comments>(), new List<likes>());
         try
         {
             lPpost.data = parseJsonToPhotoPosts(json);                // lấy bài viết thông thường
             foreach (var item in lPpost.data)
             {
-                insertPhotoPostValueWithCheckExist(item.id, item.name, item.picture, item.link, item.comments.Count.ToString(), item.likes.Count.ToString());
+                insertPhotoPostValueWithCheckExist(item.id, item.name, item.picture, item.link,item.create_time, item.comments.Count.ToString(), item.likes.Count.ToString());
             }
         }
         catch (Exception e)
