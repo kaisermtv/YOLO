@@ -8,8 +8,10 @@
     <div class="row">
         <div class="col-md-3  ">
             <div class="list-group">
-                 <p class="list-group-item-text">
-                       Yolo Dám Chia Sẻ  </p>
+                <div class="alert alert-info">
+                      <p class="list-group-item-text">
+                     Yolo Dám Chia Sẻ  </p>
+                </div>
 
                 <a href="#" class="list-group-item">        <!---thêm các thuộc tính mouser over cho đẹp-->
                     <h3 class="pull-right">
