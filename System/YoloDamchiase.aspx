@@ -104,7 +104,7 @@
                 </div>
          <!--đóng menu bên -->
         <!-- Nội dung  các bài viết bên phải -->
-         <div class="col-xs-12 col-sm-9 ]">
+         <div class="col-xs-12 col-sm-9">
              <%         int i = 1;  // đếm vị trí
                         foreach (System.Data.DataRow row in objTblFbPhotoPost.Rows)
                         {  %>

@@ -220,6 +220,9 @@ p { text-align: justify; line-height: 20px; }
     #copyright .main { font-size: 14px; color: #222; font-family: Helvetica; padding: 0px 0 15px; margin-top: 15px; }
 
 
+.content-detail { font-family: CondLight; font-size: 18px; }
+.news-wraper {  padding-bottom: 50px; }
+
 @media (min-width:320px) { /* smartphones, iPhone, portrait 480x320 phones */
 
 }

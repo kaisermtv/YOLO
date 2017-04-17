@@ -6,14 +6,14 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MasterPageContent" runat="server">
     <div class="YoloWraper container-fluid">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="main">
-                        <uc1:Banner runat="server" ID="Banner" />
-                    </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="main">
+                    <uc1:Banner runat="server" ID="Banner" />
                 </div>
             </div>
         </div>
+    </div>
     <div id="slide-w">
         <div class="container-fluid">
             <div class="row">
@@ -23,83 +23,22 @@
                         <div class="line"></div>
                         <div class="swiper-container">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="img-w person">
-                                        <img src="../../../../images/Front-End/person.png" />
-                                    </div>
-                                    <div class="person-detail">
-                                        <h3>An Khánh</h3>
-                                        <p>Ngày sinh: 28/03/1991</p>
-                                        <p>Đến từ: Nghệ An</p>
-                                    </div>
-                                    <a href="#" class="person-nav"></a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="img-w person">
-                                        <img src="../../../../images/Front-End/person.png" />
-                                    </div>
-                                    <div class="person-detail">
-                                        <h3>An Khánh</h3>
-                                        <p>Ngày sinh: 28/03/1991</p>
-                                        <p>Đến từ: Nghệ An</p>
-                                    </div>
-                                    <a href="#" class="person-nav"></a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="img-w person">
-                                        <img src="../../../../images/Front-End/person.png" />
-                                    </div>
-                                    <div class="person-detail">
-                                        <h3>An Khánh</h3>
-                                        <p>Ngày sinh: 28/03/1991</p>
-                                        <p>Đến từ: Nghệ An</p>
-                                    </div>
-                                    <a href="#" class="person-nav"></a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="img-w person">
-                                        <img src="../../../../images/Front-End/person.png" />
-                                    </div>
-                                    <div class="person-detail">
-                                        <h3>An Khánh</h3>
-                                        <p>Ngày sinh: 28/03/1991</p>
-                                        <p>Đến từ: Nghệ An</p>
-                                    </div>
-                                    <a href="#" class="person-nav"></a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="img-w person">
-                                        <img src="../../../../images/Front-End/person.png" />
-                                    </div>
-                                    <div class="person-detail">
-                                        <h3>An Khánh</h3>
-                                        <p>Ngày sinh: 28/03/1991</p>
-                                        <p>Đến từ: Nghệ An</p>
-                                    </div>
-                                    <a href="#" class="person-nav"></a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="img-w person">
-                                        <img src="../../../../images/Front-End/person.png" />
-                                    </div>
-                                    <div class="person-detail">
-                                        <h3>An Khánh</h3>
-                                        <p>Ngày sinh: 28/03/1991</p>
-                                        <p>Đến từ: Nghệ An</p>
-                                    </div>
-                                    <a href="#" class="person-nav"></a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="img-w person">
-                                        <img src="../../../../images/Front-End/person.png" />
-                                    </div>
-                                    <div class="person-detail">
-                                        <h3>An Khánh</h3>
-                                        <p>Ngày sinh: 28/03/1991</p>
-                                        <p>Đến từ: Nghệ An</p>
-                                    </div>
-                                    <a href="#" class="person-nav"></a>
-                                </div>
+                                <asp:Repeater ID="YoLoSlide" runat="server">
+                                    <ItemTemplate>
+                                        <div class="swiper-slide">
+                                            <div class="img-w person">
+                                                <img src="<%#Eval("picture")%>" />
+                                            </div>
+                                            <div class="person-detail">
+                                                <h3>An Khánh</h3>
+                                                <p>Ngày sinh: 28/03/1991</p>
+                                                <p>Đến từ: Nghệ An</p>
+                                            </div>
+                                            <a href="#" class="person-nav"></a>
+                                        </div>
+
+                                    </ItemTemplate>
+                                </asp:Repeater>
                             </div>
                             <!-- Add Pagination -->
                             <div class="swiper-pagination"></div>
@@ -132,7 +71,7 @@
                                     <a class="tieu-de" href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>"><%# Eval("Title") %></a>
                                     <i><%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyyy") %></i>
                                     <p><%# Eval("ShortContent") %></p>
-                                    
+
                                 </div>
                             </li>
                         </ItemTemplate>
@@ -221,5 +160,5 @@
             </div>
         </div>
     </div>
-    
+
 </asp:Content>
