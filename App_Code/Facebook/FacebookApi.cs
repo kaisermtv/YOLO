@@ -50,10 +50,11 @@ public class FacebookApi : DataClass
             Debug.WriteLine("=[EURROR] CANNOT REFRESH THE POST of Article FROM FB:  " + e.GetBaseException());
             return 0;
         }
+       
         return 1;
     }
 
-    #region saveAllToDb                        || Save getJson -> Parse Object -> saveto SqlServer || run in first time
+    #region saveAllPostToDb                        || Save getJson -> Parse Object -> saveto SqlServer || run in first time
     public int saveAllPostToDb(int type=1,int limits=30)
     {
         string json = getJsonString(type,limits);
