@@ -15,13 +15,14 @@ public class FacebookApi : DataClass
 {
 
     private static String fields = "full_picture,picture,link,message,likes{name,id},comments,created_time";
-    private static string fields_album = "photos{link,likes{id,name},name,picture,comments{message,from},id,create_time}";          // chú ý không dùng created_time trong comments
+    private static string fields_album = "photos{link,likes{id,name},name,picture,comments{message,from,created_time,id},id,create_time}";          // chú ý không dùng created_time trong comments
    // private static String access_token = @"EAAbazmfYd8gBAEeLHQuUZC61YRka9XEOU4eUOtuSmFaZAVF1i6vDuUQk752xfZANGpZCJjOtqm0ZBR91ZCH6zR64QvNsfYxcyRJaQTIXrF1C6Fnfxe4gfLmxMTmzmtsSLJyfZBPPcHx6o9wSxgyeOTdWF2EramU6S4ZD";
     private static string site_id = "ngheansunshine";
     private static string album_id = "790172047808833";
     //  private string url = @"https://graph.facebook.com/"+site_id+"/posts?fields=" + fields + "&limit=" + limit + "&access_token=" +access_token + "";
     //   private string url_album = @"https://graph.facebook.com/" + album_id + "?fields=" + fields_album + "&limit=" + 30 + "&access_token=" + access_token + "";
     private static string key_db = "Facebook_Token";
+    private static string album_key_id = "yolodamchiase";
     //  private string url2 = @"https://graph.facebook.com/790172047808833?fields=photos{link,likes{id,username},name,picture,comments{message,from},page_story_id}&limit=5&access_token=https://graph.facebook.com/ngheansunshine/posts?fields=full_picture,picture,link,message,created_time&limit=5&access_token=EAAbazmfYd8gBAEeLHQuUZC61YRka9XEOU4eUOtuSmFaZAVF1i6vDuUQk752xfZANGpZCJjOtqm0ZBR91ZCH6zR64QvNsfYxcyRJaQTIXrF1C6Fnfxe4gfLmxMTmzmtsSLJyfZBPPcHx6o9wSxgyeOTdWF2EramU6S4ZD";
     /*
         Thực hiện lấy dử liệu và đưa vào database
@@ -61,7 +62,7 @@ public class FacebookApi : DataClass
         {
             case 1: {
                 FbPosts lpost = new FbPosts("", "", "", "", "", "", new List<comments>(), new List<likes>());
-                lpost.data = new List<FbPosts>();
+                lpost.data = parseJsonToPosts(json);
 
                 foreach (var item in lpost.data)
                 {
@@ -72,7 +73,7 @@ public class FacebookApi : DataClass
             case 2:
                 {
                     FbPhotoAlbum lphoto_post = new FbPhotoAlbum("", "", "", "","", new List<comments>(), new List<likes>());
-                    lphoto_post.data = new List<FbPhotoAlbum>();
+                    lphoto_post.data = parseJsonToPhotoPosts(json);
 
                     foreach (var item in lphoto_post.data)
                     {
@@ -105,10 +106,10 @@ public class FacebookApi : DataClass
             JArray data = struff.photos.data;                //  gốc cây nhị phân có tên là photos 
             foreach (JObject element in data)
             {
-                if (element["data"] != null)
-                {
-                    Debug.WriteLine(element["data"].ToString());
-                    // check photo is exist comment or like infomation
+            //    if (element["data"] != null)
+            //    {
+                 //   Debug.WriteLine(element["data"].ToString());
+                    //// check photo is exist comment or like infomation
                     List<comments> lc = new List<comments>();
                     List<likes> ll = new List<likes>();
                     if (element["comments"] != null)
@@ -145,7 +146,7 @@ public class FacebookApi : DataClass
                      
                        ));
                 }
-            }
+           // }
             if (lphoto_post.data.Count < 1) return new List<FbPhotoAlbum>();
         }
         catch (Exception e)
@@ -359,7 +360,7 @@ public class FacebookApi : DataClass
                             END
                         ELSE 
                     BEGIN 
-                UPDATE  tblFacebookPhotoPost SET name = @message,picture=@picture,comments=@comments,likes = @likes
+                UPDATE  tblFacebookPhotoPost SET name = @name,picture=@picture,comments=@comments,likes = @likes
                         WHERE tblFacebookPhotoPost.id = @id
                     END
                            ";
@@ -385,16 +386,24 @@ public class FacebookApi : DataClass
     #region getJsonString                       
     public string getJsonString( int type ,int limits = 50 )
     {
+       
         string url = "";
            string  access_token = new DataSetting().getValue(key_db).Trim();
         //có thể lấy album_id hoặc site_id tại csdl
         if (access_token == "") return null ;
         switch(type)
         {
-            case 1 :    url = @"https://graph.facebook.com/"+site_id+"/posts?fields=" + fields + "&limit=" + limits + "&access_token=" + access_token + "";  // mặc định là lấy bài viết // normarl
-                        break;
-            case 2: url = @"https://graph.facebook.com/" + album_id + "?fields=" + fields_album + "&limit=" + limits + "&access_token=" + access_token + ""; // mặc định là lấy ảnh của album có id =  // speci
-                        break;
+            case 1:
+                {
+                    url = @"https://graph.facebook.com/" + site_id + "/posts?fields=" + fields + "&limit=" + limits + "&access_token=" + access_token + "";  // mặc định là lấy bài viết // normarl
+                    break;
+                }
+            case 2:
+                        {
+                            album_id = new DataSetting().getValue(album_key_id);
+                            url = @"https://graph.facebook.com/" + album_id + "?fields=" + fields_album + "&limit=" + limits + "&access_token=" + access_token + ""; // mặc định là lấy ảnh của album có id =  // speci
+                            break;
+                        }
         }       
         try
         {
