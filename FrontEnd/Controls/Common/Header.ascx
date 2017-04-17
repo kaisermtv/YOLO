@@ -19,10 +19,10 @@
             <img src="/images/Front-End/user.png" />
         </div>
         <ul class="login-ul">
-            <li>
+            <li class="login-m">
                 <a href="#">Đăng nhập</a>
             </li>
-            <li>
+            <li class="register-m">
                 <a href="#">Đăng ký</a>
             </li>
         </ul>

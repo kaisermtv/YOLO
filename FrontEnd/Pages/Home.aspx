@@ -132,7 +132,7 @@
                                     <a class="tieu-de" href="#"><%# Eval("Title") %></a>
                                     <i><%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyyy") %></i>
                                     <p><%# Eval("ShortContent") %></p>
-                                    <a href="#" class="view-more"></a>
+                                    
                                 </div>
                             </li>
                         </ItemTemplate>
