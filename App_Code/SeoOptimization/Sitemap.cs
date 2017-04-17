@@ -13,7 +13,7 @@ using System.Xml;
 /// </summary>
 public class Sitemap 
 {
-    public string sitemap = "";
+     public string sitemap = "";
 	 public string ProcessFileRequest(HttpContext context) {
         // không tạo ra context
             using (XmlTextWriter writer = new XmlTextWriter(context.Server.MapPath("~/sitemap.xml"), Encoding.UTF8)) {  // khai báo tên tài liệu
@@ -57,16 +57,11 @@ public class Sitemap
 
                             writer.Flush();
                         }
-                 
                     }
-                   
                 }
-               
                return writer.ToString();
             }
-
         }
-
      public string ProcessTextRequest(HttpContext context)
      {
          //  Hiện nội dung ở context
@@ -114,15 +109,11 @@ public class Sitemap
                      }
                      context.Response.End();                // viết tài liệu
                  }
-
              }
              return writer.ToString();
          }
      }
-
-
-        public string UrlRewrite() {
+     public string UrlRewrite() {
             return " ";
         }
-
     }

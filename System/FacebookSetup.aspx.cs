@@ -21,16 +21,14 @@ public partial class System_FacebookSetup : System.Web.UI.Page
         {
             objTblFbPost = objfb_post.getData();
             count_post = objTblFbPost.Rows.Count;
-            count_like = objfb_post.countLikes();
-            count_comment = objfb_post.countComments();
+          
             //count like , count comment , count xxx
             last_token = api.getNewAccessToken();
         }
-
     }
     protected void btnRefresh_Click(object sender, EventArgs e)
     {
-        api.refresh();
+        api.refreshPost(30);        // limits 30
         Response.Redirect(Request.RawUrl);
     }
     protected void btnUpdate_Click(object sender, EventArgs e)

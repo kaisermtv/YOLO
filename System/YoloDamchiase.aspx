@@ -1,31 +1,33 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/App_Master/System.master" AutoEventWireup="true" CodeFile="FacebookSetup.aspx.cs" Inherits="System_FacebookSetup" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/App_Master/System.master" AutoEventWireup="true" CodeFile="YoloDamchiase.aspx.cs" Inherits="System_YoloDamchiase" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
     <link href="../css/System/fbPage.css" rel="stylesheet" />
-   
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-    <div class="container">
+     <div class="container">
     <div class="row">
         <div class="col-md-3  ">
             <div class="list-group">
+                 <p class="list-group-item-text">
+                       Yolo Dám Chia Sẻ  </p>
+
                 <a href="#" class="list-group-item">        <!---thêm các thuộc tính mouser over cho đẹp-->
                     <h3 class="pull-right">
             <img src="../images/article.png" height="40" />
                     </h3>
                     <h4 class="list-group-item-heading count">
-                           <%=count_post %> </h4>
+                           <%=count_photo_post %> </h4>
                     <p class="list-group-item-text">
-                       Bài viết trên trang</p>
+                       Bài viết trong cuộc thi</p>
                 </a><a href="#modal" class="list-group-item  facebook-like">
                     <h3 class="pull-right">
                         <img src="../images/Facebook.png" height="40" />
                     </h3>
                     <h4 class="list-group-item-heading count">
-                        <%=count_like %>    
+                         <%=count_photo_like %>    
                         </h4>
                     <p class="list-group-item-text">
-                       Likes </p>
+                     Tổng lượt Likes  </p>
                  </a>
                
                  <a href="#" class="list-group-item " data-toggle="modal" data-target=".smallModalRefresh">
@@ -86,22 +88,7 @@
                                 <div class="alert info"> MỘT SỐ LƯU Ý   </div>
                                     <div class="center-block" > 
                                   <div style="margin:1%">
-                                         <p>   " Facebook là một hệ thống bảo mật , mạnh mẽ  hàng đầu  nên các yêu cầu khai thác,truy cập dử liệu của họ thường rất chặt chẽ .
-                                            </p>
-                                            <p>  Vì thế chúng ta phải tuân theo các chính sách đó của họ. "</p>
-                                           <p > Token là một chuổi mật mã quy định quyền truy cập dử liệu của 1 trang fanpage hoặc 1 tài khoản người dùng từ các ứng dụng bên ngoài không phải Facebook.</p>
-                                           <p> Token thường có giá trị sử dụng trong vài ngày , nó thay đổi thường xuyên và là một chuổi mã hóa rất dài tự động tạo ra.</p>
-                                           <p > Vì thế quản lý Token rất khó khăn, và thường bị thay đổi theo thời gian thực hoặc khi có các tác động như tài khoản đổi mật khẫu , fanpage đổi id định danh , ...vv</p>
-                                           <p > Vì thế nếu có vấn đề khi không thể cập nhật các bài viết mới hay đồng bộ tài khoản hãy thử làm theo các hướng dẫn tại  <a href="docs/fb.pdf" style="color:red">ĐÂY </a> và nhập Token vào ô dưới đây :</p>
-                                            <div class="input-group">
-                                      <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">Facebook Token</button>
-                                      </span>
-                                      <input type="text" runat="server" id="txtNewToken" class="form-control" placeholder="'<%=last_token %>'"/>
-                                    </div><!-- /input-group -->
-                                           <asp:Button ID="btnUpdateToken" CssClass="btn btn-success" runat="server" OnClick="btnUpdateToken_Click" Text="Cập nhật " Height="35" />  
-                                 <span class="input-group-btn" id="result" runat="server"></span>
-                                          </div>
+                                                                                </div>
                                     <div style="width:100%;height:100px;clear:both">
                                         <p style="float:right;margin:1%"> Nhóm phát triễn
                                             </p>
@@ -117,7 +104,8 @@
         <!-- Nội dung  các bài viết bên phải -->
          <div class="col-xs-12 col-sm-9 ]">
              <%         int i = 1;  // đếm vị trí
-                 foreach(System.Data.DataRow row in objTblFbPost.Rows) {  %>
+                        foreach (System.Data.DataRow row in objTblFbPhotoPost.Rows)
+                        {  %>
             <div class="[ panel panel-default ] panel-facebook-plus">
                 <div class="dropdown">
                     <span class="dropdown-toggle" type="button" data-toggle="dropdown">
@@ -148,17 +136,17 @@
                     <h3> [<%=i%> ]</h3>
                     <%i++; %>
                     <h5 ><span style="margin-left:-6% !important">Ngày đăng </span> - 
-                        <span><%=row["create_time"].ToString().Substring(0,10) %></span> </h5>
+                        <span>????</span> </h5>
                 </div>
                 <div id="collapse<%=row["id"].ToString().Trim()%>"  class="panel-body in">
                     <br />
                     <p>
-                      <%=row["message"] %>                
+                      <%=row["name"] %>                
                     </p>
                     <br />
                     <a class="panel-facebook-plus-image" href="#">
                        
-                       <img src="<%=row["full_picture"] %>" />
+                       <img src="<%=row["picture"] %>" />
                             
                     </a>
                 </div>
@@ -175,6 +163,7 @@
     </div>
     </div>
    
-      
+
+
 </asp:Content>
 
