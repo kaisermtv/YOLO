@@ -7,12 +7,15 @@
         <div id="bar-menu">
             <ul class="menu fll">
                 <li class="active"><a href="/">YOLO</a></li>
-                <li><a href="#">Nhạc</a></li>
-                <li><a href="#">Sống</a></li>
-                <li><a href="#">Yêu</a></li>
-                <li><a href="#">Học</a></li>
-                <li><a href="#">Trải nghiệm</a></li>
-                <li><a href="#">Vui</a></li>
+                <li class=""><a href="/FrontEnd/Pages/News.aspx">Tin tức</a></li>
+                <asp:Repeater ID="dtlData" runat="server" EnableViewState="False">
+                   
+                    <ItemTemplate>
+                        <li><a href="<%# Eval("LINK") %>"><%# Eval("NAME") %></a></li>
+                    </ItemTemplate>
+                    
+                </asp:Repeater>
+                
             </ul>
         </div>
     </div>

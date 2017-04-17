@@ -15,8 +15,10 @@
         slidesPerView = 4;
     } else if (wH <= 768 && wH >= 641) {
         slidesPerView = 3;
-    } else if (wH <= 641) {
+    } else if (wH <= 641 && wH >= 425) {
         slidesPerView = 2;
+    } else if (wH <= 425) {
+        slidesPerView = 1;
     }
     var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
@@ -32,7 +34,7 @@
     var swiper2 = new Swiper('.tab-slide-m', {
         //pagination: '.swiper-pagination',
         paginationClickable: true,
-        spaceBetween: 30,
+        spaceBetween: 0,
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
         loop: true,
