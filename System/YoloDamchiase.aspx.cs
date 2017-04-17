@@ -12,14 +12,14 @@ public partial class System_YoloDamchiase : System.Web.UI.Page
     public DataTable objTblFbPhotoPost = new DataTable();
     FacebookApi api = new FacebookApi();
     FbPhotoAlbum objfb_post = new FbPhotoAlbum();
-    public int count_photo_like = 0, count_photo_comment = 0, count_photopost = 0;
+    public int count_photo_like = 0, count_photo_comment = 0, count_photo_post = 0;
  
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
             objTblFbPhotoPost = objfb_post.getData();
-            count_photopost = objTblFbPhotoPost.Rows.Count;
+            count_photo_post = objTblFbPhotoPost.Rows.Count;
             count_photo_comment = objfb_post.countComments();
             count_photo_like = objfb_post.countLikes();
         }

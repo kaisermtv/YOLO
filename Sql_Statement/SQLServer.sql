@@ -191,3 +191,18 @@ CREATE  TABLE tblFacebookPost (
 
 --END
 
+/*Tạo riêng bảng đặc biệt dành cho cuộc thi Yolo Damchiase */
+
+CREATE  TABLE tblFacebookPhotoPost (
+			PostPhotoId int identity(1,1)  not null primary key,
+			id char(100) ,
+			name nvarchar(max) ,
+			picture char(450) ,
+			link char(500),
+			comments nvarchar(30),
+			likes nvarchar(10),
+			create_time nvarchar(30),
+			 time_sync datetime default getdate()  ,
+			 state int default 1,
+			 ) ; 
+
