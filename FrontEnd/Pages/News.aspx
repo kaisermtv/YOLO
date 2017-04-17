@@ -61,12 +61,12 @@
                                         <ItemTemplate>
                                             <li>
                                                 <div class="thumb">
-                                                    <a href="/tin-tuc/do-xe-kieu-paradel-parking-4826.htm" title="<%# Eval("Title") %>">
+                                                    <a href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>" title="<%# Eval("Title") %>">
                                                         <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" title="<%# Eval("Title") %>">
                                                     </a>
                                                 </div>
                                                 <div class="info-detail">
-                                                    <a href="/tin-tuc/do-xe-kieu-paradel-parking-4826.htm" title="<%# Eval("Title") %>" class="tieu-de"><%# Eval("Title") %></a>
+                                                    <a href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>" title="<%# Eval("Title") %>" class="tieu-de"><%# Eval("Title") %></a>
                                                     <p class="sapo">
                                                         <%# Eval("ShortContent") %>
                                                     </p>

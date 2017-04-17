@@ -129,10 +129,10 @@
                                     <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                 </div>
                                 <div class="lst-news-detail">
-                                    <a class="tieu-de" href="#"><%# Eval("Title") %></a>
+                                    <a class="tieu-de" href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>"><%# Eval("Title") %></a>
                                     <i><%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyyy") %></i>
                                     <p><%# Eval("ShortContent") %></p>
-                                    <a href="#" class="view-more"></a>
+                                    <a href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>" class="view-more"></a>
                                 </div>
                             </li>
                         </ItemTemplate>
@@ -151,7 +151,7 @@
                                             <div class="img-w">
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
-                                            <a href="#" class="tieu-de"><%# Eval("Title") %></a>
+                                            <a href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%# Eval("ShortContent") %></p>
                                         </li>
                                     </ItemTemplate>
@@ -167,7 +167,7 @@
                                             <div class="img-w">
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
-                                            <a href="#" class="tieu-de"><%# Eval("Title") %></a>
+                                            <a href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%# Eval("ShortContent") %></p>
                                         </li>
                                     </ItemTemplate>
@@ -183,7 +183,7 @@
                                             <div class="img-w">
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
-                                            <a href="#" class="tieu-de"><%# Eval("Title") %></a>
+                                            <a href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%# Eval("ShortContent") %></p>
                                         </li>
                                     </ItemTemplate>
@@ -199,7 +199,7 @@
                                             <div class="img-w">
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
-                                            <a href="#" class="tieu-de"><%# Eval("Title") %></a>
+                                            <a href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%# Eval("ShortContent") %></p>
                                         </li>
                                     </ItemTemplate>
