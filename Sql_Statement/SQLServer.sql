@@ -166,7 +166,7 @@ CREATE TABLE tblAnswer(
 );
 
 CREATE  TABLE tblFacebookPost (
-			PostId int identity(1,1)  not null primary key,
+			PostPhotoId int identity(1,1)  not null primary key,
 			id char(100) ,
 			message nvarchar(max) ,
 			full_picture char(450) ,
