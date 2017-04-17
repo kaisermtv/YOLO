@@ -5,7 +5,7 @@ function initGoogle() {
 }
 var LoginController = {
     LoginType: {
-        Dekiru: 'dekiru',
+        YoLo: 'yolo',
         Facebook: 'facebook',
         Google: 'google',
         Twitter: 'twitter'
@@ -36,7 +36,7 @@ var LoginController = {
             $.fancybox.hideLoading();
             var js = $.parseJSON(rs);
             if (js.Success) {
-                alert("Chúc mừng bạn đã đăng ký thành viên của Dekiru thành công!");
+                alert("Chúc mừng bạn đã đăng ký thành viên của YoLo thành công!");
                 if (typeof (callback) == "function") callback();
                 else window.location.href = "/your-goal.htm";// "/profile.htm";
 
@@ -124,7 +124,7 @@ var LoginController = {
 
             }, { scope: 'public_profile,email' });
         },
-        registerToDekiru: function (response) {
+        registerToYoLo: function (response) {
             var data = {
                 fullname: response.name,
                 email: response.email,
@@ -142,7 +142,7 @@ var LoginController = {
             setCookie("facebook_token", token, 1);// use to validate in server side
             LoginController.Register(data); //Register
         },
-        loginToDekiru: function (response) {
+        loginToYoLo: function (response) {
             console.log(response);
             var data = {
                 fullname: response.name,
@@ -235,22 +235,22 @@ var LoginController = {
 var Register = {
     Init: function () {
         $("#btnFacebook").click(function () {
-            LoginController.Facebook.doLogin(LoginController.Facebook.registerToDekiru);
+            LoginController.Facebook.doLogin(LoginController.Facebook.registerToYoLo);
         });
         $("#btnGoogle").click(function () {
-            //Dekiru.LoginController.Facebook.doLogin(Dekiru.LoginController.Facebook.registerToDekiru);
+            //YoLo.LoginController.Facebook.doLogin(YoLo.LoginController.Facebook.registerToYoLo);
             LoginController.Google.loginGoogle();
             alert('Chức năng đang xây dựng');
         });
         $("#btnTwitter").click(function () {
-            //Dekiru.LoginController.Facebook.doLogin(Dekiru.LoginController.Facebook.registerToDekiru);
+            //YoLo.LoginController.Facebook.doLogin(YoLo.LoginController.Facebook.registerToYoLo);
             //alert('Chức năng đang xây dựng');
         });
         $("#btnLinkedIn").click(function () {
-            //Dekiru.LoginController.Facebook.doLogin(Dekiru.LoginController.Facebook.registerToDekiru);
+            //YoLo.LoginController.Facebook.doLogin(YoLo.LoginController.Facebook.registerToYoLo);
             alert('Chức năng đang xây dựng');
         });
-        $("#btnDekiru").click(function () {
+        $("#btnYoLo").click(function () {
             if (ReCaptcha.validateReCaptcha() == false) return;
             //alert('Chức năng đang xây dựng');
 
@@ -260,7 +260,7 @@ var Register = {
                 mobile: $("#mobile").val(),
                 avatar: "",
                 password: $("#password").val(),
-                logintype: "dekiru"
+                logintype: "yolo"
             };
 
             if ($("#password").val() != $("#repassword").val() || !validateEmail(data.email) || !isNumber(data.mobile) || data.password.length == 0) {
@@ -274,7 +274,7 @@ var Register = {
     },
     InitLogin: function (callback) {
         $("#btnFacebook").click(function () {
-            LoginController.Facebook.doLogin(LoginController.Facebook.loginToDekiru);
+            LoginController.Facebook.doLogin(LoginController.Facebook.loginToYoLo);
         });
         $("#btnGoogle").click(function () {
             LoginController.Google.loginGoogle();
@@ -282,18 +282,18 @@ var Register = {
             //auth2.grantOfflineAccess({ 'redirect_uri': 'postmessage' }).then(signInCallback);
         });
         $("#btnTwitter").click(function () {
-            //Dekiru.LoginController.Facebook.doLogin(Dekiru.LoginController.Facebook.registerToDekiru);
+            //YoLo.LoginController.Facebook.doLogin(YoLo.LoginController.Facebook.registerToYoLo);
             alert('Chức năng đang xây dựng');
         });
         $("#btnLinkedIn").click(function () {
-            //Dekiru.LoginController.Facebook.doLogin(Dekiru.LoginController.Facebook.registerToDekiru);
+            //YoLo.LoginController.Facebook.doLogin(YoLo.LoginController.Facebook.registerToYoLo);
             alert('Chức năng đang xây dựng');
         });
         $("#btnLogin").click(function () {
             var data = {
                 email: $("#email").val(),
                 password: $("#password").val(),
-                logintype: "dekiru"
+                logintype: "yolo"
             };
             LoginController.Login(data, callback);
             //alert('Chức năng đang xây dựng');

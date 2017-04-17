@@ -225,3 +225,19 @@ function getParameterByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+
+
+var ReCaptcha = {
+    validateReCaptcha: function () {
+        var response = grecaptcha.getResponse();
+        console.log(response);
+        if (response.length == 0) return false;
+        var me = this;
+        me.correctCaptcha(response);
+        //https://www.google.com/recaptcha/api/siteverify?secret=your_secret&response=response_string
+        return true;
+    },
+    correctCaptcha: function (response) {
+        console.log(response);
+    }
+};

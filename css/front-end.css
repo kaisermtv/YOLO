@@ -10,6 +10,7 @@ p { text-align: justify; line-height: 20px; }
 
 .btn { cursor: pointer; color: #fff; display: inline-block; padding: 0 15px; height: 40px; box-sizing: border-box; line-height: 40px; text-align: center; font-size: 15px; font-family: Helvetica; border-radius: 5px; border: none; }
     .btn img { width: 15px; margin-bottom: -2px; margin-right: 10px; }
+    .btn:hover { color: #fff; }
 .btn-small { height: 30px; line-height: 28px; }
 .btn-default { background: #f9f9f9; border: 1px solid #acacac; color: #787878; }
     .btn-default:hover { background: #efefef; color: #9c9c9c; }
@@ -200,7 +201,7 @@ p { text-align: justify; line-height: 20px; }
 .ico-phone { background-position: -37px -133px; }
 .ico-email { background-position: -15px -133px; }
 .ico-password { background-position: -51px -133px; }
-.submit-dkdnh { color: #fff; font-size: 14px; line-height: 40px; padding-left: 20px; padding-right: 37px; display: inline-block; background-color: #e35151; position: relative; margin-bottom: 30px; }
+.submit-dkdnh { color: #fff; font-size: 14px; line-height: 40px; padding-left: 20px; padding-right: 37px; display: inline-block; position: relative; margin-bottom: 30px; }
     .submit-dkdnh.newpass { margin-right: 50px; }
     .submit-dkdnh:before { content: ''; width: 17px; height: 14px; background: url(../images/Front-End/Sprite-v1.png) no-repeat 0px -153px; bottom: 14px; right: 11px; position: absolute; display: block; }
 .ques-dkdn { font-size: 12px; margin-bottom: 22px; text-align: center; }

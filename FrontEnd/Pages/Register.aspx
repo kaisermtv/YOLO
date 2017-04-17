@@ -36,7 +36,7 @@
                 <uc1:ReCaptcha runat="server" ID="ReCaptcha1" />
             </li>
         </ul>
-        <a href="javascript:;" class="submit-dkdnh btn btn-dangerous" id="btnDekiru">Đăng ký</a>
+        <a href="javascript:;" class="submit-dkdnh btn btn-dangerous" id="btnYoLo">Đăng ký</a>
         <p class="ques-dkdn">
             <span>Bạn đã có tài khoản ?</span>
             <a href="/login.htm">Đăng nhập</a>
