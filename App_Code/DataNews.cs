@@ -202,8 +202,19 @@ public class DataNews : DataClass
     {
         try
         {
+            String top = "";
+            if(limit != 0)
+            {
+                top = " TOP " + limit + " ";
+            }
+
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "SELECT P.Id,P.Title,P.[ShortContent],P.ImgUrl,G.NAME AS GroupName,P.DayPost FROM tblNews AS P";
+            if (offset != 0)
+            {
+                Cmd.CommandText = "SELECT * FROM (";
+            }
+            
+            Cmd.CommandText += "SELECT P.Id,P.Title,P.[ShortContent],P.ImgUrl,G.NAME AS GroupName,P.DayPost,(ROW_NUMBER() OVER(ORDER BY DayPost desc)) AS RowNum FROM tblNews AS P";
             Cmd.CommandText += " LEFT JOIN tblNewsGroup AS G ON P.CatId = G.ID";
             Cmd.CommandText += " WHERE P.NSTATUS != 2";
 
@@ -219,13 +230,14 @@ public class DataNews : DataClass
             //    Cmd.Parameters.Add("Seach", SqlDbType.NVarChar).Value = seach;
             //}
 
-            Cmd.CommandText += " ORDER BY P.DayPost DESC";
+            //Cmd.CommandText += " ORDER BY P.DayPost DESC";
 
-            Cmd.CommandText += " OFFSET " + offset.ToString() + " ROWS";
-            if (limit != 0)
+            if (offset != 0)
             {
-                Cmd.CommandText += " FETCH NEXT " + limit.ToString() + " ROWS ONLY";
+                Cmd.CommandText += " ) AS MyDerivedTable WHERE RowNum >= @Offset";
+                Cmd.Parameters.Add("Offset", SqlDbType.Int).Value = offset;
             }
+            
 
             DataTable ret = this.findAll(Cmd);
 
