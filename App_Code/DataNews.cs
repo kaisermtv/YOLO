@@ -160,20 +160,50 @@ public class DataNews : DataClass
     }
     #endregion
 
-    #region Method getDataTop()
-    public DataTable getDataTop(int limit = 0,int group = 0)
+    #region Method getDataCount
+    public int getDataCount(int group = 0)
     {
         try
         {
-            
-            String top = "";
-            if(limit != 0)
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "SELECT TOP 1 COUNT(*) FROM tblNews AS P WHERE P.NSTATUS != 2";
+
+            if (group != 0)
             {
-                top = " TOP " + limit + " ";
+                Cmd.CommandText += " AND P.CatId = @GROUP";
+                Cmd.Parameters.Add("GROUP", SqlDbType.Int).Value = group;
             }
 
+            //if (seach != null && seach != "")
+            //{
+            //    Cmd.CommandText += " AND UPPER(RTRIM(LTRIM(P.Title))) LIKE  N'%'+UPPER(RTRIM(LTRIM(@Seach)))+'%'";
+            //    Cmd.Parameters.Add("Seach", SqlDbType.NVarChar).Value = seach;
+            //}
+
+            Cmd.CommandText += " ORDER BY P.DayPost DESC";
+
+
+            int ret = (int)Cmd.ExecuteScalar();
+
+            this.SQLClose();
+            return ret;
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+            return 0;
+        }
+    }
+    #endregion
+
+    #region Method getDataTop()
+    public DataTable getDataTop(int limit = 0, int group = 0, int offset = 0)
+    {
+        try
+        {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "SELECT " + top + " P.Id,P.Title,P.[ShortContent],P.ImgUrl,G.NAME AS GroupName,P.DayPost FROM tblNews AS P";
+            Cmd.CommandText = "SELECT P.Id,P.Title,P.[ShortContent],P.ImgUrl,G.NAME AS GroupName,P.DayPost FROM tblNews AS P";
             Cmd.CommandText += " LEFT JOIN tblNewsGroup AS G ON P.CatId = G.ID";
             Cmd.CommandText += " WHERE P.NSTATUS != 2";
 
@@ -190,6 +220,12 @@ public class DataNews : DataClass
             //}
 
             Cmd.CommandText += " ORDER BY P.DayPost DESC";
+
+            Cmd.CommandText += " OFFSET " + offset.ToString() + " ROWS";
+            if (limit != 0)
+            {
+                Cmd.CommandText += " FETCH NEXT " + limit.ToString() + " ROWS ONLY";
+            }
 
             DataTable ret = this.findAll(Cmd);
 

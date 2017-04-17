@@ -9,7 +9,7 @@
             Câu hỏi :
         </div>
         <div class="AdminRightItem">
-            <asp:TextBox ID="txtTitle" runat="server" class="AdminTextControl"></asp:TextBox>
+            <asp:TextBox ID="txtTitle" runat="server" CssClass="AdminTextControl"></asp:TextBox>
         </div>
     </div>
     
@@ -18,7 +18,7 @@
             Mô tả :
         </div>
         <div class="AdminRightItem" style="display:table;">
-            <asp:TextBox ID="txtContent" TextMode="MultiLine" Height="150px" runat="server" class="AdminTextControl" ></asp:TextBox>
+            <asp:TextBox ID="txtContent" TextMode="MultiLine" Height="150px" runat="server" CssClass="AdminTextControl" ></asp:TextBox>
         </div>
     </div>
 

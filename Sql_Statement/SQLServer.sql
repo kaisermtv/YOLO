@@ -166,7 +166,7 @@ CREATE TABLE tblAnswer(
 );
 
 CREATE  TABLE tblFacebookPost (
-			PostId int identity(1,1)  not null primary key,
+			PostPhotoId int identity(1,1)  not null primary key,
 			id char(100) ,
 			message nvarchar(max) ,
 			full_picture char(450) ,
@@ -178,16 +178,31 @@ CREATE  TABLE tblFacebookPost (
 			 time_sync datetime default getdate()  ,
 			 state int default 1,
 			 ) ; 
-/* SEO Optimization */
-CREATE   PROCEDURE GetSiteMapContent
-	-- Tạo mới procedure tạo các dữ liệu để seo---
-AS
-BEGIN
+--/* SEO Optimization */
+----CREATE   PROCEDURE GetSiteMapContent
+----	-- Tạo mới procedure tạo các dữ liệu để seo---
+----AS
+----BEGIN
 
-	SET NOCOUNT ON;
+----	SET NOCOUNT ON;
 
-SELECT TOP 100  create_time FROM tblFacebookPost ORDER BY id DESC
-SELECT id,tblFacebookPost.link  FROM tblFacebookPost ORDER BY create_time DESC
+--SELECT TOP 100  create_time FROM tblFacebookPost ORDER BY id DESC
+--SELECT id,tblFacebookPost.link  FROM tblFacebookPost ORDER BY create_time DESC
 
-END
+--END
+
+/*Tạo riêng bảng đặc biệt dành cho cuộc thi Yolo Damchiase */
+
+CREATE  TABLE tblFacebookPhotoPost (
+			PostPhotoId int identity(1,1)  not null primary key,
+			id char(100) ,
+			name nvarchar(max) ,
+			picture char(450) ,
+			link char(500),
+			comments nvarchar(30),
+			likes nvarchar(10),
+			create_time nvarchar(30),
+			 time_sync datetime default getdate()  ,
+			 state int default 1,
+			 ) ; 
 

@@ -129,7 +129,7 @@
                                     <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                 </div>
                                 <div class="lst-news-detail">
-                                    <a class="tieu-de" href="#"><%# Eval("Title") %></a>
+                                    <a class="tieu-de" href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>"><%# Eval("Title") %></a>
                                     <i><%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyyy") %></i>
                                     <p><%# Eval("ShortContent") %></p>
                                     
@@ -143,7 +143,7 @@
 
                     <div class="row" id="news-r">
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                            <h3>Sống nơi công sở</h3>
+                            <h3><%=cat1 %></h3>
                             <ul class="news-r-detail">
                                 <asp:Repeater ID="dtlData1" runat="server" EnableViewState="False">
                                     <ItemTemplate>
@@ -151,7 +151,7 @@
                                             <div class="img-w">
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
-                                            <a href="#" class="tieu-de"><%# Eval("Title") %></a>
+                                            <a href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%# Eval("ShortContent") %></p>
                                         </li>
                                     </ItemTemplate>
@@ -159,7 +159,7 @@
                             </ul>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                            <h3>LET’S WORK</h3>
+                            <h3><%=cat2 %></h3>
                             <ul class="news-r-detail">
                                 <asp:Repeater ID="dtlData2" runat="server" EnableViewState="False">
                                     <ItemTemplate>
@@ -167,7 +167,7 @@
                                             <div class="img-w">
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
-                                            <a href="#" class="tieu-de"><%# Eval("Title") %></a>
+                                            <a href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%# Eval("ShortContent") %></p>
                                         </li>
                                     </ItemTemplate>
@@ -175,7 +175,7 @@
                             </ul>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                            <h3>Cafe lắng</h3>
+                            <h3><%=cat3 %></h3>
                             <ul class="news-r-detail">
                                 <asp:Repeater ID="dtlData3" runat="server" EnableViewState="False">
                                     <ItemTemplate>
@@ -183,7 +183,7 @@
                                             <div class="img-w">
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
-                                            <a href="#" class="tieu-de"><%# Eval("Title") %></a>
+                                            <a href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%# Eval("ShortContent") %></p>
                                         </li>
                                     </ItemTemplate>
@@ -191,7 +191,7 @@
                             </ul>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                            <h3>Du lịch</h3>
+                            <h3><%=cat4 %></h3>
                             <ul class="news-r-detail">
                                 <asp:Repeater ID="dtlData4" runat="server" EnableViewState="False">
                                     <ItemTemplate>
@@ -199,7 +199,7 @@
                                             <div class="img-w">
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
-                                            <a href="#" class="tieu-de"><%# Eval("Title") %></a>
+                                            <a href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%# Eval("ShortContent") %></p>
                                         </li>
                                     </ItemTemplate>

@@ -10,14 +10,12 @@ public class likes
 {
     public string id { get; set; }
     public string name { get; set; }
-
     public List<likes> data { get; set; }
 	public likes( string _id = " " , string _name = " " )
 	{
         this.id = _id;
         this.name = _name;
 	}
-
     public likes()
     {
        // this.name = " ";
