@@ -15,6 +15,7 @@ public class FbPhotoAlbum :DataClass
     public string name { get; set; }              // tên fanPage
     public string picture { get; set; }             // link ảnh nhỏ
     public string link { get; set; }              // link bài viết để embed
+    public string create_time { get; set; }
     public List<likes> likes { get; set; }
     public List<comments> comments { get; set; }
     public List<FbPhotoAlbum> data { get; set; }
@@ -25,13 +26,14 @@ public class FbPhotoAlbum :DataClass
 		//
 	}
 
-    public FbPhotoAlbum(string _id, string _name, string _picture, string _link, List<comments> lc, List<likes> ll)
+    public FbPhotoAlbum(string _id, string _name, string _picture, string _link, string _create_time ,List<comments> lc, List<likes> ll)
 	{
         this.id = _id;
         this.name = _name;
         this.picture = _picture;
         this.link = _link;
         this.likes = ll;
+        this.create_time = _create_time;
         this.comments = lc;
         Debug.WriteLine("=[SUCCESS] CREATE NEW OBJECT Facebook Photo Post  .");
     }
@@ -41,7 +43,7 @@ public class FbPhotoAlbum :DataClass
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = " SELECT TOP 100 tblFacebookPhotoPost.PostPostId,tblFacebookPhotoPost.id,tblFacebookPhotoPost.name,tblFacebookPhotoPost.picture,tblFacebookPhotoPost.link,tblFacebookPhotoPost.comments,tblFacebookPhotoPost.likes FROM tblFacebookPhotoPost  order by tblFacebookPhotoPost.id DESC  ";
+            Cmd.CommandText = " SELECT TOP 100 tblFacebookPhotoPost.PostPostId,tblFacebookPhotoPost.id,tblFacebookPhotoPost.name,tblFacebookPhotoPost.picture,tblFacebookPhotoPost.link,tblFacebookPhotoPost.comments,tblFacebookPhotoPost.likes,tblFacebookPhotoPost.create_time FROM tblFacebookPhotoPost  order by tblFacebookPhotoPost.id DESC  ";
             DataTable ret = this.findAll(Cmd);
             this.SQLClose();
             Debug.WriteLine("=[SUCCESS] GET Facebook Photo Post DATA TABLE : ");

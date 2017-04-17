@@ -15,7 +15,7 @@ public class FacebookApi : DataClass
 {
 
     private static String fields = "full_picture,picture,link,message,likes{name,id},comments,created_time";
-    private static string fields_album = "photos{link,likes{id,name},name,picture,comments{message,from},id}";          // chú ý không dùng created_time trong comments
+    private static string fields_album = "photos{link,likes{id,name},name,picture,comments{message,from},id,create_time}";          // chú ý không dùng created_time trong comments
    // private static String access_token = @"EAAbazmfYd8gBAEeLHQuUZC61YRka9XEOU4eUOtuSmFaZAVF1i6vDuUQk752xfZANGpZCJjOtqm0ZBR91ZCH6zR64QvNsfYxcyRJaQTIXrF1C6Fnfxe4gfLmxMTmzmtsSLJyfZBPPcHx6o9wSxgyeOTdWF2EramU6S4ZD";
     private static string site_id = "ngheansunshine";
     private static string album_id = "790172047808833";
@@ -71,12 +71,12 @@ public class FacebookApi : DataClass
             }          //mặc định là bài viết trên timeline feed
             case 2:
                 {
-                    FbPhotoAlbum lphoto_post = new FbPhotoAlbum("", "", "", "", new List<comments>(), new List<likes>());
+                    FbPhotoAlbum lphoto_post = new FbPhotoAlbum("", "", "", "","", new List<comments>(), new List<likes>());
                     lphoto_post.data = new List<FbPhotoAlbum>();
 
                     foreach (var item in lphoto_post.data)
                     {
-                        insertPhotoPostValueWithCheckExist(item.id, item.name, item.picture, item.link, item.comments.Count.ToString(), item.likes.Count.ToString());
+                        insertPhotoPostValueWithCheckExist(item.id, item.name, item.picture, item.link, item.comments.Count.ToString(), item.likes.Count.ToString(),item.create_time);
                     }
 
                     break;
@@ -96,7 +96,7 @@ public class FacebookApi : DataClass
     #region parseJsonToPhotoPosts     // 1 bài viết chỉ có 1 ảnh / cuộc thi  
     public List<FbPhotoAlbum> parseJsonToPhotoPosts(string json)
     {
-        FbPhotoAlbum lphoto_post = new FbPhotoAlbum("", "", "", "",  new List<comments>(), new List<likes>());
+        FbPhotoAlbum lphoto_post = new FbPhotoAlbum("", "", "", "", "", new List<comments>(), new List<likes>());
         lphoto_post.data = new List<FbPhotoAlbum>();
         try
         {
@@ -133,15 +133,16 @@ public class FacebookApi : DataClass
                             Debug.WriteLine(element3["name"].ToString());
                         }
                     }
-
                     lphoto_post.data.Add(
                       new FbPhotoAlbum(
                       element["id"] == null ? " " : element["id"].ToString(),             // PHOTO ID
                       element["name"] == null ? " " : element["name"].ToString(),         // MIÊU TẢ ẢNH
                       element["picture"] == null ? " " : element["picture"].ToString(),
                       element["link"] == null ? " " : element["link"].ToString(),
+                        element["create_time"] == null ? "" : element["create_time"].ToString(),
                         lc == null ? new List<comments>() : lc,
                         ll == null ? new List<likes>() : ll
+                     
                        ));
                 }
             }
@@ -344,7 +345,7 @@ public class FacebookApi : DataClass
     #endregion
 
     #region insertPhotoPostValueWithCheckExist()           | Đưa vào cơ sở dử liệu , có kiểm tra xem ảnh tồn tại chưa sử dụng id của datatFb
-    public int insertPhotoPostValueWithCheckExist(string id, string name, string picture, string link, string lc_count, string ll_count)        // chưa cần đến comment và like nên hiện tại đếm số lượng chúng đã
+    public int insertPhotoPostValueWithCheckExist(string id, string name, string picture, string link, string lc_count, string ll_count,string create_time)        // chưa cần đến comment và like nên hiện tại đếm số lượng chúng đã
     {
         if (id == null) return 0;
         try
@@ -353,12 +354,12 @@ public class FacebookApi : DataClass
             Cmd.CommandText = @" 
                             IF NOT EXISTS (SELECT tblFacebookPhotoPost.id FROM tblFacebookPhotoPost WHERE tblFacebookPhotoPost.id = @id )
                             BEGIN
-                INSERT INTO tblFacebookPhotoPost (id,name,picture,link,comments,likes) VALUES 
-                        (  @id  , @name , @picture , @link , @comments , @likes )
+                INSERT INTO tblFacebookPhotoPost (id,name,picture,link,comments,likes,create_time) VALUES 
+                        (  @id  , @name , @picture , @link , @comments , @likes ,@create_time)
                             END
                         ELSE 
                     BEGIN 
-                UPDATE  tblFacebookPhotoPost SET name = @message,picture=@picture,comments=@comments,likes = @likes 
+                UPDATE  tblFacebookPhotoPost SET name = @message,picture=@picture,comments=@comments,likes = @likes
                         WHERE tblFacebookPhotoPost.id = @id
                     END
                            ";
@@ -368,6 +369,7 @@ public class FacebookApi : DataClass
             Cmd.Parameters.Add("link", SqlDbType.Char).Value = (link == null ? " " : link);
             Cmd.Parameters.Add("comments", SqlDbType.NVarChar).Value = (lc_count == null ? "0" : lc_count);
             Cmd.Parameters.Add("likes", SqlDbType.Char).Value = (ll_count == null ? "0" : ll_count);
+            Cmd.Parameters.Add("create_time", SqlDbType.Char).Value = (create_time == null ? " " : create_time);
             Cmd.ExecuteNonQuery();
             this.SQLClose();
             return 1;
