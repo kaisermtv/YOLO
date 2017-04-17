@@ -20,7 +20,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <label class="time">Ngày đăng: 21/04/2016 11:01:01 AM</label>
 
-                                    <h3 class="tieu-de" style="margin-top: 10px; margin-bottom: 10px">Đỗ xe kiểu Paradel Parking</h3>
+                                    <h3 class="tieu-de" style="margin-top: 10px; margin-bottom: 10px"><%= objData["Title"] %></h3>
                                     <p class="sapo" style="font-weight: bold; margin-bottom: 10px; font-size: 16px;">
                                         Đỗ xe kiểu Paradel Parking khá thách thức đối với các tay lái mới cầm vô lăng, nó đòi hỏi kỹ năng quan sát và óc tư duy đánh lái logic của người lái xe. Tuy nhiên chỉ với 7 bước cơ bản, Taxi Noi Bai gửi đến các bạn cách tiếp cận dễ nhất, đảm bảo ai cũng có thể làm được sau khi đọc hướng dẫn này !
                            
