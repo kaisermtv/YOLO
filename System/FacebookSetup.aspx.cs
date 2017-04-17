@@ -34,7 +34,7 @@ public partial class System_FacebookSetup : System.Web.UI.Page
     protected void btnUpdate_Click(object sender, EventArgs e)
     {
         objfb_post.delAllData();
-        api.saveAllToDb();
+        api.saveAllPostToDb();
         Response.Redirect(Request.RawUrl);
     }
     protected void btnUpdateToken_Click(object sender, EventArgs e)
