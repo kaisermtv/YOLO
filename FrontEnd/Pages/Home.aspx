@@ -34,7 +34,7 @@
                                                 <p>Ngày sinh: 28/03/1991</p>
                                                 <p>Đến từ: Nghệ An</p>
                                             </div>
-                                            <a href="#" class="person-nav"></a>
+                                            <a href="/FrontEnd/Pages/PhotoContest.aspx?id=0" class="person-nav"></a>
                                         </div>
 
                                     </ItemTemplate>
