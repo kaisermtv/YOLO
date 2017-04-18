@@ -26,13 +26,10 @@ public class FbPhotoAlbum : DataClass
         //
     }
 
-<<<<<<< HEAD
+
     public FbPhotoAlbum(string _id, string _name, string _picture, string _link, string _create_time ,comments lc, likes ll)
 	{
-=======
-    public FbPhotoAlbum(string _id, string _name, string _picture, string _link, string _create_time, List<comments> lc, List<likes> ll)
-    {
->>>>>>> 9f68e1a1c5f05b9a281d02532e4848f0c495805f
+
         this.id = _id;
         this.name = _name;
         this.picture = _picture;

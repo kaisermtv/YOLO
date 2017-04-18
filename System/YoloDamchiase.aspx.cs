@@ -16,11 +16,10 @@ public partial class System_YoloDamchiase : System.Web.UI.Page
  
     protected void Page_Load(object sender, EventArgs e)
     {
-        string s = api.convertName("Họ và tên: Nguyễn Thị Minh Phương\nĐến từ: Vinh - Nghệ An \n----------\n\nCâu chuyện về những con người có tuổi trẻ thích khám phá. \n\nHồi còn bé tôi đã tự đặt cho mình câu hỏi bản thân mình thực sự thích gì, lớn lên một chút tôi lại có thêm câu hỏi cho bản thân là như thế nào là hạnh");
-     s += "";
+
         if (!IsPostBack)
         {
-            objTblFbPhotoPost = objfb_post.getData();
+            objTblFbPhotoPost = objfb_post.getData(1000);
             count_photo_post = objTblFbPhotoPost.Rows.Count;
             count_photo_comment = objfb_post.countComments();
             count_photo_like = objfb_post.countLikes();

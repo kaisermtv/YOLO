@@ -471,15 +471,15 @@ public class FacebookApi : DataClass
     {
 
         string[] tmpHoten = str.ToString().Split('\n');
-        
-        Debug.WriteLine(tmpHoten);
         string result = "";
-        //foreach(string s in tmpHoten)
-        //{
-         
-        //}
+        for (int i = 0; i < tmpHoten.Length && i<3; i++)
+        {
+            result += tmpHoten[i].ToString() + "|";
+        }
+        Debug.WriteLine(result);
+       
 
-        return tmpHoten[0] == null ? " " : tmpHoten[0] + "|" + tmpHoten[1] == null ? " " : tmpHoten[1] + "|" + tmpHoten[2] == null ? " " : tmpHoten[2];
+          return result;
     }
     #endregion
 
