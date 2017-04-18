@@ -15,7 +15,7 @@ public class FacebookApi : DataClass
 {
 
     private static String fields = "full_picture,picture,link,message,likes{name,id},comments,created_time";
-    private static string fields_album = "photos{link,likes{id,name},name,picture,comments{message,from,created_time,id},id,create_time}";          // chú ý không dùng created_time trong comments
+    private static string fields_album = "photos{images,name,link,likes.limit(0).summary(true), comments.limit(0).summary(true),created_time}";          // chú ý không dùng created_time trong comments
    // private static String access_token = @"EAAbazmfYd8gBAEeLHQuUZC61YRka9XEOU4eUOtuSmFaZAVF1i6vDuUQk752xfZANGpZCJjOtqm0ZBR91ZCH6zR64QvNsfYxcyRJaQTIXrF1C6Fnfxe4gfLmxMTmzmtsSLJyfZBPPcHx6o9wSxgyeOTdWF2EramU6S4ZD";
     private static string site_id = "ngheansunshine";
     private static string album_id = "790172047808833";
@@ -36,13 +36,13 @@ public class FacebookApi : DataClass
     {
         string json = getJsonString(2, limits);              // kiểu số 2          
         if (json == null || json.Trim() == "") return 0;
-        FbPhotoAlbum lPpost = new FbPhotoAlbum("", "", "", "","", new List<comments>(), new List<likes>());
+        FbPhotoAlbum lPpost = new FbPhotoAlbum("", "", "", "","", new comments(), new likes());
         try
         {
             lPpost.data = parseJsonToPhotoPosts(json);                // lấy bài viết thông thường
             foreach (var item in lPpost.data)
             {
-                insertPhotoPostValueWithCheckExist(item.id, item.name, item.picture, item.link,item.create_time, item.comments.Count.ToString(), item.likes.Count.ToString());
+                insertPhotoPostValueWithCheckExist(item.id, item.name, item.picture, item.link,item.create_time, item.comments.summary, item.likes.summary);
             }
         }
         catch (Exception e)
@@ -73,12 +73,12 @@ public class FacebookApi : DataClass
             }          //mặc định là bài viết trên timeline feed
             case 2:
                 {
-                    FbPhotoAlbum lphoto_post = new FbPhotoAlbum("", "", "", "","", new List<comments>(), new List<likes>());
+                    FbPhotoAlbum lphoto_post = new FbPhotoAlbum("", "", "", "","", new comments(), new likes());
                     lphoto_post.data = parseJsonToPhotoPosts(json);
 
                     foreach (var item in lphoto_post.data)
                     {
-                        insertPhotoPostValueWithCheckExist(item.id, item.name, item.picture, item.link, item.comments.Count.ToString(), item.likes.Count.ToString(),item.create_time);
+                        insertPhotoPostValueWithCheckExist(item.id, item.name, item.picture, item.link, item.comments.summary, item.likes.summary,item.create_time);
                     }
 
                     break;
@@ -98,54 +98,87 @@ public class FacebookApi : DataClass
     #region parseJsonToPhotoPosts     // 1 bài viết chỉ có 1 ảnh / cuộc thi  
     public List<FbPhotoAlbum> parseJsonToPhotoPosts(string json)
     {
-        FbPhotoAlbum lphoto_post = new FbPhotoAlbum("", "", "", "", "", new List<comments>(), new List<likes>());
+        string [] json_arr = new string [10];
+        
+        FbPhotoAlbum lphoto_post = new FbPhotoAlbum("", "", "", "", "", new comments(), new likes());
         lphoto_post.data = new List<FbPhotoAlbum>();
         try
         {
             //  lpost = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<FbPosts>(json);
             dynamic struff = JsonConvert.DeserializeObject(json);
             JArray data = struff.photos.data;                //  gốc cây nhị phân có tên là photos 
+            var next_data = struff.photos.paging;
+            int i = 0;
+
+            while (next_data["next"] != null)
+            {
+                try { 
+                json_arr[i] = getJsonString(3,25,next_data["next"].ToString());
+                struff = JsonConvert.DeserializeObject(json_arr[i]);
+               
+                i++;
+                Debug.WriteLine(i);
+                next_data = struff.paging;
+                }
+                catch { break; }
+            }
+
+            foreach (string s in json_arr)
+            {
+                if(s!=null)
+                {
+                    try
+                    {
+                        dynamic struff2 = JsonConvert.DeserializeObject(s);
+                        foreach(JObject j in struff2.data )
+                        {
+                            if(j!=null)
+                            {
+                                data.Add(j);
+                                Debug.WriteLine(j);
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        break;
+                    }
+                }
+            }
+        
             foreach (JObject element in data)
             {
-            //    if (element["data"] != null)
-            //    {
-                 //   Debug.WriteLine(element["data"].ToString());
-                    //// check photo is exist comment or like infomation
-                    List<comments> lc = new List<comments>();
-                    List<likes> ll = new List<likes>();
+                    comments lc = new comments();
+                    likes ll = new likes();
                     if (element["comments"] != null)
                     {
                         Debug.WriteLine(element["comments"].ToString());
                         string comments = element["comments"].ToString();
                         dynamic struff_comment = JsonConvert.DeserializeObject(comments);
-                        lc = new List<comments>();
-                        foreach (JObject element2 in struff_comment.data)
-                        {
-                            lc.Add(new comments(element2["message"].ToString(), element2["id"].ToString(), element2["from"].ToString(), element2["created_time"].ToString()));
-                            Debug.WriteLine(element2["message"].ToString());
-                        }
+
+                        lc.summary = struff_comment["summary"]["total_count"].ToString() == null ? " 0" : struff_comment["summary"]["total_count"].ToString();
+                        Debug.WriteLine(ll.summary);
                     }
                     if (element["likes"] != null)
                     {
                         string likes = element["likes"].ToString();
                         dynamic struff_likes = JsonConvert.DeserializeObject(likes);
-                        foreach (JObject element3 in struff_likes.data)
-                        {
-                            ll.Add(new likes(element3["id"].ToString(), element3["name"].ToString()));              // id và [username] / [name]
-                            Debug.WriteLine(element3["name"].ToString());
-                        }
+                        ll.summary = struff_likes["summary"]["total_count"].ToString() == null ? " 0" : struff_likes["summary"]["total_count"].ToString();
+                            Debug.WriteLine(ll.summary);
                     }
+                 
                     lphoto_post.data.Add(
                       new FbPhotoAlbum(
                       element["id"] == null ? " " : element["id"].ToString(),             // PHOTO ID
-                      element["name"] == null ? " " : element["name"].ToString(),         // MIÊU TẢ ẢNH
-                      element["picture"] == null ? " " : element["picture"].ToString(),
+                      element["name"] == null ? " " : convertName( element["name"].ToString()),         // MIÊU TẢ ẢNH
+                      element["images"] == null ? " " : element["images"][0]["source"].ToString() ==null ? "" : element["images"][0]["source"].ToString(), // ẢNH LỚN NHẤT
                       element["link"] == null ? " " : element["link"].ToString(),
                         element["create_time"] == null ? "" : element["create_time"].ToString(),
-                        lc == null ? new List<comments>() : lc,
-                        ll == null ? new List<likes>() : ll
+                        lc == null ? new comments() : lc,
+                        ll == null ? new likes() : ll
                      
                        ));
+                  
                 }
            // }
             if (lphoto_post.data.Count < 1) return new List<FbPhotoAlbum>();
@@ -165,6 +198,7 @@ public class FacebookApi : DataClass
       //  string json = getJsonString(5); // lấy 5 bài mới nhất thôi
         FbPosts lpost = new FbPosts("", "", "", "", "", "", new List<comments>(), new List<likes>());
         lpost.data = new List<FbPosts>();
+        
         try
         {
             //  lpost = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<FbPosts>(json);
@@ -385,7 +419,7 @@ public class FacebookApi : DataClass
     #endregion
 
     #region getJsonString                       
-    public string getJsonString( int type ,int limits = 50 )
+    public string getJsonString( int type ,int limits = 50,string urls= "" )
     {
        
         string url = "";
@@ -400,32 +434,53 @@ public class FacebookApi : DataClass
                     break;
                 }
             case 2:
-                        {
-                            album_id = new DataSetting().getValue(album_key_id);
-                            url = @"https://graph.facebook.com/" + album_id + "?fields=" + fields_album + "&limit=" + limits + "&access_token=" + access_token + ""; // mặc định là lấy ảnh của album có id =  // speci
-                            break;
-                        }
+                {
+                album_id = new DataSetting().getValue(album_key_id);
+                url = @"https://graph.facebook.com/" + album_id + "?limit= "+ limits+"&fields=" + fields_album + "&access_token=" + access_token + ""; // mặc định là lấy ảnh của album có id =  // speci
+                break;
+                }
+            case 3 :
+                {       // tự khai báo
+                    url = urls;
+                    break;
+                }
         }       
         try
         {
+          
+
              var json = "";
              var client = new WebClient();
              client.Headers.Add("Content-Type", "application/json");
              json = client.DownloadString(url);
             
             Debug.WriteLine("====== GET JSON STRING  " + json);
-             return json;
-        }
+                return json;
+         }
         catch(Exception e)
         {
             Debug.WriteLine("[Error] Cannot download json : " + e.GetBaseException());
             return "";
         }
-
     }
     #endregion
 
 
-   
+    #region convert  Name  
+    public string convertName(string str)
+    {
+
+        string[] tmpHoten = str.ToString().Split('\n');
+        
+        Debug.WriteLine(tmpHoten);
+        string result = "";
+        //foreach(string s in tmpHoten)
+        //{
+         
+        //}
+
+        return tmpHoten[0] == null ? " " : tmpHoten[0] + "|" + tmpHoten[1] == null ? " " : tmpHoten[1] + "|" + tmpHoten[2] == null ? " " : tmpHoten[2];
+    }
+    #endregion
 
 }

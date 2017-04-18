@@ -27,7 +27,6 @@
                     <p class="list-group-item-text">
                        Likes </p>
                  </a>
-               
                  <a href="#" class="list-group-item " data-toggle="modal" data-target=".smallModalRefresh">
                     <h3 class="pull-right">
                         <img src="../images/refresh-512.png" height="40"  />
@@ -36,7 +35,7 @@
                         </h4>
                     <p class="list-group-item-text">
                       Cập nhật bài mới</p>
-                </a>
+                 </a>
                         <!-- Cập nhật lại các bài mới thêm từ facebook -->
                         <div class="modal fade smallModalRefresh" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                               <div class="modal-dialog modal-sm" role="document">
@@ -157,9 +156,7 @@
                     </p>
                     <br />
                     <a class="panel-facebook-plus-image" href="#">
-                       
                        <img src="<%=row["full_picture"] %>" />
-                            
                     </a>
                 </div>
                 <div class="panel-footer">

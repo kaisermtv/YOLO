@@ -16,8 +16,8 @@ public class FbPhotoAlbum :DataClass
     public string picture { get; set; }             // link ảnh nhỏ
     public string link { get; set; }              // link bài viết để embed
     public string create_time { get; set; }
-    public List<likes> likes { get; set; }
-    public List<comments> comments { get; set; }
+    public  likes likes { get; set; }   // Bỏ  List<likes>  vi dữ liệu lấy về quá lớn mà chưa dùng tới
+    public comments comments { get; set; }   //List<comments> vì dữ liệu lấy về quá lớn mà chưa dùng tới
     public List<FbPhotoAlbum> data { get; set; }
 	public FbPhotoAlbum()
 	{
@@ -26,7 +26,7 @@ public class FbPhotoAlbum :DataClass
 		//
 	}
 
-    public FbPhotoAlbum(string _id, string _name, string _picture, string _link, string _create_time ,List<comments> lc, List<likes> ll)
+    public FbPhotoAlbum(string _id, string _name, string _picture, string _link, string _create_time ,comments lc, likes ll)
 	{
         this.id = _id;
         this.name = _name;

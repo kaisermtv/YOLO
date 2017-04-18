@@ -115,7 +115,6 @@
                     </span>
                     <ul class="dropdown-menu" role="menu">
                         <li role="presentation">
-                            
                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=row["id"].ToString().Trim()%>" aria-expanded="true" aria-controls="collapseTwo">Ẩn tạm thời</a>
                          </li>
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Bỏ đăng trên web</a></li>

@@ -55,7 +55,7 @@
         <div class="main">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" id="news">
-                    <asp:Repeater ID="dtlNews" runat="server" EnableViewState="False">
+                    <asp:Repeater ID="dtlNews" runat="server" EnableViewState="False" >
                         <HeaderTemplate>
                             <h3>Tin tức</h3>
                             <div class="line"></div>
@@ -71,7 +71,6 @@
                                     <a class="tieu-de" href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>"><%# Eval("Title") %></a>
                                     <i><%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyyy") %></i>
                                     <p><%# Eval("ShortContent") %></p>
-
                                 </div>
                             </li>
                         </ItemTemplate>

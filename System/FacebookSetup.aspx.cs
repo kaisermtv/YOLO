@@ -33,7 +33,7 @@ public partial class System_FacebookSetup : System.Web.UI.Page
     }
     protected void btnUpdate_Click(object sender, EventArgs e)
     {
-        objfb_post.delAllData();
+     //   objfb_post.delAllData();
         api.saveAllPostToDb();
         Response.Redirect(Request.RawUrl);
     }
