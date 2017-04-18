@@ -98,7 +98,7 @@ p { text-align: justify; line-height: 20px; }
     /*.swiper-slide:nth-child(2n) { width: 40%; }*/
     /*.swiper-slide:nth-child(3n) { width: 20%; }*/
     .swiper-slide .person { width: 100%; height: 70%; margin-bottom: 10px; }
-        .swiper-slide .person img { width: 100%; height: 100%; }
+        .swiper-slide .person img { /*width: 100%; height: 100%;*/ }
     .swiper-slide .person-detail { }
         .swiper-slide .person-detail h3 { font-size: 17px !important; font-family: CondBold !important; line-height: 20px !important; width: auto !important; color: #000 !important; }
         .swiper-slide .person-detail p { line-height: 20px; font-size: 13px !important; font-family: Tahoma !important; color: #333333 !important; }
@@ -170,6 +170,34 @@ p { text-align: justify; line-height: 20px; }
         #danhmuc-tintuc ul li .zc:hover a, #danhmuc-tintuc ul li .zc.active a { color: #FF6A00; font-weight: 400; font-family: CondBold; }
         #danhmuc-tintuc ul li .zc:hover:before, #danhmuc-tintuc ul li .zc.active:before { background: #FF6A00; }
 
+#PhotoContest { padding: 20px 0; line-height: 30px; font-family: CondLight; font-size: 18px; }
+    #PhotoContest .img-w { width: 100%; height: 530px; margin-bottom: 15px; }
+        #PhotoContest .img-w img { }
+    #PhotoContest h3 { font-size: 30px; text-overflow: ellipsis; font-family: CondBold; display: inline-block; width: 100%; }
+    #PhotoContest .sapo { font-style: italic; color: #545252; font-family: CondLight; font-weight: 700; margin-bottom: 15px; font-size: 16px; }
+    #PhotoContest label { display: inline-block; width: 100%; font-weight: 700; }
+        #PhotoContest label span { display: inline-block; width: 80px; }
+    #PhotoContest p { line-height: 25px; }
+    #PhotoContest .comment-w { }
+
+
+#PhotoContestList { }
+    #PhotoContestList li { display: inline-block; width: 100%; padding: 20px 0; border-top: 1px solid #e1e1e1; }
+        #PhotoContestList li .img-w { width: 100%; min-height: 300px; }
+            #PhotoContestList li .img-w img { position: relative; width: 100%; }
+        #PhotoContestList li .PhotoContest-rt { display: inline-block; width: 100%; font-family: CondLight; font-size: 18px; }
+            #PhotoContestList li .PhotoContest-rt .PhotoContest-rt-m { display: inline-block; width: 100%; margin-bottom: 15px; }
+                #PhotoContestList li .PhotoContest-rt .PhotoContest-rt-m label { font-weight: 700; line-height: 50px; font-family: CondLightItalic; }
+                #PhotoContestList li .PhotoContest-rt .PhotoContest-rt-m a { }
+                    #PhotoContestList li .PhotoContest-rt .PhotoContest-rt-m a img { height: 50px; margin-right: 10px; float: left; }
+            #PhotoContestList li .PhotoContest-rt > label { display: inline-block; width: 100%; line-height: 20px; margin-bottom: 5px; }
+                #PhotoContestList li .PhotoContest-rt > label span { }
+            #PhotoContestList li .PhotoContest-rt > p { }
+        #PhotoContestList li .social { }
+            #PhotoContestList li .social .fb-rm { display: inline-block; margin-right: 10px; margin-top: 10px; font-size: 15px; }
+                #PhotoContestList li .social .fb-rm i { color: #337ab7; margin-right: 5px; }
+                #PhotoContestList li .social .fb-rm span { }
+                #PhotoContestList li .social .fb-rm span { }
 
 #list-tin-tieu-diem div.zx { height: 110px; margin: 5px 0; }
 
@@ -221,7 +249,7 @@ p { text-align: justify; line-height: 20px; }
 
 
 .content-detail { font-family: CondLight; font-size: 18px; }
-.news-wraper {  padding-bottom: 50px; }
+.news-wraper { padding-bottom: 50px; }
 
 @media (min-width:320px) { /* smartphones, iPhone, portrait 480x320 phones */
 
