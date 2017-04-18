@@ -183,11 +183,11 @@ p { text-align: justify; line-height: 20px; }
 
 #PhotoContestList { }
     #PhotoContestList li { display: inline-block; width: 100%; padding: 20px 0; border-top: 1px solid #e1e1e1; }
-        #PhotoContestList li .img-w { width: 50%; min-height: 300px; float: left; margin-right: 20px; margin-bottom: 10px; }
+        #PhotoContestList li .img-w { width: 100%; min-height: 300px; }
             #PhotoContestList li .img-w img { position: relative; width: 100%; }
-        #PhotoContestList li .PhotoContest-rt { display: inline-block; width: calc(50% - 20px); font-family: CondLight; font-size: 18px; }
+        #PhotoContestList li .PhotoContest-rt { display: inline-block; width: 100%; font-family: CondLight; font-size: 18px; }
             #PhotoContestList li .PhotoContest-rt .PhotoContest-rt-m { display: inline-block; width: 100%; margin-bottom: 15px; }
-                #PhotoContestList li .PhotoContest-rt .PhotoContest-rt-m label {font-weight: 700; line-height: 50px; font-family: CondLightItalic; }
+                #PhotoContestList li .PhotoContest-rt .PhotoContest-rt-m label { font-weight: 700; line-height: 50px; font-family: CondLightItalic; }
                 #PhotoContestList li .PhotoContest-rt .PhotoContest-rt-m a { }
                     #PhotoContestList li .PhotoContest-rt .PhotoContest-rt-m a img { height: 50px; margin-right: 10px; float: left; }
             #PhotoContestList li .PhotoContest-rt > label { display: inline-block; width: 100%; line-height: 20px; margin-bottom: 5px; }
@@ -196,8 +196,8 @@ p { text-align: justify; line-height: 20px; }
         #PhotoContestList li .social { }
             #PhotoContestList li .social .fb-rm { display: inline-block; margin-right: 10px; margin-top: 10px; font-size: 15px; }
                 #PhotoContestList li .social .fb-rm i { color: #337ab7; margin-right: 5px; }
-                    #PhotoContestList li .social .fb-rm span { }
-                    #PhotoContestList li .social .fb-rm span { }
+                #PhotoContestList li .social .fb-rm span { }
+                #PhotoContestList li .social .fb-rm span { }
 
 #list-tin-tieu-diem div.zx { height: 110px; margin: 5px 0; }
 
