@@ -158,7 +158,7 @@ public class FacebookApi : DataClass
                     lphoto_post.data.Add(
                       new FbPhotoAlbum(
                       element["id"] == null ? " " : element["id"].ToString(),             // PHOTO ID
-                      element["name"] == null ? " " : (element["name"].ToString().Substring(0, element["name"].ToString().Length > 100 ? 100 : element["name"].ToString().Length)),         // MIÊU TẢ ẢNH
+                      element["name"] == null ? " " : (element["name"].ToString()),         // MIÊU TẢ ẢNH
                                 tmpHoten[0],
                                 tmpHoten[1],
                                 tmpHoten[2],
