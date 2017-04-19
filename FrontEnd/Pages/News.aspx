@@ -84,9 +84,11 @@
                                     <asp:Repeater ID="ddlpager" runat="server" EnableViewState="False">
                                         <ItemTemplate>
                                             <li <%# ((bool)DataBinder.Eval(Container.DataItem, "Active"))?"class=\"active\"":"" %>>
-                                                <span>
-                                                    <a rel="nofollow" href="/tin-tuc/<%# DataBinder.Eval(Container.DataItem, "Link") %>"><%# DataBinder.Eval(Container.DataItem, "Name") %></a>
-                                                </span>
+                                                <a <%# (((String)DataBinder.Eval(Container.DataItem, "Link")) != "#")?"href=\"/tin-tuc/" +DataBinder.Eval(Container.DataItem, "Link") + "\"":"" %>>
+                                                    <span>
+                                                        <%# DataBinder.Eval(Container.DataItem, "Name") %>
+                                                    </span>
+                                                </a>
                                             </li>
                                         </ItemTemplate>
                                     </asp:Repeater>
