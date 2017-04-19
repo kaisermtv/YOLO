@@ -180,8 +180,6 @@ public class DataNews : DataClass
             //    Cmd.Parameters.Add("Seach", SqlDbType.NVarChar).Value = seach;
             //}
 
-            Cmd.CommandText += " ORDER BY P.DayPost DESC";
-
 
             int ret = (int)Cmd.ExecuteScalar();
 
@@ -198,21 +196,25 @@ public class DataNews : DataClass
     #endregion
 
     #region Method getDataTop()
-    public DataTable getDataTop(int limit = 0, int group = 0, int offset = 0)
+    public DataTable getDataTop(int limit = 0, int group = 0, int page = 1)
     {
         try
         {
             String top = "";
-            if(limit != 0)
-            {
-                top = " TOP " + limit + " ";
-            }
 
             SqlCommand Cmd = this.getSQLConnect();
-            if (offset != 0)
+            if (page < 1) page = 1;
+            if (page > 1)
             {
                 Cmd.CommandText = "SELECT * FROM (";
-                limit += offset -1;
+
+                page = (page-1) * limit;
+                limit += page;
+            }
+            
+            if (limit != 0)
+            {
+                top = " TOP " + limit + " ";
             }
 
             Cmd.CommandText += "SELECT " + top + " P.Id,P.Title,P.[ShortContent],P.ImgUrl,G.NAME AS GroupName,P.DayPost,(ROW_NUMBER() OVER(ORDER BY DayPost desc)) AS RowNum FROM tblNews AS P";
@@ -233,10 +235,10 @@ public class DataNews : DataClass
 
             //Cmd.CommandText += " ORDER BY P.DayPost DESC";
 
-            if (offset != 0)
+            if (page > 1)
             {
-                Cmd.CommandText += " ) AS MyDerivedTable WHERE RowNum >= @Offset";
-                Cmd.Parameters.Add("Offset", SqlDbType.Int).Value = offset;
+                Cmd.CommandText += " ) AS MyDerivedTable WHERE RowNum > @Offset";
+                Cmd.Parameters.Add("Offset", SqlDbType.Int).Value = page;
             }
             
 

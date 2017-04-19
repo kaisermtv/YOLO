@@ -446,4 +446,27 @@ public class FacebookApi : DataClass
           return result;
     }
     #endregion
+
+    #region method getDataById
+    public DataRow getDataById(String id)
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "SELECT * FROM tblFacebookPhotoPost WHERE id = @ID";
+            Cmd.Parameters.Add("ID", SqlDbType.VarChar).Value = id;
+
+            DataRow ret = this.findFirst(Cmd);
+
+            this.SQLClose();
+            return ret;
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+            return null;
+        }
+    }
+    #endregion
 }

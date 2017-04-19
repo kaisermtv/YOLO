@@ -5,6 +5,11 @@
 
     public static void RegisterRoutes(RouteCollection routes)
     {
+        routes.MapPageRoute("tintuc1", "{name}-cat{id}", "~/frontend/pages/News.aspx");
+        routes.MapPageRoute("view1", "{name}-v{id}", "~/frontend/pages/News_Detail.aspx");
+        routes.MapPageRoute("photo1", "{name}-p{id}", "~/frontend/pages/PhotoContest.aspx");
+        
+        
         routes.MapPageRoute("trangchu", "trang-chu", "~/frontend/pages/home.aspx");
         routes.MapPageRoute("home", "home", "~/frontend/pages/home.aspx");
         routes.MapPageRoute("home1", "", "~/frontend/pages/home.aspx");
@@ -12,6 +17,14 @@
 
         routes.MapPageRoute("tintuc", "tin-tuc", "~/frontend/pages/News.aspx");
         routes.MapPageRoute("news", "news", "~/frontend/pages/News.aspx");
+
+        routes.MapPageRoute("view", "view", "~/frontend/pages/News_Detail.aspx");
+
+        routes.MapPageRoute("photo", "photo", "~/frontend/pages/PhotoContest.aspx");
+
+
+        routes.MapPageRoute("cuocthianhdep", "cuoc-thi-ah-dep", "~/frontend/pages/PhotoContestList.aspx");
+        
     }
 
     void Application_Start(object sender, EventArgs e)

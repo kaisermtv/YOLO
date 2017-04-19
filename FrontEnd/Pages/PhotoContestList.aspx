@@ -27,14 +27,14 @@
                             <asp:Repeater ID="YoLoSlide" runat="server">
                                 <ItemTemplate>
                                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                                        <a href="/FrontEnd/Pages/PhotoContest.aspx?id=0" class="PhotoContestPerson">
+                                        <a href="/<%# SystemClass.convertToUnSign2(Eval("user_name").ToString()) %>-p<%#Eval("id")%>" class="PhotoContestPerson">
                                             <div class="img-w person">
                                                 <img src="<%#Eval("picture")%>" />
                                             </div>
                                             <div class="person-detail">
-                                                <h3>An Khánh</h3>
-                                                <p>Ngày sinh: 28/03/1991</p>
-                                                <p>Đến từ: Nghệ An</p>
+                                                <h3><%#Eval("user_name")%></h3>
+                                                <p>Ngày sinh: <%#Eval("user_birthday")%></p>
+                                                <p>Đến từ: <%#Eval("user_address")%></p>
                                             </div>
                                         </a>
                                     </div>

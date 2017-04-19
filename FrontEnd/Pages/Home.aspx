@@ -34,13 +34,13 @@
                                                 <p>Ngày sinh: <%#Eval("user_birthday")%></p>
                                                 <p>Đến từ: <%#Eval("user_address")%></p>
                                             </div>
-                                            <a href="/FrontEnd/Pages/PhotoContest.aspx?id=<%#Eval("id")%>" class="person-nav"></a>
+                                            <a href="/<%# SystemClass.convertToUnSign2(Eval("user_name").ToString()) %>-p<%#Eval("id")%>" class="person-nav"></a>
                                         </div>
 
                                     </ItemTemplate>
                                 </asp:Repeater>
                                 <div class="swiper-slide">
-                                    <a href="/FrontEnd/Pages/PhotoContestList.aspx" class="PhotoContest-nav">Xem tất cả</a>
+                                    <a href="/cuoc-thi-ah-dep" class="PhotoContest-nav">Xem tất cả</a>
                                 </div>
                             </div>
                             <!-- Add Pagination -->
@@ -71,7 +71,7 @@
                                     <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                 </div>
                                 <div class="lst-news-detail">
-                                    <a class="tieu-de" href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>"><%# Eval("Title") %></a>
+                                    <a class="tieu-de" href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>"><%# Eval("Title") %></a>
                                     <i><%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyyy") %></i>
                                     <p><%# Eval("ShortContent") %></p>
                                 </div>
@@ -92,7 +92,7 @@
                                             <div class="img-w">
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
-                                            <a href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>" class="tieu-de"><%# Eval("Title") %></a>
+                                            <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%# Eval("ShortContent") %></p>
                                         </li>
                                     </ItemTemplate>
@@ -108,7 +108,7 @@
                                             <div class="img-w">
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
-                                            <a href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>" class="tieu-de"><%# Eval("Title") %></a>
+                                            <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%# Eval("ShortContent") %></p>
                                         </li>
                                     </ItemTemplate>
@@ -124,7 +124,7 @@
                                             <div class="img-w">
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
-                                            <a href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>" class="tieu-de"><%# Eval("Title") %></a>
+                                            <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%# Eval("ShortContent") %></p>
                                         </li>
                                     </ItemTemplate>
@@ -140,7 +140,7 @@
                                             <div class="img-w">
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
-                                            <a href="/FrontEnd/Pages/News_Detail.aspx?id=<%# Eval("Id") %>" class="tieu-de"><%# Eval("Title") %></a>
+                                            <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>>" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%# Eval("ShortContent") %></p>
                                         </li>
                                     </ItemTemplate>

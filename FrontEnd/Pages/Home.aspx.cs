@@ -48,10 +48,9 @@ public partial class FrontEnd_Pages_Home : System.Web.UI.Page
             dtlData4.DataSource = objData4.DefaultView;
             dtlData4.DataBind();
 
-            DataTable FbTable = new DataTable();
-            FacebookApi FbApi = new FacebookApi();
+            //FacebookApi FbApi = new FacebookApi();
             FbPhotoAlbum FbPhotoAlbum = new FbPhotoAlbum();
-            FbTable = FbPhotoAlbum.getData(12);
+            DataTable FbTable = FbPhotoAlbum.getData(12);
             YoLoSlide.DataSource = FbTable.DefaultView;
             YoLoSlide.DataBind();
         }

@@ -21,17 +21,31 @@ public partial class FrontEnd_Pages_News_Detail : System.Web.UI.Page
     {
         try
         {
-            this.itemId = int.Parse(Request["id"].ToString());
+            this.itemId = int.Parse(getParam("id"));
         }
         catch { }
 
-        if (itemId == 0) Response.Redirect("News.aspx");
+        if (itemId == 0) Response.Redirect("tin-tuc");
 
         objData = objNews.getData(itemId);
 
-        if (objData == null) Response.Redirect("News.aspx");
+        if (objData == null) Response.Redirect("tin-tuc");
 
 
+    }
+    #endregion
+
+    #region Method getParam
+    private String getParam(String key)
+    {
+        try
+        {
+            if (RouteData.Values[key] != null) return RouteData.Values[key].ToString();
+            if (Request[key] != null) return Request[key].ToString();
+        }
+        catch { }
+
+        return null;
     }
     #endregion
 }
