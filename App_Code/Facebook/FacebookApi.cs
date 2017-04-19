@@ -187,6 +187,15 @@ public class FacebookApi : DataClass
 
     public int setNewAccessToken(string token)
     {
+        try
+        {
+            new DataSetting().setValue(key_db, token);
+        }
+        catch
+        {
+            return 0;
+        }
+
         return 1;
     }
     #region parseJsonToPosts                // 1 bài viết thông thường   // có thể thiếu sót ảnh khi bài viết nhiều ảnh và tương đương nhau
