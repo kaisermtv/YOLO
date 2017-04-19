@@ -193,16 +193,22 @@ CREATE  TABLE tblFacebookPost (
 
 /*Tạo riêng bảng đặc biệt dành cho cuộc thi Yolo Damchiase */
 
-CREATE  TABLE tblFacebookPhotoPost (
-			PostPhotoId int identity(1,1)  not null primary key,
-			id char(100) ,
-			name nvarchar(max) ,
-			picture char(450) ,
-			link char(500),
-			comments nvarchar(30),
-			likes nvarchar(10),
-			create_time nvarchar(30),
-			 time_sync datetime default getdate()  ,
-			 state int default 1,
-			 ) ; 
+CREATE TABLE [dbo].[tblFacebookPhotoPost](
+	[PostPhotoId] [int] IDENTITY(1,1) NOT NULL,
+	[id] [char](100) NULL,
+	[name] [nvarchar](max) NULL,
+	[user_name] nvarchar(100),
+	[user_address] nvarchar(100),
+	[user_birthday] nvarchar(100),
+	[picture] [char](450) NULL,
+	[link] [char](500) NULL,
+	[comments] [nvarchar](30) NULL,
+	[likes] [nvarchar](10) NULL,
+	[create_time] [nvarchar](30) NULL,
+	[time_sync] [datetime] NULL DEFAULT (getdate()),
+	[state] [int] NULL DEFAULT ((1)),
+PRIMARY KEY  
+(
+	[PostPhotoId] )
+	)
 
