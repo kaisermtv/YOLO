@@ -28,13 +28,13 @@ public class FacebookApi : DataClass
     {
         string json = getJsonString(2, 25,"");              // kiểu số 2          
         if (json == null || json.Trim() == "") return 0;
-        FbPhotoAlbum lPpost = new FbPhotoAlbum("", "", "", "","", new comments(), new likes());
+        FbPhotoAlbum lPpost = new FbPhotoAlbum("", "", "", "","","","","", new comments(), new likes());
         try
         {
             lPpost.data = parseJsonToPhotoPosts(json);                // lấy bài viết thông thường
             foreach (var item in lPpost.data)
             {
-                insertPhotoPostValueWithCheckExist(item.id, item.name, item.picture, item.link,item.create_time, item.comments.summary, item.likes.summary);
+                insertPhotoPostValueWithCheckExist(item.id, item.name,item.user_name,item.user_birthday,item.user_address,  item.picture, item.link,item.create_time, item.comments.summary, item.likes.summary);
             }
         }
         catch (Exception e)
@@ -63,12 +63,12 @@ public class FacebookApi : DataClass
             }          //mặc định là bài viết trên timeline feed
             case 2:
                 {
-                    FbPhotoAlbum lphoto_post = new FbPhotoAlbum("", "", "", "","", new comments(), new likes());
+                    FbPhotoAlbum lphoto_post = new FbPhotoAlbum("", "", "", "","","","","", new comments(), new likes());
                     lphoto_post.data = parseJsonToPhotoPosts(json);
 
                     foreach (var item in lphoto_post.data)
                     {
-                        insertPhotoPostValueWithCheckExist(item.id, item.name, item.picture, item.link, item.comments.summary, item.likes.summary,item.create_time);
+                        insertPhotoPostValueWithCheckExist(item.id, item.name, item.user_name, item.user_birthday, item.user_address, item.picture, item.link, item.comments.summary, item.likes.summary, item.create_time);
                     }
                     break;
                 }
@@ -88,7 +88,7 @@ public class FacebookApi : DataClass
     public List<FbPhotoAlbum> parseJsonToPhotoPosts(string json)
     {
         string [] json_arr = new string [10];
-        FbPhotoAlbum lphoto_post = new FbPhotoAlbum("", "", "", "", "", new comments(), new likes());
+        FbPhotoAlbum lphoto_post = new FbPhotoAlbum("", "", "", "", "","","","", new comments(), new likes());
         lphoto_post.data = new List<FbPhotoAlbum>();
         try
         {
@@ -110,7 +110,6 @@ public class FacebookApi : DataClass
                 }
                 catch { break; }
             } 
-
             foreach (string s in json_arr)
             {
                 if(s!=null)
@@ -154,11 +153,15 @@ public class FacebookApi : DataClass
                         ll.summary = struff_likes["summary"]["total_count"].ToString() == null ? " 0" : struff_likes["summary"]["total_count"].ToString();
                         Debug.WriteLine(ll.summary);
                     }
-                 
+                    string[] tmpHoten = new string[3] { "", "", "" };
+                    if (element["name"] != null) { tmpHoten = convertName(element["name"].ToString()); }
                     lphoto_post.data.Add(
                       new FbPhotoAlbum(
                       element["id"] == null ? " " : element["id"].ToString(),             // PHOTO ID
-                      element["name"] == null ? " " : convertName( element["name"].ToString()),         // MIÊU TẢ ẢNH
+                      element["name"] == null ? " " : (element["name"].ToString().Substring(0, element["name"].ToString().Length > 100 ? 100 : element["name"].ToString().Length)),         // MIÊU TẢ ẢNH
+                                tmpHoten[0],
+                                tmpHoten[1],
+                                tmpHoten[2],
                       element["images"] == null ? " " : element["images"][0]["source"].ToString() ==null ? "" : element["images"][0]["source"].ToString(), // ẢNH LỚN NHẤT
                       element["link"] == null ? " " : element["link"].ToString(),
                         element["create_time"] == null ? "" : element["create_time"].ToString(),
@@ -300,7 +303,7 @@ public class FacebookApi : DataClass
     #endregion
 
     #region insertPhotoPostValueWithCheckExist()           | Đưa vào cơ sở dử liệu , có kiểm tra xem ảnh tồn tại chưa sử dụng id của datatFb
-    public int insertPhotoPostValueWithCheckExist(string id, string name, string picture, string link, string lc_count, string ll_count,string create_time)        // chưa cần đến comment và like nên hiện tại đếm số lượng chúng đã
+    public int insertPhotoPostValueWithCheckExist(string id, string name, string user_name, string user_birthday, string user_address, string picture, string link, string lc_count, string ll_count, string create_time)        // chưa cần đến comment và like nên hiện tại đếm số lượng chúng đã
     {
         if (id == null) return 0;
         try
@@ -309,22 +312,27 @@ public class FacebookApi : DataClass
             Cmd.CommandText = @" 
                             IF NOT EXISTS (SELECT tblFacebookPhotoPost.id FROM tblFacebookPhotoPost WHERE tblFacebookPhotoPost.id = @id )
                             BEGIN
-                INSERT INTO tblFacebookPhotoPost (id,name,picture,link,comments,likes,create_time) VALUES 
-                        (  @id  , @name , @picture , @link , @comments , @likes ,@create_time)
+                INSERT INTO tblFacebookPhotoPost (id,name,user_name,user_birthday,user_address,picture,link,comments,likes,create_time) VALUES 
+                        (  @id  , @name,@user_name,@user_birthday,@user_address , @picture , @link , @comments , @likes ,@create_time)
                             END
                         ELSE 
                     BEGIN 
-                UPDATE  tblFacebookPhotoPost SET name = @name,picture=@picture,comments=@comments,likes = @likes
+                UPDATE  tblFacebookPhotoPost SET name = @name,user_name=@user_name,user_address=@user_address,user_birthday=@user_birthday, picture=@picture,comments=@comments,likes = @likes
                         WHERE tblFacebookPhotoPost.id = @id
                     END
                            ";
             Cmd.Parameters.Add("id", SqlDbType.Char).Value = (id);
-            Cmd.Parameters.Add("name", SqlDbType.NVarChar).Value = (name == null ? " " : name);
-            Cmd.Parameters.Add("picture", SqlDbType.Char).Value = (picture == null ? " " : picture);
+            Cmd.Parameters.Add("name", SqlDbType.NVarChar).Value = (name == null ? " " : name.Trim());
+
+            Cmd.Parameters.Add("user_name", SqlDbType.NVarChar).Value = (user_name == null ? " " : user_name.Trim());
+            Cmd.Parameters.Add("user_birthday", SqlDbType.NVarChar).Value = (user_birthday == null ? " " : user_birthday.Trim());
+            Cmd.Parameters.Add("user_address", SqlDbType.NVarChar).Value = (user_address == null ? " " : user_address.Trim());
+           
+            Cmd.Parameters.Add("picture", SqlDbType.Char).Value = (picture == null ? " " : picture.Trim());
             Cmd.Parameters.Add("link", SqlDbType.Char).Value = (link == null ? " " : link);
-            Cmd.Parameters.Add("comments", SqlDbType.NVarChar).Value = (lc_count == null ? "0" : lc_count);
-            Cmd.Parameters.Add("likes", SqlDbType.Char).Value = (ll_count == null ? "0" : ll_count);
-            Cmd.Parameters.Add("create_time", SqlDbType.Char).Value = (create_time == null ? " " : create_time);
+            Cmd.Parameters.Add("comments", SqlDbType.NVarChar).Value = (lc_count == null ? "0" : lc_count.Trim());
+            Cmd.Parameters.Add("likes", SqlDbType.Char).Value = (ll_count == null ? "0" : ll_count.Trim());
+            Cmd.Parameters.Add("create_time", SqlDbType.Char).Value = (create_time == null ? " " : create_time.Trim());
             Cmd.ExecuteNonQuery();
             this.SQLClose();
             return 1;
@@ -381,15 +389,42 @@ public class FacebookApi : DataClass
     #endregion
 
     #region convert  Name  
-    public string convertName(string str)
+    public string [] convertName(string str)
     {
         string[] tmpHoten = str.ToString().Split('\n');
-        string result = "";
+        string [] result = new string[3]{"","",""};
         for (int i = 0; i < tmpHoten.Length && i<3; i++)
         {
-            result += tmpHoten[i].ToString() + "|";
+           if(tmpHoten[i].ToUpper().IndexOf("TÊN") > 0)
+           {
+               try { 
+               result[0] = tmpHoten[i].Split(':')[1] == null ? "" : tmpHoten[i].Split(':')[1].Trim();
+                }
+               catch
+               {
+                   result[0] = "";
+               }
+               }
+           if (tmpHoten[i].ToLower().IndexOf("sinh") > 0)
+           {    
+               try
+               {
+                   result[1] = tmpHoten[i].Split(':')[1] == null ? "" : tmpHoten[i].Split(':')[1].Trim().Substring(0, tmpHoten[i].Split(':')[1].Trim().Length > 100 ? 100 : tmpHoten[i].Split(':')[1].Trim().Length);
+                }
+               catch
+               { result[1] = ""; }
+               }
+           if (tmpHoten[i].ToUpper().IndexOf("TỪ") > 0)
+           {
+               try
+               {
+                   result[2] = tmpHoten[i].Split(':')[1] == null ? "" : tmpHoten[i].Split(':')[1].Trim().Substring(0, tmpHoten[i].Split(':')[1].Trim().Length > 100 ? 100 : tmpHoten[i].Split(':')[1].Trim().Length);
+               }
+               catch { result[2] = ""; }
+           }
         }
-        Debug.WriteLine(result);
+        Debug.WriteLine(result.ToArray());
+        
           return result;
     }
     #endregion

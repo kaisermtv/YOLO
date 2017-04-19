@@ -124,7 +124,7 @@
                 </div>
                 <div class="panel-facebook-plus-tags">
                     <ul>
-                        <li><a href="https://www.facebook.com/ngheansunshine/posts/<%=row["id"]+"" %>:0"> #<%=row["id"] %> </a></li>
+                        <li><a href="<%=row["link"] %>"> #<%=row["id"] %> </a></li>
                     </ul>
                 </div>
                 <div class="panel-heading">
