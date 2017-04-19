@@ -5,8 +5,13 @@
 
     public static void RegisterRoutes(RouteCollection routes)
     {
-        routes.MapPageRoute("trangchu", "trang-chu", "~/Default.aspx");
-        routes.MapPageRoute("home", "home", "~/Default.aspx");
+        routes.MapPageRoute("trangchu", "trang-chu", "~/frontend/pages/home.aspx");
+        routes.MapPageRoute("home", "home", "~/frontend/pages/home.aspx");
+        routes.MapPageRoute("home1", "", "~/frontend/pages/home.aspx");
+
+
+        routes.MapPageRoute("tintuc", "tin-tuc", "~/frontend/pages/News.aspx");
+        routes.MapPageRoute("news", "news", "~/frontend/pages/News.aspx");
     }
 
     void Application_Start(object sender, EventArgs e)
