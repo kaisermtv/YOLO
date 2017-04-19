@@ -423,7 +423,7 @@ public class FacebookApi : DataClass
                    result[0] = "";
                }
                }
-           if (tmpHoten[i].ToLower().IndexOf("sinh") > 0)
+           if (tmpHoten[i].ToLower().IndexOf("sinh") > 0||tmpHoten[i].ToLower().IndexOf("ngày") > 0)
            {    
                try
                {
