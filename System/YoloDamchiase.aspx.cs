@@ -27,7 +27,7 @@ public partial class System_YoloDamchiase : System.Web.UI.Page
     }
     protected void btnRefresh_Click(object sender, EventArgs e)
     {
-        api.refressPhotoPost(30);                     // limits 30
+        api.refressPhotoPost(20);                     // limits 30
         Response.Redirect(Request.RawUrl);
     }
     protected void btnUpdate_Click(object sender, EventArgs e)
