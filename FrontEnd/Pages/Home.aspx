@@ -39,6 +39,9 @@
 
                                     </ItemTemplate>
                                 </asp:Repeater>
+                                <div class="swiper-slide">
+                                    <a href="/FrontEnd/Pages/PhotoContestList.aspx" class="PhotoContest-nav">Xem tất cả</a>
+                                </div>
                             </div>
                             <!-- Add Pagination -->
                             <div class="swiper-pagination"></div>
@@ -55,7 +58,7 @@
         <div class="main">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" id="news">
-                    <asp:Repeater ID="dtlNews" runat="server" EnableViewState="False" >
+                    <asp:Repeater ID="dtlNews" runat="server" EnableViewState="False">
                         <HeaderTemplate>
                             <h3>Tin tức</h3>
                             <div class="line"></div>

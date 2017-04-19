@@ -23,7 +23,7 @@ public partial class System_FacebookSetup : System.Web.UI.Page
             count_post = objTblFbPost.Rows.Count;
           
             //count like , count comment , count xxx
-            last_token = api.getNewAccessToken();
+            //last_token = api.getNewAccessToken();
         }
     }
     protected void btnRefresh_Click(object sender, EventArgs e)
@@ -46,16 +46,16 @@ public partial class System_FacebookSetup : System.Web.UI.Page
         }
         else
         {
-            if (api.setNewAccessToken(txtNewToken.Value.Trim()) == 1)
-            {
-                Page.ClientScript.RegisterStartupScript(GetType(), "alert", "if(confirm('Cập nhật Token thành công !')){window.location.reload()}", true);
-                result.InnerText = "Cập nhật Token thành công !";
-                Debug.WriteLine("TOKEN ĐẢ ĐƯỢC THAY ĐỔI");
-                Response.Redirect(Request.RawUrl);
-               return;
-            }
-            Page.ClientScript.RegisterStartupScript(GetType(), "alert", "confirm('Cập nhật thất bại')", true);
-            result.InnerText = "Cập nhật thất bại";
+            //if (api.setNewAccessToken(txtNewToken.Value.Trim()) == 1)
+            //{
+            //    Page.ClientScript.RegisterStartupScript(GetType(), "alert", "if(confirm('Cập nhật Token thành công !')){window.location.reload()}", true);
+            //    result.InnerText = "Cập nhật Token thành công !";
+            //    Debug.WriteLine("TOKEN ĐẢ ĐƯỢC THAY ĐỔI");
+            //    Response.Redirect(Request.RawUrl);
+            //   return;
+            //}
+            //Page.ClientScript.RegisterStartupScript(GetType(), "alert", "confirm('Cập nhật thất bại')", true);
+            //result.InnerText = "Cập nhật thất bại";
          //  Response.Redirect(Request.RawUrl);
            return;
         }
