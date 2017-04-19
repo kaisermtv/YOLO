@@ -51,7 +51,7 @@ public class FbPhotoAlbum : DataClass
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = " SELECT TOP " + top + " tblFacebookPhotoPost.PostPhotoId,tblFacebookPhotoPost.id,tblFacebookPhotoPost.name,tblFacebookPhotoPost.picture,tblFacebookPhotoPost.link,tblFacebookPhotoPost.comments,tblFacebookPhotoPost.likes,tblFacebookPhotoPost.create_time FROM tblFacebookPhotoPost  order by tblFacebookPhotoPost.id DESC  ";
+            Cmd.CommandText = " SELECT TOP " + top + " tblFacebookPhotoPost.PostPhotoId,tblFacebookPhotoPost.id,tblFacebookPhotoPost.name,tblFacebookPhotoPost.user_name ,tblFacebookPhotoPost.user_address,tblFacebookPhotoPost.user_birthday, tblFacebookPhotoPost.picture,tblFacebookPhotoPost.link,tblFacebookPhotoPost.comments,tblFacebookPhotoPost.likes,tblFacebookPhotoPost.create_time FROM tblFacebookPhotoPost  order by tblFacebookPhotoPost.id DESC  ";
             DataTable ret = this.findAll(Cmd);
             this.SQLClose();
             Debug.WriteLine("=[SUCCESS] GET Facebook Photo Post DATA TABLE : ");

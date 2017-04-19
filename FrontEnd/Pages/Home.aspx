@@ -30,11 +30,11 @@
                                                 <img src="<%#Eval("picture")%>" />
                                             </div>
                                             <div class="person-detail">
-                                                <h3>An Khánh</h3>
-                                                <p>Ngày sinh: 28/03/1991</p>
-                                                <p>Đến từ: Nghệ An</p>
+                                                <h3><%#Eval("user_name")%></h3>
+                                                <p>Ngày sinh: <%#Eval("user_birthday")%></p>
+                                                <p>Đến từ: <%#Eval("user_address")%></p>
                                             </div>
-                                            <a href="/FrontEnd/Pages/PhotoContest.aspx?id=0" class="person-nav"></a>
+                                            <a href="/FrontEnd/Pages/PhotoContest.aspx?id=<%#Eval("id")%>" class="person-nav"></a>
                                         </div>
 
                                     </ItemTemplate>
