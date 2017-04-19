@@ -81,12 +81,17 @@
                             <div>
 
                                 <ul class="pager">
-                                    <li class="active"><span><a href="/tin-tuc.htm">1</a></span></li>
-                                    <li class=""><span><a href="/tin-tuc/trang-2.htm">2</a></span></li>
-                                    <li class=""><span><a href="/tin-tuc/trang-3.htm">3</a></span></li>
-                                    <li class=""><span><a rel="nofollow" href="/tin-tuc/trang-4.htm">4</a></span></li>
-                                    <li class=""><span><a rel="nofollow" href="/tin-tuc/trang-5.htm">5</a></span></li>
-                                    <li class="next sprite"><span><a rel="nofollow" href="/tin-tuc/trang-6.htm">Sau</a></span></li>
+                                    <asp:Repeater ID="ddlpager" runat="server" EnableViewState="False">
+                                        <ItemTemplate>
+                                            <li <%# ((bool)DataBinder.Eval(Container.DataItem, "Active"))?"class=\"active\"":"" %>>
+                                                <a <%# (((String)DataBinder.Eval(Container.DataItem, "Link")) != "#")?"href=\"/tin-tuc/" +DataBinder.Eval(Container.DataItem, "Link") + "\"":"" %>>
+                                                    <span>
+                                                        <%# DataBinder.Eval(Container.DataItem, "Name") %>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
                                 </ul>
 
                             </div>

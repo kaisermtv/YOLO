@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -13,6 +14,13 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
     private DataNewsGroup objNewsGroup = new DataNewsGroup();
 
     public int itemId = 0;
+
+    public int numItem = 10;
+    public int maxitem = 0;
+    public int page = 1;
+    public int maxPage = 1;
+
+    public ArrayList pager = new ArrayList();
     #endregion
 
     protected void Page_Load(object sender, EventArgs e)
@@ -23,9 +31,50 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
         }
         catch { }
 
+        try
+        {
+            this.page = int.Parse(Request["page"].ToString());
+        }
+        catch { }
+
         if (!Page.IsPostBack)
         {
-            DataTable objData = objNews.getDataTop(10, itemId);
+            #region phan trang
+            maxitem = objNews.getDataCount(itemId);
+            maxPage = maxitem / numItem;
+            if (maxitem % numItem > 0 || maxPage == 0) maxPage++;
+            if (page > maxPage) page = maxPage;
+            if (page < 1) page = 1;
+
+            String link = "";
+            if(itemId != 0) link = "&id=" + itemId;
+
+            if (page - 1 > 1) pager.Add(new PageData("Trước", "?page=" + (page - 1) + link));
+            if (page != 1) pager.Add(new PageData("1", "?page=1" + link));
+
+            int a = page - 5;
+            if (a < 2) a = 2;
+            for (int i = a; i < page;i++ )
+            {
+                pager.Add(new PageData(i.ToString(), "?page=" + i + link));
+            }
+
+            pager.Add(new PageData(page.ToString(), "#",true));
+
+            a = page + 5;
+            if (a > maxPage) a = maxPage;
+            for (int i = page + 1; i < a; i++)
+            {
+                pager.Add(new PageData(i.ToString(), "?page=" + i + link));
+            }
+
+            if (page != maxPage) pager.Add(new PageData(maxPage.ToString(), "?page=" + maxPage + link));
+            if (page + 1 < maxPage) pager.Add(new PageData("Sau", "?page=" + (page + 1) + link));
+            #endregion
+            ddlpager.DataSource = pager;
+            ddlpager.DataBind();
+
+            DataTable objData = objNews.getDataTop(numItem, itemId, (page - 1) * numItem);
 
             dtlNews.DataSource = objData.DefaultView;
             dtlNews.DataBind();

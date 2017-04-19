@@ -13,6 +13,9 @@ public class FbPhotoAlbum : DataClass
 {
     public string id { get; set; }                       // id bài viết
     public string name { get; set; }              // tên fanPage
+    public string user_name { get; set; }              // tên người đăng ảnh
+    public string user_address { get; set; }              // địa chỉ người đăng ảnh
+    public string user_birthday { get; set; }              // ngày sinh người đăng ảnh
     public string picture { get; set; }             // link ảnh nhỏ
     public string link { get; set; }              // link bài viết để embed
     public string create_time { get; set; }
@@ -27,11 +30,14 @@ public class FbPhotoAlbum : DataClass
     }
 
 
-    public FbPhotoAlbum(string _id, string _name, string _picture, string _link, string _create_time ,comments lc, likes ll)
+    public FbPhotoAlbum(string _id, string _name, string _user_name, string _user_birthday, string _user_address, string _picture, string _link, string _create_time, comments lc, likes ll)
 	{
 
         this.id = _id;
         this.name = _name;
+        this.user_name = _user_name;
+        this.user_address = _user_address;
+        this.user_birthday = _user_birthday;
         this.picture = _picture;
         this.link = _link;
         this.likes = ll;
@@ -45,7 +51,7 @@ public class FbPhotoAlbum : DataClass
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = " SELECT TOP " + top + " tblFacebookPhotoPost.PostPhotoId,tblFacebookPhotoPost.id,tblFacebookPhotoPost.name,tblFacebookPhotoPost.picture,tblFacebookPhotoPost.link,tblFacebookPhotoPost.comments,tblFacebookPhotoPost.likes,tblFacebookPhotoPost.create_time FROM tblFacebookPhotoPost  order by tblFacebookPhotoPost.id DESC  ";
+            Cmd.CommandText = " SELECT TOP " + top + " tblFacebookPhotoPost.PostPhotoId,tblFacebookPhotoPost.id,tblFacebookPhotoPost.name,tblFacebookPhotoPost.user_name ,tblFacebookPhotoPost.user_address,tblFacebookPhotoPost.user_birthday, tblFacebookPhotoPost.picture,tblFacebookPhotoPost.link,tblFacebookPhotoPost.comments,tblFacebookPhotoPost.likes,tblFacebookPhotoPost.create_time FROM tblFacebookPhotoPost  order by tblFacebookPhotoPost.id DESC  ";
             DataTable ret = this.findAll(Cmd);
             this.SQLClose();
             Debug.WriteLine("=[SUCCESS] GET Facebook Photo Post DATA TABLE : ");
