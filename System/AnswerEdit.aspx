@@ -1,6 +1,6 @@
 ﻿<%--<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/App_Master/System.master" CodeFile="AnswerEdit.aspx.cs" Inherits="System_AnswerEdit" %>
 
-
+<%--
 <%@ Register TagPrefix="cc1" Namespace="SiteUtils" Assembly="CollectionPager" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="Server">
     <script>
@@ -20,7 +20,6 @@
                     <th class="DataListTableHeaderTdItemTT" style="width: 4%;">TT</th>
                     <th class="DataListTableHeaderTdItemJustify">Câu trả lời</th>
                     <th class="DataListTableHeaderTdItemJustify" style="width: 10%;">Trạng thái</th>
-                    <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Answer</th>
                     <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Up</th>
                     <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Down</th>
                     <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Sửa</th>

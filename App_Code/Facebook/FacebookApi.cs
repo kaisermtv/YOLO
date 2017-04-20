@@ -31,10 +31,10 @@ public class FacebookApi : DataClass
         FbPhotoAlbum lPpost = new FbPhotoAlbum("", "", "", "","","","","", new comments(), new likes());
         try
         {
-            lPpost.data = parseJsonToPhotoPosts(json);                // lấy bài viết thông thường
+            lPpost.data = parseJsonToPhotoPostsMini(json);                // lấy bài viết thông thường
             foreach (var item in lPpost.data)
             {
-                insertPhotoPostValueWithCheckExist(item.id, item.name,item.user_name,item.user_birthday,item.user_address,  item.picture, item.link,item.create_time, item.comments.summary, item.likes.summary);
+                insertPhotoPostValueWithCheckExist(item.id, item.name, item.user_name, item.user_birthday, item.user_address, item.picture, item.link, item.comments.summary, item.likes.summary, item.create_time);
             }
         }
         catch (Exception e)
@@ -132,7 +132,6 @@ public class FacebookApi : DataClass
                     }
                 }
             }
-        
             foreach (JObject element in data)
             {
                     comments lc = new comments();
@@ -158,7 +157,7 @@ public class FacebookApi : DataClass
                     lphoto_post.data.Add(
                       new FbPhotoAlbum(
                       element["id"] == null ? " " : element["id"].ToString(),             // PHOTO ID
-                      element["name"] == null ? " " : (element["name"].ToString()),         // MIÊU TẢ ẢNH
+                      element["name"] == null ? " " : (convertDescription(element["name"].ToString())),         // MIÊU TẢ ẢNH
                                 tmpHoten[0],
                                 tmpHoten[1],
                                 tmpHoten[2],
@@ -180,8 +179,68 @@ public class FacebookApi : DataClass
     }
     #endregion
 
+    #region parseJsonToPhotoPostsMini     // 1 bài viết chỉ có 1 ảnh / cuộc thi
+    public List<FbPhotoAlbum> parseJsonToPhotoPostsMini(string json)
+    {
+        
+        FbPhotoAlbum lphoto_post = new FbPhotoAlbum("", "", "", "", "", "", "", "", new comments(), new likes());
+        lphoto_post.data = new List<FbPhotoAlbum>();
+        try
+        {
+            //  lpost = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<FbPosts>(json);
+            dynamic struff = JsonConvert.DeserializeObject(json);
+            JArray data = struff.photos.data;                //  gốc cây nhị phân có tên là photos 
+            var next_data = struff.photos.paging;
+         
 
-    #region parseJsonToPhotoPosts     // 1 bài viết chỉ có 1 ảnh / cuộc thi
+            foreach (JObject element in data)
+            {
+                comments lc = new comments();
+                likes ll = new likes();
+                if (element["comments"] != null)
+                {
+                    Debug.WriteLine(element["comments"].ToString());
+                    string comments = element["comments"].ToString();
+                    dynamic struff_comment = JsonConvert.DeserializeObject(comments);
+
+                    lc.summary = struff_comment["summary"]["total_count"].ToString() == null ? " 0" : struff_comment["summary"]["total_count"].ToString();
+                    Debug.WriteLine(ll.summary);
+                }
+                if (element["likes"] != null)
+                {
+                    string likes = element["likes"].ToString();
+                    dynamic struff_likes = JsonConvert.DeserializeObject(likes);
+                    ll.summary = struff_likes["summary"]["total_count"].ToString() == null ? " 0" : struff_likes["summary"]["total_count"].ToString();
+                    Debug.WriteLine(ll.summary);
+                }
+                string[] tmpHoten = new string[3] { "", "", "" };
+                if (element["name"] != null) { tmpHoten = convertName(element["name"].ToString()); }
+                lphoto_post.data.Add(
+                  new FbPhotoAlbum(
+                  element["id"] == null ? " " : element["id"].ToString(),             // PHOTO ID
+                  element["name"] == null ? " " : (convertDescription(element["name"].ToString())),         // MIÊU TẢ ẢNH
+                            tmpHoten[0],
+                            tmpHoten[1],
+                            tmpHoten[2],
+                  element["images"] == null ? " " : element["images"][0]["source"].ToString() == null ? "" : element["images"][0]["source"].ToString(), // ẢNH LỚN NHẤT
+                  element["link"] == null ? " " : element["link"].ToString(),
+                    element["create_time"] == null ? "" : element["create_time"].ToString(),
+                    lc == null ? new comments() : lc,
+                    ll == null ? new likes() : ll
+                   ));
+            }
+            if (lphoto_post.data.Count < 1) return new List<FbPhotoAlbum>();
+        }
+        catch (Exception e)
+        {
+            Debug.WriteLine("[ERROR ] - ADD Photo Posts " + e.GetBaseException());
+            return new List<FbPhotoAlbum>();
+        }
+        return lphoto_post.data;        // danh sách bài viết ảnh
+    }
+    #endregion
+
+    #region parseJsonToPhotoPostsComments     // 1 bài viết chỉ có 1 ảnh / cuộc thi
     public List<comments> parseJsonToPhotoPostsComments(string json)
     {
         string[] json_arr = new string[10];
@@ -482,6 +541,26 @@ public class FacebookApi : DataClass
         Debug.WriteLine(result.ToArray());
         
           return result;
+    }
+    #endregion
+
+    #region convert  convertDescription
+    public string convertDescription(string str)
+    {
+        try { 
+        string[] tmpDes = str.ToString().Split('\n');
+        string[] tmp = new string[tmpDes.Length-2];
+        for (int i = 3; i < tmpDes.Length && i >= 3; i++)
+        {
+            tmp[i - 2] = tmpDes[i];
+        }
+        return string.Join("\n", tmp);
+            }
+        catch
+        {
+            return " ";
+        }
+      
     }
     #endregion
 

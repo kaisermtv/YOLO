@@ -43,7 +43,7 @@
                             <%int i = 1; %>
                                <% foreach (comments c in lComment)
                                   {
-                                      if (i >= 5) return;
+                                      if (i >= 5) break;
                                       i++; %>     
                              <div class="fb-comment-embed"
                                   data-href="<%= objData["link"].ToString().Trim() %>&comment_id=<%=c.id %>" 
@@ -88,7 +88,7 @@
                                                 </div>
                                                 <div class="share fb-rm">
                                                     <i class="fa fa-share" aria-hidden="true"></i>
-                                                    <span>100</span>
+                                                    <span>0</span>
                                                 </div>
                                             </div>
                                         </div>
