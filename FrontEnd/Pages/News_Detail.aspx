@@ -18,7 +18,7 @@
                         <div class="cleft col-xs-12 col-sm-8 col-md-8 " style="padding-top: 20px;">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <h3 class="tieu-de" style="margin-top: 10px; margin-bottom: 10px;font-size: 24px;"><%= objData["Title"] %></h3>
+                                    <h3 class="tieu-de" style="margin-top:  <img  onError="this.src='/images/Front-End/no-image-available.png';" ; margin-bottom:  <img  onError="this.src='/images/Front-End/no-image-available.png';" ;font-size: 24px;"><%= objData["Title"] %></h3>
                                     <label class="time">Ngày đăng: <%= ((DateTime)objData["DayPost"]).ToString("dd/MM/yyyy h:mm:ss tt") %></label>
                                     <p class="sapo" style="font-weight: bold; margin-bottom: 30px; font-size: 19px;">
                                         <%=objData["ShortContent"]  %>
