@@ -8,6 +8,17 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MasterPageContent" runat="server">
+
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9&appId=1929429900621768";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
     <div class="container-fluid">
         <div class="row">
             <div class="main">
@@ -26,10 +37,25 @@
                         <label><span>Ngày sinh:</span> <%= objData["user_birthday"].ToString() %></label>
                         <label><span>Đến từ:</span> <%= objData["user_address"].ToString() %></label>
                         <p><%= objData["name"].ToString() %> </p>
+                        <br />
+                          Bình luận trên Facebook
                         <div class="comment-w">
+                            <%int i = 1; %>
+                               <% foreach (comments c in lComment)
+                                  {
+                                      if (i >= 5) return;
+                                      i++; %>     
+                             <div class="fb-comment-embed"
+                                  data-href="<%= objData["link"].ToString().Trim() %>&comment_id=<%=c.id %>" 
+                                 data-width="800" data-include-parent="false"></div>
+                            <%} %>  
+                          <br />
+                            <!-- comemnt -->
+                            Bình luận trên trang
+                            <div class="fb-comments"  data-href=" <%= objData["link"].ToString() %>" data-width="800" data-numposts="5"></div>
                         </div>
                     </div>
-
+                  
 
                     <h3 class="" style="font-size: 24px; font-family: CondBold; display: inline-block; width: 100%; margin-top: 40px; margin-bottom: 10px;">Bài thi liên quan</h3>
                     <ul id="PhotoContestList">

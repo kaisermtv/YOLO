@@ -13,6 +13,10 @@ public partial class FrontEnd_Pages_PhotoContest : System.Web.UI.Page
 
     private String itemId = "";
     public DataRow objData;
+
+    private static String fields = "comments,name,id";
+    private static string key_db = "Facebook_Token";
+    public List<comments> lComment = new List<comments>();
     #endregion
 
     #region method Page_Load
@@ -32,6 +36,13 @@ public partial class FrontEnd_Pages_PhotoContest : System.Web.UI.Page
         DataTable FbTable = FbPhotoAlbum.getData(5);
         dtlData.DataSource = FbTable.DefaultView;
         dtlData.DataBind();
+
+
+        string url = @"https://graph.facebook.com/" + objData["id"].ToString().Trim() + "?limit= " + 10 + "&fields=" + fields + "&access_token=" + new DataSetting().getValue(key_db) + ""; // mặc định là lấy ảnh của album có id =  // speci
+        var json = objFacebook.getJsonString(3,10,url);
+        lComment = objFacebook.parseJsonToPhotoPostsComments(json);
+
+
     }
     #endregion
 
