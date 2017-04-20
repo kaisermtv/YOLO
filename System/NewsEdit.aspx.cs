@@ -48,6 +48,7 @@ public partial class System_NewsEdit : System.Web.UI.Page
             txtShortContent.Text = objData["ShortContent"].ToString();
             txtContent.Text = objData["Content"].ToString();
             txtAuthor.Text = objData["Author"].ToString();
+            ckbNoiBat.Checked = (bool)objData["NoiBat"];
                 
             if (objData["ImgUrl"] != null && objData["ImgUrl"].ToString() != "") htxtimg.Value = "/Images/News/" + objData["ImgUrl"].ToString();
             
@@ -92,10 +93,10 @@ public partial class System_NewsEdit : System.Web.UI.Page
 
         if(itemId == 0)
         {
-            itemId = this.objNews.addData(this.txtTitle.Text, int.Parse(this.ddlGroup.SelectedValue.ToString()), this.txtShortContent.Text, this.txtContent.Text.Trim(), saveImage(FileUpload, htxtimg), this.txtAuthor.Text);
+            itemId = this.objNews.addData(this.txtTitle.Text, int.Parse(this.ddlGroup.SelectedValue.ToString()), this.txtShortContent.Text, this.txtContent.Text.Trim(), saveImage(FileUpload, htxtimg), this.txtAuthor.Text,ckbNoiBat.Checked);
             if (itemId != 0) objSystemClass.addMessage("Đăng bài viết thành công.");
         } else {
-            itemId = this.objNews.UpdateData(itemId, this.txtTitle.Text, int.Parse(this.ddlGroup.SelectedValue.ToString()), this.txtShortContent.Text, this.txtContent.Text.Trim(), saveImage(FileUpload, htxtimg), this.txtAuthor.Text);
+            itemId = this.objNews.UpdateData(itemId, this.txtTitle.Text, int.Parse(this.ddlGroup.SelectedValue.ToString()), this.txtShortContent.Text, this.txtContent.Text.Trim(), saveImage(FileUpload, htxtimg), this.txtAuthor.Text, ckbNoiBat.Checked);
             if (itemId != 0) objSystemClass.addMessage("Cập nhật bài viết thành công.");
         }
 

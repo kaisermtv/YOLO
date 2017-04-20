@@ -22,7 +22,7 @@ public partial class FrontEnd_Pages_Home : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            DataTable objData = objNews.getDataTop(4);
+            DataTable objData = objNews.getDataTop(5);
 
             dtlNews.DataSource = objData.DefaultView;
             dtlNews.DataBind();

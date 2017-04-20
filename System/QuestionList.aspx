@@ -66,7 +66,7 @@
     <cc1:CollectionPager ID="cpData" runat="server" BackText="" FirstText="Đầu"
         ControlCssClass="ProductPage" LabelText="" LastText="Cuối" NextText="" UseSlider="true"
         ResultsFormat="" BackNextLinkSeparator="" ResultsLocation="None" BackNextLocation="None"
-        PageNumbersSeparator="&nbsp;" PagingMode="PostBack">
+        PageNumbersSeparator="&nbsp;">
     </cc1:CollectionPager>
 
     <br />
