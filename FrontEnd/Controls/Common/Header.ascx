@@ -8,8 +8,10 @@
         </a>
     </div>
     <div class="search-w hidden-xs hidden-sm">
-        <input class="txt-search" placeholder="Nhập từ khóa tìm kiếm.." />
-        <a href="javascript:;" id="btn-search">Tìm kiếm</a>
+        <form method="get" action="/tim-kiem">
+            <input class="txt-search" name="txtSeach" placeholder="Nhập từ khóa tìm kiếm.." />
+            <button type="submit" class="btn-search">Tìm kiếm</button>
+        </form>
     </div>
     <div class="bar">
         <i class="fa fa-bars"></i>

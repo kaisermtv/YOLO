@@ -163,7 +163,7 @@ public class DataNews : DataClass
     #endregion
 
     #region Method getDataCount
-    public int getDataCount(int group = 0,bool NoiBat = false)
+    public int getDataCount(int group = 0, bool NoiBat = false, String seach = "")
     {
         try
         {
@@ -181,11 +181,11 @@ public class DataNews : DataClass
                 Cmd.CommandText += " AND P.NoiBat = 1";
             }
 
-            //if (seach != null && seach != "")
-            //{
-            //    Cmd.CommandText += " AND UPPER(RTRIM(LTRIM(P.Title))) LIKE  N'%'+UPPER(RTRIM(LTRIM(@Seach)))+'%'";
-            //    Cmd.Parameters.Add("Seach", SqlDbType.NVarChar).Value = seach;
-            //}
+            if (seach != null && seach != "")
+            {
+                Cmd.CommandText += " AND UPPER(RTRIM(LTRIM(P.Title))) LIKE  N'%'+UPPER(RTRIM(LTRIM(@Seach)))+'%'";
+                Cmd.Parameters.Add("Seach", SqlDbType.NVarChar).Value = seach;
+            }
 
 
             int ret = (int)Cmd.ExecuteScalar();
@@ -203,7 +203,7 @@ public class DataNews : DataClass
     #endregion
 
     #region Method getDataTop()
-    public DataTable getDataTop(int limit = 0, int group = 0, int page = 1, bool NoiBat = false)
+    public DataTable getDataTop(int limit = 0, int group = 0, int page = 1, bool NoiBat = false, String seach = "")
     {
         try
         {
@@ -239,11 +239,11 @@ public class DataNews : DataClass
                 Cmd.CommandText += " AND P.NoiBat = 1";
             }
 
-            //if (seach != null && seach != "")
-            //{
-            //    Cmd.CommandText += " AND UPPER(RTRIM(LTRIM(P.Title))) LIKE  N'%'+UPPER(RTRIM(LTRIM(@Seach)))+'%'";
-            //    Cmd.Parameters.Add("Seach", SqlDbType.NVarChar).Value = seach;
-            //}
+            if (seach != null && seach != "")
+            {
+                Cmd.CommandText += " AND UPPER(RTRIM(LTRIM(P.Title))) LIKE  N'%'+UPPER(RTRIM(LTRIM(@Seach)))+'%'";
+                Cmd.Parameters.Add("Seach", SqlDbType.NVarChar).Value = seach;
+            }
 
             //Cmd.CommandText += " ORDER BY P.DayPost DESC";
 
