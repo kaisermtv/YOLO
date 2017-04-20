@@ -38,55 +38,51 @@ public partial class FrontEnd_Pages_Seach : System.Web.UI.Page
         }
         catch { }
 
-
-        #region phan trang
-        maxitem = objNews.getDataCount(0, false, seach);
-        maxPage = maxitem / numItem;
-        if (maxitem % numItem > 0 || maxPage == 0) maxPage++;
-        if (page > maxPage) page = maxPage;
-        if (page < 1) page = 1;
-
-        String link = "";
-        if (seach != "") link = "&Seach=" + seach;
-
-        if (page - 1 >= 1) pager.Add(new PageData("Trước", "?page=" + (page - 1) + link));
-        if (page != 1) pager.Add(new PageData("1", "?page=1" + link));
-
-        int a = page - 5;
-        if (a < 2) a = 2;
-        for (int i = a; i < page; i++)
+        if (seach != "")
         {
-            pager.Add(new PageData(i.ToString(), "?page=" + i + link));
+            #region phan trang
+            maxitem = objNews.getDataCount(0, false, seach);
+            maxPage = maxitem / numItem;
+            if (maxitem % numItem > 0 || maxPage == 0) maxPage++;
+            if (page > maxPage) page = maxPage;
+            if (page < 1) page = 1;
+
+            String link = "";
+            if (seach != "") link = "&Seach=" + seach;
+
+            if (page - 1 >= 1) pager.Add(new PageData("Trước", "?page=" + (page - 1) + link));
+            if (page != 1) pager.Add(new PageData("1", "?page=1" + link));
+
+            int a = page - 5;
+            if (a < 2) a = 2;
+            for (int i = a; i < page; i++)
+            {
+                pager.Add(new PageData(i.ToString(), "?page=" + i + link));
+            }
+
+            pager.Add(new PageData(page.ToString(), "#", true));
+
+            a = page + 5;
+            if (a > maxPage) a = maxPage;
+            for (int i = page + 1; i < a; i++)
+            {
+                pager.Add(new PageData(i.ToString(), "?page=" + i + link));
+            }
+
+            if (page != maxPage) pager.Add(new PageData(maxPage.ToString(), "?page=" + maxPage + link));
+            if (page + 1 <= maxPage) pager.Add(new PageData("Sau", "?page=" + (page + 1) + link));
+            #endregion
+            ddlpager.DataSource = pager;
+            ddlpager.DataBind();
+
+            DataTable objData = objNews.getDataTop(numItem, 0, page, false, seach);
+
+            dtlNews.DataSource = objData.DefaultView;
+            dtlNews.DataBind();
         }
-
-        pager.Add(new PageData(page.ToString(), "#", true));
-
-        a = page + 5;
-        if (a > maxPage) a = maxPage;
-        for (int i = page + 1; i < a; i++)
-        {
-            pager.Add(new PageData(i.ToString(), "?page=" + i + link));
-        }
-
-        if (page != maxPage) pager.Add(new PageData(maxPage.ToString(), "?page=" + maxPage + link));
-        if (page + 1 <= maxPage) pager.Add(new PageData("Sau", "?page=" + (page + 1) + link));
-        #endregion
-        ddlpager.DataSource = pager;
-        ddlpager.DataBind();
-
-        DataTable objData = objNews.getDataTop(numItem, 0, page, false, seach);
-
-        dtlNews.DataSource = objData.DefaultView;
-        dtlNews.DataBind();
-
     }
     #endregion
-    #region Page_PreRender
-    public void Page_PreRender(object sender, EventArgs e)
-    {
-        
-    }
-    #endregion
+
 
     #region Method getParam
     private String getParam(String key)
