@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/App_Master/System.master" CodeFile="AnswerEdit.aspx.cs" Inherits="System_AnswerEdit" %>
+﻿<%--<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/App_Master/System.master" CodeFile="AnswerEdit.aspx.cs" Inherits="System_AnswerEdit" %>
 
 
 <%@ Register TagPrefix="cc1" Namespace="SiteUtils" Assembly="CollectionPager" %>
@@ -93,4 +93,4 @@
 
       </div>
     </div>
-</asp:Content>
+</asp:Content>--%>

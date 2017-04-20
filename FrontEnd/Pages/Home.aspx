@@ -192,7 +192,7 @@
                 }
                 countNewsK++;
                 if (countNewsK == lenghtNewsK) {
-                    $('.news-r-detail li:first-child').height(heightNewsK);
+                    $('.news-r-detail li:not(:first-child)').height(heightNewsK);
                 }
             });
         }, 500);
