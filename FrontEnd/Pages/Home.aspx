@@ -162,5 +162,21 @@
             </div>
         </div>
     </div>
-
+    <script type="text/javascript">
+        var heightNewsR = 0;
+        var countNewsR = 0;
+        var lenghtNewsR = $('.news-r-detail li:first-child').length;
+        $('.news-r-detail li:first-child').each(function (i, item) {
+            if ($(item).height() > heightNewsR) {
+                console.log(item)
+                console.log($(item).height())
+                console.log(heightNewsR)
+                heightNewsR = $(item).height();
+            }
+            countNewsR++;
+            if (countNewsR == lenghtNewsR) {
+                $('.news-r-detail li:first-child').height(heightNewsR);
+            }
+        });
+    </script>
 </asp:Content>

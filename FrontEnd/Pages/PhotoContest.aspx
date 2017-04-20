@@ -66,7 +66,7 @@
                                         <label><span>Họ tên: </span>Hồ Thị Nguyệt Hằng</label>
                                         <label><span>Ngày sinh:</span>27/06/1998</label>
                                         <label><span>Đến từ:</span> Nghệ An</label>
-                                        <p><%=GetSubStringNice("Những điều chúng ta nghĩ quyết định những điều sẽ xảy ra với chúng ta, và vì thế nếu chúng ta muốn thay đổi cuộc sống, chúng ta cần phải thay đổi từ cách suy nghĩ của chúng ta. \" Cuộc sống không cho bạn tất cả những gì bạn mơ ước, nhưng cuộc sống cho bạn quyền được thực hiện nó \".Cuộc sống có vô vàn điều kì diệu và tuyệt vời. Dù ta có sống hết cuộc đời cũng chưa chắc trải nghiệm được hết. Cuộc sống vì thế rất muôn màu và sặc sỡ. Hãy luôn yêu đời và yêu những người đáng mến ở chung quanh. Một khi yêu thương được trao đi, tâm hồn bạn là một vườn hoa trái. ^^".ToString(), 200) %></p>
+                                        <p><%=Utils.GetSubStringNice("Những điều chúng ta nghĩ quyết định những điều sẽ xảy ra với chúng ta, và vì thế nếu chúng ta muốn thay đổi cuộc sống, chúng ta cần phải thay đổi từ cách suy nghĩ của chúng ta. \" Cuộc sống không cho bạn tất cả những gì bạn mơ ước, nhưng cuộc sống cho bạn quyền được thực hiện nó \".Cuộc sống có vô vàn điều kì diệu và tuyệt vời. Dù ta có sống hết cuộc đời cũng chưa chắc trải nghiệm được hết. Cuộc sống vì thế rất muôn màu và sặc sỡ. Hãy luôn yêu đời và yêu những người đáng mến ở chung quanh. Một khi yêu thương được trao đi, tâm hồn bạn là một vườn hoa trái. ^^".ToString(), 200) %></p>
                                         <div><a class="see-more" href="#">Xem thêm</a></div>
                                     </div>
                                 </div>
