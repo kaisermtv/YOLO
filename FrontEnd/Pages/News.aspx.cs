@@ -14,6 +14,7 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
     private DataNewsGroup objNewsGroup = new DataNewsGroup();
 
     public int itemId = 0;
+    public String groupname = "";
 
     public int numItem = 10;
     public int maxitem = 0;
@@ -80,9 +81,17 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
             dtlNews.DataSource = objData.DefaultView;
             dtlNews.DataBind();
 
+            DataNewsGroup objGroup = new DataNewsGroup();
+            if(itemId != 0)
+            {
+                groupname = objGroup.getNameById(itemId);
+            } else {
+                groupname = "Tin Tức";
+            }
         }
     }
     #endregion
+
     #region Page_PreRender
     public void Page_PreRender(object sender, EventArgs e)
     {
@@ -90,6 +99,8 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
 
         dtlTop.DataSource = objData.DefaultView;
         dtlTop.DataBind();
+
+
     }
     #endregion
 
