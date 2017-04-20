@@ -73,7 +73,7 @@
                                 <div class="lst-news-detail">
                                     <a class="tieu-de" href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>"><%# Eval("Title") %></a>
                                     <i><%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyyy") %></i>
-                                    <p><%# Eval("ShortContent") %></p>
+                                    <p><%#Utils.GetSubStringNice(Eval("ShortContent").ToString(), 200) %></p>
                                 </div>
                             </li>
                         </ItemTemplate>
@@ -93,7 +93,7 @@
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
                                             <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" class="tieu-de"><%# Eval("Title") %></a>
-                                            <p><%# Eval("ShortContent") %></p>
+                                            <p><%#Utils.GetSubStringNice(Eval("ShortContent").ToString(), 200) %></p>
                                         </li>
                                     </ItemTemplate>
                                 </asp:Repeater>
@@ -109,7 +109,7 @@
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
                                             <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" class="tieu-de"><%# Eval("Title") %></a>
-                                            <p><%# Eval("ShortContent") %></p>
+                                            <p><%#Utils.GetSubStringNice(Eval("ShortContent").ToString(), 200) %></p>
                                         </li>
                                     </ItemTemplate>
                                 </asp:Repeater>
@@ -125,7 +125,7 @@
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
                                             <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" class="tieu-de"><%# Eval("Title") %></a>
-                                            <p><%# Eval("ShortContent") %></p>
+                                            <p><%#Utils.GetSubStringNice(Eval("ShortContent").ToString(), 200) %></p>
                                         </li>
                                     </ItemTemplate>
                                 </asp:Repeater>
@@ -141,7 +141,7 @@
                                                 <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
                                             <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>>" class="tieu-de"><%# Eval("Title") %></a>
-                                            <p><%# Eval("ShortContent") %></p>
+                                            <p><%#Utils.GetSubStringNice(Eval("ShortContent").ToString(), 200) %></p>
                                         </li>
                                     </ItemTemplate>
                                 </asp:Repeater>

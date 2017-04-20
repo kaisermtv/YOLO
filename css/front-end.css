@@ -150,9 +150,10 @@ p { text-align: justify; line-height: 20px; }
 
 .news-r-detail { }
     .news-r-detail li { padding: 20px 0; display: inline-block; width: 100%; line-height: 20px; border-bottom: 1px solid #e1e1e1; }
-        .news-r-detail li .tieu-de { display: inline-block; width: calc(100% - 175px); margin-bottom: 10px; }
+        .news-r-detail li .tieu-de { display: inline-block; width: calc(100% - 175px); margin-bottom: 10px; margin-top: 0; }
 
-        .news-r-detail li p { text-align: justify; font-size: 17px; color: #555; font-family: CondLight; }
+        .news-r-detail li p { text-align: justify; font-size: 17px; color: #555; font-family: CondLight; display: inline-block; float: right; width: calc(100% - 175px); }
+        .news-r-detail li:first-child p { float: none; width: 100%; }
         .news-r-detail li .img-w { width: 160px; height: 99px; float: left; margin-right: 15px; margin-bottom: 10px; }
             .news-r-detail li .img-w img { width: 100%; height: 100%; font-size: 12px; text-align: justify; }
 
