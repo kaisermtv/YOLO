@@ -9,7 +9,7 @@
     </div>
     <div class="search-w hidden-xs hidden-sm">
         <form method="get" action="/tim-kiem">
-            <input class="txt-search" name="txtSeach" placeholder="Nhập từ khóa tìm kiếm.." />
+            <input class="txt-search" name="Seach" placeholder="Nhập từ khóa tìm kiếm.." />
             <button type="submit" class="btn-search">Tìm kiếm</button>
         </form>
     </div>

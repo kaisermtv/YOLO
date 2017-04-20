@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="/App_Master/Site.master" CodeFile="Seach.aspx.cs" Inherits="FrontEnd_Pages_Seach" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="../../App_Master/Site.master" CodeFile="Seach.aspx.cs" Inherits="FrontEnd_Pages_Seach" %>
 
 <%@ Register Src="~/FrontEnd/Controls/News/DanhMuc.ascx" TagPrefix="uc1" TagName="DanhMuc" %>
 <%@ Register Src="~/FrontEnd/Controls/Common/QuangCao.ascx" TagPrefix="uc1" TagName="QuangCao" %>
@@ -20,7 +20,7 @@
 
                             <div class="search-w" style="width: 100%; padding-left: 20px">
                                 <form method="get" action="/tim-kiem">
-                                    <input class="txt-search" name="txtSeach" placeholder="Nhập từ khóa tìm kiếm.." value="<%=seach %>" />
+                                    <input class="txt-search" name="Seach" placeholder="Nhập từ khóa tìm kiếm.." value="<%=seach %>" />
 
                                      <button type="submit" class="btn-search">Tìm kiếm</button>
                                 </form>
