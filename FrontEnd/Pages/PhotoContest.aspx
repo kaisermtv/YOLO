@@ -31,7 +31,7 @@
                             Tích cực chia sẻ vì cộng đồng. YOLO- dám chia sẻ
                         </p>
                         <div class="img-w" style="margin-bottom: 20px;">
-                            <img src="<%= objData["picture"].ToString() %>" alt="Yolo chia sẻ đam mê" />
+                            <img  onError="this.src='/images/Front-End/no-image-available.png';" src="<%= objData["picture"].ToString() %>" alt="Yolo chia sẻ đam mê" />
                         </div>
                         <label><span>Họ tên: </span><%= objData["user_name"].ToString() %></label>
                         <label><span>Ngày sinh:</span> <%= objData["user_birthday"].ToString() %></label>
@@ -68,7 +68,7 @@
                                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                             <div class="img-w">
                                                 <a href="/<%# SystemClass.convertToUnSign2(Eval("user_name").ToString()) %>-p<%#Eval("id")%>">
-                                                    <img src="<%#Eval("picture")%>" alt="<%#Eval("user_name")%>" /></a>
+                                                    <img  onError="this.src='/images/Front-End/no-image-available.png';" src="<%#Eval("picture")%>" alt="<%#Eval("user_name")%>" /></a>
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -76,7 +76,7 @@
                                             <div class="PhotoContest-rt">
                                                 <div class="PhotoContest-rt-m">
                                                     <a href="javascript:;">
-                                                        <img src="/images/Front-End/logo.png" />
+                                                        <img  onError="this.src='/images/Front-End/no-image-available.png';" src="/images/Front-End/logo.png" />
                                                     </a>
                                                     <label>Yolo- Dám chia sẻ</label>
                                                     <div class="social">
