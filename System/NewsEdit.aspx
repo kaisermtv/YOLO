@@ -100,6 +100,15 @@
 
     <div class="AdminItem">
         <div class="AdminLeftItem">
+            
+        </div>
+        <div class="AdminRightItem">
+            <asp:CheckBox ID="ckbNoiBat" runat="server"></asp:CheckBox> Bài viết nổi bật
+        </div>
+    </div>
+
+    <div class="AdminItem">
+        <div class="AdminLeftItem">
             &nbsp;&nbsp;
         </div>
         <div class="AdminRightItem">
