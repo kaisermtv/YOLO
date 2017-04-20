@@ -2,6 +2,8 @@
 
 
 <%@ Register Src="~/FrontEnd/Controls/Common/QuangCao.ascx" TagPrefix="uc1" TagName="QuangCao" %>
+<%@ Register Src="~/FrontEnd/Controls/PhotoContest/List.ascx" TagPrefix="uc1" TagName="List" %>
+
 
 
 
@@ -23,24 +25,7 @@
 
                         <label>Danh sách thí sinh</label>
                         <div class="row">
-
-                            <asp:Repeater ID="YoLoSlide" runat="server">
-                                <ItemTemplate>
-                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                                        <a href="/<%# SystemClass.convertToUnSign2(Eval("user_name").ToString()) %>-p<%#Eval("id")%>" class="PhotoContestPerson">
-                                            <div class="img-w person">
-                                                <img src="<%#Eval("picture")%>" />
-                                            </div>
-                                            <div class="person-detail">
-                                                <h3><%#Eval("user_name")%></h3>
-                                                <p>Ngày sinh: <%#Eval("user_birthday")%></p>
-                                                <p>Đến từ: <%#Eval("user_address")%></p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </ItemTemplate>
-                            </asp:Repeater>
-
+                            <uc1:List runat="server" ID="ListPhotoContest" />
                         </div>
                     </div>
 
