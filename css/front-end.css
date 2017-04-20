@@ -123,7 +123,7 @@ p { text-align: justify; line-height: 20px; }
 #news { padding-top: 45px; padding-bottom: 55px; }
     #news > h3 { font-size: 45px; color: #397ebf; font-family: CondBold; text-transform: uppercase; display: inline-block; width: 160px; }
     #news > .line { display: inline-block; width: calc(100% - 170px); border-bottom: 2px solid #c2c2c2; }
-    #news > .lst-news { margin: 30px 0; font-family: Helvetica; }
+    #news > .lst-news { margin: 30px 0; font-family: Helvetica; border-bottom: 1px solid #e1e1e1; }
         #news > .lst-news li { text-align: justify; display: inline-block; width: 100%; padding: 25px 0px; border-bottom: 1px solid #e3e3e3; position: relative; }
             #news > .lst-news li .img-w { float: left; width: 200px; height: 140px; }
             #news > .lst-news li .lst-news-detail { float: left; width: calc(100% - 220px); margin-left: 20px; }
@@ -179,11 +179,11 @@ p { text-align: justify; line-height: 20px; }
         #danhmuc-tintuc ul li .zc:hover:before, #danhmuc-tintuc ul li .zc.active:before { background: #FF6A00; }
 
 #PhotoContest { padding: 20px 0; line-height: 30px; font-family: CondLight; font-size: 18px; }
-    #PhotoContest .img-w { padding-top: 100%; width: 100%; margin-bottom: 0; border: 1px solid #e1e1e1; }
+    #PhotoContest .img-w { padding-top: calc(100% - 2px); width: 100%; margin-bottom: 0; border: 1px solid #e1e1e1; }
         #PhotoContest .img-w img { }
     #PhotoContest h3 { color: #337ab7; font-size: 30px; text-overflow: ellipsis; font-family: CondBold; display: inline-block; width: 100%; }
     #PhotoContest .sapo { font-style: italic; color: #545252; font-family: CondLight; font-weight: 700; margin-bottom: 15px; font-size: 16px; }
-    #PhotoContest label { display: inline-block; width: 100%; font-weight: 700; }
+    #PhotoContest label { font-size: 27px; margin-bottom: 20px; display: inline-block; width: 100%; font-weight: 700; }
         #PhotoContest label span { display: inline-block; width: 80px; }
     #PhotoContest p { line-height: 25px; }
     #PhotoContest .comment-w { }

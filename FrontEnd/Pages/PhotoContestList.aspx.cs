@@ -14,7 +14,9 @@ public partial class FrontEnd_Pages_PhotoContestList : System.Web.UI.Page
         FacebookApi FbApi = new FacebookApi();
         FbPhotoAlbum FbPhotoAlbum = new FbPhotoAlbum();
         FbTable = FbPhotoAlbum.getData(1000);
-        YoLoSlide.DataSource = FbTable.DefaultView;
-        YoLoSlide.DataBind();
+        if (FbTable != null && FbTable.Rows.Count > 0)
+        {
+            ListPhotoContest.BindData(FbTable);
+        }
     }
 }

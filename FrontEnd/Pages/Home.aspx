@@ -163,38 +163,40 @@
         </div>
     </div>
     <script type="text/javascript">
-        var heightNewsR = 0;
-        var heightNewsL = 0;
-        var heightNewsK = 0;
-        var countNewsR = 0;
-        var countNewsK = 0;
-        var lenghtNewsR = $('.news-r-detail li:first-child').length;
-        var lenghtNewsK = $('.news-r-detail li:not(:first-child)').length;
-        setTimeout(function () {
-            $('.news-r-detail li:first-child').each(function (i, item) {
-                if ($(item).height() > heightNewsR) {
-                    heightNewsR = $(item).height();
+        if ($(window).width() > 768) {
+            var heightNewsR = 0;
+            var heightNewsL = 0;
+            var heightNewsK = 0;
+            var countNewsR = 0;
+            var countNewsK = 0;
+            var lenghtNewsR = $('.news-r-detail li:first-child').length;
+            var lenghtNewsK = $('.news-r-detail li:not(:first-child)').length;
+            setTimeout(function () {
+                $('.news-r-detail li:first-child').each(function (i, item) {
+                    if ($(item).height() > heightNewsR) {
+                        heightNewsR = $(item).height();
 
-                }
-                if ($(item).find('.tieu-de').height() > heightNewsL) {
-                    heightNewsL = $(item).find('.tieu-de').height();
-                }
-                countNewsR++;
-                if (countNewsR == lenghtNewsR) {
-                    $('.news-r-detail li:first-child').height(heightNewsR);
-                    $('.news-r-detail li:first-child .tieu-de').height(heightNewsL);
-                }
-            });
-            $('.news-r-detail li:not(:first-child)').each(function (i, item) {
-                if ($(item).height() > heightNewsK) {
-                    heightNewsK = $(item).height();
+                    }
+                    if ($(item).find('.tieu-de').height() > heightNewsL) {
+                        heightNewsL = $(item).find('.tieu-de').height();
+                    }
+                    countNewsR++;
+                    if (countNewsR == lenghtNewsR) {
+                        $('.news-r-detail li:first-child').height(heightNewsR);
+                        $('.news-r-detail li:first-child .tieu-de').height(heightNewsL);
+                    }
+                });
+                $('.news-r-detail li:not(:first-child)').each(function (i, item) {
+                    if ($(item).height() > heightNewsK) {
+                        heightNewsK = $(item).height();
 
-                }
-                countNewsK++;
-                if (countNewsK == lenghtNewsK) {
-                    $('.news-r-detail li:not(:first-child)').height(heightNewsK);
-                }
-            });
-        }, 500);
+                    }
+                    countNewsK++;
+                    if (countNewsK == lenghtNewsK) {
+                        $('.news-r-detail li:not(:first-child)').height(heightNewsK);
+                    }
+                });
+            }, 500);
+        }
     </script>
 </asp:Content>
