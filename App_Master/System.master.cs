@@ -30,6 +30,7 @@ public partial class App_Master_System : System.Web.UI.MasterPage
         DataRow objData = objSystemClass.getAccount();
 
         account = objData["ACCT_NAME"].ToString();
+
     }
     #endregion
 

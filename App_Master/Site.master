@@ -27,22 +27,18 @@
     <uc1:PageScript runat="server" ID="PageScript" />
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div class="YoloWraper container-fluid">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="main">
-                        <uc1:Header runat="server" ID="Header" />
-                        <uc1:Menu runat="server" ID="Menu" />
-                       
-
-                    </div>
+    <div class="YoloWraper container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="main">
+                    <uc1:Header runat="server" ID="Header" />
+                    <uc1:Menu runat="server" ID="Menu" />
                 </div>
             </div>
         </div>
-        <asp:ContentPlaceHolder ID="MasterPageContent" runat="server">
-        </asp:ContentPlaceHolder>
-        <uc1:Footer runat="server" ID="Footer" />
-    </form>
+    </div>
+    <asp:ContentPlaceHolder ID="MasterPageContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <uc1:Footer runat="server" ID="Footer" />
 </body>
 </html>
