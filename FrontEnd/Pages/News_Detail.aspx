@@ -29,6 +29,40 @@
 
                                 </div>
                             </div>
+
+
+                            <asp:Repeater ID="dtlTinMoi" runat="server" EnableViewState="False">
+                                <HeaderTemplate>
+                                    <br />
+                                    <h3>Tin mới hơn</h3>
+                                    <div class="row" style="border-top: 1px solid #e1e1e1">
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <div class="col-xs-12" style="margin:3px">
+                                        <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" title="<%# Eval("Title") %>"><%# Eval("Title") %> (<%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyy") %>)</a>
+                                    </div>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                    </div>
+                                </FooterTemplate>
+                            </asp:Repeater>
+
+                            <asp:Repeater ID="dtlTinCu" runat="server" EnableViewState="False">
+                                <HeaderTemplate>
+                                    <br />
+                                    <h3>Tin cũ hơn</h3>
+                                    <div class="row" style="border-top: 1px solid #e1e1e1">
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <div class="col-xs-12" style="margin:3px">
+                                        <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" title="<%# Eval("Title") %>"><%# Eval("Title") %> (<%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyy") %>)</a>
+                                    </div>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                    </div>
+                                </FooterTemplate>
+                            </asp:Repeater>
+
                         </div>
                         <div class="cright col-xs-6 col-sm-4 col-md-4 hidden-xs">
                             <%--<uc1:DanhMuc runat="server" ID="DanhMuc" />--%>

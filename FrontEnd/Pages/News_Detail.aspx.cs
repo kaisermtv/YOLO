@@ -32,6 +32,14 @@ public partial class FrontEnd_Pages_News_Detail : System.Web.UI.Page
         if (objData == null) Response.Redirect("tin-tuc");
 
 
+        DataTable tinMoi = objNews.tinLienQuan(itemId, (DateTime)objData["DayPost"], true, 5);
+        dtlTinMoi.DataSource = tinMoi.DefaultView;
+        dtlTinMoi.DataBind();
+
+        DataTable tinCu = objNews.tinLienQuan(itemId, (DateTime)objData["DayPost"], false, 5);
+        dtlTinCu.DataSource = tinCu.DefaultView;
+        dtlTinCu.DataBind();
+
     }
     #endregion
 
