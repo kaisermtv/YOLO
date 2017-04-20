@@ -88,7 +88,7 @@
                                                 </div>
                                                 <div class="share fb-rm">
                                                     <i class="fa fa-share" aria-hidden="true"></i>
-                                                    <span>100</span>
+                                                    <span>0</span>
                                                 </div>
                                             </div>
                                         </div>

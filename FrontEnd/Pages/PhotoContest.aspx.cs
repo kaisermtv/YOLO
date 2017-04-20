@@ -37,11 +37,15 @@ public partial class FrontEnd_Pages_PhotoContest : System.Web.UI.Page
         dtlData.DataSource = FbTable.DefaultView;
         dtlData.DataBind();
 
-
+        try { 
         string url = @"https://graph.facebook.com/" + objData["id"].ToString().Trim() + "?limit= " + 10 + "&fields=" + fields + "&access_token=" + new DataSetting().getValue(key_db) + ""; // mặc định là lấy ảnh của album có id =  // speci
         var json = objFacebook.getJsonString(3,10,url);
         lComment = objFacebook.parseJsonToPhotoPostsComments(json);
-
+            }
+        catch
+        {
+            return;
+        }
 
     }
     #endregion

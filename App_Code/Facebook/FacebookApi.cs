@@ -158,7 +158,7 @@ public class FacebookApi : DataClass
                     lphoto_post.data.Add(
                       new FbPhotoAlbum(
                       element["id"] == null ? " " : element["id"].ToString(),             // PHOTO ID
-                      element["name"] == null ? " " : (element["name"].ToString()),         // MIÊU TẢ ẢNH
+                      element["name"] == null ? " " : (convertDescription(element["name"].ToString())),         // MIÊU TẢ ẢNH
                                 tmpHoten[0],
                                 tmpHoten[1],
                                 tmpHoten[2],
@@ -482,6 +482,25 @@ public class FacebookApi : DataClass
         Debug.WriteLine(result.ToArray());
         
           return result;
+    }
+    #endregion
+    #region convert  convertDescription
+    public string convertDescription(string str)
+    {
+        try { 
+        string[] tmpDes = str.ToString().Split('\n');
+        string[] tmp = new string[tmpDes.Length-2];
+        for (int i = 3; i < tmpDes.Length && i >= 3; i++)
+        {
+            tmp[i - 2] = tmpDes[i];
+        }
+        return string.Join("\n", tmp);
+            }
+        catch
+        {
+            return " ";
+        }
+      
     }
     #endregion
 
