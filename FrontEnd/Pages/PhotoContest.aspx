@@ -9,8 +9,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MasterPageContent" runat="server">
 
-<div id="fb-root"></div>
-<script>(function (d, s, id) {
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
@@ -30,80 +30,82 @@
                             <br />
                             Tích cực chia sẻ vì cộng đồng. YOLO- dám chia sẻ
                         </p>
-                        <div class="img-w">
+                        <div class="img-w" style="margin-bottom: 20px;">
                             <img src="<%= objData["picture"].ToString() %>" alt="Yolo chia sẻ đam mê" />
                         </div>
-                        <label><span>Họ tên: </span> <%= objData["user_name"].ToString() %></label>
+                        <label><span>Họ tên: </span><%= objData["user_name"].ToString() %></label>
                         <label><span>Ngày sinh:</span> <%= objData["user_birthday"].ToString() %></label>
                         <label><span>Đến từ:</span> <%= objData["user_address"].ToString() %></label>
                         <p><%= objData["name"].ToString() %> </p>
                         <br />
-                          Bình luận trên Facebook
+                        <%--Bình luận trên Facebook--%>
                         <div class="comment-w">
                             <%int i = 1; %>
-                               <% foreach (comments c in lComment)
-                                  {
-                                      if (i >= 5) break;
-                                      i++; %>     
-                             <div class="fb-comment-embed"
-                                  data-href="<%= objData["link"].ToString().Trim() %>&comment_id=<%=c.id %>" 
-                                 data-width="800" data-include-parent="false"></div>
-                            <%} %>  
-                          <br />
+                            <% foreach (comments c in lComment)
+                                {
+                                    if (i >= 5) break;
+                                    i++; %>
+                            <div class="fb-comment-embed"
+                                data-href="<%= objData["link"].ToString().Trim() %>&comment_id=<%=c.id %>"
+                                data-width="800" data-include-parent="false">
+                            </div>
+                            <%} %>
+                            <br />
                             <!-- comemnt -->
                             Bình luận trên trang
-                            <div class="fb-comments"  data-href=" <%= objData["link"].ToString() %>" data-width="800" data-numposts="5"></div>
+                            <div class="fb-comments" data-href=" <%= objData["link"].ToString() %>" data-width="800" data-numposts="5"></div>
                         </div>
                     </div>
-                  
+
 
                     <h3 class="" style="font-size: 24px; font-family: CondBold; display: inline-block; width: 100%; margin-top: 40px; margin-bottom: 10px;">Bài thi liên quan</h3>
                     <ul id="PhotoContestList">
-               
-                        <asp:Repeater ID="dtlData" runat="server" EnableViewState="False">
-                        <ItemTemplate>
-                            <li>
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                    <div class="img-w">
-                                        <a href="/<%# SystemClass.convertToUnSign2(Eval("user_name").ToString()) %>-p<%#Eval("id")%>"><img src="<%#Eval("picture")%>" alt="<%#Eval("user_name")%>" /></a>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 
-                                    <div class="PhotoContest-rt">
-                                        <div class="PhotoContest-rt-m">
-                                            <a href="javascript:;">
-                                                <img src="/images/Front-End/logo.png" />
-                                            </a>
-                                            <label>Yolo- Dám chia sẻ</label>
-                                            <div class="social">
-                                                <div class="likes fb-rm">
-                                                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                                                    <span><%#Eval("likes")%></span>
-                                                </div>
-                                                <div class="comments fb-rm">
-                                                    <i class="fa fa-comments" aria-hidden="true"></i>
-                                                    <span><%#Eval("comments")%></span>
-                                                </div>
-                                                <div class="share fb-rm">
-                                                    <i class="fa fa-share" aria-hidden="true"></i>
-                                                    <span>0</span>
-                                                </div>
+                        <asp:Repeater ID="dtlData" runat="server" EnableViewState="False">
+                            <ItemTemplate>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="img-w">
+                                                <a href="/<%# SystemClass.convertToUnSign2(Eval("user_name").ToString()) %>-p<%#Eval("id")%>">
+                                                    <img src="<%#Eval("picture")%>" alt="<%#Eval("user_name")%>" /></a>
                                             </div>
                                         </div>
-                                        <label><span>Họ tên: </span> <%#Eval("user_name")%></label>
-                                        <label><span>Ngày sinh:</span> <%#Eval("user_birthday")%></label>
-                                        <label><span>Đến từ:</span> <%#Eval("user_address")%></label>
-                                        <p><%#Utils.GetSubStringNice(Eval("name").ToString(), 200) %></p>
-                                        <div><a class="see-more" href="/<%# SystemClass.convertToUnSign2(Eval("user_name").ToString()) %>-p<%#Eval("id")%>">Xem thêm</a></div>
-                                    </div>
-                                </div>
-                            </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 
-                        </li>
-                        </ItemTemplate>
-                    </asp:Repeater>
+                                            <div class="PhotoContest-rt">
+                                                <div class="PhotoContest-rt-m">
+                                                    <a href="javascript:;">
+                                                        <img src="/images/Front-End/logo.png" />
+                                                    </a>
+                                                    <label>Yolo- Dám chia sẻ</label>
+                                                    <div class="social">
+                                                        <div class="likes fb-rm">
+                                                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                                            <span><%#Eval("likes")%></span>
+                                                        </div>
+                                                        <div class="comments fb-rm">
+                                                            <i class="fa fa-comments" aria-hidden="true"></i>
+                                                            <span><%#Eval("comments")%></span>
+                                                        </div>
+                                                        <div class="share fb-rm">
+                                                            <i class="fa fa-share" aria-hidden="true"></i>
+                                                            <span>0</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <label><span>Họ tên: </span><%#Eval("user_name")%></label>
+                                                <label><span>Ngày sinh:</span> <%#Eval("user_birthday")%></label>
+                                                <label><span>Đến từ:</span> <%#Eval("user_address")%></label>
+                                                <p><%#Utils.GetSubStringNice(Eval("name").ToString(), 200) %></p>
+                                                <div><a class="see-more" href="/<%# SystemClass.convertToUnSign2(Eval("user_name").ToString()) %>-p<%#Eval("id")%>">Xem thêm</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
                     </ul>
                 </div>
                 <div class="hidden-xs hidden-sm col-md-4 col-lg-4">

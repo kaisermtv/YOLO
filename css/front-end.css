@@ -183,8 +183,8 @@ p { text-align: justify; line-height: 20px; }
         #PhotoContest .img-w img { }
     #PhotoContest h3 { color: #337ab7; font-size: 30px; text-overflow: ellipsis; font-family: CondBold; display: inline-block; width: 100%; }
     #PhotoContest .sapo { font-style: italic; color: #545252; font-family: CondLight; font-weight: 700; margin-bottom: 15px; font-size: 16px; }
-    #PhotoContest label { font-size: 27px; margin-bottom: 20px; display: inline-block; width: 100%; font-weight: 700; }
-        #PhotoContest label span { display: inline-block; width: 80px; }
+    #PhotoContest label { font-size: 21px; margin-bottom: 5px; display: inline-block; width: 100%; font-weight: 700; }
+        #PhotoContest label span { display: inline-block; width: 100px; }
     #PhotoContest p { line-height: 25px; }
     #PhotoContest .comment-w { }
 
