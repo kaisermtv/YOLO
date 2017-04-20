@@ -31,7 +31,12 @@ public class Sitemap
                         using (SqlDataReader rdr = cmd.ExecuteReader()) {           
                             // Get the date of the most recent article
                             rdr.Read();                                                                                          // Lấy dử liệu từ  dòng lệnh select đầu tiên
-                            writer.WriteElementString("loc", string.Format("{0}Default.aspx", url));
+                            writer.WriteElementString("loc", string.Format("trang-chu", url));
+                            /*      
+                             *      Trang chủ
+                             *      
+                             */
+
                             writer.WriteElementString("lastmod", string.Format("{0:yyyy-MM-dd}", rdr[0]));
                             writer.WriteElementString("changefreq", "weekly");
                             writer.WriteElementString("priority", "1.0");
@@ -42,6 +47,11 @@ public class Sitemap
                             {
                                 writer.WriteStartElement("url");
                                 writer.WriteElementString("loc", string.Format("{0}Detailts.aspx?id={1}", url, rdr[0]));
+
+                                /*
+                                 Bài viết   
+                                 
+                                 */
 
                                 if (rdr[1] != DBNull.Value)
                                     writer.WriteElementString("lastmod", string.Format("{0:yyyy-MM-dd}", rdr[1]));

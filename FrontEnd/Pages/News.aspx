@@ -15,26 +15,30 @@
             <div class="row show-grid">
                 <div class="news-wraper col-xs-12 col-md-12">
                     <div class="row show-grid">
-                        <div class="col-xs-12">
-                            <a href="/tin-tuc.htm" title="Tin tức"></a>
-                            <div class="row" id="tin-chinh">
-                                <a href="/tin-tuc.htm" title="Tin tức"></a>
-                                <div class="cleft col-xs-12 col-sm-12 col-md-12">
-                                    <a href="/tin-tuc.htm" title="Tin tức"></a><a href="/dich-vu/taxi-noi-bai-4827.htm" title="Taxi Noi Bai">
-                                        <img src="http://admin.taxi24h.vn/upload/images/20160815164557072.png" height="auto" width="100%"></a>
-                                </div>
-                                <div class="clearfix visible-xs-block"></div>
-                                <div class="tinchinh-h3 col-xs-12 col-sm-12 col-md-12">
-                                    <div class="time">Ngày đăng: 15/08/2016 16:45</div>
-                                    <a href="/FrontEnd/Pages/News_Detail.aspx" title="Taxi Noi Bai" class="tieu-de">Taxi Noi Bai</a>
-                                    <p class="sapo">
-                                        Taxi Noi Bai là dịch vụ được Taxi 24h đưa vào phục vụ khách hàng chuyên tuyến Hà Nội đi Nội Bài, Đón khách hàng từ Nội Bài về Hà Nội và đi các tỉnh. Với hệ thống chất lượng phương tiện mới, cao cấp và đội ngũ lái xe Taxi chuyên nghiệp, Taxi Noi Bai đang được khách hàng đánh giá cao về chất lượng dịch vụ với giá thành cạnh tranh trên thị trường hiện nay.
-                                    </p>
 
+                        <asp:Repeater ID="dtlTop" runat="server" EnableViewState="False">
+                            <ItemTemplate>
+                                <div class="col-xs-12">
+                                    <div class="row" id="tin-chinh">
+                                        <div class="cleft col-xs-12 col-sm-12 col-md-12">
+                                            <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" title="<%# Eval("Title") %>">
+                                                <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" height="auto" width="100%"></a>
+                                        </div>
+                                        <div class="clearfix visible-xs-block"></div>
+                                        <div class="tinchinh-h3 col-xs-12 col-sm-12 col-md-12">
+                                            <div class="time">Ngày đăng: <%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyy hh:mm") %></div>
+                                            <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" title="<%# Eval("Title") %>" class="tieu-de"><%# Eval("Title") %></a>
+                                            <p class="sapo">
+                                                <%# Eval("ShortContent") %>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    <div class="dr"></div>
                                 </div>
-                            </div>
-                            <div class="dr"></div>
-                        </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+
                         <div class="clearfix visible"></div>
                         <div class="cleft col-xs-12 col-sm-8 col-md-8 ">
                             <div class="row" style="display: none">

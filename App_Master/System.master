@@ -94,6 +94,7 @@
                                 <li><a href="/System/NewsList.aspx">Tin tức - Bài viết</a></li>
                                 <li><a href="/System/ContactList.aspx">Quản lý liên hệ</a></li>
                                 <li><a href="/System/SliderList.aspx">Quản lý Slider</a></li>
+                                <li><a href="/System/QuestionList.aspx">Quản lý câu hỏi thăm dò</a></li>
                                 <li><a href="/System/Ads.aspx">Quảng cáo</a></li>
                             </ul>
                         </li>

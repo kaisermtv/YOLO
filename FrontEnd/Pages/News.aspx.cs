@@ -83,6 +83,15 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
         }
     }
     #endregion
+    #region Page_PreRender
+    public void Page_PreRender(object sender, EventArgs e)
+    {
+        DataTable objData = objNews.getDataTop(1, 0, 1, true);
+
+        dtlTop.DataSource = objData.DefaultView;
+        dtlTop.DataBind();
+    }
+    #endregion
 
     #region Method getParam
     private String getParam(String key)

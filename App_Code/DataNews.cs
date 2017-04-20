@@ -73,13 +73,13 @@ public class DataNews : DataClass
     #endregion
 
     #region Method addData
-    public int addData(String title,int catid,String shortcontent,String content,String img,String author)
+    public int addData(String title, int catid, String shortcontent, String content, String img, String author, bool NoiBat = false)
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "INSERT INTO [tblNews]([Title],[CatId],[ShortContent],[Content],[ImgUrl],[Author],UserPost) OUTPUT INSERTED.ID";
-            Cmd.CommandText += " VALUES (@TITLE,@GROUP,@SHORTCONTENT,@CONTENT,@IMG,@AUTHOR,@USERPOST)";
+            Cmd.CommandText = "INSERT INTO [tblNews]([Title],[CatId],[ShortContent],[Content],[ImgUrl],[Author],UserPost,NoiBat) OUTPUT INSERTED.ID";
+            Cmd.CommandText += " VALUES (@TITLE,@GROUP,@SHORTCONTENT,@CONTENT,@IMG,@AUTHOR,@USERPOST,@NoiBat)";
 
             Cmd.Parameters.Add("TITLE", SqlDbType.NVarChar).Value = title;
             Cmd.Parameters.Add("GROUP", SqlDbType.Int).Value = catid;
@@ -87,6 +87,7 @@ public class DataNews : DataClass
             Cmd.Parameters.Add("CONTENT", SqlDbType.NText).Value = content;
             Cmd.Parameters.Add("IMG", SqlDbType.NVarChar).Value = img;
             Cmd.Parameters.Add("AUTHOR", SqlDbType.NVarChar).Value = author;
+            Cmd.Parameters.Add("NoiBat", SqlDbType.Bit).Value = NoiBat;
 
 
             SystemClass objSystemClass = new SystemClass();
@@ -107,12 +108,12 @@ public class DataNews : DataClass
     #endregion
 
     #region Method UpdateData
-    public int UpdateData(int id,String title, int catid, String shortcontent, String content, String img, String author)
+    public int UpdateData(int id, String title, int catid, String shortcontent, String content, String img, String author, bool NoiBat = false)
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "UPDATE tblNews SET Title = @TITLE, CatId = @GROUP,ShortContent = @SHORTCONTENT ,Content = @CONTENT, ImgUrl = @IMG,Author = @AUTHOR, [UserEdit] = @USEREDIT, [DayEdit] = GETDATE() OUTPUT INSERTED.Id WHERE Id = @ID";
+            Cmd.CommandText = "UPDATE tblNews SET Title = @TITLE, CatId = @GROUP,ShortContent = @SHORTCONTENT ,Content = @CONTENT, ImgUrl = @IMG,Author = @AUTHOR, [UserEdit] = @USEREDIT, [DayEdit] = GETDATE(),NoiBat = @NoiBat OUTPUT INSERTED.Id WHERE Id = @ID";
 
             Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
             Cmd.Parameters.Add("TITLE", SqlDbType.NVarChar).Value = title;
@@ -121,6 +122,7 @@ public class DataNews : DataClass
             Cmd.Parameters.Add("CONTENT", SqlDbType.NText).Value = content;
             Cmd.Parameters.Add("IMG", SqlDbType.NVarChar).Value = img;
             Cmd.Parameters.Add("AUTHOR", SqlDbType.NVarChar).Value = author;
+            Cmd.Parameters.Add("NoiBat", SqlDbType.Bit).Value = NoiBat;
 
             SystemClass objSystemClass = new SystemClass();
             Cmd.Parameters.Add("USEREDIT", SqlDbType.Int).Value = objSystemClass.getIDAccount();
@@ -161,7 +163,7 @@ public class DataNews : DataClass
     #endregion
 
     #region Method getDataCount
-    public int getDataCount(int group = 0)
+    public int getDataCount(int group = 0,bool NoiBat = false)
     {
         try
         {
@@ -172,6 +174,11 @@ public class DataNews : DataClass
             {
                 Cmd.CommandText += " AND P.CatId = @GROUP";
                 Cmd.Parameters.Add("GROUP", SqlDbType.Int).Value = group;
+            }
+
+            if(NoiBat)
+            {
+                Cmd.CommandText += " AND P.NoiBat = 1";
             }
 
             //if (seach != null && seach != "")
@@ -196,7 +203,7 @@ public class DataNews : DataClass
     #endregion
 
     #region Method getDataTop()
-    public DataTable getDataTop(int limit = 0, int group = 0, int page = 1)
+    public DataTable getDataTop(int limit = 0, int group = 0, int page = 1, bool NoiBat = false)
     {
         try
         {
@@ -225,6 +232,11 @@ public class DataNews : DataClass
             {
                 Cmd.CommandText += " AND P.CatId = @GROUP";
                 Cmd.Parameters.Add("GROUP", SqlDbType.Int).Value = group;
+            }
+
+            if (NoiBat)
+            {
+                Cmd.CommandText += " AND P.NoiBat = 1";
             }
 
             //if (seach != null && seach != "")
