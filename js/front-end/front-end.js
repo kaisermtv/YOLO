@@ -48,9 +48,9 @@
     $(window).scroll(function () {
         var scrollTop = $(window).scrollTop();
         if (scrollTop >= 100) {
-            $('#menu-wraper,.search-w').addClass('fixed');
+            $('#menu-wraper,.main-header .search-w').addClass('fixed');
         } else {
-            $('#menu-wraper,.search-w').removeClass('fixed');
+            $('#menu-wraper,.main-header .search-w').removeClass('fixed');
         }
     });
 });
