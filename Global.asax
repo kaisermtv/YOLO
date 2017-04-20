@@ -5,9 +5,9 @@
 
     public static void RegisterRoutes(RouteCollection routes)
     {
-        routes.MapPageRoute("tintuc1", "{name}-cat{id}", "~/frontend/pages/News.aspx");
-        routes.MapPageRoute("view1", "{name}-v{id}", "~/frontend/pages/News_Detail.aspx");
-        routes.MapPageRoute("photo1", "{name}-p{id}", "~/frontend/pages/PhotoContest.aspx");
+        routes.MapPageRoute("tintuc1", "{name}-cat{id}", "~/frontend/pages/News.aspx", false, new RouteValueDictionary { { "id", "/d" } });
+        routes.MapPageRoute("view1", "{name}-v{id}", "~/frontend/pages/News_Detail.aspx", false, new RouteValueDictionary { { "id", "/d" } });
+        routes.MapPageRoute("photo1", "{name}-p{id}", "~/frontend/pages/PhotoContest.aspx", false, new RouteValueDictionary { { "id", "/d" } });
         
         
         routes.MapPageRoute("trangchu", "trang-chu", "~/frontend/pages/home.aspx");

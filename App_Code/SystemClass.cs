@@ -261,7 +261,7 @@ public class SystemClass
         }
         sb = sb.Replace('Đ', 'D');
         sb = sb.Replace('đ', 'd');
-        string strReturn = (sb.ToString().Normalize(NormalizationForm.FormD)).Replace("-", " ").Replace(" ", "-").Replace("\"", "").Replace("/", "-").Replace(",", "").Replace(":", "").Replace(".", "");
+        string strReturn = (sb.ToString().Normalize(NormalizationForm.FormD)).Replace("-", " ").Replace(" ", "-").Replace("\"", "").Replace("/", "-").Replace(",", "").Replace(":", "").Replace(".", "").Replace("%", "-").Replace("?", "-");
         return strReturn.Replace("/", "").ToLower();
     }
     #endregion
