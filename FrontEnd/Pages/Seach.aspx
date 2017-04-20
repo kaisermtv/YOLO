@@ -20,7 +20,7 @@
                             
                             <div class="search-w" style="width:100%;padding-left:20px">
                                 <form method="get" action="/tim-kiem">
-                                    <input class="txt-search" name="txtSeach" placeholder="Nhập từ khóa tìm kiếm.." value="<%=seach %>" />
+                                    <input class="txt-search" name="Seach" placeholder="Nhập từ khóa tìm kiếm.." value="<%=seach %>" />
 
                                     <input type="submit" class="btn-search" value="Tìm kiếm" />
                                 </form>
