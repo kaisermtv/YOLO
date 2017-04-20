@@ -23,11 +23,12 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
     public ArrayList pager = new ArrayList();
     #endregion
 
+    #region Method Page_Load
     protected void Page_Load(object sender, EventArgs e)
     {
         try
         {
-            this.itemId = int.Parse(Request["id"].ToString());
+            this.itemId = int.Parse(getParam("id"));
         }
         catch { }
 
@@ -49,7 +50,7 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
             String link = "";
             if(itemId != 0) link = "&id=" + itemId;
 
-            if (page - 1 > 1) pager.Add(new PageData("Trước", "?page=" + (page - 1) + link));
+            if (page - 1 >= 1) pager.Add(new PageData("Trước", "?page=" + (page - 1) + link));
             if (page != 1) pager.Add(new PageData("1", "?page=1" + link));
 
             int a = page - 5;
@@ -69,16 +70,31 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
             }
 
             if (page != maxPage) pager.Add(new PageData(maxPage.ToString(), "?page=" + maxPage + link));
-            if (page + 1 < maxPage) pager.Add(new PageData("Sau", "?page=" + (page + 1) + link));
+            if (page + 1 <= maxPage) pager.Add(new PageData("Sau", "?page=" + (page + 1) + link));
             #endregion
             ddlpager.DataSource = pager;
             ddlpager.DataBind();
 
-            DataTable objData = objNews.getDataTop(numItem, itemId, (page - 1) * numItem);
+            DataTable objData = objNews.getDataTop(numItem, itemId,page);
 
             dtlNews.DataSource = objData.DefaultView;
             dtlNews.DataBind();
 
         }
     }
+    #endregion
+
+    #region Method getParam
+    private String getParam(String key)
+    {
+        try
+        {
+            if (RouteData.Values[key] != null) return RouteData.Values[key].ToString();
+            if(Request[key] != null) return Request[key].ToString();
+        }
+        catch {  }
+
+        return null;
+    }
+    #endregion
 }

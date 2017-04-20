@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 /// <summary>
@@ -242,6 +243,26 @@ public class SystemClass
             throw ex;
         }
 
+    }
+    #endregion
+
+    #region method convertToUnSign2
+    public static string convertToUnSign2(string s)
+    {
+        string stFormD = s.Normalize(NormalizationForm.FormD);
+        StringBuilder sb = new StringBuilder();
+        for (int ich = 0; ich < stFormD.Length; ich++)
+        {
+            System.Globalization.UnicodeCategory uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[ich]);
+            if (uc != System.Globalization.UnicodeCategory.NonSpacingMark)
+            {
+                sb.Append(stFormD[ich]);
+            }
+        }
+        sb = sb.Replace('Đ', 'D');
+        sb = sb.Replace('đ', 'd');
+        string strReturn = (sb.ToString().Normalize(NormalizationForm.FormD)).Replace("-", " ").Replace(" ", "-").Replace("\"", "").Replace("/", "-").Replace(",", "").Replace(":", "").Replace(".", "");
+        return strReturn.Replace("/", "").ToLower();
     }
     #endregion
 }

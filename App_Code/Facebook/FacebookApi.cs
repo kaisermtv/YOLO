@@ -158,7 +158,7 @@ public class FacebookApi : DataClass
                     lphoto_post.data.Add(
                       new FbPhotoAlbum(
                       element["id"] == null ? " " : element["id"].ToString(),             // PHOTO ID
-                      element["name"] == null ? " " : (element["name"].ToString().Substring(0, element["name"].ToString().Length > 100 ? 100 : element["name"].ToString().Length)),         // MIÊU TẢ ẢNH
+                      element["name"] == null ? " " : (element["name"].ToString()),         // MIÊU TẢ ẢNH
                                 tmpHoten[0],
                                 tmpHoten[1],
                                 tmpHoten[2],
@@ -423,7 +423,7 @@ public class FacebookApi : DataClass
                    result[0] = "";
                }
                }
-           if (tmpHoten[i].ToLower().IndexOf("sinh") > 0)
+           if (tmpHoten[i].ToLower().IndexOf("sinh") > 0||tmpHoten[i].ToLower().IndexOf("ngày") > 0)
            {    
                try
                {
@@ -444,6 +444,29 @@ public class FacebookApi : DataClass
         Debug.WriteLine(result.ToArray());
         
           return result;
+    }
+    #endregion
+
+    #region method getDataById
+    public DataRow getDataById(String id)
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "SELECT * FROM tblFacebookPhotoPost WHERE id = @ID";
+            Cmd.Parameters.Add("ID", SqlDbType.VarChar).Value = id;
+
+            DataRow ret = this.findFirst(Cmd);
+
+            this.SQLClose();
+            return ret;
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+            return null;
+        }
     }
     #endregion
 }
