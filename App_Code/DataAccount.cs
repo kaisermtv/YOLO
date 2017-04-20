@@ -288,4 +288,27 @@ public class DataAccount : DataClass
         }
     }
     #endregion
+
+    #region method getCountAccout
+    public int getCountAccout()
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "SELECT COUNT(*) FROM tblAccount WHERE NSTATUS != 2 ";
+
+
+            int ret = (int)Cmd.ExecuteScalar();
+
+            this.SQLClose();
+            return ret;
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+            return 0;
+        }
+    }
+    #endregion
 }

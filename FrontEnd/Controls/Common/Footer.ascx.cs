@@ -7,8 +7,20 @@ using System.Web.UI.WebControls;
 
 public partial class FrontEnd_Controls_Common_Footer : System.Web.UI.UserControl
 {
-    protected void Page_Load(object sender, EventArgs e)
+    #region declare
+    public int userOnline = 0;
+    public int userRegis = 0;
+    #endregion
+
+    #region Method Page_PreRender
+    protected void Page_PreRender(object sender, EventArgs e)
     {
 
+        DataRemember objRemember = new DataRemember();
+        userOnline = objRemember.getCountOnline();
+
+        DataAccount objAccount = new DataAccount();
+        userRegis = objAccount.getCountAccout();
     }
+    #endregion
 }

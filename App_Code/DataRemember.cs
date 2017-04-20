@@ -138,4 +138,33 @@ public class DataRemember :DataClass
         }
     }
     #endregion
+
+    #region Method getCountOnline()
+    public int getCountOnline(int minute = 5)
+    {
+        try
+        {
+            //DateTime minu = new DateTime(0);
+            //minu.AddMinutes()
+
+            SqlCommand Cmd = this.getSQLConnect();
+
+            Cmd.CommandText = "SELECT COUNT(*) FROM (SELECT COUNT(USERID) AS num FROM tblRemember WHERE GETDATE() - ONLINEDATE < '00:05:00' GROUP BY USERID  ) AS TEMP1";
+            //Cmd.CommandText = "SELECT COUNT(*) FROM tblRemember WHERE GETDATE() - ONLINEDATE < '" + minu.ToString("hh:mm:ss") + "'";
+            //Cmd.Parameters.Add("Minute", SqlDbType.NVarChar).Value = minu.ToString("hh:mm:ss");
+
+            int ret = (int)Cmd.ExecuteScalar();
+
+            this.SQLClose();
+
+            return ret;
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+            return 0;
+        }
+    }
+    #endregion
 }

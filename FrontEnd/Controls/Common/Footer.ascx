@@ -32,6 +32,10 @@
                 </ul>
             </div>
         </div>
+
+        <div class="row">
+            Số người online : <%=userOnline %> <br /> Số người tham gia : <%=userRegis %>
+        </div>
     </div>
 </div>
 <div class="container-fluid" id="copyright">
