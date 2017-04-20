@@ -30,7 +30,7 @@
                     </p>
                     <br>
                     <div id="MainContent_UpdatePanel">
-
+                        <form method="post">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title">THÔNG TIN LIÊN HỆ</h3>
@@ -63,7 +63,7 @@
                             </div>
                             <br>
                         </div>
-
+                        </form>
                     </div>
                     <br>
                 </div>
