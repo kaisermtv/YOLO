@@ -268,4 +268,61 @@ public class DataNews : DataClass
 
     }
     #endregion
+
+    #region Method tinLienQuan()
+    public DataTable tinLienQuan(int id ,DateTime tinHienTai,bool moiCu = false, int limit = 0, int group = 0, bool NoiBat = false)
+    {
+        try
+        {
+            String top = "";
+            if (limit != 0)
+            {
+                top = " TOP " + limit + " ";
+            }
+
+            SqlCommand Cmd = this.getSQLConnect();
+
+            Cmd.CommandText += "SELECT " + top + " P.Id,P.Title,P.DayPost FROM tblNews AS P";
+            Cmd.CommandText += " WHERE P.NSTATUS != 2 AND P.Id != @ID";
+
+
+            Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
+
+            if(moiCu)
+            {
+                Cmd.CommandText += " AND P.DayPost > @DayPost";
+            }
+            else
+            {
+                Cmd.CommandText += " AND P.DayPost < @DayPost";
+            }
+
+            Cmd.Parameters.Add("DayPost", SqlDbType.DateTime).Value = tinHienTai;
+
+            if (group != 0)
+            {
+                Cmd.CommandText += " AND P.CatId = @GROUP";
+                Cmd.Parameters.Add("GROUP", SqlDbType.Int).Value = group;
+            }
+
+            if (NoiBat)
+            {
+                Cmd.CommandText += " AND P.NoiBat = 1";
+            }
+
+            Cmd.CommandText += " ORDER BY P.DayPost DESC";
+
+            DataTable ret = this.findAll(Cmd);
+
+            this.SQLClose();
+            return ret;
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+            return null;
+        }
+    }
+    #endregion
 }
