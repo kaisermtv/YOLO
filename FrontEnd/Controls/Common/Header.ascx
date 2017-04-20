@@ -8,7 +8,7 @@
         </a>
     </div>
     <div class="search-w hidden-xs hidden-sm">
-        <input id="txt-search" placeholder="Nhập từ khóa tìm kiếm.." />
+        <input class="txt-search" placeholder="Nhập từ khóa tìm kiếm.." />
         <a href="javascript:;" id="btn-search">Tìm kiếm</a>
     </div>
     <div class="bar">

@@ -216,7 +216,7 @@ p { text-align: justify; line-height: 20px; }
 
 #tin-trung-binh img { width: 100%; }
 .time { font-size: 14px; color: #888888; width: 100%; font-weight: normal; color: #555555; font-style: italic; font-family: CondLight; }
-.tieu-de { font-size: 20px; margin:0 0 5px; text-overflow: ellipsis; font-family: CondBold; display: inline-block; width: 100%; }
+.tieu-de { font-size: 20px; margin: 0 0 5px; text-overflow: ellipsis; font-family: CondBold; display: inline-block; width: 100%; }
 .dr { border-bottom: 1px solid #dedede; margin: 20px 0 20px; }
 
 #list-tin-tuc { }
@@ -257,12 +257,21 @@ p { text-align: justify; line-height: 20px; }
 .box-ctldkdn .hoanthanh-dkdn { margin-top: 60px; margin-bottom: 30px; padding: 0px 62px; font-size: 12px; color: #000000; line-height: 35px; }
 .box-ctldkdn .sucssemail { color: #fd1919; }
 
+.rvtd-m { margin-top: 15px; float: right; }
+.rvtd { display: inline-block; background: #0B60B0; padding: 10px 10px; color: #fff; }
+
 #copyright { background: #e5e5e5; }
-    #copyright .main { font-size: 14px; color: #222; font-family: Helvetica; padding: 0px 0 15px; margin-top: 15px; }
+    #copyright .main { font-size: 14px; color: #222; font-family: Helvetica; padding: 0px 0 15px; margin-top: 15px; text-align: center; }
 
 
 .content-detail { font-family: CondLight; font-size: 18px; }
 .news-wraper { padding-bottom: 50px; }
+
+.BodyTitle { color: #337ab7; font-size: 30px; text-overflow: ellipsis; font-family: CondBold; display: inline-block; width: 100%; margin: 30px 0 10px; }
+
+
+.contact-w { }
+    .contact-w p { line-height: 20px; font-size: 15px !important; font-family: Tahoma !important; color: #333333 !important; }
 
 @media (min-width:320px) { /* smartphones, iPhone, portrait 480x320 phones */
 
