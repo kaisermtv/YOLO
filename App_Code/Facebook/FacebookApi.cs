@@ -15,7 +15,7 @@ public class FacebookApi : DataClass
 {
 
     private static String fields = "full_picture,picture,link,message,likes{name,id},comments,created_time";
-    private static string fields_album = "photos{images,name,link,likes.limit(0).summary(true), comments.limit(0).summary(true),created_time}";          // chú ý không dùng created_time trong comments
+    private static string fields_album = "photos{images,name,link,likes.limit(0).summary(true), comments.limit(0).summary(true),  created_time}";          // chú ý không dùng created_time trong comments
     private static string site_id = "ngheansunshine";  
     private static string album_id = "790172047808833";
     private static string key_db = "Facebook_Token";
@@ -180,6 +180,43 @@ public class FacebookApi : DataClass
     }
     #endregion
 
+
+    #region parseJsonToPhotoPosts     // 1 bài viết chỉ có 1 ảnh / cuộc thi
+    public List<comments> parseJsonToPhotoPostsComments(string json)
+    {
+        string[] json_arr = new string[10];
+        comments lcomment = new comments();
+        lcomment.data = new List<comments>();
+        try
+        {
+            dynamic struff = JsonConvert.DeserializeObject(json);
+            JArray data = struff.comments.data;                //  gốc cây nhị phân có tên là photos 
+            foreach (JObject element in data)
+            {
+                comments c = new comments();
+                if (element["id"] != null)
+                {
+                    Debug.WriteLine(element["id"].ToString());
+                  c.id = element["id"].ToString().Trim();
+                }
+                if (element["message"] != null)
+                {
+                   Debug.WriteLine(element["message"].ToString());
+                   c.message = element["message"].ToString().Trim();
+                }
+                lcomment.data.Add(c);
+            }
+            if (lcomment.data.Count < 1) return new List<comments>();
+        }
+        catch (Exception e)
+        {
+            Debug.WriteLine("[ERROR ] - load  comment of photo Posts " + e.GetBaseException());
+            return new List<comments>();
+        }
+        return lcomment.data;        // danh sách bài viết ảnh
+    }
+    #endregion
+
     public string getNewAccessToken()
     {
         return "";
@@ -198,6 +235,7 @@ public class FacebookApi : DataClass
 
         return 1;
     }
+
     #region parseJsonToPosts                // 1 bài viết thông thường   // có thể thiếu sót ảnh khi bài viết nhiều ảnh và tương đương nhau
     public List<FbPosts> parseJsonToPosts(string json)
     {
