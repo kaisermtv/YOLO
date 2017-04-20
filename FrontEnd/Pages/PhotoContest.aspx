@@ -69,7 +69,7 @@
                                         <label><span>Họ tên: </span> <%#Eval("user_name")%></label>
                                         <label><span>Ngày sinh:</span> <%#Eval("user_birthday")%></label>
                                         <label><span>Đến từ:</span> <%#Eval("user_address")%></label>
-                                        <p><%=Utils.GetSubStringNice(Eval("name").ToString(), 200) %></p>
+                                        <p><%#Utils.GetSubStringNice(Eval("name").ToString(), 200) %></p>
                                         <div><a class="see-more" href="/<%# SystemClass.convertToUnSign2(Eval("user_name").ToString()) %>-p<%#Eval("id")%>">Xem thêm</a></div>
                                     </div>
                                 </div>

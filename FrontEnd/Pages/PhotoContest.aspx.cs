@@ -79,7 +79,7 @@ public partial class FrontEnd_Pages_PhotoContest : System.Web.UI.Page
     //    return kq;
 
     //}
-    #endregion
+    
 
     #region Method getParam
     private String getParam(String key)
