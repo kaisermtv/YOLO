@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Novacode;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -56,4 +58,45 @@ public partial class FrontEnd_Pages_News_Detail : System.Web.UI.Page
         return null;
     }
     #endregion
+ 
+
+
+    public void CreateDocument(bool active = false)
+    {
+        if (active == false) return;
+
+        string fileName = Server.MapPath("/docs/document" + this.itemId + ".docx");
+     //   var doc = DocX.Create(fileName);
+        string headlineText = objData["ShortContent"].ToString() + " ";
+        string paraOne = "" +
+            objData["Content"].ToString() + " "
+            ;
+        // Format tiêu đề 
+        var headLineFormat = new Formatting();
+        headLineFormat.FontFamily = new System.Drawing.FontFamily("Arial Black");
+        headLineFormat.Size = 18D;
+        headLineFormat.Position = 12;
+
+        // Format nội dung text
+        var paraFormat = new Formatting();
+        paraFormat.FontFamily = new System.Drawing.FontFamily("Calibri");
+        paraFormat.Size = 10D;
+
+        // Tạo tệp tin 
+        var doc = DocX.Create(fileName);
+
+        // Đưa nội dung vào file
+        doc.InsertParagraph(headlineText, false, headLineFormat);
+        doc.InsertParagraph(paraOne, false, paraFormat);
+
+        // Save to the output directory:
+        doc.Save();
+
+        // Open in Word:
+        Process.Start("WINWORD.EXE", fileName);
+    }
+    protected void btnDownload_Click(object sender, ImageClickEventArgs e)
+    {
+        CreateDocument(true);
+    }
 }
