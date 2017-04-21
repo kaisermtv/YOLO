@@ -66,7 +66,6 @@
                                     <asp:Repeater ID="dtlNews" runat="server" EnableViewState="False">
                                         <ItemTemplate>
                                             <li>
-                                                <div class="thumb">
                                                 <div class="thumb img-w">
                                                     <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>>" title="<%# Eval("Title") %>">
                                                         <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" title="<%# Eval("Title") %>">
