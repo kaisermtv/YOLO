@@ -75,4 +75,31 @@ public class DataContact : DataClass
         }
     }
     #endregion
+
+    #region Method addData()
+    public int addData(String name, String email,String title,String noidung)
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "INSERT INTO tblContact(FullName,Email,Title,Question) OUTPUT INSERTED.[Id] VALUES (@FullName,@Email,@Title,@Question);";
+
+            Cmd.Parameters.Add("FullName", SqlDbType.NVarChar).Value = name;
+            Cmd.Parameters.Add("Email", SqlDbType.NVarChar).Value = email;
+            Cmd.Parameters.Add("Title", SqlDbType.NVarChar).Value = title;
+            Cmd.Parameters.Add("Question", SqlDbType.NVarChar).Value = noidung;
+
+            int ret = (int)Cmd.ExecuteScalar();
+
+            this.SQLClose();
+            return ret;
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+            return 0;
+        }
+    }
+    #endregion
 }
