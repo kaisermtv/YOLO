@@ -4,13 +4,16 @@
 <%@ Register Src="~/FrontEnd/Controls/Common/QuangCao.ascx" TagPrefix="uc1" TagName="QuangCao" %>
 <%@ Register Src="~/FrontEnd/Controls/PhotoContest/List.ascx" TagPrefix="uc1" TagName="List" %>
 
-
-
-
-
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MasterPageContent" runat="server">
+         <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9&appId=1929429900621768";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
     <div class="container-fluid">
         <div class="row">
             <div class="main">
@@ -28,7 +31,26 @@
                             <uc1:List runat="server" ID="ListPhotoContest" />
                         </div>
                     </div>
-
+                    <br />
+                   
+                    <hr />
+                     <div class="likes fb-rm">
+                             &nbsp;&nbsp;
+                        Yolo-Dám chia sẻ đã nhận được &nbsp;&nbsp;
+                    <a href="#" >
+                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                     <%=new FbPhotoAlbum().countLikes() %> lượt thích
+                          </a> 
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         <a href="#">
+                          <i class="fa fa-comments" aria-hidden="true"></i>
+                        <%=new FbPhotoAlbum().countComments() %> lượt bình luận
+                        </a>
+                    </div>
+                    <hr />
+                    Bình luận 
+                    <br />
+                      <div class="fb-comments" data-href="https://www.facebook.com/pg/yolodamchiase/photos/?tab=album&album_id=271257546655466" data-width="800" data-numposts="5"></div>
                 </div>
                 <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
                     <uc1:QuangCao runat="server" ID="QuangCao" />
