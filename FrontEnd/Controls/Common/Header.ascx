@@ -21,10 +21,10 @@
             <img src="/images/Front-End/user.png" />
         </div>
         <ul class="login-ul">
-            <li class="login-m">
+            <li class="login-m" id="userName" runat="server" >
                 <a href="#">Đăng nhập</a>
             </li>
-            <li class="register-m">
+            <li class="register-m" id="logout" runat="server">
                 <a href="#">Đăng ký</a>
             </li>
         </ul>

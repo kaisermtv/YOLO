@@ -24,6 +24,9 @@
 
         routes.MapPageRoute("ContactOk", "ContactOk", "~/frontend/pages/ContactOk.aspx");
 
+        routes.MapPageRoute("Logout", "Logout", "~/frontend/pages/Logout.aspx");
+        
+
         routes.MapPageRoute("tintuc", "tin-tuc", "~/frontend/pages/News.aspx");
         routes.MapPageRoute("news", "news", "~/frontend/pages/News.aspx");
 

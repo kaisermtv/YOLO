@@ -39,7 +39,7 @@ public class DataContact : DataClass
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "SELECT P.[Id],P.[Title],PL.NAME AS STATUS FROM tblContact AS P LEFT JOIN tblStatus AS PL ON P.NSTATUS = PL.ID";
+            Cmd.CommandText = "SELECT P.[Id],P.[Title],P.DayPost,PL.NAME AS STATUS FROM tblContact AS P LEFT JOIN tblStatus AS PL ON P.NSTATUS = PL.ID";
 
             DataTable ret = this.findAll(Cmd);
 
