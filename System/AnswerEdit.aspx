@@ -1,6 +1,5 @@
-﻿<%--<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/App_Master/System.master" CodeFile="AnswerEdit.aspx.cs" Inherits="System_AnswerEdit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/App_Master/System.master" CodeFile="AnswerEdit.aspx.cs" Inherits="System_AnswerEdit" %>
 
-<%--
 <%@ Register TagPrefix="cc1" Namespace="SiteUtils" Assembly="CollectionPager" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="Server">
     <script>
@@ -63,14 +62,8 @@
             </table>
         </FooterTemplate>
     </asp:Repeater>
-    <cc1:CollectionPager ID="cpData" runat="server" BackText="" FirstText="Đầu"
-        ControlCssClass="ProductPage" LabelText="" LastText="Cuối" NextText="" UseSlider="true"
-        ResultsFormat="" BackNextLinkSeparator="" ResultsLocation="None" BackNextLocation="None"
-        PageNumbersSeparator="&nbsp;" PagingMode="PostBack">
-    </cc1:CollectionPager>
 
     <br />
-    <a href="NewsEdit.aspx" class="btn btn-primary">Đăng bài viết</a>
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
@@ -79,10 +72,10 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Xóa câu hỏi</h4>
+            <h4 class="modal-title">Xóa câu trả lời</h4>
           </div>
           <div class="modal-body">
-            <p>Bạn xác nhận xóa câu hỏi: <b id="ttk"></b></p>
+            <p>Bạn xác nhận xóa câu trả lời: <b id="ttk"></b></p>
           </div>
           <div class="modal-footer">
             <asp:Button ID="btnDel" runat ="server" CssClass="btn btn-primary" Text="Xác nhận xóa" OnClick="btnDel_Click" />
@@ -92,4 +85,4 @@
 
       </div>
     </div>
-</asp:Content>--%>
+</asp:Content>
