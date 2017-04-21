@@ -220,10 +220,10 @@ p { text-align: justify; line-height: 20px; }
 .dr { border-bottom: 1px solid #dedede; margin: 20px 0 20px; }
 
 #list-tin-tuc { }
-    #list-tin-tuc li { float: left; border-bottom: 1px dotted #ccc; padding: 20px 0; }
+    #list-tin-tuc li { width: 100%;float: left; border-bottom: 1px dotted #ccc; padding: 20px 0; }
         #list-tin-tuc li .thumb { float: left; width: 25%; height: auto; margin: 0 10px 9px 0; }
             #list-tin-tuc li .thumb img { width: 100%; height: auto; float: left; position: relative; }
-        #list-tin-tuc li .info-detail { width: calc(75% - 10px); display: inline-block; float: left; }
+        #list-tin-tuc li .info-detail { width: calc(75% - 10px); display: inline-block; float: right; }
 .sapo { font-size: 15px; color: #0F0F0F; margin: 5px 0; font-family: CondLight; }
 
 .pager { text-align: right; padding: 15px 0; font-size: 14px; }
@@ -340,8 +340,8 @@ p { text-align: justify; line-height: 20px; }
 }
 /*xs*/
 @media screen and (max-width: 768px) {
-    .bar { padding-top: 10px; display: block; padding-right: 10px; font-size: 20px; float: right; cursor: pointer; height: 55px; line-height: 55px; position: relative !important; }
-        .bar .fa { background: url(../images/Front-End/menu.png) no-repeat scroll center center /20px; width: 20px; height: 20px; display: inline-block; }
+    .bar { display: block; padding-right: 10px; font-size: 20px; float: right; cursor: pointer; height: 55px; line-height: 55px; position: relative !important; }
+        /*.bar .fa { background: url(../images/Front-End/menu.png) no-repeat scroll center center /20px; width: 20px; height: 20px; display: inline-block; }*/
 }
 /*sm*/
 @media screen and (min-width: 769px) {
@@ -357,8 +357,8 @@ p { text-align: justify; line-height: 20px; }
 }
 
 @media screen and (max-width: 991px) {
-    .bar { height: auto; display: block; cursor: pointer; line-height: 55px; padding-top: 12px; }
-        .bar .fa { background: url(../images/Front-End/menu.png) no-repeat scroll center center /30px; width: 30px; height: 30px; display: inline-block; }
+    .bar { height: auto; display: block; cursor: pointer; line-height: 70px;  }
+        /*.bar .fa { background: url(../images/Front-End/menu.png) no-repeat scroll center center /30px; width: 30px; height: 30px; display: inline-block; }*/
 
     .logo { width: 75px; height: 70px; float: left; }
     .tab-slide-m { margin-top: 0; }

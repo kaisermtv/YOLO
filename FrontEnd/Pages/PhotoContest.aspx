@@ -32,12 +32,27 @@
                         </p>
                         <div class="img-w" style="margin-bottom: 20px;">
                             <img  onError="this.src='/images/Front-End/no-image-available.png';" src="<%= objData["picture"].ToString() %>" alt="Yolo chia sẻ đam mê" />
+                        
                         </div>
+                           <div class="likes fb-rm">
+                            &nbsp;&nbsp;&nbsp;
+                             <a href="<%= objData["link"].ToString() %>">
+                                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                <span><%= objData["likes"].ToString() %></span>
+                                </a>
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                 <a href="<%= objData["link"].ToString() %>">
+                                       <i class="fa fa-comments" aria-hidden="true"></i>
+                                    <span><%= objData["comments"].ToString() %></span>
+                                    </a>
+                               </div>  
+
                         <label><span>Họ tên: </span><%= objData["user_name"].ToString() %></label>
                         <label><span>Ngày sinh:</span> <%= objData["user_birthday"].ToString() %></label>
                         <label><span>Đến từ:</span> <%= objData["user_address"].ToString() %></label>
                         <p><%= objData["name"].ToString() %> </p>
                         <br />
+
                         <%--Bình luận trên Facebook--%>
                         <div class="comment-w">
                             <%int i = 1; %>
@@ -51,12 +66,13 @@
                             </div>
                             <%} %>
                             <br />
+                            <hr />
+
                             <!-- comemnt -->
                             Bình luận trên trang
                             <div class="fb-comments" data-href=" <%= objData["link"].ToString() %>" data-width="800" data-numposts="5"></div>
                         </div>
                     </div>
-
 
                     <h3 class="" style="font-size: 24px; font-family: CondBold; display: inline-block; width: 100%; margin-top: 40px; margin-bottom: 10px;">Bài thi liên quan</h3>
                     <ul id="PhotoContestList">

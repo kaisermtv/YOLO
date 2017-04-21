@@ -4,10 +4,16 @@
 <%@ Register Src="~/FrontEnd/Controls/News/DanhMuc.ascx" TagPrefix="uc1" TagName="DanhMuc" %>
 <%@ Register Src="~/FrontEnd/Controls/Common/QuangCao.ascx" TagPrefix="uc1" TagName="QuangCao" %>
 
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MasterPageContent" runat="server">
 
+        <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9&appId=1929429900621768";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
     <div class="container-fluid">
         <div class="main">
@@ -29,8 +35,6 @@
 
                                 </div>
                             </div>
-
-
                             <asp:Repeater ID="dtlTinMoi" runat="server" EnableViewState="False">
                                 <HeaderTemplate>
                                     <br />
@@ -62,14 +66,18 @@
                                     </div>
                                 </FooterTemplate>
                             </asp:Repeater>
-
+                            <hr />
+                            <br />
+                           Bình luận 
+                            <br />
+                                   <div class="fb-comments" data-href="https://www.http://125.212.130.234:4083/posts/<%=itemId.ToString() %>" data-width="800" data-numposts="5"></div>
                         </div>
                         <div class="cright col-xs-6 col-sm-4 col-md-4 hidden-xs">
                             <%--<uc1:DanhMuc runat="server" ID="DanhMuc" />--%>
                             <uc1:QuangCao runat="server" ID="QuangCao1" />
                         </div>
                     </div>
-
+                      
 
                 </div>
             </div>

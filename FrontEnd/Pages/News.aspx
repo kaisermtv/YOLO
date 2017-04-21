@@ -21,7 +21,11 @@
                                     <div class="row" id="tin-chinh">
                                         <div class="cleft col-xs-12 col-sm-12 col-md-12">
                                             <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" title="<%# Eval("Title") %>">
+<<<<<<< .mine
                                                 <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" height="auto" width="100%"></a>
+=======
+                                                <img onError="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" height="auto" width="100%"></a>
+>>>>>>> .theirs
                                         </div>
                                         <div class="clearfix visible-xs-block"></div>
                                         <div class="tinchinh-h3 col-xs-12 col-sm-12 col-md-12">
@@ -44,7 +48,7 @@
                                 <div class="col-xs-12 col-sm-9 col-md-9" id="tin-trung-binh">
                                     <div class="img-wraper">
                                         <a href="" title="">
-                                            <img src="" height="auto" width="687"></a>
+                                            <img onError="this.src='/images/Front-End/no-image-available.png';" src="" height="auto" width="687"></a>
                                     </div>
                                     <div class="time">Ngày đăng: </div>
                                     <a href="" title="" class="tieu-de"></a>
@@ -67,8 +71,13 @@
                                         <ItemTemplate>
                                             <li>
                                                 <div class="thumb">
+                                                <div class="thumb img-w">
                                                     <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>>" title="<%# Eval("Title") %>">
+<<<<<<< .mine
                                                         <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" title="<%# Eval("Title") %>">
+=======
+                                                        <img onError="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" title="<%# Eval("Title") %>">
+>>>>>>> .theirs
                                                     </a>
                                                 </div>
                                                 <div class="info-detail">
