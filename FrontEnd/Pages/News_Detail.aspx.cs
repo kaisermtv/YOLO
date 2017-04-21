@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -71,22 +72,23 @@ public partial class FrontEnd_Pages_News_Detail : System.Web.UI.Page
     {
         if (active == false) return;
 
-        string fileName = Server.MapPath("/docs/document" + this.itemId + ".docx");
+        string fileName = (@"D:\\" + this.itemId + ".docx");
      //   var doc = DocX.Create(fileName);
         string headlineText = objData["ShortContent"].ToString() + " ";
-        string paraOne = "" +
-            objData["Content"].ToString() + " "
+        string paraOne = "" + ((DateTime)objData["DayPost"]).ToString("dd/MM/yyyy h:mm:ss tt") + "\n" +"\n" +
+           StripHTML( objData["Content"].ToString(),true) + " "
             ;
         // Format tiêu đề 
         var headLineFormat = new Formatting();
-        headLineFormat.FontFamily = new System.Drawing.FontFamily("Arial Black");
+        headLineFormat.FontFamily = new System.Drawing.FontFamily("Arial");
         headLineFormat.Size = 18D;
         headLineFormat.Position = 12;
-
+        
         // Format nội dung text
         var paraFormat = new Formatting();
-        paraFormat.FontFamily = new System.Drawing.FontFamily("Time new roman");
-        paraFormat.Size = 10D;
+        paraFormat.FontFamily = new System.Drawing.FontFamily("Arial");
+        paraFormat.Size = 10;
+        paraFormat.Spacing=1;
 
         // Tạo tệp tin 
         var doc = DocX.Create(fileName);
@@ -101,8 +103,17 @@ public partial class FrontEnd_Pages_News_Detail : System.Web.UI.Page
         // Mở file
         Process.Start("WINWORD.EXE", fileName);
     }
+
+    public static string StripHTML(string HTMLText, bool decode = true)
+    {
+        Regex reg = new Regex("<[^>]+>", RegexOptions.IgnoreCase);
+        var stripped = reg.Replace(HTMLText, "");
+        return decode ? HttpUtility.HtmlDecode(stripped) : stripped;
+    }
     protected void btnDownload_Click(object sender, ImageClickEventArgs e)
     {
         CreateDocument(true);
     }
+
+
 }

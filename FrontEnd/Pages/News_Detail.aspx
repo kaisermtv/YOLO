@@ -20,7 +20,9 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <h3 class="tieu-de" style="margin-top:  <img  onError="this.src='/images/Front-End/no-image-available.png';" ; margin-bottom:  <img  onError="this.src='/images/Front-End/no-image-available.png';" ;font-size: 24px;"><%= objData["Title"] %>
 
-                                       <label style="float:right;margin-right:5%"> 
+                                     
+                                    </h3>
+                                      <label style="float:right;margin-right:1%"> 
                                        <a>
                                            <form runat="server">
                                            Download
@@ -28,9 +30,7 @@
                                        </form>
                                            </a>
                                            </label>
-                                    </h3>
-
-                                    <label class="time">Ngày đăng: <%= ((DateTime)objData["DayPost"]).ToString("dd/MM/yyyy h:mm:ss tt") %></label>
+                                    <label class="time">Ngày đăng: <%= ((DateTime)objData["DayPost"]).ToString("dd/MM/yyyy h:mm:ss tt") %> </label>
                                     <p class="sapo" style="font-weight: bold; margin-bottom: 30px; font-size: 19px;">
                                         <%=objData["ShortContent"]  %>
                                     </p>
