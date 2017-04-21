@@ -5,12 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class App_Master_Site : System.Web.UI.MasterPage
+public partial class FrontEnd_Pages_Logout : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         SystemClass objSystemClass = new SystemClass();
-        objSystemClass.isLogin();
-        
+        objSystemClass.Logout();
+        Response.Redirect("/");
     }
 }

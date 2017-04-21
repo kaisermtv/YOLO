@@ -58,7 +58,7 @@
                             <div class="input-group" style="padding-left: 15px;">
                                 <input type="submit" value="Gửi câu hỏi" class="aspNetDisabled btn btn-default" style="width: 100px;">
                                 <button type="reset" class="btn btn-default">Xóa trắng</button>
-                                <span id="MainContent_lblMsg" style="color: Red;"></span>
+                                <span id="lblMsg" style="color: Red;"><%=msg %></span>
                             </div>
                             <br>
                         </div>

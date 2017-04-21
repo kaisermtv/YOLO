@@ -39,7 +39,7 @@ public class DataContact : DataClass
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "SELECT P.[Id],P.[Title],PL.NAME AS STATUS FROM tblContact AS P LEFT JOIN tblStatus AS PL ON P.NSTATUS = PL.ID";
+            Cmd.CommandText = "SELECT P.[Id],P.[Title],P.DayPost,PL.NAME AS STATUS FROM tblContact AS P LEFT JOIN tblStatus AS PL ON P.NSTATUS = PL.ID";
 
             DataTable ret = this.findAll(Cmd);
 
@@ -72,6 +72,33 @@ public class DataContact : DataClass
         {
             this.Message = ex.Message;
             this.ErrorCode = ex.HResult;
+        }
+    }
+    #endregion
+
+    #region Method addData()
+    public int addData(String name, String email,String title,String noidung)
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "INSERT INTO tblContact(FullName,Email,Title,Question) OUTPUT INSERTED.[Id] VALUES (@FullName,@Email,@Title,@Question);";
+
+            Cmd.Parameters.Add("FullName", SqlDbType.NVarChar).Value = name;
+            Cmd.Parameters.Add("Email", SqlDbType.NVarChar).Value = email;
+            Cmd.Parameters.Add("Title", SqlDbType.NVarChar).Value = title;
+            Cmd.Parameters.Add("Question", SqlDbType.NVarChar).Value = noidung;
+
+            int ret = (int)Cmd.ExecuteScalar();
+
+            this.SQLClose();
+            return ret;
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+            return 0;
         }
     }
     #endregion
