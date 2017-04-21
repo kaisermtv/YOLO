@@ -21,7 +21,7 @@
                                     <div class="row" id="tin-chinh">
                                         <div class="cleft col-xs-12 col-sm-12 col-md-12">
                                             <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" title="<%# Eval("Title") %>">
-                                                <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" height="auto" width="100%"></a>
+                                                <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" height="auto" width="100%"></a>
                                         </div>
                                         <div class="clearfix visible-xs-block"></div>
                                         <div class="tinchinh-h3 col-xs-12 col-sm-12 col-md-12">
@@ -68,7 +68,7 @@
                                             <li>
                                                 <div class="thumb">
                                                     <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>>" title="<%# Eval("Title") %>">
-                                                        <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" title="<%# Eval("Title") %>">
+                                                        <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" title="<%# Eval("Title") %>">
                                                     </a>
                                                 </div>
                                                 <div class="info-detail">
