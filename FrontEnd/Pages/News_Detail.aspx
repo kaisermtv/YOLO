@@ -21,7 +21,7 @@
                                     <h3 class="tieu-de" style="margin-top:  <img  onError="this.src='/images/Front-End/no-image-available.png';" ; margin-bottom:  <img  onError="this.src='/images/Front-End/no-image-available.png';" ;font-size: 24px;"><%= objData["Title"] %>
 
                                        <label style="float:right;margin-right:5%"> 
-                                       <a  >
+                                       <a>
                                            <form runat="server">
                                            Download
                                            <asp:ImageButton ImageUrl="~/images/word-download.png" Height="20" AlternateText="Download" runat="server" ID="btnDownload" OnClick="btnDownload_Click" />

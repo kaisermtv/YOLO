@@ -79,7 +79,7 @@ public partial class FrontEnd_Pages_News_Detail : System.Web.UI.Page
 
         // Format nội dung text
         var paraFormat = new Formatting();
-        paraFormat.FontFamily = new System.Drawing.FontFamily("Calibri");
+        paraFormat.FontFamily = new System.Drawing.FontFamily("Time new roman");
         paraFormat.Size = 10D;
 
         // Tạo tệp tin 
@@ -89,10 +89,10 @@ public partial class FrontEnd_Pages_News_Detail : System.Web.UI.Page
         doc.InsertParagraph(headlineText, false, headLineFormat);
         doc.InsertParagraph(paraOne, false, paraFormat);
 
-        // Save to the output directory:
+        // Save
         doc.Save();
 
-        // Open in Word:
+        // Mở file
         Process.Start("WINWORD.EXE", fileName);
     }
     protected void btnDownload_Click(object sender, ImageClickEventArgs e)
