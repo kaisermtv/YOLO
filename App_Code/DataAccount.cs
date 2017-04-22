@@ -139,7 +139,7 @@ public class DataAccount : DataClass
     #endregion
 
     #region method addAccount
-    public int addAccount(String Acct, String pass,int group)
+    public int addAccount(String Acct, String pass,int group = 3)
     {
         try
         {
@@ -165,6 +165,30 @@ public class DataAccount : DataClass
     #endregion
 
     #region method setAccountInfo
+    public void setAccountInfo(int id, String email, String Phone)
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "IF NOT EXISTS (SELECT * FROM tblAccountInfo WHERE ACCT_ID = @ID)";
+            Cmd.CommandText += " BEGIN INSERT INTO tblAccountInfo(ACCT_ID,PHONE,EMAIL) VALUES (@ID,@PHONE,@EMAIL) END";
+            Cmd.CommandText += " ELSE BEGIN UPDATE tblAccountInfo SET PHONE = @PHONE, EMAIL = @EMAIL WHERE ACCT_ID = @ID END";
+
+            Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
+            Cmd.Parameters.Add("EMAIL", SqlDbType.NVarChar).Value = email;
+            Cmd.Parameters.Add("PHONE", SqlDbType.NVarChar).Value = Phone;
+
+            Cmd.ExecuteNonQuery();
+
+            this.SQLClose();
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+        }
+    }
+
     public void setAccountInfo(int id,String email, String fullname, DateTime ngaysinh,int gioitinh)
     {
         try

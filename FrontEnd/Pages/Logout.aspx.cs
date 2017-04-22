@@ -11,6 +11,6 @@ public partial class FrontEnd_Pages_Logout : System.Web.UI.Page
     {
         SystemClass objSystemClass = new SystemClass();
         objSystemClass.Logout();
-        Response.Redirect("/");
+        Response.Redirect("/dang-nhap");
     }
 }
