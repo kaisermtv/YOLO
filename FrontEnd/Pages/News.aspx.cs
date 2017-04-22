@@ -46,13 +46,7 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
         }
         catch { }
 
-        try
-        {
-            string scr = "customMenu('/news?id=" + this.itemId.ToString() + "');";
-            Page.ClientScript.RegisterStartupScript(GetType(), "nanan", scr, true);
-        }
-        catch
-        { }
+      
 
         if (!Page.IsPostBack)
         {
