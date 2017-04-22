@@ -41,8 +41,8 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
 
         try
         {
-            string url = "customMenu('/news?id=" + this.itemId.ToString() + "');";
-            Page.ClientScript.RegisterStartupScript(GetType(), "nana", url, true);
+            string scr = "customMenu('/news?id=" + this.itemId.ToString() + "');";
+            Page.ClientScript.RegisterStartupScript(GetType(), "nanan", scr, true);
         }
         catch
         { }

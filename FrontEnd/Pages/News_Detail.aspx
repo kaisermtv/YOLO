@@ -5,7 +5,7 @@
 <%@ Register Src="~/FrontEnd/Controls/Common/QuangCao.ascx" TagPrefix="uc1" TagName="QuangCao" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MasterPageContent" runat="server">
-    <script src="../../js/FileSaver.min.js"></script>
+ 
         <div id="fb-root"></div>
     <div class="container-fluid">
         <div class="main">
@@ -102,5 +102,5 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
  
-
+       <script src="../../js/FileSaver.min.js"></script>
 </asp:Content>
