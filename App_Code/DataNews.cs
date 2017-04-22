@@ -203,7 +203,7 @@ public class DataNews : DataClass
     #endregion
 
     #region Method getDataTop()
-    public DataTable getDataTop(int limit = 0, int group = 0, int page = 1, bool NoiBat = false, String seach = "")
+    public DataTable getDataTop(int limit = 0, int group = 0, int page = 1, bool NoiBat = false, String seach = "",String sapXep = "DESC")
     {
         try
         {
@@ -224,7 +224,7 @@ public class DataNews : DataClass
                 top = " TOP " + limit + " ";
             }
 
-            Cmd.CommandText += "SELECT " + top + " P.Id,P.Title,P.[ShortContent],P.ImgUrl,G.NAME AS GroupName,P.DayPost,(ROW_NUMBER() OVER(ORDER BY DayPost desc)) AS RowNum FROM tblNews AS P";
+            Cmd.CommandText += "SELECT " + top + " P.Id,P.Title,P.[ShortContent],P.ImgUrl,G.NAME AS GroupName,P.DayPost,(ROW_NUMBER() OVER(ORDER BY DayPost " + sapXep + ")) AS RowNum FROM tblNews AS P";
             Cmd.CommandText += " LEFT JOIN tblNewsGroup AS G ON P.CatId = G.ID";
             Cmd.CommandText += " WHERE P.NSTATUS != 2";
 

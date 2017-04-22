@@ -60,10 +60,18 @@
                             </div>
 
                             <div class="row">
+                                <h3 style="float:left"><%=groupname %></h3>
+                                <div style="float:right;width:250px">
+                                    <select class="form-control" onchange="sapxep(this.options[this.selectedIndex].value)">
+                                        <option value="0">Mới nhất</option>
+                                        <option value="1" <%= (sapXep == "ASC")?"selected=\"selected\"":""  %>>Cũ nhất</option>
+                                    </select>
+                                </div>
+                            </div>
+                                    
+                            <div class="row">
                                 <ul class="col-xs-12 col-sm-12 col-md-12" id="list-tin-tuc">
                                     
-                                    <h3><%=groupname %></h3>
-
                                     <asp:Repeater ID="dtlNews" runat="server" EnableViewState="False">
                                         <ItemTemplate>
                                             <li>
@@ -113,6 +121,13 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            function sapxep(a)
+            {
+                window.location = "?sapxep=" + a;
+            }
+        </script>
 
     </div>
 </asp:Content>

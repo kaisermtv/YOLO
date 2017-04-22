@@ -22,10 +22,10 @@
         </div>
         <ul class="login-ul">
             <li class="login-m" id="userName" runat="server" >
-                <a href="#">Đăng nhập</a>
+                <a href="/dang-nhap">Đăng nhập</a>
             </li>
             <li class="register-m" id="logout" runat="server">
-                <a href="#">Đăng ký</a>
+                <a href="/dang-ky">Đăng ký</a>
             </li>
         </ul>
     </div>
