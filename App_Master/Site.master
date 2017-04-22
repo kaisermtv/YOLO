@@ -11,7 +11,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Yolo - Dám Chia Sẻ</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
@@ -20,7 +20,7 @@
     <meta name="Language" content="vi" />
     <meta name="copyright" content="Copyright © 2017 by Mobiphone" />
 
-
+    <script src="../js/front-end/checkMenuScript.js"></script>
     <%--PageStyle--%>
     <uc1:PageStyle runat="server" ID="PageStyle" />
     <%--PageScript--%>
@@ -37,6 +37,8 @@
             </div>
         </div>
     </div>
+        
+   
     <asp:ContentPlaceHolder ID="MasterPageContent" runat="server">
     </asp:ContentPlaceHolder>
     <uc1:Footer runat="server" ID="Footer" />

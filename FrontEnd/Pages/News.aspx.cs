@@ -15,6 +15,7 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
 
     public int itemId = 0;
     public String groupname = "";
+    public String sapXep = "DESC"; 
 
     public int numItem = 10;
     public int maxitem = 0;
@@ -35,9 +36,17 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
 
         try
         {
+            this.sapXep = (getParam("sapxep") != "1")?"DESC":"ASC";
+        }
+        catch { }
+
+        try
+        {
             this.page = int.Parse(Request["page"].ToString());
         }
         catch { }
+
+      
 
         if (!Page.IsPostBack)
         {
@@ -50,6 +59,7 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
 
             String link = "";
             if(itemId != 0) link = "&id=" + itemId;
+            if (sapXep == "ASC") link += "&sapxep=1";
 
             if (page - 1 >= 1) pager.Add(new PageData("Trước", "?page=" + (page - 1) + link));
             if (page != 1) pager.Add(new PageData("1", "?page=1" + link));
@@ -76,7 +86,7 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
             ddlpager.DataSource = pager;
             ddlpager.DataBind();
 
-            DataTable objData = objNews.getDataTop(numItem, itemId,page);
+            DataTable objData = objNews.getDataTop(numItem, itemId, page, false, "", sapXep);
 
             dtlNews.DataSource = objData.DefaultView;
             dtlNews.DataBind();
@@ -89,6 +99,7 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
                 groupname = "Tin Tức";
             }
         }
+
     }
     #endregion
 

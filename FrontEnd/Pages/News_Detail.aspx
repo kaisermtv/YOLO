@@ -5,10 +5,8 @@
 <%@ Register Src="~/FrontEnd/Controls/Common/QuangCao.ascx" TagPrefix="uc1" TagName="QuangCao" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MasterPageContent" runat="server">
-
-        <div id="fb-root"></div>
  
-
+        <div id="fb-root"></div>
     <div class="container-fluid">
         <div class="main">
             <div class="row show-grid">
@@ -17,24 +15,29 @@
                         <div class="clearfix visible"></div>
                         <div class="cleft col-xs-12 col-sm-8 col-md-8 " style="padding-top: 20px;">
                             <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div id="" class="col-xs-12 col-sm-12 col-md-12">
                                     <h3 class="tieu-de" style="margin-top:  <img  onError="this.src='/images/Front-End/no-image-available.png';" ; margin-bottom:  <img  onError="this.src='/images/Front-End/no-image-available.png';" ;font-size: 24px;"><%= objData["Title"] %>
-
-                                     
                                     </h3>
                                       <label style="float:right;margin-right:1%"> 
-                                       <a>
-                                           <form runat="server">
+                                       <a id="btn-save">
                                            Download
-                                           <asp:ImageButton ImageUrl="~/images/word-download.png" Height="20" AlternateText="Download" runat="server" ID="btnDownload" OnClick="btnDownload_Click" />
-                                       </form>
+                                         <img src="../../images/word-download.png" height="20" />
+                                                     <script>
+                                                        $("#btn-save").click(function () {
+                                                            var text = document.getElementById('article_new').textContent +'\n'
+                                                                + document.getElementById('article_new_content').textContent;
+                                                            var filename = 'yolo'
+                                                            var blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+                                                            saveAs(blob, filename + ".txt");
+                                                        });
+                                                    </script>
                                            </a>
                                            </label>
                                     <label class="time">Ngày đăng: <%= ((DateTime)objData["DayPost"]).ToString("dd/MM/yyyy h:mm:ss tt") %> </label>
-                                    <p class="sapo" style="font-weight: bold; margin-bottom: 30px; font-size: 19px;">
+                                    <p id="article_new" class="sapo" style="font-weight: bold; margin-bottom: 30px; font-size: 19px;">
                                         <%=objData["ShortContent"]  %>
                                     </p>
-                                    <div class="content-detail">
+                                    <div id="article_new_content" class="content-detail">
                                         <%=objData["Content"]  %>
                                     </div>
 
@@ -99,5 +102,5 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
  
-
+       <script src="../../js/FileSaver.min.js"></script>
 </asp:Content>
