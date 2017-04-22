@@ -30,22 +30,22 @@
                             <br />
                             Tích cực chia sẻ vì cộng đồng. YOLO- dám chia sẻ
                         </p>
-                        <div class="img-w" style="margin-bottom: 20px;">
-                            <img  onError="this.src='/images/Front-End/no-image-available.png';" src="<%= objData["picture"].ToString() %>" alt="Yolo chia sẻ đam mê" />
-                        
+                        <div class="img-w" style="margin-bottom: 20px; height: 500px; padding: 0;">
+                            <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%= objData["picture"].ToString() %>" alt="Yolo chia sẻ đam mê" />
+
                         </div>
-                           <div class="likes fb-rm">
+                        <div class="likes fb-rm">
                             &nbsp;&nbsp;&nbsp;
                              <a href="<%= objData["link"].ToString() %>">
-                                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                                <span><%= objData["likes"].ToString() %></span>
-                                </a>
-                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                 <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                 <span><%= objData["likes"].ToString() %></span>
+                             </a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                  <a href="<%= objData["link"].ToString() %>">
-                                       <i class="fa fa-comments" aria-hidden="true"></i>
-                                    <span><%= objData["comments"].ToString() %></span>
-                                    </a>
-                               </div>  
+                                     <i class="fa fa-comments" aria-hidden="true"></i>
+                                     <span><%= objData["comments"].ToString() %></span>
+                                 </a>
+                        </div>
 
                         <label><span>Họ tên: </span><%= objData["user_name"].ToString() %></label>
                         <label><span>Ngày sinh:</span> <%= objData["user_birthday"].ToString() %></label>
@@ -84,7 +84,7 @@
                                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                             <div class="img-w">
                                                 <a href="/<%# SystemClass.convertToUnSign2(Eval("user_name").ToString()) %>-p<%#Eval("id")%>">
-                                                    <img  onError="this.src='/images/Front-End/no-image-available.png';" src="<%#Eval("picture")%>" alt="<%#Eval("user_name")%>" /></a>
+                                                    <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%#Eval("picture")%>" alt="<%#Eval("user_name")%>" /></a>
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -92,7 +92,7 @@
                                             <div class="PhotoContest-rt">
                                                 <div class="PhotoContest-rt-m">
                                                     <a href="javascript:;">
-                                                        <img  onError="this.src='/images/Front-End/no-image-available.png';" src="/images/Front-End/logo.png" />
+                                                        <img onerror="this.src='/images/Front-End/no-image-available.png';" src="/images/Front-End/logo.png" />
                                                     </a>
                                                     <label>Yolo- Dám chia sẻ</label>
                                                     <div class="social">

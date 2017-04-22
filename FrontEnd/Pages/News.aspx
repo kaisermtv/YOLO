@@ -61,7 +61,7 @@
                             <div class="row">
                                 <ul class="col-xs-12 col-sm-12 col-md-12" id="list-tin-tuc">
                                     
-                                    <h3><%=groupname %></h3>
+                                    <h3 class="tieu-de"><%=groupname %></h3>
 
                                     <asp:Repeater ID="dtlNews" runat="server" EnableViewState="False">
                                         <ItemTemplate>

@@ -58,4 +58,26 @@
             </div>
         </div>
     </div>
+    
+        <script type="text/javascript">
+        if ($(window).width() > 768) {
+            var heightNewsR = 0;
+            var countNewsR = 0;
+            var lenghtNewsR = $('.person-detail').length;
+            setTimeout(function () {
+                $('.news-r-detail li:first-child').each(function (i, item) {
+                    if ($(item).height() > heightNewsR) {
+                        heightNewsR = $(item).height();
+
+                    }
+                   
+                    countNewsR++;
+                    if (countNewsR == lenghtNewsR) {
+                        $('.person-detail').height(heightNewsR);
+                    }
+                });
+                
+            }, 500);
+        }
+    </script>
 </asp:Content>
