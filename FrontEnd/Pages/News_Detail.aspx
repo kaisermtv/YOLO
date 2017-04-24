@@ -15,6 +15,15 @@
                         <div class="clearfix visible"></div>
                         <div class="cleft col-xs-12 col-sm-8 col-md-8 " style="padding-top: 20px;">
                             <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <ul id="NavDetail">
+                                        <li><a href="/">Trang chủ</a></li>
+                                        <li class="active"><a href="#"><%=groupname %></a></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div id="" class="col-xs-12 col-sm-12 col-md-12">
                                     <h3 class="tieu-de" style="margin-top:  <img  onError="this.src='/images/Front-End/no-image-available.png';" ; margin-bottom:  <img  onError="this.src='/images/Front-End/no-image-available.png';" ;font-size: 24px;"><%= objData["Title"] %>
                                     </h3>

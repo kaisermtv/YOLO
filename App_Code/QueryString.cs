@@ -268,6 +268,15 @@ public static class QueryString
             return HttpContext.Current.Request.QueryString["purl"];
         }
     }
+    public static string OrderBy
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(HttpContext.Current.Request.QueryString["OrderBy"])) return "";
+
+            return HttpContext.Current.Request.QueryString["OrderBy"];
+        }
+    }
     public static int Level
     {
         get
