@@ -58,6 +58,7 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
             String link = "";
             if(itemId != 0) link = "&id=" + itemId;
             if (sapXep == "ASC") link += "&sapxep=1";
+            //link += "#listnews";
 
             if (page - 1 >= 1) pager.Add(new PageData("Trước", "?page=" + (page - 1) + link));
             if (page != 1) pager.Add(new PageData("1", "?page=1" + link));
