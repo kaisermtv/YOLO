@@ -44,6 +44,13 @@
                                 </div>
                             </div>
 
+                            <div class="row" style="margin-top: 50px; margin-bottom: 50px;">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <h3 class="tieu-de">Bình luận </h3>
+
+                                    <div class="fb-comments" data-href="https://www.http://125.212.130.234:4083/posts/<%=itemId.ToString() %>" data-width="800" data-numposts="5"></div>
+                                </div>
+                            </div>
 
 
                             <asp:Repeater ID="dtlTinMoi" runat="server" EnableViewState="False">
@@ -100,11 +107,7 @@
                                 </div>
                                     </FooterTemplate>
                                 </asp:Repeater>
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <h3 class="tieu-de">Bình luận </h3>
 
-                                    <div class="fb-comments" data-href="https://www.http://125.212.130.234:4083/posts/<%=itemId.ToString() %>" data-width="800" data-numposts="5"></div>
-                                </div>
 
 
                             </div>

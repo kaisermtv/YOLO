@@ -26,9 +26,11 @@
                                 <asp:Repeater ID="YoLoSlide" runat="server">
                                     <ItemTemplate>
                                         <div class="swiper-slide">
-                                            <div class="img-w person">
-                                                <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%#Eval("picture")%>" />
-                                            </div>
+                                            <a href="/<%# SystemClass.convertToUnSign2(Eval("user_name").ToString()) %>-p<%#Eval("id")%>">
+                                                <div class="img-w person">
+                                                    <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%#Eval("picture")%>" />
+                                                </div>
+                                            </a>
                                             <div class="person-detail">
                                                 <h3><%#Eval("user_name")%></h3>
                                                 <p>Ngày sinh: <%#Eval("user_birthday")%></p>
