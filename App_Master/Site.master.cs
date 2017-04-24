@@ -23,7 +23,7 @@ public partial class App_Master_Site : System.Web.UI.MasterPage
 
         if (Context.Items["strTitle"] != null && Context.Items["strTitle"] != "")
         {
-            title = Context.Items["strTitle"].ToString() + "-" +  title;
+            title = Context.Items["strTitle"].ToString() + " - " +  title;
         }
         
     }
