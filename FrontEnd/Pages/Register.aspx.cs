@@ -22,6 +22,8 @@ public partial class FrontEnd_Pages_Register : System.Web.UI.Page
     #region Method Page_Load
     protected void Page_Load(object sender, EventArgs e)
     {
+        Context.Items["strTitle"] = "Đăng ký";
+
         if (objSytem.isLogin()) Response.Redirect("/");
 
         if (Request.RequestType == "POST")

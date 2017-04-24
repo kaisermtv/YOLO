@@ -99,6 +99,8 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
             } else {
                 groupname = "Tin Tức";
             }
+
+            Context.Items["strTitle"] = groupname;
         }
 
     }

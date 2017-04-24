@@ -18,6 +18,8 @@ public partial class FrontEnd_Pages_Login : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        Context.Items["strTitle"] = "Đăng nhập";
+
         if (objSytem.isLogin()) Response.Redirect("/");
 
         if (Request.RequestType == "POST")
