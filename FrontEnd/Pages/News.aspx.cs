@@ -15,7 +15,7 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
 
     public int itemId = 0;
     public String groupname = "";
-    public String sapXep = "DESC"; 
+    public String sapXep = "DESC";
 
     public int numItem = 10;
     public int maxitem = 0;
@@ -36,7 +36,7 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
 
         try
         {
-            this.sapXep = (getParam("sapxep") != "1")?"DESC":"ASC";
+            this.sapXep = (getParam("sapxep") != "1") ? "DESC" : "ASC";
         }
         catch { }
 
@@ -46,7 +46,7 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
         }
         catch { }
 
-      
+
 
         if (!Page.IsPostBack)
         {
@@ -58,7 +58,7 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
             if (page < 1) page = 1;
 
             String link = "";
-            if(itemId != 0) link = "&id=" + itemId;
+            if (itemId != 0) link = "&id=" + itemId;
             if (sapXep == "ASC") link += "&sapxep=1";
             //link += "#listnews";
 
@@ -67,12 +67,12 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
 
             int a = page - 5;
             if (a < 2) a = 2;
-            for (int i = a; i < page;i++ )
+            for (int i = a; i < page; i++)
             {
                 pager.Add(new PageData(i.ToString(), "?page=" + i + link));
             }
 
-            pager.Add(new PageData(page.ToString(), "#",true));
+            pager.Add(new PageData(page.ToString(), "#", true));
 
             a = page + 5;
             if (a > maxPage) a = maxPage;
@@ -89,14 +89,16 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
 
             DataTable objData = objNews.getDataTop(numItem, itemId, page, false, "", sapXep);
 
-            dtlNews.DataSource = objData.DefaultView;
-            dtlNews.DataBind();
+       
+            DanhSachTin.BindData(objData);
 
             DataNewsGroup objGroup = new DataNewsGroup();
-            if(itemId != 0)
+            if (itemId != 0)
             {
                 groupname = objGroup.getNameById(itemId);
-            } else {
+            }
+            else
+            {
                 groupname = "Tin Tức";
             }
 
@@ -105,6 +107,8 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
 
     }
     #endregion
+
+
 
     #region Page_PreRender
     public void Page_PreRender(object sender, EventArgs e)
@@ -124,9 +128,9 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
         try
         {
             if (RouteData.Values[key] != null) return RouteData.Values[key].ToString();
-            if(Request[key] != null) return Request[key].ToString();
+            if (Request[key] != null) return Request[key].ToString();
         }
-        catch {  }
+        catch { }
 
         return null;
     }

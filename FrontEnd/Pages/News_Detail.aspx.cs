@@ -16,7 +16,7 @@ public partial class FrontEnd_Pages_News_Detail : System.Web.UI.Page
 
     public DataRow objData;
     public int itemId = 0;
-
+    public String groupname = "";
     #endregion
 
     #region Method Page_Load
@@ -48,6 +48,8 @@ public partial class FrontEnd_Pages_News_Detail : System.Web.UI.Page
             dtlTinCu.DataSource = tinCu.DefaultView;
             dtlTinCu.DataBind();
         }
+
+        groupname = "Tin Tức";
 
     }
     #endregion

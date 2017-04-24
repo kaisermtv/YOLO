@@ -133,6 +133,21 @@ p { text-align: justify; line-height: 20px; }
             #news > .lst-news li .view-more { background: url(../images/Front-End/xemtiep.png) no-repeat scroll center center/50px; width: 47px; height: 9px; display: inline-block; right: 0; bottom: 30px; float: right; }
             #news > .lst-news li:last-child { border: none; }
 
+.nav-news { float: left; width: auto; padding-left: 15px; }
+#NavDetail { float: left; display: inline-block; position: relative; }
+    #NavDetail li { display: inline-block; padding: 0 10px; position: relative; line-height: 50px; }
+        #NavDetail li a { font-size: 20px; color: #595959; font-family: CondBold; }
+        #NavDetail li.active a { color: #f4791f; }
+        #NavDetail li:before { content: ' '; background: url(../images/Front-End/double-arrow.png) no-repeat scroll center center #fff; position: absolute; top: 1px; bottom: 0; margin: auto; width: 8px; height: 7px; right: -7px; }
+        #NavDetail li:first-child { padding-left: 0; }
+        #NavDetail li:last-child:before { display: none; }
+
+
+#news-orderby { float: right; margin-top: 15px; }
+    #news-orderby li { cursor: pointer; padding: 0 8px; display: inline-block; float: left; font-size: 14px; font-family: CondLight; }
+        #news-orderby li.active{ color: #6c94c6; font-family: CondBold; }
+        #news-orderby li:first-child { border-right: 1px solid #e1e1e1; }
+
 #quangcao { font-family: Helvetica; padding-top: 30px; padding-bottom: 30px; }
     #quangcao h3 { color: #397ebf; border-bottom: 3px solid #397ebf; display: inline-block; width: 100%; font-size: 27px; height: 55px; line-height: 55px; text-transform: uppercase; font-weight: 700; }
     #quangcao .news { }
@@ -186,7 +201,7 @@ p { text-align: justify; line-height: 20px; }
     #PhotoContest .sapo { font-style: italic; color: #545252; font-family: CondLight; font-weight: 700; margin-bottom: 15px; font-size: 16px; }
     #PhotoContest label { font-size: 21px; margin-bottom: 5px; display: inline-block; width: 100%; font-weight: 700; }
         #PhotoContest label span { display: inline-block; width: 100px; }
-    #PhotoContest p { line-height: 25px; }
+    #PhotoContest p { line-height: 25px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
     #PhotoContest .comment-w { }
 
 .see-more { background: #fff; color: #337ab7; float: right; margin: 10px 0; font-size: 14px; text-transform: uppercase; font-weight: 700; border: 1px solid; padding: 3px; }
@@ -220,7 +235,7 @@ p { text-align: justify; line-height: 20px; }
 .dr { border-bottom: 1px solid #dedede; margin: 20px 0 20px; }
 
 #list-tin-tuc { }
-    #list-tin-tuc li { width: 100%;float: left; border-bottom: 1px dotted #ccc; padding: 20px 0; }
+    #list-tin-tuc li { width: 100%; float: left; border-bottom: 1px dotted #ccc; padding: 20px 0; }
         #list-tin-tuc li .thumb { float: left; width: 25%; height: auto; margin: 0 10px 9px 0; }
             #list-tin-tuc li .thumb img { width: 100%; height: auto; float: left; position: relative; }
         #list-tin-tuc li .info-detail { width: calc(75% - 10px); display: inline-block; float: right; }
@@ -341,7 +356,7 @@ p { text-align: justify; line-height: 20px; }
 /*xs*/
 @media screen and (max-width: 768px) {
     .bar { display: block; padding-right: 10px; font-size: 20px; float: right; cursor: pointer; height: 55px; line-height: 55px; position: relative !important; }
-        /*.bar .fa { background: url(../images/Front-End/menu.png) no-repeat scroll center center /20px; width: 20px; height: 20px; display: inline-block; }*/
+    /*.bar .fa { background: url(../images/Front-End/menu.png) no-repeat scroll center center /20px; width: 20px; height: 20px; display: inline-block; }*/
 }
 /*sm*/
 @media screen and (min-width: 769px) {
@@ -357,8 +372,8 @@ p { text-align: justify; line-height: 20px; }
 }
 
 @media screen and (max-width: 991px) {
-    .bar { height: auto; display: block; cursor: pointer; line-height: 70px;  }
-        /*.bar .fa { background: url(../images/Front-End/menu.png) no-repeat scroll center center /30px; width: 30px; height: 30px; display: inline-block; }*/
+    .bar { height: auto; display: block; cursor: pointer; line-height: 70px; }
+    /*.bar .fa { background: url(../images/Front-End/menu.png) no-repeat scroll center center /30px; width: 30px; height: 30px; display: inline-block; }*/
 
     .logo { width: 75px; height: 70px; float: left; }
     .tab-slide-m { margin-top: 0; }
@@ -410,11 +425,13 @@ p { text-align: justify; line-height: 20px; }
 }
 
 @media screen and (min-width: 992px) {
-    .cleft { padding-top: 20px; }
+    #bar-menu { height: 60px; }
+
+    .cleft { }
     #menu-wraper { float: left; display: inline-block; width: 100%; position: relative; }
         #menu-wraper .menu { background: #0b60b0; width: 100%; display: inline-block; }
-            #menu-wraper .menu > li { padding: 0 25px; position: relative; float: left; text-transform: uppercase; font-family: CondBold; font-size: 24px; height: 60px; line-height: 60px; }
-                #menu-wraper .menu > li a { color: #fff; }
+            #menu-wraper .menu > li { position: relative; float: left; text-transform: uppercase; font-family: CondBold; font-size: 24px; height: 60px; line-height: 60px; }
+                #menu-wraper .menu > li a { color: #fff; padding: 0 25px; display: inline-block; width: 100%; }
                 #menu-wraper .menu > li .sub-menu { display: none; position: absolute; top: 100%; background: rgba(230, 229, 232, 0.77); padding: 10px 0; left: 0; min-width: 300px; }
                     #menu-wraper .menu > li .sub-menu > li { font-size: 14px; height: 40px; line-height: 40px; }
                         #menu-wraper .menu > li .sub-menu > li a { color: #000; display: inline-block; width: 100%; }
@@ -443,7 +460,7 @@ p { text-align: justify; line-height: 20px; }
     .tinchinh-h3 { right: 10px; z-index: 3; font-family: CondBold; color: #fff; position: absolute; bottom: 30px; left: 20px; width: calc(100% - 50px); }
         .tinchinh-h3 .sapo { color: #fff; font-size: 17px; font-family: CondBold; }
         .tinchinh-h3 .tieu-de { color: #fff; font-size: 20px; }
-        .tinchinh-h3 .time { color: #fff; font-size: 12px; }
+        .tinchinh-h3 .time { color: #fff; font-size: 12px; line-height: 30px;}
 
     .news-r-detail li:first-child .tieu-de { width: 100%; }
 }
@@ -456,6 +473,6 @@ p { text-align: justify; line-height: 20px; }
 }
 /*lg*/
 @media screen and (min-width: 1200px) {
-    #menu-wraper .menu > li { padding: 0 27px; }
+    #menu-wraper .menu > li a { padding: 0 27px; }
     .bar { display: none; float: right; }
 }

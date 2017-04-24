@@ -2,6 +2,8 @@
 
 <%@ Register Src="~/FrontEnd/Controls/News/DanhMuc.ascx" TagPrefix="uc1" TagName="DanhMuc" %>
 <%@ Register Src="~/FrontEnd/Controls/Common/QuangCao.ascx" TagPrefix="uc1" TagName="QuangCao" %>
+<%@ Register Src="~/FrontEnd/Controls/News/DanhSachTin.ascx" TagPrefix="uc1" TagName="DanhSachTin" %>
+
 
 
 
@@ -11,87 +13,61 @@
 
     <script>
         customMenu('/news/?id=<%=this.itemId%>123');
-      </script>    
+    </script>
 
     <div class="container-fluid">
         <div class="main">
             <div class="row show-grid">
                 <div class="news-wraper col-xs-12 col-md-12">
                     <div class="row show-grid">
-                        <asp:Repeater ID="dtlTop" runat="server" EnableViewState="False">
-                            <ItemTemplate>
-                                <div class="col-xs-12">
-                                    <div class="row" id="tin-chinh">
-                                        <div class="cleft col-xs-12 col-sm-12 col-md-12">
-                                            <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" title="<%# Eval("Title") %>">
-                                                <img onError="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" height="auto" width="100%"></a>
-                                        </div>
-                                        <div class="clearfix visible-xs-block"></div>
-                                        <div class="tinchinh-h3 col-xs-12 col-sm-12 col-md-12">
-                                            <div class="time">Ngày đăng: <%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyy hh:mm") %></div>
-                                            <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" title="<%# Eval("Title") %>" class="tieu-de"><%# Eval("Title") %></a>
-                                            <p class="sapo">
-                                                <%# Eval("ShortContent") %>
-                                            </p>
 
-                                        </div>
-                                    </div>
-                                    <div class="dr"></div>
-                                </div>
-                            </ItemTemplate>
-                        </asp:Repeater>
 
                         <div class="clearfix visible"></div>
                         <div class="cleft col-xs-12 col-sm-8 col-md-8 ">
-                            <div class="row" style="display: none">
-                                <div class="col-xs-12 col-sm-9 col-md-9" id="tin-trung-binh">
-                                    <div class="img-wraper">
-                                        <a href="" title="">
-                                            <img onError="this.src='/images/Front-End/no-image-available.png';" src="" height="auto" width="687"></a>
-                                    </div>
-                                    <div class="time">Ngày đăng: </div>
-                                    <a href="" title="" class="tieu-de"></a>
-                                    <p>
-                                    </p>
-                                </div>
-                                <div class="col-xs-12 col-sm-3 col-md-3" id="list-tin-tieu-diem">
-                                    <div class="header">Tiêu điểm tuần</div>
-                                    <ul>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <ul id="NavDetail">
+                                        <li><a href="/">Trang chủ</a></li>
+                                        <li class="active"><a href="#"><%=groupname %></a></li>
                                     </ul>
+
                                 </div>
                             </div>
 
                             <div class="row">
-                                <h3 style="float:left"><%=groupname %></h3>
-                                <div style="float:right;width:250px">
-                                    <select class="form-control" onchange="sapxep(this.options[this.selectedIndex].value)">
-                                        <option value="0">Mới nhất</option>
-                                        <option value="1" <%= (sapXep == "ASC")?"selected=\"selected\"":""  %>>Cũ nhất</option>
-                                    </select>
-                                </div>
-                            </div>
-                                    
-                            <div class="row">
-                                <ul class="col-xs-12 col-sm-12 col-md-12" id="list-tin-tuc" id="listnews">
-                                    
-                                    <asp:Repeater ID="dtlNews" runat="server" EnableViewState="False">
-                                        <ItemTemplate>
-                                            <li>
-                                                <div class="thumb img-w">
-                                                    <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>>" title="<%# Eval("Title") %>">
-                                                        <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" title="<%# Eval("Title") %>">
-                                                    </a>
+                                <asp:Repeater ID="dtlTop" runat="server" EnableViewState="False">
+                                    <ItemTemplate>
+                                        <div class="col-xs-12">
+                                            <div class="row" id="tin-chinh">
+                                                <div class="cleft col-xs-12 col-sm-12 col-md-12">
+                                                    <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" title="<%# Eval("Title") %>">
+                                                        <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" height="auto" width="100%"></a>
                                                 </div>
-                                                <div class="info-detail">
+                                                <div class="clearfix visible-xs-block"></div>
+                                                <div class="tinchinh-h3 col-xs-12 col-sm-12 col-md-12">
+                                                    <div class="time">Ngày đăng: <%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyy hh:mm") %></div>
                                                     <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" title="<%# Eval("Title") %>" class="tieu-de"><%# Eval("Title") %></a>
                                                     <p class="sapo">
                                                         <%# Eval("ShortContent") %>
                                                     </p>
-                                                    <div class="time"><%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyyy hh:MM") %></div>
+
                                                 </div>
-                                            </li>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
+                                            </div>
+
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <ul id="news-orderby">
+                                        <li data-value="DESC" class="<%= (sapXep != "ASC")?"active":""  %>">Mới nhất</li>
+                                        <li data-value="ASC" class="<%= (sapXep == "ASC")?"active":""  %>">Cũ nhất</li>
+                                    </ul>
+                                </div>
+                                <ul class="col-xs-12 col-sm-12 col-md-12" id="list-tin-tuc">
+                                    <uc1:DanhSachTin runat="server" ID="DanhSachTin" />
                                 </ul>
                             </div>
 
@@ -100,10 +76,17 @@
                                 <ul class="pager">
                                     <asp:Repeater ID="ddlpager" runat="server" EnableViewState="False">
                                         <ItemTemplate>
-                                            <li <%# ((bool)DataBinder.Eval(Container.DataItem, "Active"))?"class=\"active\"":"" %>>
+                                           <%-- <li <%# ((bool)DataBinder.Eval(Container.DataItem, "Active"))?"class=\"active\"":"" %>>
                                                 <a <%# (((String)DataBinder.Eval(Container.DataItem, "Link")) != "#")?"href=\"/tin-tuc/" +DataBinder.Eval(Container.DataItem, "Link") + "\"":"" %>>
                                                     <span>
                                                         <%# DataBinder.Eval(Container.DataItem, "Name") %>
+                                                    </span>
+                                                </a>
+                                            </li>--%>
+                                            <li  data-value="<%#Container.ItemIndex + 1 %>" <%# ((bool)DataBinder.Eval(Container.DataItem, "Active"))?"class=\"active\"":"" %>>
+                                                <a href="javascript:;">
+                                                    <span>
+                                                        <%#Eval("Name") %>
                                                     </span>
                                                 </a>
                                             </li>
@@ -125,8 +108,35 @@
         </div>
 
         <script>
-            function sapxep(a)
-            {
+            $('#news-orderby li').click(function () {
+                $('#news-orderby li').removeClass('active');
+                $(this).addClass('active');
+                var OrderBy = $(this).data('value');
+                //window.location = "?sapxep=" + value;
+                $.ajax({
+                    type: "GET",
+                    url: "/FrontEnd/Ajax/News/LoadList.aspx?Id=<%=this.itemId%>&OrderBy=" + OrderBy,
+                    success: function (res) {
+                        if (res != "") {
+                            $('#list-tin-tuc').html(res);
+                        }
+                    }
+                });
+            });
+            $('.pager li').click(function () {
+                var PageIndex = $(this).data('value');
+                //window.location = "?sapxep=" + value;
+                $.ajax({
+                    type: "GET",
+                    url: "/FrontEnd/Ajax/News/LoadList.aspx?Id=<%=this.itemId%>&PageIndex=" + PageIndex,
+                    success: function (res) {
+                        if (res != "") {
+                            $('#list-tin-tuc').html(res);
+                        }
+                    }
+                });
+            });
+            function sapxep(a) {
                 window.location = "?sapxep=" + a;
             }
         </script>
