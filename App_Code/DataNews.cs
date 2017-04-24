@@ -73,13 +73,13 @@ public class DataNews : DataClass
     #endregion
 
     #region Method addData
-    public int addData(String title, int catid, String shortcontent, String content, String img, String author, bool NoiBat = false)
+    public int addData(String title, int catid, String shortcontent, String content, String img, String author, bool NoiBat = false,String tag = "")
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "INSERT INTO [tblNews]([Title],[CatId],[ShortContent],[Content],[ImgUrl],[Author],UserPost,NoiBat) OUTPUT INSERTED.ID";
-            Cmd.CommandText += " VALUES (@TITLE,@GROUP,@SHORTCONTENT,@CONTENT,@IMG,@AUTHOR,@USERPOST,@NoiBat)";
+            Cmd.CommandText = "INSERT INTO [tblNews]([Title],[CatId],[ShortContent],[Content],[ImgUrl],[Author],UserPost,NoiBat,tag) OUTPUT INSERTED.ID";
+            Cmd.CommandText += " VALUES (@TITLE,@GROUP,@SHORTCONTENT,@CONTENT,@IMG,@AUTHOR,@USERPOST,@NoiBat,@tag)";
 
             Cmd.Parameters.Add("TITLE", SqlDbType.NVarChar).Value = title;
             Cmd.Parameters.Add("GROUP", SqlDbType.Int).Value = catid;
@@ -88,6 +88,7 @@ public class DataNews : DataClass
             Cmd.Parameters.Add("IMG", SqlDbType.NVarChar).Value = img;
             Cmd.Parameters.Add("AUTHOR", SqlDbType.NVarChar).Value = author;
             Cmd.Parameters.Add("NoiBat", SqlDbType.Bit).Value = NoiBat;
+            Cmd.Parameters.Add("tag", SqlDbType.NVarChar).Value = tag;
 
 
             SystemClass objSystemClass = new SystemClass();
@@ -108,12 +109,12 @@ public class DataNews : DataClass
     #endregion
 
     #region Method UpdateData
-    public int UpdateData(int id, String title, int catid, String shortcontent, String content, String img, String author, bool NoiBat = false)
+    public int UpdateData(int id, String title, int catid, String shortcontent, String content, String img, String author, bool NoiBat = false,String tag = "")
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "UPDATE tblNews SET Title = @TITLE, CatId = @GROUP,ShortContent = @SHORTCONTENT ,Content = @CONTENT, ImgUrl = @IMG,Author = @AUTHOR, [UserEdit] = @USEREDIT, [DayEdit] = GETDATE(),NoiBat = @NoiBat OUTPUT INSERTED.Id WHERE Id = @ID";
+            Cmd.CommandText = "UPDATE tblNews SET Title = @TITLE, CatId = @GROUP,ShortContent = @SHORTCONTENT ,Content = @CONTENT, ImgUrl = @IMG,Author = @AUTHOR, [UserEdit] = @USEREDIT, [DayEdit] = GETDATE(),NoiBat = @NoiBat,tag = @tag OUTPUT INSERTED.Id WHERE Id = @ID";
 
             Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
             Cmd.Parameters.Add("TITLE", SqlDbType.NVarChar).Value = title;
@@ -123,6 +124,7 @@ public class DataNews : DataClass
             Cmd.Parameters.Add("IMG", SqlDbType.NVarChar).Value = img;
             Cmd.Parameters.Add("AUTHOR", SqlDbType.NVarChar).Value = author;
             Cmd.Parameters.Add("NoiBat", SqlDbType.Bit).Value = NoiBat;
+            Cmd.Parameters.Add("tag", SqlDbType.NVarChar).Value = tag;
 
             SystemClass objSystemClass = new SystemClass();
             Cmd.Parameters.Add("USEREDIT", SqlDbType.Int).Value = objSystemClass.getIDAccount();

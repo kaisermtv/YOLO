@@ -96,8 +96,6 @@
                                 <li><a href="/System/SliderList.aspx">Quản lý Slider</a></li>
                                 <li><a href="/System/QuestionList.aspx">Quản lý câu hỏi thăm dò</a></li>
                                 <li><a href="/System/ContactList.aspx">Quản lý liên hệ</a></li>
-                                
-                                <li><a href="/System/Ads.aspx">Quảng cáo</a></li>
                             </ul>
                         </li>
                         <li class="menu-list"><a href="#"><i class="lnr lnr-book"></i><span>Danh mục khác</span> </a>

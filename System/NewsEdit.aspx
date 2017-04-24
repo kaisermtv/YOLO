@@ -91,6 +91,15 @@
 
     <div class="AdminItem">
         <div class="AdminLeftItem">
+            Tag :
+        </div>
+        <div class="AdminRightItem">
+            <asp:TextBox ID="txtTag" runat="server" class="AdminTextControl"></asp:TextBox>
+        </div>
+    </div>
+
+    <div class="AdminItem">
+        <div class="AdminLeftItem">
             Nguồn bài viết :
         </div>
         <div class="AdminRightItem">
