@@ -84,8 +84,8 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
             if (page != maxPage) pager.Add(new PageData(maxPage.ToString(), "?page=" + maxPage + link));
             if (page + 1 <= maxPage) pager.Add(new PageData("Sau", "?page=" + (page + 1) + link));
             #endregion
-            ddlpager.DataSource = pager;
-            ddlpager.DataBind();
+            //ddlpager.DataSource = pager;
+            //ddlpager.DataBind();
 
             DataTable objData = objNews.getDataTop(numItem, itemId, page, false, "", sapXep);
 

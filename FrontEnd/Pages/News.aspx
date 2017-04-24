@@ -19,20 +19,21 @@
         <div class="main">
             <div class="row show-grid">
                 <div class="news-wraper col-xs-12 col-md-12">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <ul id="NavDetail">
+                                <li><a href="/">Trang chủ</a></li>
+                                <li class="active"><a href="#"><%=groupname %></a></li>
+                            </ul>
+
+                        </div>
+                    </div>
                     <div class="row show-grid">
 
 
                         <div class="clearfix visible"></div>
                         <div class="cleft col-xs-12 col-sm-8 col-md-8 ">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <ul id="NavDetail">
-                                        <li><a href="/">Trang chủ</a></li>
-                                        <li class="active"><a href="#"><%=groupname %></a></li>
-                                    </ul>
 
-                                </div>
-                            </div>
 
                             <div class="row">
                                 <asp:Repeater ID="dtlTop" runat="server" EnableViewState="False">
@@ -73,27 +74,21 @@
 
                             <div>
 
-                                <ul class="pager">
+                                <%-- <ul class="pager">
                                     <asp:Repeater ID="ddlpager" runat="server" EnableViewState="False">
                                         <ItemTemplate>
-                                           <%-- <li <%# ((bool)DataBinder.Eval(Container.DataItem, "Active"))?"class=\"active\"":"" %>>
+                                            <li <%# ((bool)DataBinder.Eval(Container.DataItem, "Active"))?"class=\"active\"":"" %>>
                                                 <a <%# (((String)DataBinder.Eval(Container.DataItem, "Link")) != "#")?"href=\"/tin-tuc/" +DataBinder.Eval(Container.DataItem, "Link") + "\"":"" %>>
                                                     <span>
                                                         <%# DataBinder.Eval(Container.DataItem, "Name") %>
                                                     </span>
                                                 </a>
-                                            </li>--%>
-                                            <li  data-value="<%#Container.ItemIndex + 1 %>" <%# ((bool)DataBinder.Eval(Container.DataItem, "Active"))?"class=\"active\"":"" %>>
-                                                <a href="javascript:;">
-                                                    <span>
-                                                        <%#Eval("Name") %>
-                                                    </span>
-                                                </a>
                                             </li>
+                                           
                                         </ItemTemplate>
                                     </asp:Repeater>
-                                </ul>
-
+                                </ul>--%>
+                                <a href="javascript:;" class="btn btn-default-2 btn-xemthem" data-value="1">Xem thêm</a>
                             </div>
                         </div>
                         <div class="cright col-xs-6 col-sm-4 col-md-4 hidden-xs">
@@ -115,23 +110,30 @@
                 //window.location = "?sapxep=" + value;
                 $.ajax({
                     type: "GET",
-                    url: "/FrontEnd/Ajax/News/LoadList.aspx?Id=<%=this.itemId%>&OrderBy=" + OrderBy,
+                    url: "/FrontEnd/Ajax/News/LoadList.aspx?Id=<%=this.itemId%>&PageIndex=1&OrderBy=" + OrderBy,
                     success: function (res) {
                         if (res != "") {
                             $('#list-tin-tuc').html(res);
+                            $('.btn-xemthem').attr('data-value', 1);
+                            $('.btn-xemthem').show();
                         }
                     }
                 });
             });
-            $('.pager li').click(function () {
-                var PageIndex = $(this).data('value');
+            $('.btn-xemthem').click(function () {
+                var PageIndex = parseInt($(this).attr('data-value')) + 1;
+                var OrderBy = $('#news-orderby li.active').data('value');
                 //window.location = "?sapxep=" + value;
                 $.ajax({
                     type: "GET",
-                    url: "/FrontEnd/Ajax/News/LoadList.aspx?Id=<%=this.itemId%>&PageIndex=" + PageIndex,
+                    url: "/FrontEnd/Ajax/News/LoadList.aspx?Id=<%=this.itemId%>&PageIndex=" + PageIndex + "&OrderBy=" + OrderBy,
                     success: function (res) {
-                        if (res != "") {
-                            $('#list-tin-tuc').html(res);
+                        $('.btn-xemthem').attr('data-value', PageIndex);
+                        if (res.trim() != "") {
+                            $('#list-tin-tuc').append(res);
+
+                        } else {
+                            $('.btn-xemthem').hide();
                         }
                     }
                 });
