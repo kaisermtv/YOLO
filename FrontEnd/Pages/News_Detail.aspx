@@ -45,49 +45,61 @@
                             </div>
 
 
-                            <div class="row related-news">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <h3 class="tieu-de">Tin mới hơn</h3>
-                                    <ul class="lst-news-r">
-                                        <asp:Repeater ID="dtlTinMoi" runat="server" EnableViewState="False">
-                                            <ItemTemplate>
-                                                <li>
-                                                    <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" title="<%#Eval("Title") %>">
-                                                        <div class="img-w">
-                                                            <img onerror="this.src='/images/Front-End/no-image-available.png';" src="/Images/News/<%# Eval("ImgUrl") %>" alt="" />
-                                                        </div>
-                                                        <div class="re-news-title">
-                                                            <%# Eval("Title") %>
-                                                            <span><%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyy") %></span>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ItemTemplate>
-                                        </asp:Repeater>
+
+                            <asp:Repeater ID="dtlTinMoi" runat="server" EnableViewState="False">
+                                <HeaderTemplate>
+                                    <div class="row related-news">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <h3 class="tieu-de">Tin mới hơn</h3>
+                                            <ul class="lst-news-r">
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <li>
+                                        <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" title="<%#Eval("Title") %>">
+                                            <div class="img-w">
+                                                <img onerror="this.src='/images/Front-End/no-image-available.png';" src="/Images/News/<%# Eval("ImgUrl") %>" alt="" />
+                                            </div>
+                                            <div class="re-news-title">
+                                                <%# Eval("Title") %>
+                                                <span><%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyy") %></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ItemTemplate>
+                                <FooterTemplate>
                                     </ul>
                                 </div>
                             </div>
+
+                                </FooterTemplate>
+                            </asp:Repeater>
                             <div class="row related-news">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <h3 class="tieu-de">Tin cũ hơn</h3>
-                                    <ul class="lst-news-r">
-                                        <asp:Repeater ID="dtlTinCu" runat="server" EnableViewState="False">
-                                            <ItemTemplate>
-                                                <li>
-                                                    <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" title="<%#Eval("Title") %>">
-                                                        <div class="img-w">
-                                                            <img onerror="this.src='/images/Front-End/no-image-available.png';" src="/Images/News/<%# Eval("ImgUrl") %>" alt="" />
-                                                        </div>
-                                                        <div class="re-news-title">
-                                                            <%# Eval("Title") %>
-                                                            <span><%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyy") %></span>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ItemTemplate>
-                                        </asp:Repeater>
-                                    </ul>
+                                <asp:Repeater ID="dtlTinCu" runat="server" EnableViewState="False">
+                                    <HeaderTemplate>
+
+
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <h3 class="tieu-de">Tin cũ hơn</h3>
+                                            <ul class="lst-news-r">
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <li>
+                                            <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" title="<%#Eval("Title") %>">
+                                                <div class="img-w">
+                                                    <img onerror="this.src='/images/Front-End/no-image-available.png';" src="/Images/News/<%# Eval("ImgUrl") %>" alt="" />
+                                                </div>
+                                                <div class="re-news-title">
+                                                    <%# Eval("Title") %>
+                                                    <span><%# ((DateTime)Eval("DayPost")).ToString("dd/MM/yyy") %></span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        </ul>
                                 </div>
+                                    </FooterTemplate>
+                                </asp:Repeater>
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <h3 class="tieu-de">Bình luận </h3>
 

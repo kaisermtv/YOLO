@@ -312,7 +312,16 @@ public class DataNews : DataClass
                 Cmd.CommandText += " AND P.NoiBat = 1";
             }
 
-            Cmd.CommandText += " ORDER BY P.DayPost DESC";
+            
+            if (moiCu)
+            {
+                Cmd.CommandText += " ORDER BY P.DayPost ASC";
+            }
+            else
+            {
+                Cmd.CommandText += " ORDER BY P.DayPost DESC";
+            }
+
 
             DataTable ret = this.findAll(Cmd);
 

@@ -67,9 +67,9 @@ public partial class FrontEnd_Pages_News_Detail : System.Web.UI.Page
         return null;
     }
     #endregion
- 
 
 
+    #region Method CreateDocument
     public void CreateDocument(bool active = false)
     {
         if (active == false) return;
@@ -105,17 +105,22 @@ public partial class FrontEnd_Pages_News_Detail : System.Web.UI.Page
         // Mở file
         Process.Start("WINWORD.EXE", fileName);
     }
+    #endregion
 
+    #region Method StripHTML
     public static string StripHTML(string HTMLText, bool decode = true)
     {
         Regex reg = new Regex("<[^>]+>", RegexOptions.IgnoreCase);
         var stripped = reg.Replace(HTMLText, "");
         return decode ? HttpUtility.HtmlDecode(stripped) : stripped;
     }
+    #endregion
+
+    #region Method btnDownload_Click
     protected void btnDownload_Click(object sender, ImageClickEventArgs e)
     {
         CreateDocument(true);
     }
-
+    #endregion
 
 }
