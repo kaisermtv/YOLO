@@ -81,6 +81,6 @@
 
     </div>
     <script type="text/javascript">
-        $('.main-header .search-w').hide();
+        //$('.main-header .search-w').hide();
     </script>
 </asp:Content>

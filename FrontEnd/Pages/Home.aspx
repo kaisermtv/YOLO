@@ -27,7 +27,7 @@
                                     <ItemTemplate>
                                         <div class="swiper-slide">
                                             <div class="img-w person">
-                                                <img  onError="this.src='/images/Front-End/no-image-available.png';" src="<%#Eval("picture")%>" />
+                                                <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%#Eval("picture")%>" />
                                             </div>
                                             <div class="person-detail">
                                                 <h3><%#Eval("user_name")%></h3>
@@ -68,7 +68,7 @@
                         <ItemTemplate>
                             <li>
                                 <div class="img-w">
-                                    <img  onError="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
+                                    <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                 </div>
                                 <div class="lst-news-detail">
                                     <a class="tieu-de" href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>"><%# Eval("Title") %></a>
@@ -90,7 +90,7 @@
                                     <ItemTemplate>
                                         <li>
                                             <div class="img-w">
-                                                <img  onError="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
+                                                <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
                                             <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%#Utils.GetSubStringNice(Eval("ShortContent").ToString(), 200) %></p>
@@ -106,7 +106,7 @@
                                     <ItemTemplate>
                                         <li>
                                             <div class="img-w">
-                                                <img  onError="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
+                                                <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
                                             <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%#Utils.GetSubStringNice(Eval("ShortContent").ToString(), 200) %></p>
@@ -122,7 +122,7 @@
                                     <ItemTemplate>
                                         <li>
                                             <div class="img-w">
-                                                <img  onError="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
+                                                <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
                                             <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%#Utils.GetSubStringNice(Eval("ShortContent").ToString(), 200) %></p>
@@ -138,7 +138,7 @@
                                     <ItemTemplate>
                                         <li>
                                             <div class="img-w">
-                                                <img  onError="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
+                                                <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
                                             <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>>" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%#Utils.GetSubStringNice(Eval("ShortContent").ToString(), 200) %></p>
@@ -153,7 +153,7 @@
                     <h3>Mobifone công sở</h3>
                     <a href="#" class="news">
                         <div class="img-w">
-                            <img  onError="this.src='/images/Front-End/no-image-available.png';" src="../../images/Front-End/banner-1.png" alt="" />
+                            <img onerror="this.src='/images/Front-End/no-image-available.png';" src="../../images/Front-End/banner-1.png" alt="" />
                         </div>
                         <p>Hoa anh đào Nhật Bản khoe sắc bên Hồ Gươm</p>
                     </a>
@@ -162,6 +162,7 @@
             </div>
         </div>
     </div>
+
     <script type="text/javascript">
         if ($(window).width() > 768) {
             var heightNewsR = 0;

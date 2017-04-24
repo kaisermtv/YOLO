@@ -9,6 +9,28 @@
         }
 
     });
+    $('.login-m').off('click').on('click', function (e) {
+        e.preventDefault();
+        if ($('#loggin-wraper').hasClass('active')) {
+            $('#loggin-wraper').removeClass('active');
+        } else {
+            $('#loggin-wraper').addClass('active');
+        }
+
+    });
+    $('.register-m').off('click').on('click', function (e) {
+        e.preventDefault();
+        if ($('#register-wraper').hasClass('active')) {
+            $('#register-wraper').removeClass('active');
+        } else {
+            $('#register-wraper').addClass('active');
+        }
+
+    });
+    $('.overlay').off('click').on('click', function (e) {
+        e.preventDefault();
+        $('#loggin-wraper,#register-wraper').removeClass('active');
+    });
     var wH = $(window).width();
     var slidesPerView = 5;
     if (wH <= 1200 && wH >= 768) {
