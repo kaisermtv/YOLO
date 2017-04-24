@@ -46,6 +46,8 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
         }
         catch { }
 
+      
+
         if (!Page.IsPostBack)
         {
             #region phan trang
@@ -98,6 +100,7 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
                 groupname = "Tin Tức";
             }
         }
+
     }
     #endregion
 
