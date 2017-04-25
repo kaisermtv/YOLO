@@ -43,7 +43,7 @@ public class DataAnswer :DataClass
             Cmd.CommandText = "SELECT P.ID,P.[Content] FROM tblAnswer AS P";
             if (QuestionID != 0)
             {
-                Cmd.CommandText += " WHERE QuestionID = @QuestionID";
+                Cmd.CommandText += " WHERE P.QuestionID = @QuestionID";
                 Cmd.Parameters.Add("QuestionID", SqlDbType.Int).Value = QuestionID;
             }
 
