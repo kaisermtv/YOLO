@@ -15,7 +15,8 @@
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <ul id="NavDetail">
                                 <li><a href="/">Trang chủ</a></li>
-                                <li class="active"><a href="#"><%=groupname %></a></li>
+                                <li><a href="/<%=SystemClass.convertToUnSign2(groupname) %>-cat<%=group %>"><%=groupname %></a></li>
+                                <li></li>
                             </ul>
 
                         </div>

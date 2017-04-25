@@ -284,7 +284,7 @@ public class DataNews : DataClass
 
             SqlCommand Cmd = this.getSQLConnect();
 
-            Cmd.CommandText += "SELECT " + top + " P.Id,P.Title,P.DayPost,P.ImgUrl FROM tblNews AS P";
+            Cmd.CommandText += "SELECT * FROM (SELECT " + top + " P.Id,P.Title,P.DayPost,P.ImgUrl FROM tblNews AS P";
             Cmd.CommandText += " WHERE P.NSTATUS != 2 AND P.Id != @ID";
 
 
@@ -321,7 +321,7 @@ public class DataNews : DataClass
             {
                 Cmd.CommandText += " ORDER BY P.DayPost DESC";
             }
-
+            Cmd.CommandText += ") AS Temp ORDER BY DayPost DESC";
 
             DataTable ret = this.findAll(Cmd);
 

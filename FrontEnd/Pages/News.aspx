@@ -23,7 +23,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <ul id="NavDetail">
                                 <li><a href="/">Trang chủ</a></li>
-                                <li class="active"><a href="#"><%=groupname %></a></li>
+                                <li class="active"><a><%=groupname %></a></li>
                             </ul>
 
                         </div>

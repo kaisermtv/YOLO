@@ -13,9 +13,11 @@ public partial class FrontEnd_Pages_News_Detail : System.Web.UI.Page
 {
     #region declare
     private DataNews objNews = new DataNews();
+    private DataNewsGroup objGroup = new DataNewsGroup();
 
     public DataRow objData;
     public int itemId = 0;
+    public int group = 0;
     public String groupname = "";
     #endregion
 
@@ -34,6 +36,19 @@ public partial class FrontEnd_Pages_News_Detail : System.Web.UI.Page
 
         if (objData == null) Response.Redirect("tin-tuc");
 
+        group = (int)objData["CatId"];
+
+        if (group != 0)
+        {
+            groupname = objGroup.getNameById(group);
+        }
+        else
+        {
+            groupname = "Tin Tức";
+        }
+
+        Context.Items["strTitle"] = objData["Title"].ToString();
+
 
         DataTable tinMoi = objNews.tinLienQuan(itemId, (DateTime)objData["DayPost"], true, 5);
         if (tinMoi.Rows.Count > 0)
@@ -48,8 +63,6 @@ public partial class FrontEnd_Pages_News_Detail : System.Web.UI.Page
             dtlTinCu.DataSource = tinCu.DefaultView;
             dtlTinCu.DataBind();
         }
-
-        groupname = "Tin Tức";
 
     }
     #endregion
