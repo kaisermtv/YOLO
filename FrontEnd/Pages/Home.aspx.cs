@@ -26,35 +26,59 @@ public partial class FrontEnd_Pages_Home : System.Web.UI.Page
         {
             DataTable objData = objNews.getDataTop(5);
 
-            dtlNews.DataSource = objData.DefaultView;
-            dtlNews.DataBind();
+           
+            if (objData != null)
+            {
+                dtlNews.DataSource = objData.DefaultView;
+                dtlNews.DataBind();
+            }
 
 
             cat1 = objNewsGroup.getNameById(3);
             DataTable objData1 = objNews.getDataTop(3, 3);
-            dtlData1.DataSource = objData1.DefaultView;
-            dtlData1.DataBind();
+            if (objData1 != null)
+            {
+                dtlData1.DataSource = objData1.DefaultView;
+                dtlData1.DataBind();
+            }
 
             cat2 = objNewsGroup.getNameById(4);
             DataTable objData2 = objNews.getDataTop(3, 4);
-            dtlData2.DataSource = objData2.DefaultView;
-            dtlData2.DataBind();
+            
+            if (objData2 != null)
+            {
+                dtlData2.DataSource = objData2.DefaultView;
+                dtlData2.DataBind();
+            }
 
             cat3 = objNewsGroup.getNameById(5);
             DataTable objData3 = objNews.getDataTop(3, 5);
-            dtlData3.DataSource = objData3.DefaultView;
-            dtlData3.DataBind();
+            if (objData3 != null)
+            {
+                dtlData3.DataSource = objData3.DefaultView;
+                dtlData3.DataBind();
+            }
+            
 
             cat4 = objNewsGroup.getNameById(2);
             DataTable objData4 = objNews.getDataTop(3, 2);
-            dtlData4.DataSource = objData4.DefaultView;
-            dtlData4.DataBind();
+         
+            if (objData4 != null)
+            {
+                dtlData4.DataSource = objData4.DefaultView;
+                dtlData4.DataBind();
+            }
 
             //FacebookApi FbApi = new FacebookApi();
             FbPhotoAlbum FbPhotoAlbum = new FbPhotoAlbum();
             DataTable FbTable = FbPhotoAlbum.getData(12);
-            YoLoSlide.DataSource = FbTable.DefaultView;
-            YoLoSlide.DataBind();
+           
+
+            if (FbTable != null)
+            {
+                YoLoSlide.DataSource = FbTable.DefaultView;
+                YoLoSlide.DataBind();
+            }
         }
     }
 }

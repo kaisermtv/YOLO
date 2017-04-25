@@ -27,7 +27,7 @@
             </li>
             <li class="register-m" id="logout" runat="server">
                 <%--<a href="/dang-ky">Đăng ký</a>--%>
-                <a href="javascript:;">Đăng ký</a>
+                <a href="javascript:;" class="register-rv">Đăng ký</a>
             </li>
         </ul>
     </div>
