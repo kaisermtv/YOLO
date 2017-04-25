@@ -45,6 +45,7 @@
 
 
             <form method="post" action="/dang-nhap">
+                <input type="hidden" name="rederict" value="<%= Request.Url.ToString() %>" />
                 <ul class="mdkdn-lstres h-dkony">
                     <li>
                         <i class="ico ico-user Sprite-v1"></i>

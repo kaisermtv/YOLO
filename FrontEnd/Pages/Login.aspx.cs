@@ -29,7 +29,12 @@ public partial class FrontEnd_Pages_Login : System.Web.UI.Page
 
             //if (Request.Form["remember"] != null) Remember = true;
 
-            if (objSytem.Login(Account, Password, true, 0)) Response.Redirect("/");
+            if (objSytem.Login(Account, Password, true, 0))
+            {
+                if (Request.Form["rederict"] != null && Request.Form["rederict"] != "") Response.Redirect(Request.Form["rederict"]);
+                
+                Response.Redirect("/");
+            }
 
             Message = objSytem.Message;
 
