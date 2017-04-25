@@ -8,7 +8,7 @@
         .mdkdn-lstres { margin-bottom: 30px; }
     </style>
 
-    <div class="box-ctldkdn text-center">
+    <div class="box-ctldkdn text-center"  style="position: relative;margin-top: 70px;">
         <h4 class="title-dkdn">Đăng ký tài khoản mới</h4>
         <p class="sapo-dkdn">Hãy điền đầy đủ thông tin theo mẫu dưới đây </p>
         <% if (this.Message != ""){ %>

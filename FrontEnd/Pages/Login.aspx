@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MasterPageContent" runat="server">
 
-    <div class="box-ctldkdn text-center" id="login-form">
+    <div class="box-ctldkdn text-center" id="login-form" style="position: relative;margin-top: 70px;">
         <h4 class="title-dkdn">Đăng nhập</h4>
         <p class="sapo-dkdn">Bạn đã có tài khoản? Hãy đăng nhập tại đây</p>
 
@@ -36,13 +36,13 @@
         <a class="new-user" href="/dang-ky">Đăng ký tài khoản mới </a>
     </div>
 
-    <div class="box-ctldkdn text-center" id="changepassword" style="display: none">
+    <div class="box-ctldkdn text-center" id="changepassword" style="display: none;position: relative;margin-top: 70px;">
         <p class="hoanthanh-dkdn">Vui lòng kiểm tra email <a href="javascript:;" class="sucssemail">ngochuan@gmail.com</a> và làm theo hướng dẫn để lấy lại mật khẩu truy cập website</p>
         <a href="/login.htm" class="submit-dkdnh">Hoàn thành</a>
     </div>
     <!--Lightbox boxforget pass-->
 
-    <div class="box-ctldkdn" id="resetpassword" style="display: none">
+    <div class="box-ctldkdn" id="resetpassword" style="display: none;position: relative;margin-top: 70px;">
         <h4 class="title-dkdn paddingleft50">Lấy lại mật khẩu</h4>
         <p class="sapo-dkdn paddingleft50">Nhập địa chỉ email đăng nhập của bạn vào đây</p>
         <ul class="mdkdn-lstres h-dkony">
@@ -59,7 +59,8 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('.main-header, #menu-wraper, #footer, #copyright').hide();
+            //$('.main-header, #menu-wraper, #footer, #copyright').hide();
+            $('#Header_userName').hide();
         });
     </script>
 </asp:Content>

@@ -9,7 +9,7 @@
         }
 
     });
-    $('.login-m').off('click').on('click', function (e) {
+    $('.login-m a').off('click').on('click', function (e) {
         e.preventDefault();
         if ($('#loggin-wraper').hasClass('active')) {
             $('#loggin-wraper').removeClass('active');
@@ -18,7 +18,7 @@
         }
 
     });
-    $('.register-m').off('click').on('click', function (e) {
+    $('.register-m a.register-rv').off('click').on('click', function (e) {
         e.preventDefault();
         if ($('#register-wraper').hasClass('active')) {
             $('#register-wraper').removeClass('active');
