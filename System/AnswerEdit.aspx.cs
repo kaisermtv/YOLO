@@ -11,6 +11,7 @@ public partial class System_AnswerEdit : System.Web.UI.Page
     #region declare
     private DataQuestion objQuestion = new DataQuestion();
     private DataAnswer objAnswer = new DataAnswer();
+    private SystemClass objSystemClass = new SystemClass();
 
     public int index = 1;
     public int itemId = 0;
@@ -40,4 +41,23 @@ public partial class System_AnswerEdit : System.Web.UI.Page
 
     }
     #endregion
+    protected void btnSave_Click(object sender, EventArgs e)
+    {
+        if(txtAnswer.Text == "")
+        {
+            objSystemClass.addMessage("Không được để trông câu trả lời!");
+            return;
+        }
+        int ret = objAnswer.setData(0,itemId, txtAnswer.Text);
+        if(ret == 0)
+        {
+            objSystemClass.addMessage("Có lỗi xảy ra khi thêm dữ liệu!");
+            return;
+        }
+        else
+        {
+            objSystemClass.addMessage("Thêm câu trả lời thành công");
+            Response.Redirect("AnswerEdit.aspx?id=" + itemId);
+        }
+    }
 }

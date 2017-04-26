@@ -12,48 +12,39 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
+    <div class =" row">
+        <a href="QuestionList.aspx" class="btn btn-default" style="float:right">Trở lại</a>
+    </div>
+    <br />
     <asp:Repeater ID="dtlData" runat="server" EnableViewState="False">
         <HeaderTemplate>
             <table class="DataListTable">
                 <tr class="DataListTableHeader">
                     <th class="DataListTableHeaderTdItemTT" style="width: 4%;">TT</th>
                     <th class="DataListTableHeaderTdItemJustify">Câu trả lời</th>
-                    <th class="DataListTableHeaderTdItemJustify" style="width: 10%;">Trạng thái</th>
                     <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Up</th>
                     <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Down</th>
-                    <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Sửa</th>
                     <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Xóa</th>
                 </tr>
         </HeaderTemplate>
         <ItemTemplate>
             <tr>
                 <td class="DataListTableTdItemTT"><%# this.index++ %></td>
-                <td class="DataListTableTdItemJustify"><%# Eval("Question") %></td>
-                <td class="DataListTableTdItemJustify"><%# Eval("STATUS") %></td>
-                <td class="DataListTableTdItemCenter">
-                    <a href="AnswerEdit.aspx?id=<%# Eval("Id") %>">
-                        <img src="/Images/Edit.png" alt="Chỉnh sửa thông tin">
-                    </a>
-                </td>
+                <td class="DataListTableTdItemJustify"><%# Eval("Content") %></td>
                 <td class="DataListTableTdItemCenter">
                         <center>
-                        <a href="QuestionMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index-2 %>">
+                        <a href="AnswerMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index-2 %>&question=<%# itemId %>">
                             <div class="arrow-up"></div>
                         </a></center>
                     </td>
                     <td class="DataListTableTdItemCenter">
-                        <center><a href="QuestionMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index %>">
+                        <center><a href="AnswerMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index %>&question=<%# itemId %>">
                             <div class="arrow-down"></div>
                         </a></center>
                     </td>
                 <td class="DataListTableTdItemCenter">
-                    <a href="QuestionEdit.aspx?id=<%# Eval("Id") %>">
-                        <img src="/Images/Edit.png" alt="Chỉnh sửa thông tin">
-                    </a>
-                </td>
-                <td class="DataListTableTdItemCenter">
-                    <a href="#myModal" onclick="delmodal(<%# Eval("Id") %>,'<%# Eval("Question") %>')">
-                        <img src="/Images/delete.png" alt="Xóa nhóm">
+                    <a href="#myModal" onclick="delmodal(<%# Eval("Id") %>,'<%# Eval("Content") %>')">
+                        <img src="/Images/delete.png" alt="Xóa câu trả lời">
                     </a>
                 </td>
             </tr>
@@ -64,6 +55,19 @@
     </asp:Repeater>
 
     <br />
+    <div class="row">
+        <div class="col-lg-2" style="text-align:right">
+            Câu trả lời:
+        </div>
+        <div class="col-lg-8">
+            <asp:TextBox ID="txtAnswer" runat="server" TextMode="MultiLine" class="AdminTextControl"></asp:TextBox>
+        </div>
+        <div class="col-lg-2">
+            <asp:Button ID="btnSave" runat="server" Text="Thêm" CssClass="btn btn-primary"  OnClick="btnSave_Click" />
+        </div>
+    </div>
+
+
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
