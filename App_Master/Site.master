@@ -20,11 +20,14 @@
     <meta name="Language" content="vi" />
     <meta name="copyright" content="Copyright © 2017 by Mobiphone" />
 
+
+
     <script src="../js/front-end/checkMenuScript.js"></script>
     <%--PageStyle--%>
     <uc1:PageStyle runat="server" ID="PageStyle" />
     <%--PageScript--%>
     <uc1:PageScript runat="server" ID="PageScript" />
+  
 </head>
 <body>
     <div class="YoloWraper container-fluid">

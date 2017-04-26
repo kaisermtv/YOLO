@@ -5,7 +5,6 @@
 <%@ Register Src="~/FrontEnd/Controls/Common/QuangCao.ascx" TagPrefix="uc1" TagName="QuangCao" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MasterPageContent" runat="server">
-
     <div id="fb-root"></div>
     <div class="container-fluid">
         <div class="main">
@@ -44,12 +43,15 @@
 
                                 </div>
                             </div>
-
+                           
                             <div class="row" style="margin-top: 50px; margin-bottom: 50px;">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                             <div class="sharethis-inline-share-buttons"></div>
+    
+            <hr />
                                     <h3 class="tieu-de">Bình luận </h3>
 
-                                    <div class="fb-comments" data-href="https://www.http://125.212.130.234:4083/posts/<%=itemId.ToString() %>" data-width="800" data-numposts="5"></div>
+                                    <div class="fb-comments" data-href="<%=Request.RawUrl %>" data-width="800" data-numposts="5"></div>
                                 </div>
                             </div>
 
@@ -142,7 +144,6 @@
             saveAs(blob, filename + ".txt");
         });
     </script>
-
-
     <script src="../../js/FileSaver.min.js"></script>
+       <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=590023ecb6ee520012cda1ac&product=inline-share-buttons' async='async'></script>
 </asp:Content>
