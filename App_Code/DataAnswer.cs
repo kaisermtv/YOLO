@@ -69,7 +69,7 @@ public class DataAnswer :DataClass
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "SELECT ID FROM tblAnswer WHERE ID != @ID && QuestionID = @QuestionID ORDER BY IORDER ASC";
+            Cmd.CommandText = "SELECT ID FROM tblAnswer WHERE ID != @ID AND QuestionID = @QuestionID ORDER BY IORDER ASC";
             Cmd.Parameters.Add("QuestionID", SqlDbType.Int).Value = QuestionID;
             Cmd.Parameters.Add("ID", SqlDbType.Int).Value = Id;
             DataTable ret = this.findAll(Cmd);
@@ -114,21 +114,18 @@ public class DataAnswer :DataClass
     #endregion
 
     #region method setData
-    public int setData(int id, String Question, String Describe)
+    public int setData(int id, int QuestionID, String Answer)
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "IF NOT EXISTS (SELECT * FROM tblQuestion WHERE ID = @ID)";
-            Cmd.CommandText += " BEGIN INSERT INTO tblQuestion(Question,DESCRIBE,CREATEUSER) OUTPUT INSERTED.ID VALUES (@Question,@DESCRIBE,@CREATEUSER) END";
-            Cmd.CommandText += " ELSE BEGIN UPDATE tblQuestion SET Question = @Question, DESCRIBE = @DESCRIBE,EDITUSER = @CREATEUSER ,EDITTIME = GETDATE() OUTPUT INSERTED.ID WHERE ID = @ID END";
+            Cmd.CommandText = "IF NOT EXISTS (SELECT * FROM tblAnswer WHERE ID = @ID)";
+            Cmd.CommandText += " BEGIN INSERT INTO tblAnswer(QuestionID,Content) OUTPUT INSERTED.ID VALUES (@QuestionID,@Answer) END";
+            Cmd.CommandText += " ELSE BEGIN UPDATE tblAnswer SET QuestionID = @QuestionID, Content = @Answer OUTPUT INSERTED.ID WHERE ID = @ID END";
 
             Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
-            Cmd.Parameters.Add("Question", SqlDbType.NVarChar).Value = Question;
-            Cmd.Parameters.Add("DESCRIBE", SqlDbType.NText).Value = Describe;
-
-            SystemClass objSystemClass = new SystemClass();
-            Cmd.Parameters.Add("CREATEUSER", SqlDbType.Int).Value = objSystemClass.getIDAccount();
+            Cmd.Parameters.Add("Answer", SqlDbType.NVarChar).Value = Answer;
+            Cmd.Parameters.Add("QuestionID", SqlDbType.Int).Value = QuestionID;
 
             int ret = (int)Cmd.ExecuteScalar();
 
