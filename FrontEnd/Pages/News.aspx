@@ -32,7 +32,7 @@
 
 
                         <div class="clearfix visible"></div>
-                        <div class="cleft col-xs-12 col-sm-8 col-md-8 ">
+                          <div class="cleft col-xs-12 col-sm-12 col-md-9 col-lg-9 ">
 
 
                             <div class="row">
@@ -91,8 +91,8 @@
                                 <a href="javascript:;" class="btn btn-default-2 btn-xemthem" data-value="1">Xem thêm</a>
                             </div>
                         </div>
-                        <div class="cright col-xs-6 col-sm-4 col-md-4 hidden-xs">
-                            <%--<uc1:DanhMuc runat="server" ID="DanhMuc" />--%>
+                        <div class="cright hidden-xs   col-sm-12 col-md-3 col-xs-3">
+                            <uc1:DanhMuc runat="server" ID="DanhMuc" />
                             <uc1:QuangCao runat="server" ID="QuangCao1" />
                         </div>
                     </div>

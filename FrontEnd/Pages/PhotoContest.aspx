@@ -1,6 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="../../App_Master/Site.master" AutoEventWireup="true" CodeFile="PhotoContest.aspx.cs" Inherits="FrontEnd_Pages_PhotoContest" %>
 
 <%@ Register Src="~/FrontEnd/Controls/Common/QuangCao.ascx" TagPrefix="uc1" TagName="QuangCao" %>
+<%@ Register Src="~/FrontEnd/Controls/News/DanhMuc.ascx" TagPrefix="uc1" TagName="DanhMuc" %>
+
 
 
 
@@ -22,7 +24,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="main">
-                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                  <div class="cleft col-xs-12 col-sm-12 col-md-9 col-lg-9 ">
                     <div id="PhotoContest">
                         <h3>Cuộc thi ảnh Yolo - Dám chia sẻ</h3>
                         <p class="sapo">
@@ -81,13 +83,13 @@
                             <ItemTemplate>
                                 <li>
                                     <div class="row">
-                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                             <div class="img-w">
                                                 <a href="/<%# SystemClass.convertToUnSign2(Eval("user_name").ToString()) %>-p<%#Eval("id")%>">
                                                     <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%#Eval("picture")%>" alt="<%#Eval("user_name")%>" /></a>
                                             </div>
                                         </div>
-                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
 
                                             <div class="PhotoContest-rt">
                                                 <div class="PhotoContest-rt-m">
@@ -124,7 +126,8 @@
                         </asp:Repeater>
                     </ul>
                 </div>
-                <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
+                <div class="cright hidden-xs   col-sm-12 col-md-3 col-xs-3" style="margin-top: 20px;">
+                    <uc1:DanhMuc runat="server" ID="DanhMuc" />
                     <uc1:QuangCao runat="server" ID="QuangCao" />
                 </div>
             </div>

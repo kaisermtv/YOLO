@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 public partial class FrontEnd_Controls_News_DanhMuc : System.Web.UI.UserControl
 {
-    private DataMenu objMenu = new DataMenu();
+    private DataNewsGroup objNewsGroup = new DataNewsGroup();
     protected void Page_Load(object sender, EventArgs e)
     {
         getData();
@@ -16,7 +16,7 @@ public partial class FrontEnd_Controls_News_DanhMuc : System.Web.UI.UserControl
 
     private void getData()
     {
-        DataTable objData = objMenu.getList();
+        DataTable objData = objNewsGroup.getList();
 
         dtlData.DataSource = objData.DefaultView;
         dtlData.DataBind();
