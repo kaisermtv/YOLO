@@ -3,7 +3,19 @@
 
 <%@ Register Src="~/FrontEnd/Controls/News/DanhMuc.ascx" TagPrefix="uc1" TagName="DanhMuc" %>
 <%@ Register Src="~/FrontEnd/Controls/Common/QuangCao.ascx" TagPrefix="uc1" TagName="QuangCao" %>
+<asp:Content ID="head" ContentPlaceHolderID="headerContent" runat="server">
 
+<meta property="og:title" content="<%=objData["Title"] %>"/>
+<meta property="og:image" content="http://113.164.227.242:4083/Images/News/<%=objData["ImgUrl"] %>" />
+<meta property="og:description" content=" <%=objData["ShortContent"] %>"/>
+<meta property="og:author" content="yolo"/>
+<meta property="og:url" content="http://yolodamchiase.vn/" />
+<meta property="og:keywords" content="<%=objData["Title"] %>"
+<meta property="twitter:url" content="http://113.164.227.242:4083/" />
+<meta property="twitter:title"  content="<%=objData["Title"] %>" />
+<meta property="twitter:image" content="http://www.113.164.227.242:4083/Images/News/<%=objData["ImgUrl"] %>" />
+
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MasterPageContent" runat="server">
     <div id="fb-root"></div>
     <div class="container-fluid">
@@ -46,9 +58,8 @@
                            
                             <div class="row" style="margin-top: 50px; margin-bottom: 50px;">
                                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                             <div class="sharethis-inline-share-buttons"></div>
-    
-            <hr />
+                        <div class="sharethis-inline-share-buttons"></div>
+                           <hr />
                                     <h3 class="tieu-de">Bình luận </h3>
 
                                     <div class="fb-comments" data-href="<%=Request.RawUrl %>" data-width="800" data-numposts="5"></div>
@@ -145,5 +156,5 @@
         });
     </script>
     <script src="../../js/FileSaver.min.js"></script>
-       <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=590023ecb6ee520012cda1ac&product=inline-share-buttons' async='async'></script>
+    <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=590023ecb6ee520012cda1ac&product=inline-share-buttons' async='async'></script>
 </asp:Content>

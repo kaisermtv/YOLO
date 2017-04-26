@@ -19,7 +19,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="Language" content="vi" />
     <meta name="copyright" content="Copyright © 2017 by Mobiphone" />
-
+    <meta property="fb:app_id" content="271257546655466" />        <!--APP ID--->
+    <meta property="og:type" content="website" />
 
 
     <script src="../js/front-end/checkMenuScript.js"></script>
@@ -27,7 +28,9 @@
     <uc1:PageStyle runat="server" ID="PageStyle" />
     <%--PageScript--%>
     <uc1:PageScript runat="server" ID="PageScript" />
-  
+  <asp:ContentPlaceHolder ID="headerContent" runat="server">
+
+  </asp:ContentPlaceHolder>
 </head>
 <body>
     <div class="YoloWraper container-fluid">
