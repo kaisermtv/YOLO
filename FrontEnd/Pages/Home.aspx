@@ -59,7 +59,7 @@
     <div class="container-fluid">
         <div class="main">
             <div class="row">
-                <div class="cleft col-xs-12 col-sm-12 col-md-9 col-lg-9 " id="news">
+                <div class="cleft col-xs-12 col-sm-12 col-md-8 col-lg-8 " id="news">
                     <asp:Repeater ID="dtlNews" runat="server" EnableViewState="False">
                         <HeaderTemplate>
                             <h3>Tin tức</h3>
@@ -151,7 +151,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="cright hidden-xs   col-sm-12 col-md-3 col-xs-3" id="quangcao">
+                <div class="cright hidden-xs   col-sm-12 col-md-4 col-xs-4" id="quangcao">
                     <h3>Mobifone công sở</h3>
                     <a href="#" class="news">
                         <div class="img-w">

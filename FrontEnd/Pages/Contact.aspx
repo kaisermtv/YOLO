@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="main contact-w">
-                <div class="cleft col-xs-12 col-sm-12 col-md-9 col-lg-9 ">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                     <div class="BodyTitle">
                         LIÊN HỆ
            
@@ -44,7 +44,7 @@
                     </div>
                     <br />
                 </div>
-                <div class="cright hidden-xs   col-sm-12 col-md-3 col-xs-3" style="margin-top: 20px;">
+                <div class="hidden-xs hidden-sm col-md-4 col-lg-4" style="margin-top: 20px;">
                     <uc1:QuangCao runat="server" ID="QuangCao" />
                 </div>
             </div>

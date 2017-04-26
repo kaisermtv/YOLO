@@ -2,15 +2,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MasterPageContent" runat="server">
 
-    <div class="box-ctldkdn text-center" id="login-form" style="position: relative;margin-top: 70px;">
+    <div class="box-ctldkdn text-center" id="login-form" style="position: relative; margin-top: 70px;">
         <h4 class="title-dkdn">Đăng nhập</h4>
         <p class="sapo-dkdn">Bạn đã có tài khoản? Hãy đăng nhập tại đây</p>
 
-        <% if (this.Message != ""){ %>
-        <div style="color: red; margin: 10px 0px;">
-            <%=this.Message %>
-        </div>
-        <% } %>
+
         <form method="post" action="/dang-nhap">
             <ul class="mdkdn-lstres h-dkony">
                 <li>
@@ -24,6 +20,13 @@
             </ul>
             <button type="submit" class="submit-dkdnh btn btn-dangerous" id="btnLogin">Đăng nhập</button>
         </form>
+        <% if (this.Message != "")
+            { %>
+        <div style="color: #e35151; margin: 10px 0px; font-size: 12px;">
+            <%=this.Message %>
+        </div>
+        <% } %>
+
         <p class="ques-dkdn">
             <span>Quên mật khẩu ?</span>
             <a href="javascript:;" id="forgotpass">Vào đây</a>
@@ -36,13 +39,13 @@
         <a class="new-user" href="/dang-ky">Đăng ký tài khoản mới </a>
     </div>
 
-    <div class="box-ctldkdn text-center" id="changepassword" style="display: none;position: relative;margin-top: 70px;">
+    <div class="box-ctldkdn text-center" id="changepassword" style="display: none; position: relative; margin-top: 70px;">
         <p class="hoanthanh-dkdn">Vui lòng kiểm tra email <a href="javascript:;" class="sucssemail">ngochuan@gmail.com</a> và làm theo hướng dẫn để lấy lại mật khẩu truy cập website</p>
         <a href="/login.htm" class="submit-dkdnh">Hoàn thành</a>
     </div>
     <!--Lightbox boxforget pass-->
 
-    <div class="box-ctldkdn" id="resetpassword" style="display: none;position: relative;margin-top: 70px;">
+    <div class="box-ctldkdn" id="resetpassword" style="display: none; position: relative; margin-top: 70px;">
         <h4 class="title-dkdn paddingleft50">Lấy lại mật khẩu</h4>
         <p class="sapo-dkdn paddingleft50">Nhập địa chỉ email đăng nhập của bạn vào đây</p>
         <ul class="mdkdn-lstres h-dkony">
@@ -58,7 +61,7 @@
     <div id="fb-root"></div>
 
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             //$('.main-header, #menu-wraper, #footer, #copyright').hide();
             $('#Header_userName').hide();
         });

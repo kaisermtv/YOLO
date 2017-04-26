@@ -19,7 +19,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="main">
-                <div class="cleft col-xs-12 col-sm-12 col-md-9 col-lg-9 ">
+                <div class="cleft col-xs-12 col-sm-12 col-md-8 col-lg-8 ">
                     <div id="PhotoContest">
                         <h3>Cuộc thi ảnh Yolo - Dám chia sẻ</h3>
                         <p class="sapo">
@@ -54,7 +54,7 @@
                     <br />
                     <div class="fb-comments" data-href="https://www.facebook.com/pg/yolodamchiase/photos/?tab=album&album_id=271257546655466" data-width="800" data-numposts="5"></div>
                 </div>
-                <div class="cright hidden-xs   col-sm-12 col-md-3 col-xs-3" style="margin-top: 20px;">
+                <div class="cright hidden-xs   col-sm-12 col-md-4 col-xs-4" style="margin-top: 20px;">
                     <uc1:DanhMuc runat="server" ID="DanhMuc" />
                     <uc1:QuangCao runat="server" ID="QuangCao" />
                 </div>
