@@ -171,6 +171,15 @@ CREATE TABLE tblAnswer(
 	CREATETIME	DATETIME DEFAULT(GETDATE()) -- Ngày khởi tạo
 );
 
+CREATE TABLE tblAnswerResult(
+	ID			INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+	QuestionID	INT NOT NULL FOREIGN KEY REFERENCES dbo.tblQuestion(ID),
+	AnswerID	INT NOT NULL FOREIGN KEY REFERENCES dbo.tblAnswer(ID),
+
+	USERID	INT NULL FOREIGN KEY REFERENCES dbo.tblAccount(ACCT_ID),
+	CREATETIME	DATETIME DEFAULT(GETDATE()) -- Ngày khởi tạo
+); 
+
 CREATE  TABLE tblFacebookPost (
 			PostPhotoId int identity(1,1)  not null primary key,
 			id char(100) ,
