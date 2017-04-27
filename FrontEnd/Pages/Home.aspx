@@ -2,6 +2,8 @@
 
 <%@ Register Src="~/FrontEnd/Controls/Common/QuangCao.ascx" TagPrefix="uc1" TagName="QuangCao" %>
 <%@ Register TagPrefix="uc1" TagName="Banner" Src="~/FrontEnd/Controls/Common/Banner.ascx" %>
+<%@ Register Src="~/FrontEnd/Controls/Common/Vote.ascx" TagPrefix="uc1" TagName="Vote" %>
+
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MasterPageContent" runat="server">
@@ -159,6 +161,7 @@
                         </div>
                         <p>Hoa anh đào Nhật Bản khoe sắc bên Hồ Gươm</p>
                     </a>
+                    <uc1:Vote runat="server" ID="Vote" />
                     <uc1:QuangCao runat="server" ID="QuangCao1" />
                 </div>
             </div>
