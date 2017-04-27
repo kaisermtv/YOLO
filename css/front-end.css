@@ -72,6 +72,20 @@ p { text-align: justify; line-height: 20px; }
     .btn-add:before { content: '+'; position: absolute; top: 0; left: 15px; font-size: 23px; line-height: 25px; }
 
 
+
+input[type="radio"].deriku-radio-input { display: none; }
+    input[type="radio"].deriku-radio-input + label.deriku-radio-label { cursor: pointer; color: #000; font-family: FontKozukaR; font-size: 15px; }
+        input[type="radio"].deriku-radio-input + label.deriku-radio-label span { display: inline-block; width: 18px; height: 18px; margin: -1px 4px 0 0; vertical-align: middle; cursor: pointer; -moz-border-radius: 50%; border-radius: 50%; }
+
+
+        input[type="radio"].deriku-radio-input + label.deriku-radio-label span { background-color: #fff; border: 1px solid #939393; }
+
+    input[type="radio"].deriku-radio-input:checked + label.deriku-radio-label span { background-color: #ff0000; border: none; position: relative; }
+        input[type="radio"].deriku-radio-input:checked + label.deriku-radio-label span:before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; border: 3px solid #fff; border-radius: 50%; width: 0; height: 0; }
+
+
+
+
 .main { width: 100%; max-width: 1288px; display: block; margin: 0 auto; position: relative; }
 
 .img-w { position: relative; }
@@ -252,6 +266,26 @@ p { text-align: justify; line-height: 20px; }
         #danhmuc-tintuc ul li .zc.active, #danhmuc-tintuc ul li .zc:hover { background: #fff; font-weight: 700; }
             #danhmuc-tintuc ul li .zc:hover a, #danhmuc-tintuc ul li .zc.active a { color: #FF6A00; font-weight: 400; font-family: CondBold; }
             #danhmuc-tintuc ul li .zc:hover:before, #danhmuc-tintuc ul li .zc.active:before { background: #0b60b0; }
+
+
+.vote-percent { position: relative; display: inline-block; width: 100%; height: 5px; background: #e1e1e1; border-radius: 3px; overflow: hidden; }
+    .vote-percent .vote-percent-r { position: absolute; bottom: 0; left: 0; width: 50%; height: 5px; background: #FF6A00; border-radius: 3px; }
+
+.YOLOVote { display: inline-block; width: 100%; margin: 30px 0; }
+    .YOLOVote h3 { font-size: 17px !important; line-height: 30px !important; height: 30px !important; }
+    .YOLOVote ul { }
+        .YOLOVote ul li { display: inline-block; width: 100%;  }
+            .YOLOVote ul li input[type=radio] { }
+            .YOLOVote ul li label { display: inline-block; width: 100%; font-family: CondLight; }
+                .YOLOVote ul li label span { float: left; margin-top: 8px !important; margin-right: 12px !important; }
+                .YOLOVote ul li label .vote-percent-m { display: inline-block; position: relative; width: calc(100% - 30px); height: 30px; font-family: CondLight; font-size: 16px; font-weight: 700; }
+                    .YOLOVote ul li label .vote-percent-m p { line-height: 30px; }
+                .YOLOVote ul li label .vote-percent { display: none; position: absolute;bottom: -1px; }
+                    .YOLOVote ul li label .vote-percent:before { }
+    .YOLOVote .btn { display: block; margin: 10px auto; width: 100px; }
+    .YOLOVote.voted { }
+        .YOLOVote.voted .vote-percent { display: inline-block; }
+        .YOLOVote.voted .btn { display: none; }
 
 
 #loggin-wraper { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 9999; display: none; }

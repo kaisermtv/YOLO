@@ -156,4 +156,19 @@ public class DataNewsGroup :DataClass
         }
     }
     #endregion
+
+    #region Method getLinkById
+    public string getLinkById(int id)
+    {
+        DataRow objData = getData(id);
+        if (objData != null)
+        {
+            return "/" + SystemClass.convertToUnSign2(objData["NAME"].ToString()) + "-cat" + objData["ID"].ToString();
+        }
+        else
+        {
+            return null;
+        }
+    }
+    #endregion
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="/App_Master/Site.master" CodeFile="Contact.aspx.cs" Inherits="FrontEnd_Pages_Contact" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="../../App_Master/Site.master" CodeFile="Contact.aspx.cs" Inherits="FrontEnd_Pages_Contact" %>
 
 <%@ Register TagPrefix="uc1" TagName="QuangCao" Src="~/FrontEnd/Controls/Common/QuangCao.ascx" %>
 
