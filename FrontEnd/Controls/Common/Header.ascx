@@ -10,7 +10,7 @@
     <div class="search-w hidden-xs hidden-sm">
         <form method="get" action="/tim-kiem">
             <input class="txt-search" name="Seach" placeholder="Nhập từ khóa tìm kiếm.." />
-            <input class="btn-search" value="Tìm kiếm" />
+            <button type="submit" class="btn-search">Tìm kiếm</button>
         </form>
     </div>
     <div class="bar">
@@ -21,11 +21,13 @@
             <img src="/images/Front-End/user.png" />
         </div>
         <ul class="login-ul">
-            <li class="login-m">
-                <a href="#">Đăng nhập</a>
+            <li class="login-m" id="userName" runat="server">
+                <%--<a href="/dang-nhap">Đăng nhập</a>--%>
+                <a href="javascript:;">Đăng nhập</a>
             </li>
-            <li class="register-m">
-                <a href="#">Đăng ký</a>
+            <li class="register-m" id="logout" runat="server">
+                <%--<a href="/dang-ky">Đăng ký</a>--%>
+                <a href="javascript:;" class="register-rv">Đăng ký</a>
             </li>
         </ul>
     </div>

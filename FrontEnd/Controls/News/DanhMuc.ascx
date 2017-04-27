@@ -9,7 +9,7 @@
             <ItemTemplate>
                 <li>
                     <div class="zc" id="<%# Eval("NAME") %>">
-                        <a href="<%# Eval("LINK") %>"><%# Eval("NAME") %></a>
+                        <a href="/<%# SystemClass.convertToUnSign2(Eval("NAME").ToString()) %>-cat<%# Eval("ID") %>"><%# Eval("NAME") %></a>
                     </div>
                 </li>
             </ItemTemplate>

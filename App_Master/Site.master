@@ -11,7 +11,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title><%= title %></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
@@ -19,12 +19,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="Language" content="vi" />
     <meta name="copyright" content="Copyright © 2017 by Mobiphone" />
+    <meta property="fb:app_id" content="271257546655466" />        <!--APP ID--->
+    <meta property="og:type" content="website" />
 
 
+    <script src="../js/front-end/checkMenuScript.js"></script>
     <%--PageStyle--%>
     <uc1:PageStyle runat="server" ID="PageStyle" />
     <%--PageScript--%>
     <uc1:PageScript runat="server" ID="PageScript" />
+  <asp:ContentPlaceHolder ID="headerContent" runat="server">
+
+  </asp:ContentPlaceHolder>
 </head>
 <body>
     <div class="YoloWraper container-fluid">
@@ -37,6 +43,100 @@
             </div>
         </div>
     </div>
+    <div id="loggin-wraper">
+        <div class="overlay"></div>
+        <div class="box-ctldkdn text-center" id="login-form">
+            <h4 class="title-dkdn">Đăng nhập</h4>
+            <p class="sapo-dkdn">Bạn đã có tài khoản? Hãy đăng nhập tại đây</p>
+
+
+            <form method="post" action="/dang-nhap">
+                <input type="hidden" name="rederict" value="<%= Request.Url.ToString() %>" />
+                <ul class="mdkdn-lstres h-dkony">
+                    <li>
+                        <i class="ico ico-user Sprite-v1"></i>
+                        <input class="ttx" id="email" name="account" value="" placeholder="Tài khoản" type="text">
+                    </li>
+                    <li>
+                        <i class="ico ico-password Sprite-v1"></i>
+                        <input class="ttx" id="password" name="password" placeholder="Mật khẩu" type="password">
+                    </li>
+                </ul>
+                <button type="submit" class="submit-dkdnh btn btn-dangerous" id="btnLogin">Đăng nhập</button>
+            </form>
+            <p class="ques-dkdn">
+                <span>Quên mật khẩu ?</span>
+                <a href="javascript:;" id="forgotpass">Vào đây</a>
+            </p>
+
+            <a class="new-user" href="/dang-ky">Đăng ký tài khoản mới </a>
+        </div>
+    </div>
+    <div id="register-wraper">
+        <div class="overlay"></div>
+        <div class="box-ctldkdn text-center" id="register-form">
+            <h4 class="title-dkdn">Đăng ký tài khoản mới</h4>
+            <p class="sapo-dkdn">Hãy điền đầy đủ thông tin theo mẫu dưới đây </p>
+
+            <form method="post">
+                <ul class="mdkdn-lstres">
+
+                    <li>
+                        <i class="ico ico-user Sprite-v1"></i>
+                        <input class="ttx" id="regis-account" name="account" value="" placeholder="Tài khoản đăng nhập" type="text" />
+                    </li>
+                    <li>
+                        <i class="ico ico-email Sprite-v1"></i>
+                        <input class="ttx" id="regis-email" name="email" value="" placeholder="Email" type="text" />
+                    </li>
+                    <li>
+                        <i class="ico ico-phone Sprite-v1"></i>
+                        <input class="ttx" id="regis-mobile" name="phone" value="" placeholder="Số điện thoại" type="text" />
+                    </li>
+                    <li>
+                        <i class="ico ico-password Sprite-v1"></i>
+                        <input class="ttx" id="regis-password" name="password" placeholder="Mật khẩu" type="password" />
+                    </li>
+                    <li>
+                        <i class="ico ico-password Sprite-v1"></i>
+                        <input class="ttx" id="regis-repassword" name="password2" placeholder="Nhập lại mật khẩu" type="password" />
+                    </li>
+                    <li class="rf-capcha">
+
+
+
+                        <script src="https://www.google.com/recaptcha/api.js?hl=vi" async="" defer=""></script>
+                        <div class="g-recaptcha" data-sitekey="6LcMFCMTAAAAAOWZh4e-2M270QkyDYCQ2gAfV-ac" data-callback="correctCaptcha">
+                            <div style="width: 304px; height: 78px;">
+                                <div>
+                                    <iframe src="https://www.google.com/recaptcha/api2/anchor?k=6LcMFCMTAAAAAOWZh4e-2M270QkyDYCQ2gAfV-ac&amp;co=aHR0cDovL2xvY2FsaG9zdDo1MTAyMQ..&amp;hl=vi&amp;v=r20170411114922&amp;size=normal&amp;cb=512v5r3bpaas" title="tiện ích con mã xác thực lại" scrolling="no" name="undefined" frameborder="0" height="78" width="304"></iframe>
+                                </div>
+                                <textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            function validateReCaptcha() {
+                                var response = grecaptcha.getResponse();
+                                if (response.length == 0) return false;
+
+                                //https://www.google.com/recaptcha/api/siteverify?secret=your_secret&response=response_string
+                                return true;
+                            }
+                            function correctCaptcha(response) {
+                                console.log(response);
+                            }
+                        </script>
+                    </li>
+                </ul>
+                <button type="submit" class="submit-dkdnh btn btn-dangerous" id="btnYoLo">Đăng ký</button>
+            </form>
+            <p class="ques-dkdn">
+                <span>Bạn đã có tài khoản ?</span>
+                <a href="/dang-nhap">Đăng nhập</a>
+            </p>
+        </div>
+    </div>
+
     <asp:ContentPlaceHolder ID="MasterPageContent" runat="server">
     </asp:ContentPlaceHolder>
     <uc1:Footer runat="server" ID="Footer" />

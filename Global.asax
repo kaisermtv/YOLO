@@ -22,6 +22,17 @@
         routes.MapPageRoute("lienhe", "lien-he", "~/frontend/pages/Contact.aspx");
         routes.MapPageRoute("Contact", "contact", "~/frontend/pages/Contact.aspx");
 
+        routes.MapPageRoute("ContactOk", "ContactOk", "~/frontend/pages/ContactOk.aspx");
+
+        routes.MapPageRoute("Logout", "Logout", "~/frontend/pages/Logout.aspx");
+        
+        routes.MapPageRoute("dangnhap", "dang-nhap", "~/frontend/pages/Login.aspx");
+        routes.MapPageRoute("Login", "Login", "~/frontend/pages/Login.aspx");
+
+        routes.MapPageRoute("dangky", "dang-ky", "~/frontend/pages/Register.aspx");
+        routes.MapPageRoute("Register", "Register", "~/frontend/pages/Register.aspx");
+        
+
         routes.MapPageRoute("tintuc", "tin-tuc", "~/frontend/pages/News.aspx");
         routes.MapPageRoute("news", "news", "~/frontend/pages/News.aspx");
 

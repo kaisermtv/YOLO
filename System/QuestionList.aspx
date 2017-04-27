@@ -70,7 +70,7 @@
     </cc1:CollectionPager>
 
     <br />
-    <a href="NewsEdit.aspx" class="btn btn-primary">Đăng bài viết</a>
+    <a href="NewsEdit.aspx" class="btn btn-primary">Thêm câu hỏi</a>
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">

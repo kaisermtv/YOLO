@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="/App_Master/Site.master" CodeFile="Seach.aspx.cs" Inherits="FrontEnd_Pages_Seach" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="../../App_Master/Site.master" CodeFile="Seach.aspx.cs" Inherits="FrontEnd_Pages_Seach" %>
 
 <%@ Register Src="~/FrontEnd/Controls/News/DanhMuc.ascx" TagPrefix="uc1" TagName="DanhMuc" %>
 <%@ Register Src="~/FrontEnd/Controls/Common/QuangCao.ascx" TagPrefix="uc1" TagName="QuangCao" %>
@@ -17,24 +17,24 @@
                     <div class="row show-grid">
                         <div class="clearfix visible"></div>
                         <div class="cleft col-xs-12 col-sm-8 col-md-8 ">
-                            
-                            <div class="search-w" style="width:100%;padding-left:20px">
+
+                            <div class="search-w" style="width: 100%; padding-left: 20px">
                                 <form method="get" action="/tim-kiem">
                                     <input class="txt-search" name="Seach" placeholder="Nhập từ khóa tìm kiếm.." value="<%=seach %>" />
 
-                                    <input type="submit" class="btn-search" value="Tìm kiếm" />
+                                     <button type="submit" class="btn-search">Tìm kiếm</button>
                                 </form>
                             </div>
 
                             <div class="row">
-                                
+
                                 <ul class="col-xs-12 col-sm-12 col-md-12" id="list-tin-tuc">
                                     <asp:Repeater ID="dtlNews" runat="server" EnableViewState="False">
                                         <ItemTemplate>
                                             <li>
-                                                <div class="thumb">
+                                                <div class="thumb img-w">
                                                     <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>>" title="<%# Eval("Title") %>">
-                                                        <img src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" title="<%# Eval("Title") %>">
+                                                        <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" title="<%# Eval("Title") %>">
                                                     </a>
                                                 </div>
                                                 <div class="info-detail">
@@ -80,4 +80,7 @@
         </div>
 
     </div>
+    <script type="text/javascript">
+        //$('.main-header .search-w').hide();
+    </script>
 </asp:Content>

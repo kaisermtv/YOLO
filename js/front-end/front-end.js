@@ -9,6 +9,28 @@
         }
 
     });
+    $('.login-m a').off('click').on('click', function (e) {
+        e.preventDefault();
+        if ($('#loggin-wraper').hasClass('active')) {
+            $('#loggin-wraper').removeClass('active');
+        } else {
+            $('#loggin-wraper').addClass('active');
+        }
+
+    });
+    $('.register-m a.register-rv').off('click').on('click', function (e) {
+        e.preventDefault();
+        if ($('#register-wraper').hasClass('active')) {
+            $('#register-wraper').removeClass('active');
+        } else {
+            $('#register-wraper').addClass('active');
+        }
+
+    });
+    $('.overlay').off('click').on('click', function (e) {
+        e.preventDefault();
+        $('#loggin-wraper,#register-wraper').removeClass('active');
+    });
     var wH = $(window).width();
     var slidesPerView = 5;
     if (wH <= 1200 && wH >= 768) {
@@ -48,9 +70,9 @@
     $(window).scroll(function () {
         var scrollTop = $(window).scrollTop();
         if (scrollTop >= 100) {
-            $('#menu-wraper,.search-w').addClass('fixed');
+            $('#menu-wraper,.main-header .search-w').addClass('fixed');
         } else {
-            $('#menu-wraper,.search-w').removeClass('fixed');
+            $('#menu-wraper,.main-header .search-w').removeClass('fixed');
         }
     });
 });

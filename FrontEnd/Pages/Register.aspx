@@ -8,38 +8,49 @@
         .mdkdn-lstres { margin-bottom: 30px; }
     </style>
 
-    <div class="box-ctldkdn text-center">
+    <div class="box-ctldkdn text-center"  style="position: relative;margin-top: 70px;">
         <h4 class="title-dkdn">Đăng ký tài khoản mới</h4>
         <p class="sapo-dkdn">Hãy điền đầy đủ thông tin theo mẫu dưới đây </p>
+        <% if (this.Message != ""){ %>
+        <div style="color: red; margin: 10px 0px;">
+            <%=this.Message %>
+        </div>
+        <% } %>
+        <form method="post">
         <ul class="mdkdn-lstres">
-            <li>
+            <%--<li>
                 <i class="ico ico-user Sprite-v1"></i>
                 <input class="ttx" type="text" id="fullname" placeholder="Họ và tên" />
+            </li>--%>
+            <li>
+                <i class="ico ico-user Sprite-v1"></i>
+                <input class="ttx" type="text" id="account" name="account" value="<%=Account %>" placeholder="Tài khoản đăng nhập" />
             </li>
             <li>
                 <i class="ico ico-email Sprite-v1"></i>
-                <input class="ttx" type="text" id="email" placeholder="Email" />
+                <input class="ttx" type="text" id="email" name="email" value="<%=Email %>" placeholder="Email" />
             </li>
             <li>
                 <i class="ico ico-phone Sprite-v1"></i>
-                <input class="ttx" type="text" id="mobile" placeholder="Số điện thoại" />
+                <input class="ttx" type="text" id="mobile" name="phone" value="<%=Phone %>" placeholder="Số điện thoại" />
             </li>
             <li>
                 <i class="ico ico-password Sprite-v1"></i>
-                <input class="ttx" type="password" id="password" placeholder="Mật khẩu" />
+                <input class="ttx" type="password" id="password" name="password" placeholder="Mật khẩu" />
             </li>
             <li>
                 <i class="ico ico-password Sprite-v1"></i>
-                <input class="ttx" type="password" id="repassword" placeholder="Nhập lại mật khẩu" />
+                <input class="ttx" type="password" id="repassword" name="password2" placeholder="Nhập lại mật khẩu" />
             </li>
             <li class="rf-capcha">
                 <uc1:ReCaptcha runat="server" ID="ReCaptcha1" />
             </li>
         </ul>
-        <a href="javascript:;" class="submit-dkdnh btn btn-dangerous" id="btnYoLo">Đăng ký</a>
+        <button type="submit" class="submit-dkdnh btn btn-dangerous" id="btnYoLo">Đăng ký</button>
+            </form>
         <p class="ques-dkdn">
             <span>Bạn đã có tài khoản ?</span>
-            <a href="/login.htm">Đăng nhập</a>
+            <a href="/dang-nhap">Đăng nhập</a>
         </p>
     </div>
     <div class="banner-foot mgb20"></div>
@@ -50,13 +61,13 @@
 
         Register.Init();
 
-        var temp_fullname = getCookie("temp_fullname");
+        var temp_account = getCookie("temp_account");
         var temp_email = getCookie("temp_email");
         var temp_mobile = getCookie("temp_mobile");
 
         if (typeof (temp_fullname) != "undefined") {
-            $("#fullname").val(temp_fullname);
-            setCookie("temp_fullname", '', -1);
+            $("#account").val(temp_account);
+            setCookie("temp_account", '', -1);
         }
         if (typeof (temp_email) != "undefined") {
             $("#email").val(temp_email);

@@ -82,12 +82,7 @@ public partial class FrontEnd_Pages_Seach : System.Web.UI.Page
         }
     }
     #endregion
-    #region Page_PreRender
-    public void Page_PreRender(object sender, EventArgs e)
-    {
-        
-    }
-    #endregion
+
 
     #region Method getParam
     private String getParam(String key)

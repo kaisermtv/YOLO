@@ -45,55 +45,85 @@ public class SystemClass
 
             return true;
         }
-    
-        if (context.Session["Login"] == null)
+
+        DataRow objData = objDataRemember.getData(SessionKey);
+        if (objData != null)
         {
-            if (SessionKey != null && SessionKey != "")
+            DataAccount objAccount = new DataAccount();
+            DataRow objDataAcct = objAccount.getAccount((int)objData["USERID"]);
+
+            if (objDataAcct != null)
             {
-                
-                DataRow objData = objDataRemember.getData(SessionKey);
-                if(objData != null)
+                if (objDataAcct["ACCT_PASS"].ToString() == objData["PASS"].ToString())
                 {
-                    context.Session["Login"] = objData["USERID"];
-                    context.Session["LoginPass"] = objData["PASS"];
-                    context.Session["LoginGroup"] = objData["LGROUP"];
-                }
-            }
-            
+                    context.Items["loginAcct"] = objDataAcct;
+                    context.Items["islogin"] = 1;
+                    context.Items["loginGroup"] = objData["LGROUP"];
 
-        }
+                    context.Items["login"] = (int)objData["USERID"];
 
-        if (context.Session["Login"] != null)
-        {
-            if (group == 0 || group != 0 && context.Session["LoginGroup"] != null && (int)context.Session["LoginGroup"] == group)
-            {
-                DataAccount objAccount = new DataAccount();
+                    objDataRemember.updateOnline(SessionKey);
 
-                DataRow objData = objAccount.getAccount((int)context.Session["Login"]);
-
-                if(objData != null)
-                {
-                    if (objData["ACCT_PASS"].ToString() == context.Session["LoginPass"].ToString())
-                    {
-                        context.Items["login"] = (int)context.Session["Login"];
-                        context.Items["loginAcct"] = objData;
-                        context.Items["islogin"] = 1;
-                        context.Items["loginGroup"] = group;
-
-                        if (SessionKey != null && SessionKey != "") objDataRemember.updateOnline(SessionKey);
-
-                        Message = objData["ACCT_PASS"].ToString();
-                        return true;
-                    }
-                   
-                    Logout();
+                    //Message = objData["ACCT_PASS"].ToString();
+                    return true;
                 }
 
+                Logout();
             }
         }
 
         context.Items["islogin"] = 2;
         return false;
+
+    
+        //if (context.Session["Login"] == null)
+        //{
+        //    if (SessionKey != null && SessionKey != "")
+        //    {
+                
+        //        DataRow objData = objDataRemember.getData(SessionKey);
+        //        if(objData != null)
+        //        {
+        //            context.Session["Login"] = objData["USERID"];
+        //            context.Session["LoginPass"] = objData["PASS"];
+        //            context.Session["LoginGroup"] = objData["LGROUP"];
+        //        }
+        //    }
+            
+
+        //}
+
+        //if (context.Session["Login"] != null)
+        //{
+        //    if (group == 0 || group != 0 && context.Session["LoginGroup"] != null && (int)context.Session["LoginGroup"] == group)
+        //    {
+        //        DataAccount objAccount = new DataAccount();
+
+        //        DataRow objData = objAccount.getAccount((int)context.Session["Login"]);
+
+        //        if(objData != null)
+        //        {
+        //            if (objData["ACCT_PASS"].ToString() == context.Session["LoginPass"].ToString())
+        //            {
+        //                context.Items["login"] = (int)context.Session["Login"];
+        //                context.Items["loginAcct"] = objData;
+        //                context.Items["islogin"] = 1;
+        //                context.Items["loginGroup"] = group;
+
+        //                if (SessionKey != null && SessionKey != "") objDataRemember.updateOnline(SessionKey);
+
+        //                Message = objData["ACCT_PASS"].ToString();
+        //                return true;
+        //            }
+                   
+        //            Logout();
+        //        }
+
+        //    }
+        //}
+
+        //context.Items["islogin"] = 2;
+        //return false;
     }
     #endregion
 
@@ -152,23 +182,20 @@ public class SystemClass
             return false;
         }
 
-        context.Session["Login"] = (int)objData["ACCT_ID"];
-        context.Session["LoginPass"] = pass;
-        context.Session["LoginTime"] = DateTime.Now;
-        context.Session["LoginGroup"] = group;
+        //context.Session["Login"] = (int)objData["ACCT_ID"];
+        //context.Session["LoginPass"] = pass;
+        //context.Session["LoginTime"] = DateTime.Now;
+        //context.Session["LoginGroup"] = group;
 
-        if(remember)
-        {
-            HttpCookie loginCookie = new HttpCookie("LoginCookie");
-            // Lưu vào Cookie
-            String key = objDataRemember.addLogin((int)objData["ACCT_ID"], pass, group);
+        HttpCookie loginCookie = new HttpCookie("LoginCookie");
+        // Lưu vào Cookie
+        String key = objDataRemember.addLogin((int)objData["ACCT_ID"], pass, group, remember);
 
-            loginCookie.Value = key;
-            loginCookie.HttpOnly = true;
-            //Message = key;
+        loginCookie.Value = key;
+        loginCookie.HttpOnly = true;
+        //Message = key;
 
-            context.Response.Cookies.Add(loginCookie);
-        }
+        context.Response.Cookies.Add(loginCookie);
 
         return true;
     }
@@ -177,10 +204,10 @@ public class SystemClass
     #region Logout
     public void Logout()
     {
-        context.Session["Login"] = null;
-        context.Session["LoginPass"] = null;
-        context.Session["LoginTime"] = null;
-        context.Session["LoginAdmin"] = null;
+        //context.Session["Login"] = null;
+        //context.Session["LoginPass"] = null;
+        //context.Session["LoginTime"] = null;
+        //context.Session["LoginAdmin"] = null;
 
         objDataRemember.delData(SessionKey);
         context.Response.Cookies["LoginCookie"].Value = "";

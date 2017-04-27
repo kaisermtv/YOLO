@@ -1,6 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="../../App_Master/Site.master" AutoEventWireup="true" CodeFile="PhotoContest.aspx.cs" Inherits="FrontEnd_Pages_PhotoContest" %>
 
 <%@ Register Src="~/FrontEnd/Controls/Common/QuangCao.ascx" TagPrefix="uc1" TagName="QuangCao" %>
+<%@ Register Src="~/FrontEnd/Controls/News/DanhMuc.ascx" TagPrefix="uc1" TagName="DanhMuc" %>
+
 
 
 
@@ -22,7 +24,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="main">
-                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <div class="cleft col-xs-12 col-sm-12 col-md-8 col-lg-8">
                     <div id="PhotoContest">
                         <h3>Cuộc thi ảnh Yolo - Dám chia sẻ</h3>
                         <p class="sapo">
@@ -30,14 +32,29 @@
                             <br />
                             Tích cực chia sẻ vì cộng đồng. YOLO- dám chia sẻ
                         </p>
-                        <div class="img-w" style="margin-bottom: 20px;">
-                            <img  onError="this.src='/images/Front-End/no-image-available.png';" src="<%= objData["picture"].ToString() %>" alt="Yolo chia sẻ đam mê" />
+                        <div class="img-w" style="margin-bottom: 20px; height: 500px; padding: 0;">
+                            <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%= objData["picture"].ToString() %>" alt="Yolo chia sẻ đam mê" />
+
                         </div>
+                        <div class="likes fb-rm">
+                            &nbsp;&nbsp;&nbsp;
+                             <a href="<%= objData["link"].ToString() %>">
+                                 <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                 <span><%= objData["likes"].ToString() %></span>
+                             </a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                 <a href="<%= objData["link"].ToString() %>">
+                                     <i class="fa fa-comments" aria-hidden="true"></i>
+                                     <span><%= objData["comments"].ToString() %></span>
+                                 </a>
+                        </div>
+
                         <label><span>Họ tên: </span><%= objData["user_name"].ToString() %></label>
                         <label><span>Ngày sinh:</span> <%= objData["user_birthday"].ToString() %></label>
                         <label><span>Đến từ:</span> <%= objData["user_address"].ToString() %></label>
                         <p><%= objData["name"].ToString() %> </p>
                         <br />
+
                         <%--Bình luận trên Facebook--%>
                         <div class="comment-w">
                             <%int i = 1; %>
@@ -51,12 +68,13 @@
                             </div>
                             <%} %>
                             <br />
+                            <hr />
+
                             <!-- comemnt -->
                             Bình luận trên trang
                             <div class="fb-comments" data-href=" <%= objData["link"].ToString() %>" data-width="800" data-numposts="5"></div>
                         </div>
                     </div>
-
 
                     <h3 class="" style="font-size: 24px; font-family: CondBold; display: inline-block; width: 100%; margin-top: 40px; margin-bottom: 10px;">Bài thi liên quan</h3>
                     <ul id="PhotoContestList">
@@ -65,18 +83,18 @@
                             <ItemTemplate>
                                 <li>
                                     <div class="row">
-                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                             <div class="img-w">
                                                 <a href="/<%# SystemClass.convertToUnSign2(Eval("user_name").ToString()) %>-p<%#Eval("id")%>">
-                                                    <img  onError="this.src='/images/Front-End/no-image-available.png';" src="<%#Eval("picture")%>" alt="<%#Eval("user_name")%>" /></a>
+                                                    <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%#Eval("picture")%>" alt="<%#Eval("user_name")%>" /></a>
                                             </div>
                                         </div>
-                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
 
                                             <div class="PhotoContest-rt">
                                                 <div class="PhotoContest-rt-m">
                                                     <a href="javascript:;">
-                                                        <img  onError="this.src='/images/Front-End/no-image-available.png';" src="/images/Front-End/logo.png" />
+                                                        <img onerror="this.src='/images/Front-End/no-image-available.png';" src="/images/Front-End/logo.png" />
                                                     </a>
                                                     <label>Yolo- Dám chia sẻ</label>
                                                     <div class="social">
@@ -108,7 +126,8 @@
                         </asp:Repeater>
                     </ul>
                 </div>
-                <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
+                <div class="cright hidden-xs   col-sm-12 col-md-4 col-xs-4" style="margin-top: 20px;">
+                    <uc1:DanhMuc runat="server" ID="DanhMuc" />
                     <uc1:QuangCao runat="server" ID="QuangCao" />
                 </div>
             </div>

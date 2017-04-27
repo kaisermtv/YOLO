@@ -18,8 +18,10 @@
                 <tr class="DataListTableHeader">
                     <th class="DataListTableHeaderTdItemTT" style="width: 4%;">TT</th>
                     <th class="DataListTableHeaderTdItemJustify" >Tiêu đề</th>
-                    <th class="DataListTableHeaderTdItemJustify" style="width: 20%;">image</th>
-                    <th class="DataListTableHeaderTdItemJustify" style="width: 10%;">key</th>
+                    <th class="DataListTableHeaderTdItemJustify" style="width: 40%;">image</th>
+                    <th class="DataListTableHeaderTdItemJustify" style="width: 3%;">key</th>
+                    <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Up</th>
+                    <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Down</th>
                     <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Sửa</th>
                     <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Xóa</th>
                 </tr>
@@ -30,6 +32,17 @@
                 <td class="DataListTableTdItemJustify"><%# Eval("TITLE") %></td>
                 <td class="DataListTableTdItemJustify"><%# Eval("IMG") %></td>
                 <td class="DataListTableTdItemJustify"><%# Eval("NTYPE") %></td>
+                <td class="DataListTableTdItemCenter">
+                    <center>
+                        <a href="SliderMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index-2 %>">
+                            <div class="arrow-up"></div>
+                        </a></center>
+                </td>
+                <td class="DataListTableTdItemCenter">
+                    <center><a href="SliderMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index %>">
+                            <div class="arrow-down"></div>
+                        </a></center>
+                </td>
                 <td class="DataListTableTdItemCenter">
                     <a href="SliderEdit.aspx?id=<%# Eval("ID") %>">
                         <img src="/Images/Edit.png" alt="Chỉnh sửa thông tin">
