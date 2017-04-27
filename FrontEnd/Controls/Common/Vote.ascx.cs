@@ -7,6 +7,11 @@ using System.Web.UI.WebControls;
 
 public partial class FrontEnd_Controls_Common_Vote : System.Web.UI.UserControl
 {
+    #region declare 
+    private DataQuestion objQuestion = new DataQuestion();
+
+    #endregion
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
