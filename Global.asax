@@ -40,6 +40,8 @@
 
         routes.MapPageRoute("photo", "photo", "~/frontend/pages/PhotoContest.aspx");
 
+        routes.MapPageRoute("AnswerResult", "AnswerResult", "~/frontend/pages/AnswerResult.aspx");
+        
 
         routes.MapPageRoute("cuocthianhdep", "cuoc-thi-ah-dep", "~/frontend/pages/PhotoContestList.aspx");
         

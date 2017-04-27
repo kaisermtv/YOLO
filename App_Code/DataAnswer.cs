@@ -34,13 +34,172 @@ public class DataAnswer :DataClass
     }
     #endregion
 
+    #region Method getUserResult
+    public DataRow getUserResult(int QuestionID,int userId = 0)
+    {
+        try
+        {
+            if(userId == 0)
+            {
+                SystemClass objSystem = new SystemClass();
+                userId = objSystem.getIDAccount();
+            }
+
+            if(userId == 0)
+            {
+                return null;
+            }
+
+
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "SELECT * FROM tblAnswerResult AS P WHERE P.QuestionID = @QuestionID AND USERID = @USERID";
+            Cmd.Parameters.Add("QuestionID", SqlDbType.Int).Value = QuestionID;
+            Cmd.Parameters.Add("USERID", SqlDbType.Int).Value = userId;
+
+            DataRow ret = this.findFirst(Cmd);
+
+            this.SQLClose();
+            return ret;
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+            return null;
+        }
+    }
+    #endregion
+
+    #region Method isResult
+    public bool isResult(int QuestionID = 0,int userId = 0)
+    {
+        try
+        {
+            if (userId == 0)
+            {
+                SystemClass objSystem = new SystemClass();
+                userId = objSystem.getIDAccount();
+            }
+
+            if (userId == 0)
+            {
+                return false;
+            }
+
+
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "SELECT ID FROM tblAnswerResult AS P WHERE P.QuestionID = @QuestionID AND USERID = @USERID";
+            Cmd.Parameters.Add("QuestionID", SqlDbType.Int).Value = QuestionID;
+            Cmd.Parameters.Add("USERID", SqlDbType.Int).Value = userId;
+
+            int ret = (int)Cmd.ExecuteScalar();
+
+            this.SQLClose();
+
+            if (ret != 0) return true;
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+        }
+        return false;
+    }
+
+    #endregion
+
+    #region Method setUserResult
+    public int setUserResult(int QuestionId, int AnswerResult, int userId = 0)
+    {
+        if(QuestionId == 0 || AnswerResult == 0) return 0; 
+
+        try
+        {
+            if (userId == 0)
+            {
+                SystemClass objSystem = new SystemClass();
+                userId = objSystem.getIDAccount();
+            }
+
+            if (userId == 0)
+            {
+                return 0;
+            }
+
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "SELECT COUNT(*) FROM tblAnswer AS P WHERE P.ID = @AnswerResult AND P.QuestionID = @QuestionID";
+            Cmd.Parameters.Add("QuestionID", SqlDbType.Int).Value = QuestionId;
+            Cmd.Parameters.Add("AnswerResult", SqlDbType.Int).Value = AnswerResult;
+
+            int ret = (int)Cmd.ExecuteScalar();
+
+            if(ret == QuestionId)
+            {
+                Cmd = this.getSQLConnect();
+                Cmd.CommandText = "IF NOT EXISTS (SELECT * FROM tblAnswerResult WHERE QuestionID = @QuestionID AND USERID = @USERID)";
+                Cmd.CommandText += " BEGIN INSERT INTO tblAnswerResult(QuestionID,AnswerID,USERID) OUTPUT INSERTED.ID VALUES (@QuestionID,@AnswerID,@USERID) END";
+                Cmd.CommandText += " ELSE BEGIN UPDATE tblAnswerResult SET AnswerID = @AnswerID OUTPUT INSERTED.ID WHERE QuestionID = @QuestionID AND USERID = @USERID END";
+
+                Cmd.Parameters.Add("QuestionID", SqlDbType.Int).Value = QuestionId;
+                Cmd.Parameters.Add("AnswerID", SqlDbType.Int).Value = AnswerResult;
+                Cmd.Parameters.Add("USERID", SqlDbType.Int).Value = userId;
+
+                ret = (int)Cmd.ExecuteScalar();
+            }
+            else
+            {
+                ret = 0;
+            }
+
+            
+            this.SQLClose();
+
+            return ret;
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+            return 0;
+        }
+        
+    }
+    #endregion
+
+    #region Method getCountAnswerResult
+    public int getCountAnswerResult(int QuestionID = 0)
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "SELECT COUNT(*) FROM tblAnswerResult AS P ";
+            if (QuestionID != 0)
+            {
+                Cmd.CommandText += " WHERE P.QuestionID = @QuestionID";
+                Cmd.Parameters.Add("QuestionID", SqlDbType.Int).Value = QuestionID;
+            }
+
+            int ret = (int)Cmd.ExecuteScalar();
+
+            this.SQLClose();
+            return ret;
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+            return 0;
+        }
+    }
+    #endregion
+
     #region method getList
     public DataTable getList(int QuestionID = 0)
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "SELECT P.ID,P.[Content] FROM tblAnswer AS P";
+            Cmd.CommandText = "SELECT P.ID,P.[Content],(SELECT COUNT(*) FROM tblAnswerResult AS Pl WHERE Pl.AnswerID = P.ID ) AS Num FROM tblAnswer AS P";
             if (QuestionID != 0)
             {
                 Cmd.CommandText += " WHERE P.QuestionID = @QuestionID";
