@@ -9,7 +9,6 @@
 <meta property="og:image" content="http://113.164.227.242:4083/Images/News/<%=objData["ImgUrl"] %>" />
 <meta property="og:description" content=" <%=objData["ShortContent"] %>"/>
 <meta property="og:author" content="yolo"/>
-<meta property="og:url" content="http://yolodamchiase.vn/" />
 <meta property="og:keywords" content="<%=objData["Title"] %>"
 <meta property="twitter:url" content="http://113.164.227.242:4083/" />
 <meta property="twitter:title"  content="<%=objData["Title"] %>" />
