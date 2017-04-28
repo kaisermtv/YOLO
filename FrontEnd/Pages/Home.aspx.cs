@@ -20,6 +20,8 @@ public partial class FrontEnd_Pages_Home : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        SystemClass.setMenuActive();
+
         Context.Items["strTitle"] = "Trang chủ";
 
         if (!Page.IsPostBack)

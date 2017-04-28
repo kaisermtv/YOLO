@@ -18,8 +18,8 @@ public partial class FrontEnd_Controls_Common_Footer : System.Web.UI.UserControl
     protected void Page_PreRender(object sender, EventArgs e)
     {
 
-        DataRemember objRemember = new DataRemember();
-        userOnline = objRemember.getCountOnline();
+        //DataRemember objRemember = new DataRemember();
+        //userOnline = objRemember.getCountOnline();
 
         DataAccount objAccount = new DataAccount();
         userRegis = objAccount.getCountAccout();

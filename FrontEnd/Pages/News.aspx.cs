@@ -34,6 +34,8 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
         }
         catch { }
 
+        SystemClass.setMenuActive("news", itemId.ToString());
+
         try
         {
             this.sapXep = (getParam("sapxep") != "1") ? "DESC" : "ASC";

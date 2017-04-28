@@ -17,6 +17,8 @@ public partial class FrontEnd_Pages_Contact : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        SystemClass.setMenuActive("contact");
+
         if(Request.RequestType == "POST")
         {
             try

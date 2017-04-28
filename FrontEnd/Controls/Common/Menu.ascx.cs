@@ -35,22 +35,97 @@ public partial class FrontEnd_Controls_Common_Menu : System.Web.UI.UserControl
     #region getActive(string link)
     public string getActive(string link)
     {
-      //  link = link.ToLower();
+        link = link.ToLower();
 
-      //  if (link == "/" || link == "/home" || link == "/trang-chu" || Regex.IsMatch(link, "^/home/.*") || Regex.IsMatch(link, "^/trang-chu/.*"))
-      //  {
-
-      //  } 
-
-
-      //  if (link == "/tin-tuc") return "class=\"active\"";
-
-      //  Match m = Regex.Match(link, "-cat[\\d]+$", RegexOptions.IgnoreCase);
-      //if (m.Success)
-      //   Console.WriteLine("Found '{0}' at position {1}.", m.Value, m.Index);
+        if (link == "/" || link == "/home" || link == "/trang-chu" || Regex.IsMatch(link, "^/home/.*") || Regex.IsMatch(link, "^/trang-chu/.*"))
+        {
+            if((string)Context.Items["PageType"] == "home")
+            {
+                return "class=\"active\"";
+            }
+            return "";
+        }
 
 
-        //Regex.IsMatch(link,".*-cat[\\d]",
+        if (link == "/tin-tuc" || link == "/news" || link == "/tin-tuc/" || link == "/news/")
+        {
+            if ((string)Context.Items["PageType"] == "news" && (string)Context.Items["PageID"] == "")
+            {
+                return "class=\"active\"";
+            }
+            return "";
+        }
+
+        if (Regex.IsMatch(link, "^/tin-tuc/\\?.*") || Regex.IsMatch(link, "^/news/\\?.*"))
+        {
+            if ((string)Context.Items["PageType"] != "news") return "";
+
+            Match m = Regex.Match(link, "id=[\\d]+", RegexOptions.IgnoreCase);
+            if (m.Success)
+            {
+                if ((string)Context.Items["PageID"] == m.Value.Substring(3)) return "class=\"active\"";
+            }
+
+            return "";
+        }
+
+        if (Regex.IsMatch(link, "^/[^/^\\?]*-cat[\\d]+$"))
+        {
+            if ((string)Context.Items["PageType"] != "news") return "";
+
+            Match m = Regex.Match(link, "-cat[\\d]+$", RegexOptions.IgnoreCase);
+            if (m.Success)
+            {
+                if ((string)Context.Items["PageID"] == m.Value.Substring(4)) return "class=\"active\"";
+            }
+
+            return "";
+        }
+
+        if (link == "/contact" || link == "/lien-he" || link == "/contact/" || link == "/lien-he/")
+        {
+            if ((string)Context.Items["PageType"] == "contact" && (string)Context.Items["PageID"] == "")
+            {
+                return "class=\"active\"";
+            }
+            return "";
+        }
+
+
+        if (Regex.IsMatch(link, "^/[^/^\\?]*-v[\\d]+$"))
+        {
+            if ((string)Context.Items["PageType"] != "view") return "";
+
+            Match m = Regex.Match(link, "-v[\\d]+$", RegexOptions.IgnoreCase);
+            if (m.Success)
+            {
+                if ((string)Context.Items["PageID"] == m.Value.Substring(2)) return "class=\"active\"";
+            }
+
+            return "";
+        }
+
+        if (Regex.IsMatch(link, "^/[^/^\\?]*-p[\\d]+$"))
+        {
+            if ((string)Context.Items["PageType"] != "photoview") return "";
+
+            Match m = Regex.Match(link, "-p[\\d]+$", RegexOptions.IgnoreCase);
+            if (m.Success)
+            {
+                if ((string)Context.Items["PageID"] == m.Value.Substring(2)) return "class=\"active\"";
+            }
+
+            return "";
+        }
+
+        if (link == "/cuoc-thi-ah-dep" || link == "/cuoc-thi-ah-dep/")
+        {
+            if ((string)Context.Items["PageType"] == "photo" && (string)Context.Items["PageID"] == "")
+            {
+                return "class=\"active\"";
+            }
+            return "";
+        }
 
         return "";
     }

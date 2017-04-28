@@ -292,4 +292,13 @@ public class SystemClass
         return strReturn.Replace("/", "").ToLower();
     }
     #endregion
+
+    #region Method setMenuActive()
+    public static void setMenuActive(string type = "home",string id = "")
+    {
+        HttpContext context = HttpContext.Current;
+        context.Items["PageType"] = type;
+        context.Items["PageID"] = id;
+    }
+    #endregion
 }
