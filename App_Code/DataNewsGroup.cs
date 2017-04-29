@@ -57,12 +57,19 @@ public class DataNewsGroup :DataClass
     #endregion
 
     #region method getList
-    public DataTable getList()
+    public DataTable getList(int state = -1)
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
             Cmd.CommandText = "SELECT P.ID,P.NAME,P.[DESCRIBE],PL.NAME AS STATUS FROM tblNewsGroup AS P LEFT JOIN tblStatus AS PL ON P.NSTATUS = PL.ID";
+
+            if(state != -1)
+            {
+                Cmd.CommandText += " WHERE P.NSTATUS = @NSTATUS";
+                Cmd.Parameters.Add("NSTATUS", SqlDbType.Int).Value = state;
+            }
+
 
             DataTable ret = this.findAll(Cmd);
 
@@ -104,18 +111,19 @@ public class DataNewsGroup :DataClass
     #endregion
 
     #region method setGroupAcct
-    public int setGroupAcct(int id, String Name, String Describe)
+    public int setData(int id, String Name, String Describe,int trangthai)
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
             Cmd.CommandText = "IF NOT EXISTS (SELECT * FROM tblNewsGroup WHERE ID = @ID)";
-            Cmd.CommandText += " BEGIN INSERT INTO tblNewsGroup(NAME,DESCRIBE,EDITUSER,EDITTIME) OUTPUT INSERTED.ID VALUES (@NAME,@DESCRIBE,@EDITUSER,GETDATE()) END";
-            Cmd.CommandText += " ELSE BEGIN UPDATE tblNewsGroup SET NAME = @NAME, DESCRIBE = @DESCRIBE,EDITUSER = @EDITUSER ,EDITTIME = GETDATE() OUTPUT INSERTED.ID WHERE ID = @ID END";
+            Cmd.CommandText += " BEGIN INSERT INTO tblNewsGroup(NAME,DESCRIBE,EDITUSER,EDITTIME,NSTATUS) OUTPUT INSERTED.ID VALUES (@NAME,@DESCRIBE,@EDITUSER,GETDATE(),@NSTATUS) END";
+            Cmd.CommandText += " ELSE BEGIN UPDATE tblNewsGroup SET NAME = @NAME, DESCRIBE = @DESCRIBE,EDITUSER = @EDITUSER ,EDITTIME = GETDATE(), NSTATUS = @NSTATUS OUTPUT INSERTED.ID WHERE ID = @ID END";
 
             Cmd.Parameters.Add("ID", SqlDbType.Int).Value = id;
             Cmd.Parameters.Add("NAME", SqlDbType.NVarChar).Value = Name;
             Cmd.Parameters.Add("DESCRIBE", SqlDbType.NVarChar).Value = Describe;
+            Cmd.Parameters.Add("NSTATUS", SqlDbType.Int).Value = trangthai;
 
             SystemClass objSystemClass = new SystemClass();
             Cmd.Parameters.Add("EDITUSER", SqlDbType.Int).Value = objSystemClass.getIDAccount();

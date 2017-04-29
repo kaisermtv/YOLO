@@ -11,10 +11,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MasterPageContent" runat="server">
 
-    <script>
-        customMenu('/news/?id=<%=this.itemId%>123');
-    </script>
-
     <div class="container-fluid">
         <div class="main">
             <div class="row show-grid">

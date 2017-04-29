@@ -16,7 +16,7 @@ public partial class FrontEnd_Controls_News_DanhMuc : System.Web.UI.UserControl
 
     private void getData()
     {
-        DataTable objData = objNewsGroup.getList();
+        DataTable objData = objNewsGroup.getList(1);
 
         dtlData.DataSource = objData.DefaultView;
         dtlData.DataBind();

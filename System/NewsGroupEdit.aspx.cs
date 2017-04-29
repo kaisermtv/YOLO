@@ -24,6 +24,11 @@ public partial class System_NewsGroupEdit : System.Web.UI.Page
         }
         catch { }
 
+        if (!Page.IsPostBack && this.itemId == 0)
+        {
+            ddlTrangThai.SelectedValue = "1";
+        }
+
         if (!Page.IsPostBack && this.itemId != 0)
         {
             DataRow objData = objNewsGroup.getData(this.itemId);
@@ -36,6 +41,7 @@ public partial class System_NewsGroupEdit : System.Web.UI.Page
 
             txtName.Text = objData["NAME"].ToString();
             txtDescribe.Text = objData["DESCRIBE"].ToString();
+            ddlTrangThai.SelectedValue = objData["NSTATUS"].ToString();
         }
     }
     #endregion
@@ -50,7 +56,7 @@ public partial class System_NewsGroupEdit : System.Web.UI.Page
         }
 
 
-        int ret = objNewsGroup.setGroupAcct(this.itemId, txtName.Text, txtDescribe.Text);
+        int ret = objNewsGroup.setData(this.itemId, txtName.Text, txtDescribe.Text, int.Parse(ddlTrangThai.SelectedValue));
 
         if (ret != 0)
         {

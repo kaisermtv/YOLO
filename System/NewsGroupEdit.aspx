@@ -21,6 +21,20 @@
         </div>
     </div>
 
+    <div class="AdminItem">
+        <div class="AdminLeftItem">
+            Trạng thái:
+        </div>
+        <div class="AdminRightItem">
+            <asp:DropDownList ID="ddlTrangThai" runat="server" class="AdminTextControl">
+                <asp:ListItem Value="1">Chia sẻ</asp:ListItem>
+                <asp:ListItem Value="2">Lưu trữ</asp:ListItem>
+                <asp:ListItem Value="3">Ẩn danh mục</asp:ListItem>
+                <asp:ListItem Value="0">-/-</asp:ListItem>
+            </asp:DropDownList>
+        </div>
+    </div>
+
 
     <div class="AdminItem">
         <div class="AdminLeftItem">
