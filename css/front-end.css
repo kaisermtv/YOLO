@@ -251,7 +251,7 @@ input[type="radio"].deriku-radio-input { display: none; }
                     .YOLOVote ul li label .vote-percent:before { }
     .YOLOVote .btn { display: block; margin: 10px auto; width: 100px; }
     .YOLOVote.voted { }
-        .YOLOVote.voted .vote-percent { display: inline-block; }
+        .YOLOVote.voted .vote-percent { display: inline-block;width: 200px; }
         .YOLOVote.voted .btn { display: none; }
 
 
