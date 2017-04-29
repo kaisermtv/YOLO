@@ -34,6 +34,9 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
         }
         catch { }
 
+
+        SystemClass.setMenuActive("news", itemId.ToString());
+
         try
         {
             this.sapXep = (getParam("sapxep") != "1") ? "DESC" : "ASC";
@@ -50,45 +53,50 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
 
         if (!Page.IsPostBack)
         {
-            #region phan trang
-            maxitem = objNews.getDataCount(itemId);
-            maxPage = maxitem / numItem;
-            if (maxitem % numItem > 0 || maxPage == 0) maxPage++;
-            if (page > maxPage) page = maxPage;
-            if (page < 1) page = 1;
+            #region backup
+            //#region phan trang
+            //maxitem = objNews.getDataCount(itemId);
+            //maxPage = maxitem / numItem;
+            //if (maxitem % numItem > 0 || maxPage == 0) maxPage++;
+            //if (page > maxPage) page = maxPage;
+            //if (page < 1) page = 1;
 
-            String link = "";
-            if (itemId != 0) link = "&id=" + itemId;
-            if (sapXep == "ASC") link += "&sapxep=1";
-            //link += "#listnews";
+            //String link = "";
+            //if (itemId != 0) link = "&id=" + itemId;
+            //if (sapXep == "ASC") link += "&sapxep=1";
+            ////link += "#listnews";
 
-            if (page - 1 >= 1) pager.Add(new PageData("Trước", "?page=" + (page - 1) + link));
-            if (page != 1) pager.Add(new PageData("1", "?page=1" + link));
+            //if (page - 1 >= 1) pager.Add(new PageData("Trước", "?page=" + (page - 1) + link));
+            //if (page != 1) pager.Add(new PageData("1", "?page=1" + link));
 
-            int a = page - 5;
-            if (a < 2) a = 2;
-            for (int i = a; i < page; i++)
-            {
-                pager.Add(new PageData(i.ToString(), "?page=" + i + link));
-            }
+            //int a = page - 5;
+            //if (a < 2) a = 2;
+            //for (int i = a; i < page; i++)
+            //{
+            //    pager.Add(new PageData(i.ToString(), "?page=" + i + link));
+            //}
 
-            pager.Add(new PageData(page.ToString(), "#", true));
+            //pager.Add(new PageData(page.ToString(), "#", true));
 
-            a = page + 5;
-            if (a > maxPage) a = maxPage;
-            for (int i = page + 1; i < a; i++)
-            {
-                pager.Add(new PageData(i.ToString(), "?page=" + i + link));
-            }
+            //a = page + 5;
+            //if (a > maxPage) a = maxPage;
+            //for (int i = page + 1; i < a; i++)
+            //{
+            //    pager.Add(new PageData(i.ToString(), "?page=" + i + link));
+            //}
 
-            if (page != maxPage) pager.Add(new PageData(maxPage.ToString(), "?page=" + maxPage + link));
-            if (page + 1 <= maxPage) pager.Add(new PageData("Sau", "?page=" + (page + 1) + link));
-            #endregion
+            //if (page != maxPage) pager.Add(new PageData(maxPage.ToString(), "?page=" + maxPage + link));
+            //if (page + 1 <= maxPage) pager.Add(new PageData("Sau", "?page=" + (page + 1) + link));
+            //#endregion
             //ddlpager.DataSource = pager;
             //ddlpager.DataBind();
+            #endregion
 
-            DataTable objData = objNews.getDataTop(numItem, itemId, page, false, "", sapXep);
-
+            DataTable objData = objNews.getDataTop(numItem, itemId, 1 , false, "", sapXep);
+            if (objData.Rows.Count > 0)
+            {
+                objData.Rows.Remove(objData.Rows[0]);
+            }
        
             DanhSachTin.BindData(objData);
 
@@ -113,7 +121,7 @@ public partial class FrontEnd_Pages_News : System.Web.UI.Page
     #region Page_PreRender
     public void Page_PreRender(object sender, EventArgs e)
     {
-        DataTable objData = objNews.getDataTop(1, 0, 1, true);
+        DataTable objData = objNews.getDataTop(1, itemId, 1);
 
         dtlTop.DataSource = objData.DefaultView;
         dtlTop.DataBind();

@@ -24,6 +24,8 @@ public partial class FrontEnd_Pages_PhotoContest : System.Web.UI.Page
     {
         this.itemId = getParam("id");
 
+        SystemClass.setMenuActive("photoview", itemId);
+
         if (itemId != null && itemId == "") Response.Redirect("/");
 
         objData = objFacebook.getDataById(itemId);

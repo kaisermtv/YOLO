@@ -12,8 +12,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title><%= title %></title>
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
+ 
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,8 +21,9 @@
     <meta property="fb:app_id" content="271257546655466" />        <!--APP ID--->
     <meta property="og:type" content="website" />
 
+       <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
 
-    <script src="../js/front-end/checkMenuScript.js"></script>
     <%--PageStyle--%>
     <uc1:PageStyle runat="server" ID="PageStyle" />
     <%--PageScript--%>

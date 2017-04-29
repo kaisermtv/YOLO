@@ -6,11 +6,11 @@
 
         <div id="bar-menu">
             <ul class="menu fll">
-                <li id="home123" class="active"><a href="/">YOLO</a></li>
+                <li <%= getActive("/") %>><a href="/">YOLO</a></li>
                 <%--<li class=""><a href="/FrontEnd/Pages/News.aspx">Tin tức</a></li>--%>
                 <asp:Repeater ID="dtlData" runat="server" EnableViewState="False">
                     <ItemTemplate>
-                        <li id="<%# Eval("LINK") %>123"><a href="<%# Eval("LINK") %>"><%# Eval("NAME") %></a></li>
+                        <li <%# getActive(Eval("LINK").ToString()) %>><a href="<%# Eval("LINK") %>"><%# Eval("NAME") %></a></li>
                     </ItemTemplate>
                 </asp:Repeater>
                 

@@ -40,6 +40,8 @@
 
         routes.MapPageRoute("photo", "photo", "~/frontend/pages/PhotoContest.aspx");
 
+        routes.MapPageRoute("AnswerResult", "AnswerResult", "~/frontend/pages/AnswerResult.aspx");
+        
 
         routes.MapPageRoute("cuocthianhdep", "cuoc-thi-ah-dep", "~/frontend/pages/PhotoContestList.aspx");
         
@@ -48,6 +50,9 @@
     void Application_Start(object sender, EventArgs e)
     {
         RegisterRoutes(System.Web.Routing.RouteTable.Routes);
+
+        //Application["SoLuotTruyCap"] = 0;
+        Application["SoNguoiOnl"] = 0; 
     }
 
     void Application_End(object sender, EventArgs e)
@@ -59,5 +64,22 @@
     {
     }
 
+    void Session_Start(object sender, EventArgs e)
+    {   
+        Application.Lock();
+
+        Application["SoNguoiOnl"] = Convert.ToInt32(Application["SoNguoiOnl"].ToString()) + 1;
+
+        Application.UnLock();
+    }
+    
+    void Session_End(object sender, EventArgs e) 
+    {
+        Application.Lock();
+
+        Application["SoNguoiOnl"] = Convert.ToInt32(Application["SoNguoiOnl"].ToString()) - 1;
+
+        Application.UnLock();
+    }
        
 </script>

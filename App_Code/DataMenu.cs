@@ -35,17 +35,25 @@ public class DataMenu : DataClass
     #endregion
 
     #region method addData
-    public int addData(String Name, String Describe,String link,int type = 0)
+    public int addData(int pid, String Name, String Describe, String link, int type = 0,int menuid = 1)
     {
         try
         {
+            if (menuid == 0) menuid = 1;
+
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "INSERT INTO tblMenu(NAME,DESCRIBE,LINK,NTYPE) OUTPUT INSERTED.ID VALUES (@NAME,@DESCRIBE,@LINK,@NTYPE)";
+            Cmd.CommandText = "INSERT INTO tblMenu(" + ((pid != 0) ? "PID," : "") + "NAME,DESCRIBE,LINK,NTYPE,MenuID) OUTPUT INSERTED.ID VALUES (" + ((pid != 0) ? "@PID," : "") + "@NAME,@DESCRIBE,@LINK,@NTYPE,@MenuID)";
+
+            if (pid != 0)
+            {
+                Cmd.Parameters.Add("PID", SqlDbType.Int).Value = pid;
+            }
 
             Cmd.Parameters.Add("NAME", SqlDbType.NVarChar).Value = Name;
             Cmd.Parameters.Add("DESCRIBE", SqlDbType.NVarChar).Value = Describe;
             Cmd.Parameters.Add("LINK", SqlDbType.NVarChar).Value = link;
             Cmd.Parameters.Add("NTYPE", SqlDbType.Int).Value = type;
+            Cmd.Parameters.Add("MenuID", SqlDbType.Int).Value = menuid;
             int ret = (int)Cmd.ExecuteScalar();
 
             Cmd = this.getSQLConnect();
@@ -66,13 +74,17 @@ public class DataMenu : DataClass
     #endregion
 
     #region method UpdateData
-    public int UpdateData(int Id,String Name, String Describe, String link, int type = 0)
+    public int UpdateData(int Id, int pid, String Name, String Describe, String link, int type = 0)
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "UPDATE tblMenu SET NAME = @NAME, DESCRIBE = @DESCRIBE,LINK = @LINK, NTYPE = @NTYPE OUTPUT INSERTED.ID WHERE ID = @ID";
+            Cmd.CommandText = "UPDATE tblMenu SET " + ((pid != 0) ? "PID = @PID," : "PID = null,") + "NAME = @NAME, DESCRIBE = @DESCRIBE,LINK = @LINK, NTYPE = @NTYPE OUTPUT INSERTED.ID WHERE ID = @ID";
 
+            if (pid != 0)
+            {
+                Cmd.Parameters.Add("PID", SqlDbType.Int).Value = pid;
+            }
             Cmd.Parameters.Add("ID", SqlDbType.Int).Value = Id;
             Cmd.Parameters.Add("NAME", SqlDbType.NVarChar).Value = Name;
             Cmd.Parameters.Add("DESCRIBE", SqlDbType.NVarChar).Value = Describe;
@@ -93,7 +105,7 @@ public class DataMenu : DataClass
     #endregion
 
     #region method MenuMove
-    public bool MenuMove(int Id,int vtid)
+    public bool MenuMove(int Id, int vtid)
     {
         try
         {
@@ -142,12 +154,30 @@ public class DataMenu : DataClass
     #endregion
 
     #region method getList
-    public DataTable getList()
+    public DataTable getList(int id = 0,int type = 1)
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "SELECT ID,NAME,LINK,IORDER FROM tblMenu ORDER BY IORDER ASC";
+            Cmd.CommandText = "SELECT ID,NAME,LINK,IORDER FROM tblMenu WHERE 1=1 ";
+
+            if (id == 0)
+            {
+                Cmd.CommandText += " AND PID IS NULL";
+            }
+            else
+            {
+                Cmd.CommandText += " AND PID = @PID";
+                Cmd.Parameters.Add("PID", SqlDbType.Int).Value = id;
+            }
+
+            if (type != 0 && id == 0)
+            {
+                Cmd.CommandText += " AND MenuID = @MenuID";
+                Cmd.Parameters.Add("MenuID", SqlDbType.Int).Value = type;
+            }
+
+            Cmd.CommandText += " ORDER BY IORDER ASC";
 
             DataTable ret = this.findAll(Cmd);
 
@@ -184,5 +214,40 @@ public class DataMenu : DataClass
     }
     #endregion
 
-    
+    #region Method getDataToCombobox
+    public DataTable getDataToCombobox(String kcstr = "Không chọn", int group = 0,int menuid = 0)
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "SELECT ID,NAME FROM tblMenu WHERE 1=1";
+
+            if (group != 0)
+            {
+                Cmd.CommandText += " AND PID = @PID";
+                Cmd.Parameters.Add("PID", SqlDbType.Int).Value = group;
+            }
+
+            if (menuid != 0)
+            {
+                Cmd.CommandText += " AND MenuID = @MenuID";
+                Cmd.Parameters.Add("MenuID", SqlDbType.Int).Value = menuid;
+            }
+
+            DataTable ret = this.findAll(Cmd);
+
+            this.SQLClose();
+
+            if (kcstr != null && kcstr != "") { ret.Rows.Add(0, kcstr); }
+
+            return ret;
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+            return null;
+        }
+    }
+    #endregion
 }

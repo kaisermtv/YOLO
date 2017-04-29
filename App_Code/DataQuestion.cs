@@ -185,4 +185,26 @@ public class DataQuestion : DataClass
         }
     }
     #endregion
+
+    #region getPublic
+    public DataRow getPublic()
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "SELECT TOP 1 * FROM tblQuestion";
+
+            DataRow ret = this.findFirst(Cmd);
+
+            this.SQLClose();
+            return ret;
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+            return null;
+        }
+    }
+    #endregion
 }

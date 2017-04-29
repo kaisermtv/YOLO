@@ -17,7 +17,7 @@ public partial class FrontEnd_Pages_ContactOk : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        SystemClass.setMenuActive("contact");
     }
 
     #region Method  getValue
