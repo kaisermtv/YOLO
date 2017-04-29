@@ -144,7 +144,7 @@
                                             <div class="img-w">
                                                 <img onerror="this.src='/images/Front-End/no-image-available.png';" src="<%# "/Images/News/" + Eval("ImgUrl").ToString() %>" alt="<%# Eval("Title") %>" />
                                             </div>
-                                            <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>>" class="tieu-de"><%# Eval("Title") %></a>
+                                            <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" class="tieu-de"><%# Eval("Title") %></a>
                                             <p><%#Utils.GetSubStringNice(Eval("ShortContent").ToString(), 200) %></p>
                                         </li>
                                     </ItemTemplate>

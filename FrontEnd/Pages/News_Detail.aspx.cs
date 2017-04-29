@@ -30,7 +30,7 @@ public partial class FrontEnd_Pages_News_Detail : System.Web.UI.Page
         }
         catch { }
 
-        SystemClass.setMenuActive("view", itemId.ToString());
+        
 
         if (itemId == 0) Response.Redirect("tin-tuc");
 
@@ -48,6 +48,8 @@ public partial class FrontEnd_Pages_News_Detail : System.Web.UI.Page
         {
             groupname = "Tin Tức";
         }
+
+        SystemClass.setMenuActive("news", group.ToString());
 
         Context.Items["strTitle"] = objData["Title"].ToString();
 

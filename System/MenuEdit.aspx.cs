@@ -13,6 +13,7 @@ public partial class System_MenuEdit : System.Web.UI.Page
     private SystemClass objSystemClass = new SystemClass();
 
     public int itemId = 0;
+    public int menuid = 1;
     #endregion
 
     #region method Page_Load
@@ -26,6 +27,8 @@ public partial class System_MenuEdit : System.Web.UI.Page
 
         if (!Page.IsPostBack && this.itemId != 0)
         {
+            
+
             DataRow objData = objMenu.getData(this.itemId);
             if (objData == null)
             {
@@ -37,6 +40,23 @@ public partial class System_MenuEdit : System.Web.UI.Page
             txtName.Text = objData["NAME"].ToString();
             txtDescribe.Text = objData["DESCRIBE"].ToString();
             txtLink.Text = objData["LINK"].ToString();
+
+            menuid = (int)objData["MenuID"];
+
+            ddlGroup.DataSource = objMenu.getDataToCombobox("-- Thư mục gốc --");
+            ddlGroup.DataValueField = "ID";
+            ddlGroup.DataTextField = "NAME";
+            ddlGroup.DataBind();
+
+            if (objData["PID"].ToString() != null && objData["PID"].ToString() != "")
+            {
+                ddlGroup.SelectedValue = objData["PID"].ToString();
+            }
+            else
+            {
+                ddlGroup.SelectedValue = "0";
+            }
+
         }
     }
     #endregion
@@ -50,7 +70,7 @@ public partial class System_MenuEdit : System.Web.UI.Page
             return;
         }
 
-        int ret = objMenu.UpdateData(itemId,txtName.Text, txtDescribe.Text, txtLink.Text);
+        int ret = objMenu.UpdateData(itemId,int.Parse(ddlGroup.SelectedValue),txtName.Text, txtDescribe.Text, txtLink.Text);
 
         if (ret != 0)
         {

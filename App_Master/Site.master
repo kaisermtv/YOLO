@@ -24,7 +24,6 @@
        <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
-    <script src="../js/front-end/checkMenuScript.js"></script>
     <%--PageStyle--%>
     <uc1:PageStyle runat="server" ID="PageStyle" />
     <%--PageScript--%>

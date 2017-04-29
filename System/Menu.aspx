@@ -14,6 +14,25 @@
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
+    <table class="table" border ="0" style ="margin-top:-20px;">
+        <tr>
+            <td >
+                <asp:DropDownList ID="ddlGroup" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlGroup_SelectedIndexChanged" class="form-control">
+
+                </asp:DropDownList>
+            </td>
+            <td style="width:15%">
+                <asp:DropDownList ID="ddlType" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlType_SelectedIndexChanged" class="form-control">
+                    <asp:ListItem Value="1">Menu ngang</asp:ListItem>
+                    <asp:ListItem Value="2">Footer menu</asp:ListItem>
+                </asp:DropDownList>
+            </td>
+            <td style="width: 40px !important; text-align: center;">
+                <asp:ImageButton ID="btnSearch" ImageUrl="/images/Search.png" runat="server" Style="margin-bottom: -15px; margin-left: -15px;" OnClick="btnSearch_Click" />
+            </td>
+        </tr>
+    </table>
+
     <asp:Repeater ID="dtlData" runat="server" EnableViewState="False">
         <HeaderTemplate>
             <div class="table-responsive" <%--style="max-height:100px"--%>>
@@ -31,7 +50,7 @@
         <ItemTemplate>
             <tr>
                 <td class="DataListTableTdItemTT"><%# this.index++ %></td>
-                <td class="DataListTableTdItemJustify"><%# Eval("NAME") %></td>
+                <td class="DataListTableTdItemJustify"><a href="Menu.aspx?id=<%# Eval("ID") %>"><%# Eval("NAME") %></a></td>
                 <td class="DataListTableTdItemJustify"><%# Eval("LINK") %></td>
                 <td class="DataListTableTdItemCenter">
                     <center>
@@ -62,7 +81,10 @@
         </FooterTemplate>
     </asp:Repeater>
     <br />
-    <a href="MenuNew.aspx" class="btn btn-primary">Thêm menu</a>
+    <a href="MenuNew.aspx?pid=<%= itemId %>&type=<%= type %>" class="btn btn-primary">Thêm menu</a>
+    <% if(objData != null){ %>
+    <a href="Menu.aspx?type=<%= type %><%= (objData["PID"].ToString() != "")?"&pid="+objData["PID"].ToString():""  %>" class="btn btn-danger">Trở lại</a>
+    <% } %>
 
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
