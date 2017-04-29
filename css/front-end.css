@@ -7,38 +7,17 @@
 img { max-width: 100%; }
 p { text-align: justify; line-height: 20px; }
 
-.social:hover {
-     -webkit-transform: scale(1.1);
-     -moz-transform: scale(1.1);
-     -o-transform: scale(1.1);
- }
- .social {
-     -webkit-transform: scale(0.8);
-     /* Browser Variations: */
-     
-     -moz-transform: scale(0.8);
-     -o-transform: scale(0.8);
-     -webkit-transition-duration: 0.5s;
-     -moz-transition-duration: 0.5s;
-     -o-transition-duration: 0.5s;
- }
+.social:hover { -webkit-transform: scale(1.1); -moz-transform: scale(1.1); -o-transform: scale(1.1); }
+.social { -webkit-transform: scale(0.8); /* Browser Variations: */ -moz-transform: scale(0.8); -o-transform: scale(0.8); -webkit-transition-duration: 0.5s; -moz-transition-duration: 0.5s; -o-transition-duration: 0.5s; }
 
 /*
     Multicoloured Hover Variations
 */
- 
- #social-fb:hover {
-     color: #3B5998;
- }
- #social-tw:hover {
-     color: #4099FF;
- }
- #social-gp:hover {
-     color: #d34836;
- }
- #social-em:hover {
-     color: #f39c12;
- }
+
+#social-fb:hover { color: #3B5998; }
+#social-tw:hover { color: #4099FF; }
+#social-gp:hover { color: #d34836; }
+#social-em:hover { color: #f39c12; }
 
 
 .btn { cursor: pointer; color: #fff; display: inline-block; padding: 0 15px; height: 40px; box-sizing: border-box; line-height: 40px; text-align: center; font-size: 15px; font-family: Helvetica; border-radius: 5px; border: none; }
@@ -274,17 +253,17 @@ input[type="radio"].deriku-radio-input { display: none; }
 .YOLOVote { display: inline-block; width: 100%; margin: 30px 0; }
     .YOLOVote h3 { font-size: 17px !important; line-height: 30px !important; height: 30px !important; }
     .YOLOVote ul { }
-        .YOLOVote ul li { display: inline-block; width: 100%;  }
+        .YOLOVote ul li { display: inline-block; width: 100%; }
             .YOLOVote ul li input[type=radio] { }
             .YOLOVote ul li label { display: inline-block; width: 100%; font-family: CondLight; }
                 .YOLOVote ul li label span { float: left; margin-top: 8px !important; margin-right: 12px !important; }
                 .YOLOVote ul li label .vote-percent-m { display: inline-block; position: relative; width: calc(100% - 30px); height: 30px; font-family: CondLight; font-size: 16px; font-weight: 700; }
                     .YOLOVote ul li label .vote-percent-m p { line-height: 30px; }
-                .YOLOVote ul li label .vote-percent { display: none; position: absolute;bottom: -1px; }
+                .YOLOVote ul li label .vote-percent { display: none; position: absolute; bottom: -1px; }
                     .YOLOVote ul li label .vote-percent:before { }
     .YOLOVote .btn { display: block; margin: 10px auto; width: 100px; }
     .YOLOVote.voted { }
-        .YOLOVote.voted .vote-percent { display: inline-block;width: 200px; }
+        .YOLOVote.voted .vote-percent { display: inline-block; width: 200px; }
         .YOLOVote.voted .btn { display: none; }
 
 
@@ -445,10 +424,11 @@ input[type="radio"].deriku-radio-input { display: none; }
 
 /*xs*/
 @media screen and (max-width:500px) {
-    .news-r-detail li .img-w { width: 100%; }
-    .news-r-detail li .tieu-de { width: 100%; }
-    #list-tin-tuc li .thumb { width: 100%; }
-    #list-tin-tuc li .info-detail { width: 100%; }
+    .news-r-detail li .img-w,
+    .news-r-detail li .tieu-de,
+    .news-r-detail li p,
+    #list-tin-tuc li .thumb,
+    #list-tin-tuc li .info-detail { width: 100% !important; }
 }
 
 @media screen and (min-width: 501px) {
@@ -523,8 +503,11 @@ input[type="radio"].deriku-radio-input { display: none; }
     #news > .lst-news li .view-more { margin-right: 0; }
     .main-header { /*background: #0B60B0;*/ }
 
-    .news-r-detail li .img-w { width: 200px; }
-    .news-r-detail li .tieu-de { width: calc(100% - 215px); }
+    .news-r-detail li { }
+        .news-r-detail li:first-child p { float: none; width: calc(100% - 215px); }
+        .news-r-detail li .img-w { width: 200px; }
+        .news-r-detail li .tieu-de { width: calc(100% - 215px); }
+        .news-r-detail li p { float: none; width: calc(100% - 215px); }
 }
 
 @media screen and (min-width: 992px) {
