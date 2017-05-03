@@ -228,7 +228,7 @@ public class DataNews : DataClass
 
             Cmd.CommandText += "SELECT " + top + " P.Id,P.Title,P.[ShortContent],P.ImgUrl,G.NAME AS GroupName,P.DayPost,(ROW_NUMBER() OVER(ORDER BY DayPost " + sapXep + ")) AS RowNum FROM tblNews AS P";
             Cmd.CommandText += " LEFT JOIN tblNewsGroup AS G ON P.CatId = G.ID";
-            Cmd.CommandText += " WHERE P.NSTATUS != 2";
+            Cmd.CommandText += " WHERE P.NSTATUS != 2 AND G.NSTATUS = 1";
 
             if (group != 0)
             {
