@@ -54,14 +54,14 @@ public partial class FrontEnd_Pages_News_Detail : System.Web.UI.Page
         Context.Items["strTitle"] = objData["Title"].ToString();
 
 
-        DataTable tinMoi = objNews.tinLienQuan(itemId, (DateTime)objData["DayPost"], true, 5);
+        DataTable tinMoi = objNews.tinLienQuan(itemId, (DateTime)objData["DayPost"], true, 5, group);
         if (tinMoi.Rows.Count > 0)
         {
             dtlTinMoi.DataSource = tinMoi.DefaultView;
             dtlTinMoi.DataBind();
         }
 
-        DataTable tinCu = objNews.tinLienQuan(itemId, (DateTime)objData["DayPost"], false, 5);
+        DataTable tinCu = objNews.tinLienQuan(itemId, (DateTime)objData["DayPost"], false, 5, group);
         if (tinCu.Rows.Count > 0)
         {
             dtlTinCu.DataSource = tinCu.DefaultView;
