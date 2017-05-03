@@ -131,7 +131,7 @@ public partial class System_NewsEdit : System.Web.UI.Page
             {
                 string strBaseLoactionImg = Server.MapPath(System.Configuration.ConfigurationSettings.AppSettings["NEWSIMAGE"].ToString());
 
-                string sFileName = "0-" + DateTime.Now.ToString("dd-MM-yyy--hh-mm-ss-fffffff-");
+                string sFileName = objSystemClass.getIDAccount() + DateTime.Now.ToString("-dd-MM-yyy--hh-mm-ss-fffffff-");
                 string strEx = System.IO.Path.GetFileName(fileupload.PostedFile.FileName);
                 //strEx = strEx.Substring(strEx.LastIndexOf("."), strEx.Length - strEx.LastIndexOf("."));
                 strBaseLoactionImg += sFileName + strEx;
@@ -145,6 +145,11 @@ public partial class System_NewsEdit : System.Web.UI.Page
         catch //(Exception ex)
         {
             //this.lblMsg.Text = ex.Message; //HttpContext.Current.Response.Write(ex.Message);
+
+            if (inputc.Value != "")
+            {
+                return inputc.Value.Substring(13);
+            }
             return "";
         }
     }
