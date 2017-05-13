@@ -84,7 +84,7 @@
                             <ul class="sub-menu-list">
                                 <li><a href="/System/AboutUs.aspx">Thông tin đơn vị</a></li>
                                 <li><a href="/System/Menu.aspx">Menu</a></li>
-                                <li><a href="/System/Menu.aspx">Footer menu</a></li>
+                                <li><a href="/System/Menu.aspx?type=2">Footer menu</a></li>
                                 <li><a href="/System/GroupAcctList.aspx">Nhóm tài khoản</a></li>
                                 <li><a href="/System/ListAccount.aspx">Tài khoản người dùng</a></li>
                             </ul>
