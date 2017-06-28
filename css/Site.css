@@ -1,0 +1,140 @@
+﻿/* Move down content because we have a fixed navbar that is 50px tall */
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input[type="text"],
+input[type="password"] {
+}
+
+/*Stie.Master*/
+.topHeader
+{
+	height:100px;
+	background-color:#fff;
+}
+.headerBody
+{
+	margin-left:50px;
+	margin-right:50px;
+	height:100px;
+}
+.headerBodyLeft
+{
+	padding-top:12px;
+	width:50%;
+	float:left;
+}
+.headerBodyRight
+{
+	padding-top:10px;
+	width:50%;
+	float:right;
+	text-align:right;
+}
+.menuSearch
+{
+	background-image:url('/images/SearchBg.png');
+	background-repeat:no-repeat;
+	width:356px;
+	height:39px;
+	float:right;
+	margin-top:6px;
+	padding-top:7px;
+	padding-left:15px;
+}
+.menuSearch input{
+	border:solid 1px #fff!important;
+	width:80%!important;
+	padding-top:2px!important;
+	padding-bottom:2px!important;
+	line-height:20px!important;
+	height:20px!important;
+}
+
+#txtSearch
+{
+	margin-top:-5px;
+	font-family:Arial!important;
+	font-style:normal!important;
+	font-size:14px!important;
+	padding-top:2px!important;
+	padding-bottom:2px!important;
+	line-height:20px!important;
+	height:20px!important;
+}
+
+/*		About section 		*/
+
+.about{
+	padding: 25px 0;
+	height:550px;
+	background-color:#f7f7f7;
+}
+
+.about .iphone{
+	max-width: 339px;
+	position: relative;
+	display: inline-block;
+	text-align: center;
+}
+
+.about .iphone img{
+	width: 100%;
+	height: auto;
+}
+
+.about .features_list{
+	margin-left:0px;
+	text-align:justify;
+}
+
+.about .features_list h1{
+	color: #525151;
+	font-family: "open_bold", Helvetica, Arial, sans-serif;
+	font-size: 34px;
+	font-weight: bold;
+	line-height: 46px;
+	margin: 0 0 20px 0;
+	word-break: break-word;
+	text-align:justify;
+}
+.text-uppercase {
+    text-transform: uppercase;
+}
+.about .features_list p{
+	color: #767272;
+	font-family: "open_regular", Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	margin-bottom: 45px;
+	line-height: 32px;
+	text-align:justify;
+}
+
+.about .header
+{
+	margin-top:25px;
+	margin-bottom:25px;
+	border:solid 1px red; 
+	background-color:#ed1c24;
+	width:300px;
+	color:#fff;
+	text-align:justify;
+	padding:6px;
+	font-style:italic;
+	font-size:20px;
+}
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        margin-top: 20px;
+    }
+    .body-content {
+        padding: 0;
+    }
+}

@@ -1,0 +1,216 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Admin.master.cs" Inherits="App_Master_Admin" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>TVS Administrator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="/css/TVSStyle.css" rel="stylesheet" />
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" type="text/css" href="/css/system/Adminstyle.css" />
+    <!-- Custom CSS -->
+    <link href="/css/system/style.css" rel='stylesheet' type='text/css' />
+    <!-- Graph CSS -->
+    <link href="/css/system/font-awesome.css" rel="stylesheet" />
+    <!-- jQuery -->
+    <!-- lined-icons -->
+    <link rel="stylesheet" href="/css/system/icon-font.min.css" type='text/css' />
+    <!-- //lined-icons -->
+
+    <link href="/css/primeui.css" rel="stylesheet" />
+    <link href="/css/theme.css" rel="stylesheet" />
+
+    <link href="/css/system/animate.css" rel="stylesheet" type="text/css" media="all" />
+    
+    <link href='/css/system/fonts-googleapis.css' rel='stylesheet' type='text/css' />
+    <link href="/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+
+    <script>
+        function imgCatchError(src) {
+            src.onerror = "";
+            src.src = "/Images/no-image-available.png";
+            return true;
+        }
+
+        function SubmitForm(formId) {
+            var oForm = document.getElementById(formId);
+            if (oForm) {
+                oForm.submit();
+            }
+            else {
+                alert("DEBUG - could not find element " + formId);
+            }
+        }
+    </script>
+
+    <script src="/js/jquery-2.1.1.min.js"></script>
+    <script src="/js/moment-with-locales.js"></script>
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</head>
+<body class="sticky-header left-side-collapsed">
+        <section>
+            <!-- left side start-->
+            <div class="left-side sticky-left-side">
+                <!--logo and iconic logo start-->
+                <div class="logo">
+                    <h1><a href="/System/">TVS <span>Admin</span></a></h1>
+                </div>
+                <div class="logo-icon text-center">
+                    <a href="/System/"><i class="lnr lnr-home"></i></a>
+                </div>
+
+                <!--logo and iconic logo end-->
+                <div class="left-side-inner">
+                    <!--sidebar nav start-->
+                    <ul class="nav nav-pills nav-stacked custom-nav">
+                        <li class="menu-list">
+                            <a href="#"><i class="lnr lnr-cog"></i>
+                                <span>Hệ thống</span></a>
+                            <ul class="sub-menu-list">
+                                <li><a href="/System/AboutUs.aspx">Thông tin đơn vị</a></li>
+                                <li><a href="/System/HomeSetting.aspx">Cấu hình trang chủ</a></li>
+                                <li><a href="/System/Menu.aspx">Menu</a></li>
+                                <li><a href="/System/Menu.aspx?type=2">Footer menu</a></li>
+                                <li><a href="/System/GroupAcctList.aspx">Nhóm tài khoản</a></li>
+                                <li><a href="/System/AccountList.aspx">Tài khoản người dùng</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-list"><a href="#"><i class="lnr lnr-indent-increase"></i><span>Quản lý nội dung</span></a>
+                            <ul class="sub-menu-list">
+                                <li><a href="/System/NewsGroupList.aspx">Chuyên mục</a></li>
+                                <li><a href="/System/NewsList.aspx">Tin tức - Bài viết</a></li>
+                                <li><a href="/System/SliderList.aspx">Quản lý Slider</a></li>
+                                <li><a href="/System/QuestionList.aspx">Quản lý câu hỏi thăm dò</a></li>
+                                <li><a href="/System/ContactList.aspx">Quản lý liên hệ</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-list"><a href="#"><i class="lnr lnr-book"></i><span>Danh mục khác</span> </a>
+                            <ul class="sub-menu-list">
+                                <li><a href="/System/ListCategory.aspx">Tất cả danh mục</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!--sidebar nav end-->
+                </div>
+            </div>
+            <!-- left side end-->
+
+            <!-- main content start-->
+            <div class="main-content main-content2 main-content2copy">
+                <!-- header-starts -->
+                <div class="header-section">
+
+                    <!--toggle button start-->
+                    <a class="toggle-btn  menu-collapsed"><i class="fa fa-bars"></i></a>
+                    <!--toggle button end-->
+
+                    <!--notification menu start -->
+                    <div class="profile_details_left">
+                        <div style ="margin-top:10px;">
+                            <%=style %>
+                        </div>
+                    </div>
+                    <div class="menu-right">
+                        <div class="user-panel-top">
+                            <div class="profile_details">
+                                <ul>
+                                    <li class="dropdown profile_details_drop">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <div class="profile_img">
+                                                <span style="background: url(/images/tvs.jpg) no-repeat center"></span>
+                                                <div class="user-name">
+                                                    <p style ="width:100px;"><%=account %><br /><span style ="width:100px;">admin</span></p>
+                                                </div>
+                                                <i class="lnr lnr-chevron-down"></i>
+                                                <i class="lnr lnr-chevron-up"></i>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </a>
+                                        <ul class="dropdown-menu drp-mnu">
+                                            <li><a href="#"><i class="fa fa-cog"></i>Cài đặt</a> </li>
+                                            <li><a href="Profile.aspx"><i class="fa fa-user"></i>Cấu hình</a> </li>
+                                            <li><a href="logout.aspx"><i class="fa fa-sign-out"></i>Thoát</a> </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="social_icons">
+                                <%-- <div class="col-md-4 social_icons-left">
+                                    <a href="#" class="yui"><i class="fa fa-facebook i1"></i><span>300<sup>+</sup> Likes</span></a>
+                                </div>
+                                <div class="col-md-4 social_icons-left pinterest">
+                                    <a href="#"><i class="fa fa-google-plus i1"></i><span>500<sup>+</sup> Shares</span></a>
+                                </div>
+                                <div class="col-md-4 social_icons-left twi">
+                                    <a href="#"><i class="fa fa-twitter i1"></i><span>500<sup>+</sup> Tweets</span></a>
+                                </div>--%>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <!--notification menu end -->
+                </div>
+                <!-- //header-ends -->
+
+                <div id="page-wrapper">
+                    <div class="graphs">
+                        <%--<% foreach (String val in objSystemClass.getMessage()){ %>
+                            <div class="alert alert-success" role="alert">
+							        <%= val %>
+						    </div>
+                        <% } %>--%>
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+            <!--footer section start-->
+            <footer style ="height:30px;">
+                <p style ="margin-top:-8px;">&copy 2017 TVS Admin Panel</p>
+            </footer>
+            <!--footer section end-->
+        </section>
+        
+        <script src="/js/System/jquery-ui.js"></script>
+        <script src="/js/system/jquery.nicescroll.js"></script>
+        <script src="/js/system/scripts.js"></script>
+        <script src="/js/System/x-tag-core.min.js"></script>
+
+        <script src="/js/system/Chart.js"></script>
+
+        <script src="/js/system/wow.min.js"></script>
+        <script>
+            new WOW().init();
+        </script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/bootstrap-datetimepicker.js"></script>
+
+        <!-- Growl Message -->
+        <link href="/css/System/growl.css" rel="stylesheet" />
+        <script src="/js/System/growl.js"></script>
+        <script src="/js/System/growl-element.js"></script>
+        <!-- -->
+        
+        <p-growl id="growlel"></p-growl>    
+        <script>
+
+            document.getElementById('growlel').show([
+            <% bool a = false; foreach (String val in objSystemClass.getMessage()){ %>
+            <%= a?",":"" %>{ severity: 'warn', summary: 'Thông báo', detail: '<%= val %>' }
+            <% a = true; } %>]);
+
+       
+      
+        </script>
+</body>
+</html>

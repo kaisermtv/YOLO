@@ -1,0 +1,175 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="App_Master_Site" %>
+
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - YOLO, DÁM CHIA SẺ</title>
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/Site.css" rel="stylesheet" />
+    <link href="/css/Slide.css" rel="stylesheet" />
+    <link href="/css/Category.css" rel="stylesheet" />
+
+    <script src="/js/jquery-2.1.1.min.js"></script>
+
+    <script>
+        function imgCatchError(src) {
+            src.onerror = "";
+            src.src = "/Images/no-image-available.png";
+            return true;
+        }
+    </script>
+
+    <style>
+        .footer {
+            float: right;
+            width: 66%;
+            text-align: justify;
+            padding-top: 8px;
+        }
+
+            .footer p {
+                font-style: inherit;
+                vertical-align: baseline;
+                margin: 0 0 20px 0;
+                padding: 0;
+                border: 0;
+                outline: 0;
+                background: transparent;
+            }
+
+            .navbar{
+                margin-bottom:0px;
+            }
+    </style>
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                //selector đến menu cần làm việc
+                var TopFixMenu = $("#topMenu");
+                // dùng sự kiện cuộn chuột để bắt thông tin đã cuộn được chiều dài là bao nhiêu.
+                $(window).scroll(function () {
+                    // Nếu cuộn được hơn 150px rồi
+                    if ($(this).scrollTop() > 100) {
+                        // Tiến hành show menu ra    
+                        $("#topMenu").addClass("navbar-fixed-top");
+                    } else {
+                        // Ngược lại, nhỏ hơn 120px thì hide menu đi.
+                        $("#topMenu").removeClass("navbar-fixed-top");
+                    }
+                }
+                )
+            })
+        </script>
+
+        <div class="topHeader" id="topHeader">
+            <div class="headerBody">
+                <div class="headerBodyLeft">
+                    <img src="/images/mobifone-logo.png" alt="mobifone-logo" />
+                </div>
+                <div class="headerBodyRight">
+                    <img style="width:10%" src="/images/yolo-logo.png" alt="mobifone-logo" />
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar navbar-inverse" id="topMenu">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="~/">#YOLO</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <asp:Repeater ID="dtlMenu" runat="server" EnableViewState="False">
+                            <ItemTemplate>
+                                <li><a href="<%# Eval("LINK") %>"><%# Eval("NAME").ToString().ToUpper() %></a></li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        <%--<li><a runat="server" href="#fanper">FANPER</a></li>
+                        <li><a runat="server" href="#fanper">SỰ KIỆN ẤN TƯỢNG</a></li>
+                        <li><a runat="server" href="~/Category.aspx">TRẢI NGHIỆM</a></li>
+                        <li><a runat="server" href="~/Contact">TIN TỨC</a></li>
+                        <li><a runat="server" href="~/Contact">LIÊN HỆ</a></li>--%>
+                    </ul>
+                    <div class="nav navbar-nav navbar-right">
+                        <div class="menuSearch">
+                            <input type="text" id="txtSearch" placeholder="Nội dung tìm kiếm" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+         <!-- KHOI THU 6 - FOOTER -->
+    <div style="min-height: 290px; background-color: #e5e5e5;">
+        <div class="container">
+            <div class="col-md-4" style="margin-top:20px;margin-bottom:20px;">
+                <img src="/images/mobifone-logo.png" alt="Logo" />
+                <div style="border-bottom: solid 1px #828282; width: 92%; margin-top: 20px;">
+                </div>
+                <div style="width: 92%; margin-top: 20px; background-image: url('/images/Phone.png'); background-repeat: no-repeat; background-position: 0px 2px; padding-left: 25px;">
+                    <%= GetSetting("Hotline") %>
+                </div>
+                <div style="width: 92%; margin-top: 5px; background-image: url('/images/Email.png'); background-repeat: no-repeat; background-position: 0px 4px; padding-left: 25px;">
+                    <%= GetSetting("Email") %>
+                </div>
+            </div>
+            <div class="col-md-8" style="margin-bottom:30px">
+                <p class="hidden-xs hidden-sm" style="font-size: 30px; font-weight: bold; font-family: Arial; color: #464a52;">Về chúng tôi</p>
+                <p style="font-size: 16px; font-weight: bold; font-family: Arial; color: #464a52;"><%= GetSetting("Name") %></p>
+                <p style="font-size: 15px; font-family: Arial; color: #464a52; margin-top: -13px;"><%= GetSetting("Address") %></p>
+                <p style="font-size: 15px; font-family: Arial; color: #464a52; margin-top: -13px;">Mobile: <%= GetSetting("Phone") %> - Email: <%= GetSetting("Email") %></p>
+            </div>
+
+
+            <%--<div style="float: left; padding-top: 65px; width: 34%;">
+                <img src="/images/mobifone-logo.png" alt="Logo" />
+                <div style="border-bottom: solid 1px #828282; width: 92%; margin-top: 20px;">
+                </div>
+                <div style="width: 92%; margin-top: 20px; background-image: url('/images/Phone.png'); background-repeat: no-repeat; background-position: 0px 2px; padding-left: 25px;">
+                    <%= GetSetting("Hotline") %>
+                </div>
+                <div style="width: 92%; margin-top: 5px; background-image: url('/images/Email.png'); background-repeat: no-repeat; background-position: 0px 4px; padding-left: 25px;">
+                    <%= GetSetting("Email") %>
+                </div>
+            </div>
+            <div class="footer">
+                <p style="font-size: 30px; font-weight: bold; font-family: Arial; color: #464a52;">Về chúng tôi</p>
+                <p style="font-size: 16px; font-weight: bold; font-family: Arial; color: #464a52;"><%= GetSetting("Name") %></p>
+                <p style="font-size: 15px; font-family: Arial; color: #464a52; margin-top: -13px;"><%= GetSetting("Address") %></p>
+                <p style="font-size: 15px; font-family: Arial; color: #464a52; margin-top: -13px;">Mobile: <%= GetSetting("Phone") %> - Email: <%= GetSetting("Email") %></p>
+            </div>--%>
+        </div>
+    </div>
+    <div style="height: 70px; background-color: #21252d; text-align: center; font-size: 15px; font-family: Arial; color: #fff; line-height: 70px;">
+        &copy;2017 Mobifone. All Rights Reserved.
+    </div>
+    <!-- KET THUC KHOI THU 6 -->
+
+    <script src="/js/bootstrap.min.js"></script>
+    <asp:ContentPlaceHolder ID="ScriptContent" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <%--<script lang="javascript">(function () { var pname = ((document.title != '') ? document.title : document.querySelector('h1').innerHTML); var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = 1; ga.src = '//live.vnpgroup.net/js/web_client_box.php?hash=aa36fdd5f95cf3862238d81b1d77f9b6&data=eyJzc29faWQiOjcyODY1OSwiaGFzaCI6ImZmY2ZlNTBlYzlkOWQ2YTIwMTIyMjYyNzU3OWNiNTliIn0-&pname=' + pname; var s = document.getElementsByTagName('script'); s[0].parentNode.insertBefore(ga, s[0]); })();</script>--%>
+    <script src="https://uhchat.net/code.php?f=3e128c"></script>
+</body>
+</html>
