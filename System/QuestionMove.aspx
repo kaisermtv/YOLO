@@ -1,1 +1,0 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/App_Master/System.master" CodeFile="QuestionMove.aspx.cs" Inherits="System_QuestionMove" %>

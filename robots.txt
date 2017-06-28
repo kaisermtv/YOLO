@@ -1,5 +1,0 @@
-﻿User-agent: *
-Allow: /
-Allow: /*.js$
-Allow: /*.css$
-Sitemap: http://yolo.com/sitemap.xml
