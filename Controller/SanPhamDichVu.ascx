@@ -5,16 +5,18 @@
         <div style="min-height: 105px; color: #7e787e; font-size: 30px; font-weight: bold; text-align: center; padding-top: 15px;">
             TRẢI NGHIỆM SẢN PHẨM, DỊCH VỤ
         </div>
-
-        <div>
+        <div style="overflow:hidden;"> 
             <div class="row">
                 <asp:Repeater ID="dtlData" runat="server" EnableViewState="False">
                     <ItemTemplate>
                         <div class="col-md-3 col-sm-6">
+                            <div style="width:100%;position:relative;">
+                                <img class="serviceBoxIMG" src="<%# Eval("IMG") %>" alt="<%# Eval("TITLE") %>">
+                            </div>
                             <div class="serviceBox">
-                                <div class="service-icon">
+                                <%--<div class="service-icon">
                                     <img style="margin-top: -40px; width: 100%;" src="<%# Eval("IMG") %>" alt="<%# Eval("TITLE") %>">
-                                </div>
+                                </div>--%>
                                 <div class="service-content">
                                     <h3 class="title"><%# Eval("TITLE") %></h3>
                                     <p class="description">
@@ -29,7 +31,6 @@
 
             </div>
         </div>
-
     </div>
     <!-- KET THUC KHOI THU 4 -->
 <% } %>

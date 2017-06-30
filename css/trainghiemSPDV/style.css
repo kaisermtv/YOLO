@@ -1,11 +1,22 @@
+.serviceBoxIMG{
+    position: absolute;
+    width:100%;
+    /*padding-right:30px;*/
+}
+
 .serviceBox{
     border: 1px solid #6b7d96;
     text-align: center;
+
     padding: 40px 0;
+    padding-top: 240px;
+
     overflow: hidden;
     position: relative;
     z-index: 1;
     transition: all 0.5s ease 0s;
+
+    background-repeat: no-repeat;
 }
 
 .serviceBox:before,
