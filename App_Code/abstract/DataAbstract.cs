@@ -44,87 +44,136 @@ abstract public class DataAbstract
 
     protected string keyTable = "";
     protected string nameTable = "";
+    protected bool identity = true;
+
+    #region Method CreateUpdateCode
+    private void CreateUpdateCode(SqlCommand Cmd)
+    {
+        string sql = "";
+        foreach (DictionaryEntry s in DataCollections)
+        {
+            string key = s.Key.ToString();
+            if (key == keyTable) continue;
+
+            if (sql == "")
+            {
+                sql += "UPDATE " + nameTable + " SET " + key + " = @" + key;
+            }
+            else
+            {
+                sql += "," + key + " = @" + key;
+            }
+
+            Cmd.Parameters.Add(key, GetTypeAtribute(key)).Value = (s.Value != null) ? s.Value : DBNull.Value;
+        }
+
+        sql += " OUTPUT INSERTED." + keyTable + " WHERE " + keyTable + " = @" + keyTable;
+        Cmd.Parameters.Add(keyTable, SqlDbType.Int).Value = DataCollections[keyTable];
+
+        Cmd.CommandText = sql;
+    }
+    #endregion
+
+    #region Method CreateInsertCode
+    private void CreateInsertCode(SqlCommand Cmd)
+    {string sql = "";
+        string sqlvl = "";
+        foreach (DictionaryEntry s in DataCollections)
+        {
+            string key = s.Key.ToString();
+            if (key == keyTable) continue;
+
+            if (sql == "")
+            {
+                sql += "INSERT INTO " + nameTable + "(" + key;
+                sqlvl += ") OUTPUT INSERTED." + keyTable + " VALUES(@" + key;
+            }
+            else
+            {
+                sql += "," + key;
+                sqlvl += ",@" + key;
+            }
+
+            Cmd.Parameters.Add(key, GetTypeAtribute(key)).Value = (s.Value != null) ? s.Value : DBNull.Value;
+        }
+
+        Cmd.CommandText = sql + sqlvl + ")";
+        
+    }
+    #endregion
+
+    #region Method CreateSetCode
+    private void CreateSetCode(SqlCommand Cmd)
+    {
+        string sqlup = "";
+        string sql = "";
+        string sqlvl = "";
+        foreach (DictionaryEntry s in DataCollections)
+        {
+            string key = s.Key.ToString();
+            if (key == keyTable) continue;
+
+            if (sql == "")
+            {
+                sql += "INSERT INTO " + nameTable + "(" + key;
+                sqlvl += ") OUTPUT INSERTED." + keyTable + " VALUES(@" + key;
+
+                sqlup += "UPDATE " + nameTable + " SET " + key + " = @" + key;
+            }
+            else
+            {
+                sql += "," + key;
+                sqlvl += ",@" + key;
+
+                sqlup += "," + key + " = @" + key;
+            }
+
+            Cmd.Parameters.Add(key, GetTypeAtribute(key)).Value = (s.Value != null) ? s.Value : DBNull.Value;
+        }
+
+        sql += sqlvl + ")";
+
+        sqlup += " OUTPUT INSERTED." + keyTable + " WHERE " + keyTable + " = @" + keyTable;
+
+        Cmd.CommandText = "IF NOT EXISTS (SELECT * FROM " + nameTable + " WHERE " + keyTable + " = @" + keyTable + ")";
+        Cmd.CommandText += " BEGIN " + sql + " END";
+        Cmd.CommandText += " ELSE BEGIN " + sqlup + " END";
+
+        Cmd.Parameters.Add(keyTable, SqlDbType.Int).Value = DataCollections[keyTable];
+    }
+    #endregion
+
     public object setData()
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
 
-            String sql = "";
             if (keyTable != "")
             {
-                if (DataCollections.ContainsKey(keyTable))
+                if (identity)
                 {
-                    foreach (DictionaryEntry s in DataCollections)
+                    if (DataCollections.ContainsKey(keyTable))
                     {
-                        string key = s.Key.ToString();
-                        if (key == keyTable) continue;
-
-                        if (sql == "")
-                        {
-                            sql += "UPDATE " + nameTable + " SET " + key + " = @" + key;
-                        }
-                        else
-                        {
-                            sql += "," + key + " = @" + key;
-                        }
-
-                        Cmd.Parameters.Add(key, GetTypeAtribute(key)).Value = (s.Value != null) ? s.Value : DBNull.Value;
+                        CreateUpdateCode(Cmd);
                     }
-
-                    sql += " OUTPUT INSERTED." + keyTable + " WHERE " + keyTable + " = @" + keyTable;
-                    Cmd.Parameters.Add(keyTable, SqlDbType.Int).Value = DataCollections[keyTable];
-
-                    Cmd.CommandText = sql;
+                    else
+                    {
+                        CreateInsertCode(Cmd);
+                    }
+                }
+                else if (DataCollections.ContainsKey(keyTable))
+                {
+                    CreateSetCode(Cmd);
                 }
                 else
                 {
-                    string sqlvl = "";
-                    foreach (DictionaryEntry s in DataCollections)
-                    {
-                        string key = s.Key.ToString();
-                        if (key == keyTable) continue;
-
-                        if (sql == "")
-                        {
-                            sql += "INSERT INTO " + nameTable + "(" + key;
-                            sqlvl += ") OUTPUT INSERTED." + keyTable + " VALUES(@" + key;
-                        }
-                        else
-                        {
-                            sql += "," + key;
-                            sqlvl += ",@" + key;
-                        }
-
-                        Cmd.Parameters.Add(key, GetTypeAtribute(key)).Value = (s.Value != null) ? s.Value : DBNull.Value;
-                    }
-
-                    Cmd.CommandText = sql + sqlvl + ")";
+                    throw new Exception("Cần điền giá trị id");
                 }
             }
             else
             {
-                string sqlvl = "";
-                foreach (DictionaryEntry s in DataCollections)
-                {
-                    string key = s.Key.ToString();
-                    if (key == keyTable) continue;
-
-                    if (sql == "")
-                    {
-                        sql += "INSERT INTO " + nameTable + "(" + key;
-                        sqlvl += ") OUTPUT TRUE VALUES(@" + key;
-                    }
-                    else
-                    {
-                        sql += "," + key;
-                        sqlvl += ",@" + key;
-                    }
-
-                    Cmd.Parameters.Add(key, GetTypeAtribute(key)).Value = (s.Value != null) ? s.Value : DBNull.Value;
-                }
-
-                Cmd.CommandText = sql + sqlvl + ")";
+                CreateInsertCode(Cmd);
             }
 
             //this.Message = Cmd.CommandText;

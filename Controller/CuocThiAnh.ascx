@@ -7,20 +7,23 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8 text-center animated wow fadeInLeft">
-                        <div class="header">
-                            #Facebook.com/yolodamchiase
-                        </div>
+                        <a href="https://www.facebook.com/yolomobifone/">
+                            <div class="header">
+                                #Facebook.com/yolomobifone
+                            </div>
+                        </a>
                         <div class="features_list">
-                            <h1 class="text-uppercase phoneHeader" >Công bố kết quả cuộc thi ảnh Yolo- Dám chia sẻ!</h1>
-                            <p>Cuộc thi ảnh đầy hấp dẫn Yolo - Dám chia sẻ với tổng giá trị giải thưởng 40 triệu đồng tiền mặt và “cơ hội trong mơ” quay MV ca nhạc cùng Noo Phước Thịnh do MobiFone - Nhà tài trợ độc quyền  đã đến hồi kết thúc. Sau 1 thời gian rất khó khăn cho Ban giám khảo (Đại diện MobiFone và ca sĩ Noo Phước Thịnh)  để “cầm cân nảy mực” và chọn lọc từ hàng trăm bài dự thi, đến hôm nay, BTC xin công bố và chúc mừng 12 thí sinh đã xuất sắc giành được giải thưởng. </p>
-                            <a href="#">
+                            <h1 class="text-uppercase phoneHeader" ><%= title %></h1>
+                            <p><%= content %></p>
+                            <a href="<%= link %>">
                                 <img src="/images/buttonDetail.png" />
                             </a>
                         </div>
                     </div>
                     <div class="col-sm-4 animated wow fadeInRight">
+                        <div style="margin-bottom:60px"></div>
                         <div class="iphone" style="max-width:100%">
-                            <img src="/images/image1.png" style="max-width:100%" alt="" title="">
+                            <img src="<%= img %>" style="max-width:100%" alt="" title="">
                         </div>
                     </div>
                 </div>

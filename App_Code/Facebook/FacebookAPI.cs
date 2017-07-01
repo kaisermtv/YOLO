@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -8,15 +9,23 @@ using System.Web;
 /// <summary>
 /// Summary description for FakebookAPI
 /// </summary>
-public class FakebookAPI
+public class FacebookAPI
 {
     #region static declare 
     private static string fields = "id,type,name,full_picture,picture,link,message,created_time";
     private static string fields_album = "photos{images,name,link,likes.limit(0).summary(true), comments.limit(0).summary(true),  created_time}";          // chú ý không dùng created_time trong comments
-    private static string token = "";
+    private static string token = "1972725952949362|91b3fca08e2a493e72610dad124d1beb";
 
     private static string PageName = "yolomobifone";
     private static string ApiUrl = @"https://graph.facebook.com/v2.9/";
+    #endregion
+
+    #region Even FacebookAPI
+    public FacebookAPI()
+    {
+        //DataSetting objSetting = new DataSetting();
+        //token = objSetting.getValue("Facebook_Token");
+    }
     #endregion
 
     #region declare
@@ -35,6 +44,7 @@ public class FakebookAPI
         }
 
         url += "&access_token=" + token;
+
 
         dynamic ret = getUrlJson(url);
         if (ret == null)
@@ -77,6 +87,9 @@ public class FakebookAPI
             client.Headers.Add("Content-Type", "application/json");
             string txt = client.DownloadString(url);
 
+
+            Debug.WriteLine(txt);
+
             //Debug.WriteLine("====== GET JSON STRING  " + json);
             return JsonConvert.DeserializeObject(txt);
         }
@@ -89,5 +102,7 @@ public class FakebookAPI
         }
     }
     #endregion
+
+    
 
 }
