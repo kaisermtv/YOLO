@@ -2,7 +2,7 @@
 <% if (lengNews > 0){ %>
     <!-- KHOI THU 4 - TRAI NGHIEM SAN PHAM, DICH VU -->
     <div style="margin: auto; margin-top: -10px;">
-        <div style="min-height: 105px; color: #7e787e; font-size: 30px; font-weight: bold; text-align: center; padding-top: 15px;">
+        <div class="phoneHeader" style="min-height: 105px; color: #7e787e; font-size: 30px; font-weight: bold; text-align: center; padding-top: 15px;">
             TRẢI NGHIỆM SẢN PHẨM, DỊCH VỤ
         </div>
         <div style="overflow:hidden;"> 

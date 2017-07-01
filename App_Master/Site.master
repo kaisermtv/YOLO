@@ -43,9 +43,15 @@
                 background: transparent;
             }
 
-            .navbar{
-                margin-bottom:0px;
+        .navbar{
+            margin-bottom:0px;
+        }
+        @media (max-width: 768px) {
+            .phoneHeader{
+                font-size:20px !important;
+
             }
+        }
     </style>
 
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
@@ -71,13 +77,13 @@
             })
         </script>
 
-        <div class="topHeader" id="topHeader">
+        <div class="topHeader hidden-xs" id="topHeader">
             <div class="headerBody">
                 <div class="headerBodyLeft">
                     <img src="/images/mobifone-logo.png" alt="mobifone-logo" />
                 </div>
                 <div class="headerBodyRight">
-                    <img style="width:10%" src="/images/yolo-logo.png" alt="mobifone-logo" />
+                    <img style="height:100%" src="/images/yolo-logo.png" alt="mobifone-logo" />
                 </div>
             </div>
         </div>
