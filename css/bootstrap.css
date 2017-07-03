@@ -1,4 +1,4 @@
-/* NUGET: BEGIN LICENSE TEXT
+﻿/* NUGET: BEGIN LICENSE TEXT
  *
  * Microsoft grants you the right to use these script files for the sole
  * purpose of either: (i) interacting through your browser with the Microsoft
@@ -6935,6 +6935,113 @@ td.visible-print {
 	{
 		border:solid 1px red;
 	}
+
+	/*Trang danh sách tin tức*/
+	#HeaderNews
+	{
+		padding-left:0px;
+		padding-right:0px;
+	}
+	#tin-chinh
+	{
+		padding-left:0px;
+		padding-right:0px;
+	}
+	.time
+	{
+		padding-top:10px;
+		padding-bottom:10px;
+		padding-left:0px;
+		padding-right:0px;
+	}
+	.sapo
+	{
+		font-family:Arial!important;
+		font-size:16px!important;
+		text-align:justify!important;
+		line-height:18px!important;
+		padding-left:0px;
+		padding-right:0px;
+	}
+	#news-orderby
+	{
+		font-family:Arial!important;
+		padding-left:15px;
+		padding-right:10px;
+		font-size:16px;
+		text-align:justify;
+	}
+	#list-tin-tuc
+	{
+		/*padding-left:15px!important;
+		padding-right:15px!important;
+		margin-right:-15px!important;*/
+	}
+	.img-w
+	{
+		padding-left:0px;
+		padding-right:0px;
+	}
+	.info-detail
+	{
+		padding-left:0px;
+		padding-right:0px;
+	}
+	#HeaderNewsView
+	{
+		padding-left:0px;
+		padding-right:0px;
+	}
+	.tieu-de
+	{
+		font-size: 20px;
+		margin: 0 0 5px;
+		text-overflow: ellipsis;
+		font-family: CondBold;
+		display: inline-block;
+		width: 100%;
+		padding-left:0px;
+		padding-right:0px;
+	}
+	.pagination {
+		display: inline-block;
+		width: 100%;
+		text-align: center;
+		margin: 0 0px 0px!important;
+		position: relative;
+	}
+	#ImageNewsView
+	{
+		padding-left:0px;
+		padding-right:0px;
+	}
+	#article_new_content
+	{
+		padding-left:0px;
+		padding-right:0px;
+		line-height:18px;
+	}
+	#ShareToolNewsView
+	{
+		padding-left:0px;
+		padding-right:0px;
+		margin-top:10px!important;
+	}
+	#BinhLuanNewsView
+	{
+		margin-left:0px!important;
+		padding-left:0px!important;
+	}
+	/*Kết thúc danh sách tin tức*/
+
+	/*Liên hệ*/
+	.MainContent_UpdatePanel
+	{
+		padding-left:15px!important;
+		padding-right:15px!important;
+		background-color:#ddd;
+	}
+	/*Kết thúc liên hệ*/
 
 	#mainFooter
 	{
