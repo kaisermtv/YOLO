@@ -93,11 +93,11 @@
                                     <uc1:Paging ID="pageId" runat="server" />
                                 </div>
                             </div>
-                            <!--
+                            
                         <div class="cright col-xs-6 col-sm-4 col-md-4 hidden-xs">
                             <uc1:DanhMucTin ID="danhMuc" runat="server" />
                         </div>
-                        -->
+                        
                         </div>
 
 

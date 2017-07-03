@@ -2,7 +2,7 @@
 
 <%--<%@ Register Src="~/Controller/SliderOne.ascx" TagPrefix="uc1" TagName="SliderOne" %>--%>
 <%@ Register Src="~/Controller/SliderTwo.ascx" TagPrefix="uc1" TagName="SliderTwo" %>
-<%@ Register Src="~/Controller/CuocThiAnh.ascx" TagPrefix="uc1" TagName="CuocThiAnh" %>
+<%--<%@ Register Src="~/Controller/CuocThiAnh.ascx" TagPrefix="uc1" TagName="CuocThiAnh" %>--%>
 <%@ Register Src="~/Controller/SanPhamDichVu.ascx" TagPrefix="uc1" TagName="SanPhamDichVu" %>
 <%@ Register Src="~/Controller/TinTucHoatDong.ascx" TagPrefix="uc1" TagName="TinTucHoatDong" %>
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
@@ -38,7 +38,13 @@
     <uc1:SliderTwo runat="server" />
     <%--<uc1:SliderOne runat="server"  />--%>
     
-    <uc1:CuocThiAnh runat="server" />
+    <%--<uc1:CuocThiAnh runat="server" />--%>
+
+    <!-- KHOI SO 2 - FANPER  -->
+    <div class="container" style="margin-top:30px">
+        <img src="<%=pic_cover %>" style="width:100%" />
+    </div>
+    <!-- KET THUC KHOI SO 2 -->
 
 
     <uc1:SanPhamDichVu runat="server" />

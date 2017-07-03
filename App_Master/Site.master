@@ -25,33 +25,6 @@
         }
     </script>
 
-    <style>
-        .footer {
-            text-align: justify;
-            padding-top: 8px;
-        }
-
-            .footer p {
-                font-style: inherit;
-                vertical-align: baseline;
-                margin: 0 0 20px 0;
-                padding: 0;
-                border: 0;
-                outline: 0;
-                background: transparent;
-            }
-
-        .navbar{
-            margin-bottom:0px;
-        }
-        @media (max-width: 768px) {
-            .phoneHeader{
-                font-size:20px !important;
-
-            }
-        }
-    </style>
-
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>

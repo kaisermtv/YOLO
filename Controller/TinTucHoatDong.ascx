@@ -27,7 +27,9 @@
 
                     <div class="col-md-4">
                         <div class="flat-about-us">
-                            <p><span class="dropcap"><%=beginChar %></span><%=title %></p>
+                            <a href="<%= link %>">
+                                <p><span class="dropcap"><%=beginChar %></span><%=title %></p>
+                            </a>
                             <br />
                             <p><%=describe %></p>
                             <a class="button white" href="<%= link %>">Xem chi tiết</a>
@@ -41,7 +43,9 @@
                             <asp:Repeater ID="dtlData" runat="server" EnableViewState="False">
                                 <ItemTemplate>
                                     <div class="flat-progress">
-                                        <p class="name"><%# Eval("Title") %></p>
+                                        <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>" >
+                                            <p class="name"><%# Eval("Title") %></p>
+                                        </a>
                                         <div class="progress-bar" data-percent="90" data-waypoint-active="yes">
                                             <div class="progress-animate"></div>
                                         </div>

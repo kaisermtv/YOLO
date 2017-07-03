@@ -41,7 +41,7 @@ public partial class Controller_TinTucHoatDong : System.Web.UI.UserControl
                 title = objData.Rows[0]["Title"].ToString().Substring(1);
 
                 describe = objData.Rows[0]["ShortContent"].ToString();
-                link = "";
+                link = "/" + SystemClass.convertToUnSign2(objData.Rows[0]["Title"].ToString()) + "-v" + objData.Rows[0]["Id"].ToString();
                 image = objData.Rows[0]["ImgUrl"].ToString();
 
                 objData.Rows.Remove(objData.Rows[0]);

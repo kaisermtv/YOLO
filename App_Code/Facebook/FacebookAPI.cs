@@ -13,10 +13,12 @@ public class FacebookAPI
 {
     #region static declare 
     private static string fields = "id,type,name,full_picture,picture,link,message,created_time";
+    private static string Infofields = "id,name,picture,cover";
     private static string fields_album = "photos{images,name,link,likes.limit(0).summary(true), comments.limit(0).summary(true),  created_time}";          // chú ý không dùng created_time trong comments
     private static string token = "1972725952949362|91b3fca08e2a493e72610dad124d1beb";
 
     private static string PageName = "yolomobifone";
+    private static string PageID = "296261680821719";
     private static string ApiUrl = @"https://graph.facebook.com/v2.9/";
     #endregion
 
@@ -53,7 +55,12 @@ public class FacebookAPI
             return null;
         }
 
-        nextPost = ret.paging.next;
+        try
+        {
+            nextPost = ret.paging.next;
+        } catch {
+
+        }
 
 
         return ret;
@@ -103,6 +110,18 @@ public class FacebookAPI
     }
     #endregion
 
-    
+    #region Method getInfoPage
+    public dynamic getInfoPage()
+    {
+        string url = ApiUrl + PageName + "?fields=" + Infofields;
+
+
+        url += "&access_token=" + token;
+
+        dynamic ret = getUrlJson(url);
+
+        return ret;
+    }
+    #endregion
 
 }
