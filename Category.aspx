@@ -67,7 +67,9 @@
                                     <div class="filler"></div>
                                 </div>
 
+                                <% if(MaxPage > 1){ %>
                                 <uc1:Paging ID="pageId" runat="server" />
+                                <% } %>
 
                                 <%--<div class="portfolio_paging"><span rel="2" class="load_more"><a href="#">Show more</a></span></div>
                                 <div class="portfolio_paging_loading"><a href="javascript: void(0)" class="qbutton">Loading...</a></div>--%>
