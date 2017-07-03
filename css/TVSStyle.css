@@ -1206,13 +1206,4 @@
         padding: 0px !important;
     }
 
-    .phoneHeader {
-        font-size: 20px !important;
-    }
-}
-
-@media (max-width: 768px) {
-    .phoneHeader {
-        font-size: 20px !important;
-    }
 }

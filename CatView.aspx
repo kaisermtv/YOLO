@@ -39,7 +39,7 @@
             <div style="width: 100%;">
                 <h1 style="font-family: Arial; font-size: 25px; font-weight: bold; text-align: center;" id = "H1CatView"><%= objData["Title"] %></h1>
                 <div class="single-before-header col-xs-12 noPadding">
-                    <div class="fb-like" data-href="http://113.164.227.242:4083<%=Request.RawUrl %>" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+                    <div class="fb-like" data-href="http://113.164.227.242:4083<%=Request.RawUrl %>" data-width="auto" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
                 </div>
 
                 <div class="article-content-wrapper single-content-wrapper col-xs-12 noPadding">
@@ -65,7 +65,7 @@
         <h3 class="tieu-de">Bình luận </h3>
         <div class="fb-comments"
             data-href="http://113.164.227.242:4083<%=Request.RawUrl %>"
-            data-width="750">
+            data-width="auto">
         </div>
             <hr />
 
