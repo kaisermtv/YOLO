@@ -960,3 +960,20 @@
 	max-height: 40px;
 	overflow: hidden;
 }
+
+/*Mot so id cho phan di dong*/
+#logoImg
+{
+	display:none;
+}
+
+/* BAT DAU PHAN TAO STYLE CHO THIET BI DI DONG */
+@media only screen and (min-width: 320px) and (max-width: 860px) {
+
+	#logoImg {
+		display: block;
+	}
+	#logoText {
+		display: none;
+	}
+}

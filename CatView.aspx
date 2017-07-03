@@ -34,10 +34,10 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
-    <div class="container">
+    <div class="container" id ="ImgCatView">
         <div class="row col-md-12">
             <div style="width: 100%;">
-                <h1 style="font-family: Arial; font-size: 25px; font-weight: bold; text-align: center;"><%= objData["Title"] %></h1>
+                <h1 style="font-family: Arial; font-size: 25px; font-weight: bold; text-align: center;" id = "H1CatView"><%= objData["Title"] %></h1>
                 <div class="single-before-header col-xs-12 noPadding">
                     <div class="fb-like" data-href="http://113.164.227.242:4083<%=Request.RawUrl %>" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
                 </div>
@@ -85,29 +85,29 @@
         </asp:Repeater>
         <uc1:Paging ID="pageId" runat="server" />
         --%>
-        <div class="col-md-9">
+        <div id ="FeedBackCatView" class="col-md-9" >
             <div class="form-area">
                 <form role="form" method="post">
                     <br style="clear: both">
-                    <h3 style="margin-bottom: 25px; text-align: center;">THÔNG TIN PHẢN HỒI</h3>
+                    <h3 style="margin-bottom: 25px; text-align: center;" id = "H3CatView">THÔNG TIN PHẢN HỒI</h3>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Họ và tên" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Địa chỉ email" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required>
+                        <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Số điện thoại" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Chủ đề" required>
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" name="message" id="message" placeholder="Message" maxlength="140" rows="7"></textarea>
+                        <textarea class="form-control" name="message" id="message" placeholder="Nội dung liên hệ" maxlength="140" rows="7"></textarea>
                         <span class="help-block warning"><%=message %></span>
                     </div>
 
-                    <button type="submit" class="btn btn-primary pull-right" style="margin-bottom:20px">Submit Form</button>
+                    <button type="submit" class="btn btn-primary pull-right" style="margin-bottom:20px">Gửi thông tin</button>
                 </form>
             </div>
         </div>

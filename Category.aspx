@@ -4,15 +4,15 @@
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
     <%--<link rel="stylesheet" type="text/css" href="/css/style1.css">--%>
     <style>
-        .pagination{
-            width:auto;
+        .pagination {
+            width: auto;
         }
     </style>
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="row col-md-12">
-            <h2><%= title.ToUpper() %></h2>
+            <h2 class ="H2TraiNghiem"><%= title.ToUpper() %></h2>
             <br />
         </div>
         <div class="container_inner default_template_holder clearfix page_container_inner">
@@ -46,7 +46,7 @@
                                                             <span class="text_inner">
                                                                 <span class="feature_holder">
                                                                     <span class="feature_holder_icons">
-                                                                        <a class="lightbox qbutton small white" title="Stockholm Fashion" href="<%# Eval("ImgUrl") %>" data-rel="prettyPhoto[pretty_photo_gallery]" rel="prettyPhoto[pretty_photo_gallery]">zoom</a>
+                                                                        <a class="lightbox qbutton small white" id = "TraiNghiemZoom" title="Stockholm Fashion" href="<%# Eval("ImgUrl") %>" data-rel="prettyPhoto[pretty_photo_gallery]" rel="prettyPhoto[pretty_photo_gallery]">zoom</a>
                                                                         <a class="preview qbutton small white" href="/trai-nghiem/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-ct<%#Eval("Id")%>" target="_self">view</a>
                                                                     </span>
                                                                 </span>

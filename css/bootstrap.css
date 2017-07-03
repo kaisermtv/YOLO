@@ -6820,3 +6820,124 @@ td.visible-print {
     display: none !important;
   }
 }
+
+/*Mot so id cho phan di dong*/
+#logoImg
+{
+	display:none;
+}
+#SKAN
+{
+	margin-top:30px;
+}
+
+/* BAT DAU PHAN TAO STYLE CHO THIET BI DI DONG */
+@media only screen and (min-width: 320px) and (max-width: 860px) {
+
+	#SKAN
+	{
+		margin-top:16px;
+	}
+
+	#logoImg {
+		display: block;
+	}
+	#logoImg img{
+		width:60%!important;
+		margin:0px!important;
+		margin-top:-8px!important;
+		margin-bottom:-10px!important;
+	}
+
+	#logoText {
+		display: none;
+	}
+
+	#nav_Search
+	{
+		display:none;
+	}
+
+	.kai_banner_bottombtns
+	{
+		display:none;
+	}
+
+	.header
+	{
+		border:solid 0px blue!important;
+		background-color:#2c90f7!important;
+		width:100%!important;
+		margin-top:10px!important;
+	}
+
+	.about
+	{
+		margin-top:0px;
+	}
+
+	#buttonDetail
+	{
+		margin-left:auto!important;
+		margin-right:auto!important;
+		margin-top:-55px;
+	}
+
+	.iphone{
+		margin-top:-55px;
+	}
+
+	/*Trang con, trai nghiem san pham va dich vu*/
+	.H2TraiNghiem
+	{
+		font-size:15px!important;
+		margin-bottom:-10px!important;
+	}
+	.portfolio_title
+	{
+		font-size:12px!important;
+	}
+	#TraiNghiemZoom
+	{
+		display:none;
+	}
+	#H1CatView
+	{
+		font-family: Arial; font-size: 20px!important; font-weight: bold; text-align: center;
+	}
+	#ImgCatView
+	{
+		width:100%;
+		margin-left:0px!important;
+		margin-right:-25px!important;
+	}
+	#FeedBackCatView
+	{
+		padding:0px!important;
+	}
+	#H3CatView
+	{
+		margin-top:-20px;
+	}
+	/*Ket thuc trang con, trai nghiem san pham va dich vu*/
+
+	#phoneHeader
+	{
+		background-color:#2c90f7!important;
+		width:100%!important;
+		color:#fff!important;
+		font-size:16px!important;
+		min-height:50px!important;
+		padding-top: 10px!important;
+	}
+
+	.serviceBox
+	{
+		border:solid 1px red;
+	}
+
+	#mainFooter
+	{
+		padding:0px !important;
+	}
+}
