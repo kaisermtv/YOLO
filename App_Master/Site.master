@@ -27,8 +27,6 @@
 
     <style>
         .footer {
-            float: right;
-            width: 66%;
             text-align: justify;
             padding-top: 8px;
         }
