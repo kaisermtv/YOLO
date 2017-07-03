@@ -967,13 +967,231 @@
 	display:none;
 }
 
+/*Mot so id cho phan di dong*/
+#logoImg
+{
+	display:none;
+}
+#SKAN
+{
+	margin-top:30px;
+}
+
 /* BAT DAU PHAN TAO STYLE CHO THIET BI DI DONG */
 @media only screen and (min-width: 320px) and (max-width: 860px) {
+
+	#SKAN
+	{
+		margin-top:16px;
+	}
 
 	#logoImg {
 		display: block;
 	}
+	#logoImg img{
+		width:60%!important;
+		margin:0px!important;
+		margin-top:-8px!important;
+		margin-bottom:-10px!important;
+	}
+
 	#logoText {
 		display: none;
 	}
+
+	#nav_Search
+	{
+		display:none;
+	}
+
+	.kai_banner_bottombtns
+	{
+		display:none;
+	}
+
+	.header
+	{
+		border:solid 0px blue!important;
+		background-color:#2c90f7!important;
+		width:100%!important;
+		margin-top:10px!important;
+	}
+
+	.about
+	{
+		margin-top:0px;
+	}
+
+	#buttonDetail
+	{
+		margin-left:auto!important;
+		margin-right:auto!important;
+		margin-top:-55px;
+	}
+
+	.iphone{
+		margin-top:-55px;
+	}
+
+	/*Trang con, trai nghiem san pham va dich vu*/
+	.H2TraiNghiem
+	{
+		font-size:15px!important;
+		margin-bottom:-10px!important;
+	}
+	.portfolio_title
+	{
+		font-size:12px!important;
+	}
+	#TraiNghiemZoom
+	{
+		display:none;
+	}
+	#H1CatView
+	{
+		font-family: Arial; font-size: 20px!important; font-weight: bold; text-align: center;
+	}
+	#ImgCatView
+	{
+		width:100%;
+		margin-left:0px!important;
+		margin-right:-25px!important;
+	}
+	#FeedBackCatView
+	{
+		padding:0px!important;
+	}
+	#H3CatView
+	{
+		margin-top:-20px;
+	}
+	/*Ket thuc trang con, trai nghiem san pham va dich vu*/
+
+	#phoneHeader
+	{
+		background-color:#2c90f7!important;
+		width:100%!important;
+		color:#fff!important;
+		font-size:16px!important;
+		min-height:50px!important;
+		padding-top: 10px!important;
+	}
+
+	.serviceBox
+	{
+		border:solid 1px red;
+	}
+
+	/*Trang danh sách tin tức*/
+	#HeaderNews
+	{
+		padding-left:0px;
+		padding-right:0px;
+	}
+	#tin-chinh
+	{
+		padding-left:0px;
+		padding-right:0px;
+	}
+	.time
+	{
+		padding-top:10px;
+		padding-bottom:10px;
+		padding-left:0px;
+		padding-right:0px;
+	}
+	.sapo
+	{
+		font-family:Arial!important;
+		font-size:16px!important;
+		text-align:justify!important;
+		line-height:18px!important;
+		padding-left:0px;
+		padding-right:0px;
+	}
+	#news-orderby
+	{
+		font-family:Arial!important;
+		padding-left:15px;
+		padding-right:10px;
+		font-size:16px;
+		text-align:justify;
+	}
+	#list-tin-tuc
+	{
+		/*padding-left:15px!important;
+		padding-right:15px!important;
+		margin-right:-15px!important;*/
+	}
+	.img-w
+	{
+		padding-left:0px;
+		padding-right:0px;
+	}
+	.info-detail
+	{
+		padding-left:0px;
+		padding-right:0px;
+	}
+	#HeaderNewsView
+	{
+		padding-left:0px;
+		padding-right:0px;
+	}
+	.tieu-de
+	{
+		font-size: 20px;
+		margin: 0 0 5px;
+		text-overflow: ellipsis;
+		font-family: CondBold;
+		display: inline-block;
+		width: 100%;
+		padding-left:0px;
+		padding-right:0px;
+	}
+	.pagination {
+		display: inline-block;
+		width: 100%;
+		text-align: center;
+		margin: 0 0px 0px!important;
+		position: relative;
+	}
+	#ImageNewsView
+	{
+		padding-left:0px;
+		padding-right:0px;
+	}
+	#article_new_content
+	{
+		padding-left:0px;
+		padding-right:0px;
+		line-height:18px;
+	}
+	#ShareToolNewsView
+	{
+		padding-left:0px;
+		padding-right:0px;
+		margin-top:10px!important;
+	}
+	#BinhLuanNewsView
+	{
+		margin-left:0px!important;
+		padding-left:0px!important;
+	}
+	/*Kết thúc danh sách tin tức*/
+
+	/*Liên hệ*/
+	.MainContent_UpdatePanel
+	{
+		padding-left:15px!important;
+		padding-right:15px!important;
+		background-color:#ddd;
+	}
+	/*Kết thúc liên hệ*/
+
+	#mainFooter
+	{
+		padding:0px !important;
+	}
 }
+

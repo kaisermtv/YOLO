@@ -69,6 +69,7 @@ public partial class NewsView : System.Web.UI.Page
             dtlTinCu.DataBind();
         }
 
+        this.Title = Context.Items["strTitle"] + " - YOLO, DÁM CHIA SẺ";
     }
     #endregion
 
@@ -85,7 +86,6 @@ public partial class NewsView : System.Web.UI.Page
         return null;
     }
     #endregion
-
 
     #region Method CreateDocument
     public void CreateDocument(bool active = false)

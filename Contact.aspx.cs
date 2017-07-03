@@ -30,12 +30,6 @@ public partial class Contact : System.Web.UI.Page
                     return;
                 }
 
-                //if (Request.Form["email"] == "")
-                //{
-                //    msg = "Bạn cần nhập tên đầy đủ";
-                //    return;
-                //}
-
                 if (Request.Form["title"] == "")
                 {
                     msg = "Bạn cần nhập tiêu đề";
@@ -60,10 +54,9 @@ public partial class Contact : System.Web.UI.Page
             }
             catch { }
 
-
-
-
         }
+
+        this.Title = "LIÊN HỆ - YOLO, DÁM CHIA SẺ";
     }
     #endregion
 

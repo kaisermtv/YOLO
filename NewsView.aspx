@@ -18,11 +18,12 @@
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div id="fb-root"></div>
+    <div class ="container">
     <div class="container-fluid">
         <div class="main">
             <div class="row show-grid">
                 <div class="news-wraper col-xs-12 col-md-12">
-                    <div class="row">
+                    <div class="row" id ="HeaderNewsView">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <ul id="NavDetail">
                                 <li><a href="/">Trang chủ</a></li>
@@ -43,7 +44,7 @@
                                     <p id="article_new" class="sapo" style="font-weight: bold; margin-bottom: 30px; font-size: 19px;">
                                         <%=objData["ShortContent"]  %>
                                     </p>
-                                    <div>
+                                    <div id ="ImageNewsView">
                                         <img onerror="imgCatchError(this)" src="<%=objData["ImgUrl"] %>" alt="" style="margin: 10px auto 20px; display: block;" />
                                     </div>
                                     <div id="article_new_content" class="content-detail">
@@ -51,7 +52,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" style="margin-top: 50px; margin-bottom: 50px;">
+                            <div class="row" style="margin-top: 50px; margin-bottom: 50px;" id = "ShareToolNewsView">
 
                                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <a href="https://www.facebook.com/sharer.php?&u=http://113.164.227.242:4083<%=Request.RawUrl %>"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
@@ -59,7 +60,7 @@
 	                                <a href="https://plus.google.com?&url=http://113.164.227.242:4083<%=Request.RawUrl %>"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
 	                                <a href="javascript:;" id="btn-save" style="position:static !important"  title="Download"><img src="/images/word-download.png" style="height:35px" /></a>
                                               <hr />
-                                    <h3 class="tieu-de">Bình luận </h3>
+                                    <h3 class="tieu-de" id ="BinhLuanNewsView">Bình luận </h3>
                                   <div class="fb-comments"
                                    data-href="http://113.164.227.242:4083<%=Request.RawUrl %>"
                                    data-width="750"></div>
@@ -126,9 +127,8 @@
             </div>
         </div>
     </div>
-
-    <div id="fb-root"></div>
-<script>(function (d, s, id) {
+    </div>
+    <script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
@@ -146,6 +146,7 @@
             saveAs(blob, filename + ".txt");
         });
     </script>
+
     <script src="../../js/FileSaver.min.js"></script>
 
 </asp:Content>

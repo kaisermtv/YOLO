@@ -17,7 +17,6 @@ public class FacebookAPI
     private static string token = "1972725952949362|91b3fca08e2a493e72610dad124d1beb";
 
     private static string PageName = "yolomobifone";
-    private static string PageID = "262884504159437";
     private static string ApiUrl = @"https://graph.facebook.com/v2.9/";
     #endregion
 
@@ -37,7 +36,7 @@ public class FacebookAPI
     #region Method getTopPostPage
     public dynamic getTopPostPage(int limit = 1)
     {
-        string url = ApiUrl + PageID + "/posts?fields=" + fields; 
+        string url = ApiUrl + PageName + "/posts?fields=" + fields; 
 
         if(limit > 0)
         {
