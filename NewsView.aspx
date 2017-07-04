@@ -147,6 +147,5 @@
         });
     </script>
 
-    <script src="../../js/FileSaver.min.js"></script>
 
 </asp:Content>

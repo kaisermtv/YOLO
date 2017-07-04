@@ -17,6 +17,8 @@ public partial class Category : System.Web.UI.Page
     public int page = 1;
     public int maxItem = 0;
     public int MaxPage = 1;
+
+    public int maxPageItem = 12;
     #endregion 
 
     #region Even Page_Load
@@ -66,6 +68,23 @@ public partial class Category : System.Web.UI.Page
 
         }
 
+    }
+    #endregion
+
+    #region Method getItemData
+    public DataTable getItemData(int id,int page = 1)
+    {
+        try
+        {
+            DataTable objData = objNews.getDataTop(maxPageItem, id, page, false, "", "DESC", true);
+
+
+            return objData;
+        }
+        catch
+        {
+            return new DataTable();
+        }
     }
     #endregion
 }

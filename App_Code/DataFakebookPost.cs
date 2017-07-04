@@ -43,8 +43,15 @@ public class DataFakebookPost :DataAbstract
     #region Method UpdateData
     public void UpdateDataToSqlData()
     {
-        //getTopPostPage();
+        FacebookAPI objFacebook = new FacebookAPI();
 
+        try
+        {
+            dynamic objData = objFacebook.getTopPostPage();
+            
+
+        }
+        catch { }
     }
     #endregion
 }

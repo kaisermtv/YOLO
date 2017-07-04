@@ -11,6 +11,21 @@
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
+        <%--<asp:Repeater ID="dtlCat" runat="server" EnableViewState="False">
+            <ItemTemplate>
+                <div class="row col-md-12">
+                    <h2 class="H2TraiNghiem"><%= title.ToUpper() %></h2>
+                    <br />
+                </div>
+                <asp:Repeater DataSource="<%# getItemData(1) %>" EnableViewState="False">
+                    <ItemTemplate>
+
+                    </ItemTemplate>
+                </asp:Repeater>
+
+            </ItemTemplate>
+        </asp:Repeater>--%>
+
         <div class="row col-md-12">
             <h2 class ="H2TraiNghiem"><%= title.ToUpper() %></h2>
             <br />
