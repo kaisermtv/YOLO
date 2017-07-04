@@ -74,7 +74,8 @@
                                             </div>
                                         </div>
                                         <div class="fb_footer">
-                                            <a href="https://www.facebook.com/<%# Eval("id") %>" style="float:right;" >Xem trên facebook</a>
+                                            <div class="fb-like" data-href="<%# Eval("link") %>" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+                                            <a href="<%# Eval("permalink_url") %>" style="float:right;" >Xem trên facebook</a>
                                         </div>
                                     </ItemTemplate>
                                 </asp:Repeater>
