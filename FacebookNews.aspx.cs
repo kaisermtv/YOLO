@@ -9,6 +9,7 @@ public partial class FacebookNews : System.Web.UI.Page
 {
     #region declare
     public string pic_cover = "";
+    public string nextUrl = "";
 
     FacebookAPI objFacebook = new FacebookAPI();
     #endregion
@@ -39,9 +40,11 @@ public partial class FacebookNews : System.Web.UI.Page
             dtlData.DataSource = objData.data;
             dtlData.DataBind();
 
+            nextUrl = objData.paging.cursors.after;
         }
         catch { }
 
     }
     #endregion
+
 }

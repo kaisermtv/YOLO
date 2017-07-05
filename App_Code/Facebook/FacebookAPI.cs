@@ -36,7 +36,7 @@ public class FacebookAPI
     #endregion
 
     #region Method getTopPostPage
-    public dynamic getTopPostPage(int limit = 1)
+    public dynamic getTopPostPage(int limit = 1,string after = "")
     {
         string url = ApiUrl + PageName + "/posts?fields=" + fields; 
 
@@ -47,6 +47,7 @@ public class FacebookAPI
 
         url += "&access_token=" + token;
 
+        if (after != "") url += "&pretty=0&after=" + after;
 
         dynamic ret = getUrlJson(url);
         if (ret == null)

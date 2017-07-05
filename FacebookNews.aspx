@@ -33,17 +33,47 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ScriptContent" runat="server">
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.9&appId=1972725952949362";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 
+    <script>
+        var isLoad = false;
+
+        function loadNextPage(url)
+        {
+            if (!isLoad )
+            {
+                isLoad = true;
+
+                $.get('/ajax/LoadMoreFacebook.aspx?after=' + url, returnJson)
+            }
+        }
+
+        function returnJson(data, status, xhr)
+        {
+            if (status == "success") {
+                //alert(data);
+
+                $("#loadmore").remove();
+
+                $("#fb_data").append(data);
+            } else {
+                alert('Error occured');
+            }
+
+            isLoad = false;
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div id="fb-root"></div>
-<script>(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.9&appId=1972725952949362";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
     <div class="container">
         <div class="container-fluid">
@@ -58,6 +88,8 @@
                                 <div style="text-align:center;background-color: #000000;padding:10px">
                                     <h2 style="margin:0px;color:#ffffff;">Liên kết Facebook</h2>
                                 </div>
+
+                                <div id="fb_data">
                                 <asp:Repeater ID="dtlData" runat="server">
                                     <ItemTemplate>
                                         <hr />
@@ -69,8 +101,8 @@
                                                 <div class="fb_header">
 
                                                 </div>
-                                                <h5><%# Eval("name").ToString().Replace("Timeline Photos","Ảnh trên dòng thời gian") %></h5>
-                                                <p><%# Eval("message") %></p>
+                                                <h5><%# (((dynamic)Container.DataItem).name != null)?Eval("name").ToString().Replace("Timeline Photos","Ảnh trên dòng thời gian"):"" %></h5>
+                                                <p><%# (((dynamic)Container.DataItem).message != null)?Eval("message"):"" %></p>
                                             </div>
                                         </div>
                                         <div class="fb_footer">
@@ -80,11 +112,14 @@
                                     </ItemTemplate>
                                 </asp:Repeater>
 
+                                <div id="loadmore" style="text-align:center;margin-top:20px">
+                                    <%--<asp:Button ID="prev" runat="server" OnClick="prev_Click" Text="Trước" />--%>
+                                    <%--<asp:Button ID="next" runat="server" OnClick="next_Click" Text="Tiếp" />--%>
 
-                                <div style="text-align:center;margin-top:20px">
-                                    <button class="btn btn-default">Load more...</button>
+                                    <button id="loadbutton" class="btn btn-default" onclick="loadNextPage('<%= nextUrl %>')">Tải thêm</button>
                                 </div>
-                                
+                                </div>
+
                                 <br />
                                 <hr />
                                 <div class="fb-comments"
