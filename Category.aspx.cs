@@ -24,14 +24,14 @@ public partial class Category : System.Web.UI.Page
     #region Even Page_Load
     protected void Page_Load(object sender, EventArgs e)
     {
-        //try
-        //{
-        //    groupNews = int.Parse(Request["id"].ToString());
-        //}
-        //catch
-        //{
-        //    groupNews = 0;
-        //}
+        try
+        {
+            groupNews = int.Parse(Request["id"].ToString());
+        }
+        catch
+        {
+            groupNews = 0;
+        }
 
         try
         {
@@ -39,33 +39,33 @@ public partial class Category : System.Web.UI.Page
         }
         catch{}
 
+        int[] id;
+
         if(groupNews != 0)
         {
-            title = objGroup.getNameById(groupNews);
-            if (title == null) Response.Redirect("/");
+            id = new int[1] { groupNews };
+
+            maxItem = objNews.getDataCount(groupNews, false, "", true);
         }
         else
         {
-            title = "Tất cả";
+            id = new int[4] { 50, 51, 52, 53 };
+            maxPageItem = 3;
+            maxItem = 3;
         }
 
-        title = "Trải nghiệm sản phẩm, dịch vụ";
-
-        maxItem = objNews.getDataCount(groupNews,false,"",true);
-
-        MaxPage = maxItem / 12;
-        if (maxItem % 12 > 0) MaxPage += 1;
+        MaxPage = maxItem / maxPageItem;
+        if (maxItem % maxPageItem > 0) MaxPage += 1;
         if (maxItem < 1) maxItem = 1;
 
         pageId.iPage = page;
         pageId.MaxPage = MaxPage;
 
-        DataTable objData = objNews.getDataTop(12, groupNews,page,false,"","DESC",true);
+        DataTable objData = objGroup.getNameById(id);
         if(objData != null)
         {
-            dtlData.DataSource = objData.DefaultView;
-            dtlData.DataBind();
-
+            dtlCat.DataSource = objData.DefaultView;
+            dtlCat.DataBind();
         }
 
     }

@@ -122,7 +122,7 @@ public partial class System_NewsEdit : System.Web.UI.Page
         }
         else
         {
-            if (group.ToString() == this.ddlGroup.SelectedValue)
+            if (this.group.ToString() == this.ddlGroup.SelectedValue)
             {
                 Response.Redirect("NewsEdit.aspx?id=" + itemId+"&Group="+group);
             }
