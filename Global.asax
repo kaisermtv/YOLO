@@ -12,6 +12,7 @@
         routes.MapPageRoute("CatView1", "trai-nghiem/{name}-ct{id}", "~/CatView.aspx", false, new RouteValueDictionary { { "id", @"[0-9]+" }, { "name", ".*" } });
         routes.MapPageRoute("photo1", "{name}-p{id}", "~/PhotoContest.aspx", false, new RouteValueDictionary { { "id", @"[0-9]+" }, { "name", ".*" } });
 
+        routes.MapPageRoute("facebook", "ket-noi-facebook", "~/FacebookNews.aspx");
 
         routes.MapPageRoute("trangchu", "trang-chu", "~/Default.aspx");
         routes.MapPageRoute("home", "home", "~/Default.aspx");

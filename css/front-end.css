@@ -309,8 +309,8 @@ input[type="radio"].deriku-radio-input { display: none; }
 #list-tin-tieu-diem div.zx { height: 110px; margin: 5px 0; }
 
 #tin-trung-binh img { width: 100%; }
-.time { font-size: 14px; color: #888888; width: 100%; font-weight: normal; color: #555555; font-style: italic; font-family: CondLight; }
-.tieu-de { font-size: 20px; margin: 0 0 5px; text-overflow: ellipsis; font-family: CondBold; display: inline-block; width: 100%; }
+.time { font-size: 14px; color: #888888; width: 100%; font-weight: normal; color: #555555; font-style: italic; font-family: Arial; }
+.tieu-de { font-size: 20px; margin: 0 0 5px; text-overflow: ellipsis; font-family: Arial; line-height:25px; font-weight:bold; text-align:justify; display: inline-block; width: 100%; }
 .dr { border-bottom: 1px solid #dedede; margin: 20px 0 20px; }
 
 #list-tin-tuc { }
@@ -318,7 +318,7 @@ input[type="radio"].deriku-radio-input { display: none; }
         #list-tin-tuc li .thumb { float: left; width: 25%; height: auto; margin: 0 10px 9px 0; }
             #list-tin-tuc li .thumb img { width: 100%; height: auto; float: left; position: relative; }
         #list-tin-tuc li .info-detail { width: calc(75% - 10px); display: inline-block; float: right; }
-.sapo { font-size: 15px; color: #0F0F0F; margin: 5px 0; font-family: CondLight; }
+.sapo { font-size: 16px; color: #0F0F0F; margin: 5px 0; font-family: Arial; line-height:22px; }
 
 .pager { text-align: right; padding: 15px 0; font-size: 14px; }
 

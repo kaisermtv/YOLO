@@ -4,7 +4,7 @@
 <!-- KHOI THU 4 - TRAI NGHIEM SAN PHAM, DICH VU -->
 <div class="container">
     <div style="margin: auto; margin-top:30px;">
-        <div class="phoneHeader" id="phoneHeader" style="min-height: 65px; background-color:#2c90f7; color: #fff; font-size: 30px; font-weight: bold; text-align: center; padding-top: 5px; margin-bottom:30px;">
+        <div class="phoneHeader" id="phoneHeader" style="min-height: 65px; background-color:#2c90f7; color: #fff; font-size: 30px; font-weight: bold; text-align: center; padding-top: 12px; margin-bottom:30px;">
             TRẢI NGHIỆM SẢN PHẨM, DỊCH VỤ
         </div>
         <div style="overflow: hidden;">
