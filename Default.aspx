@@ -23,7 +23,7 @@
     <link rel="stylesheet" type="text/css" href="/css/responsive.css">
     
     <link rel="stylesheet" type="text/css" href="/css/shortcodes.css">
-    <link rel="stylesheet" type="text/css" href="/css/style1.css">
+   <%-- <link rel="stylesheet" type="text/css" href="/css/style1.css">--%>
     
 </asp:Content>
 <asp:Content ID="ScriptContent" ContentPlaceHolderID="ScriptContent" runat="server">

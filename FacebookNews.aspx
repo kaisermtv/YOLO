@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/App_Master/Site.master" CodeFile="FacebookNews.aspx.cs" Inherits="FacebookNews" %>
+﻿<%@ Page Title ="Fanpage" Language="C#" AutoEventWireup="true" MasterPageFile="~/App_Master/Site.master" CodeFile="FacebookNews.aspx.cs" Inherits="FacebookNews" %>
 
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
@@ -83,10 +83,10 @@
                         <div class="row show-grid">
                             <div class="clearfix visible"></div>
                             <div class="cleft col-xs-12 col-sm-8 col-md-8 ">
-                               <img src="<%=pic_cover %>" style="width:100%;margin-top:10px" />
+                               <img id ="facebookCover" src="<%=pic_cover %>" style="width:100%;margin-top:10px" />
 
-                                <div style="text-align:center;background-color: #000000;padding:10px">
-                                    <h2 style="margin:0px;color:#ffffff;">Liên kết Facebook</h2>
+                                <div style="text-align:center;background-color: #2c90f7;padding:10px; margin-top:10px;">
+                                    <h3 style="margin:0px;color:#ffffff;">Liên kết Facebook</h3>
                                 </div>
 
                                 <div id="fb_data">
@@ -101,12 +101,12 @@
                                                 <div class="fb_header">
 
                                                 </div>
-                                                <h5><%# (((dynamic)Container.DataItem).name != null)?Eval("name").ToString().Replace("Timeline Photos","Ảnh trên dòng thời gian"):"" %></h5>
-                                                <p><%# (((dynamic)Container.DataItem).message != null)?Eval("message"):"" %></p>
+                                                <h5 id ="facebookHeader"><%# (((dynamic)Container.DataItem).name != null)?Eval("name").ToString().Replace("Timeline Photos","Ảnh trên dòng thời gian"):"" %></h5>
+                                                <p id ="facebookMeaasge"><%# (((dynamic)Container.DataItem).message != null)?Eval("message").ToString().Replace("\n","<br>"):"" %></p>
                                             </div>
                                         </div>
                                         <div class="fb_footer">
-                                            <div class="fb-like" data-href="<%# Eval("link") %>" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+                                            <div class="fb-like" data-href="<%# Eval("link") %>" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false" style ="width:70%; float:left;"></div>
                                             <a href="<%# Eval("permalink_url") %>" style="float:right;" >Xem trên facebook</a>
                                         </div>
                                     </ItemTemplate>

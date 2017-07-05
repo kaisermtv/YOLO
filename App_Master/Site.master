@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - YOLO, DÁM CHIA SẺ</title>
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    
+
     <link href="/css/bootstrap.css" rel="stylesheet" />
     <link href="/css/Site.css" rel="stylesheet" />
     <link href="/css/Slide.css" rel="stylesheet" />
@@ -29,78 +29,80 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-        <script type="text/javascript">
-            jQuery(document).ready(function ($) {
-                //selector đến menu cần làm việc
-                var TopFixMenu = $("#topMenu");
-                // dùng sự kiện cuộn chuột để bắt thông tin đã cuộn được chiều dài là bao nhiêu.
-                $(window).scroll(function () {
-                    // Nếu cuộn được hơn 150px rồi
-                    if ($(this).scrollTop() > 100) {
-                        // Tiến hành show menu ra    
-                        $("#topMenu").addClass("navbar-fixed-top");
-                    } else {
-                        // Ngược lại, nhỏ hơn 120px thì hide menu đi.
-                        $("#topMenu").removeClass("navbar-fixed-top");
-                    }
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            //selector đến menu cần làm việc
+            var TopFixMenu = $("#topMenu");
+            // dùng sự kiện cuộn chuột để bắt thông tin đã cuộn được chiều dài là bao nhiêu.
+            $(window).scroll(function () {
+                // Nếu cuộn được hơn 150px rồi
+                if ($(this).scrollTop() > 100) {
+                    // Tiến hành show menu ra    
+                    $("#topMenu").addClass("navbar-fixed-top");
+                } else {
+                    // Ngược lại, nhỏ hơn 120px thì hide menu đi.
+                    $("#topMenu").removeClass("navbar-fixed-top");
                 }
-                )
-            })
-        </script>
+            }
+            )
+        })
+    </script>
 
-        <div class="topHeader hidden-xs" id="topHeader">
-            <div class="headerBody">
-                <div class="headerBodyLeft">
-                    <img src="/images/mobifone-logo.png" alt="mobifone-logo" />
-                </div>
-                <div class="headerBodyRight">
-                    <img style="height:100%" src="/images/yolo-logo.png" alt="mobifone-logo" />
-                </div>
+    <div class="topHeader hidden-xs" id="topHeader">
+        <div class="headerBody">
+            <div class="headerBodyLeft">
+                <img src="/images/mobifone-logo.png" alt="mobifone-logo" />
+            </div>
+            <div class="headerBodyRight">
+                <img style="height: 100%" src="/images/yolo-logo.png" alt="mobifone-logo" />
             </div>
         </div>
+    </div>
 
-        <div class="navbar navbar-inverse" id="topMenu">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/" id = "logoText">#YOLO</a>
-                    <a class="navbar-brand" runat="server" href="~/" id = "logoImg"><img src ="../images/yolo-logo.png"></a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <asp:Repeater ID="dtlMenu" runat="server" EnableViewState="False">
-                            <ItemTemplate>
-                                <li><a href="<%# Eval("LINK") %>"><%# Eval("NAME").ToString().ToUpper() %></a></li>
-                            </ItemTemplate>
-                        </asp:Repeater>
-                        <%--<li><a runat="server" href="#fanper">FANPER</a></li>
+    <div class="navbar navbar-inverse" id="topMenu">
+        <div class="container">
+            <div class="navbar-header" style ="padding-top:10px;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style ="margin-top: 0px;">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" runat="server" href="~/" id="logoText">YOLO</a>
+                <a class="navbar-brand" runat="server" href="~/" id="logoImg"><img src="../images/yolo-logo.png" style ="width:55%!important; padding-left:10px; padding-top:5px;"></a>
+                <a class="navbar-brand" runat="server" href="~/" id="logoMobifone">YOLO - DAMCHIASE.VN</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/ket-noi-facebook/">KẾT NỐI FANPAGE</a></li>
+                    <asp:Repeater ID="dtlMenu" runat="server" EnableViewState="False">
+                        <ItemTemplate>
+                            <li><a href="<%# Eval("LINK") %>"><%# Eval("NAME").ToString().ToUpper() %></a></li>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                    <%--<li><a runat="server" href="#fanper">FANPER</a></li>
                         <li><a runat="server" href="#fanper">SỰ KIỆN ẤN TƯỢNG</a></li>
                         <li><a runat="server" href="~/Category.aspx">TRẢI NGHIỆM</a></li>
                         <li><a runat="server" href="~/Contact">TIN TỨC</a></li>
                         <li><a runat="server" href="~/Contact">LIÊN HỆ</a></li>--%>
-                    </ul>
-                    <div class="nav navbar-nav navbar-right" id ="nav_Search">
-                        <div class="menuSearch">
-                            <input type="text" id="txtSearch" placeholder="Nội dung tìm kiếm" />
-                        </div>
+                </ul>
+                <div class="nav navbar-nav navbar-right" id="nav_Search">
+                    <div class="menuSearch">
+                        <input type="text" id="txtSearch" placeholder="Nội dung tìm kiếm" />
                     </div>
-
                 </div>
+
             </div>
         </div>
-        <div>
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
+    </div>
+    <div>
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
 
-         <!-- KHOI THU 6 - FOOTER -->
+    <!-- KHOI THU 6 - FOOTER -->
     <div style="min-height: 290px; background-color: #e5e5e5;">
-        <div class="container" id = "mainFooter">
-            <div class="col-md-4" style="margin-top:20px;margin-bottom:20px;">
+        <div class="container" id="mainFooter">
+            <div class="col-md-4" style="margin-top: 20px; margin-bottom: 20px;">
                 <img src="/images/mobifone-logo.png" alt="Logo" />
                 <div style="border-bottom: solid 1px #828282; width: 92%; margin-top: 20px;">
                 </div>
@@ -111,13 +113,14 @@
                     <%= GetSetting("Email") %>
                 </div>
             </div>
-            <div class="col-md-8 footer" style="margin-bottom:30px">
-                <p class="hidden-xs hidden-sm" style="font-size: 30px; font-weight: bold; font-family: Arial; color: #464a52;">Về chúng tôi</p>
-                <p style="font-size: 16px; font-weight: bold; font-family: Arial; color: #464a52;"><%= GetSetting("Name") %></p>
-                <p style="font-size: 15px; font-family: Arial; color: #464a52; margin-top: -13px;"><%= GetSetting("Address") %></p>
-                <p style="font-size: 15px; font-family: Arial; color: #464a52; margin-top: -13px;">Mobile: <%= GetSetting("Phone") %> - Email: <%= GetSetting("Email") %></p>
+            <div class="col-md-8 footer" style="margin-bottom: 30px">
+                <div class="hidden-xs hidden-sm" style="font-size: 30px; font-weight: bold; font-family: Arial; color: #464a52; margin-top:30px;">Về chúng tôi</div>
+                <div style="font-size: 20px; font-weight: bold; font-family: Arial; color: #464a52; margin-top:12px;"><%= GetSetting("Name") %></div>
+                <div style="font-size: 15px; font-family: Arial; color: #464a52; margin-top: 10px;"><%= GetSetting("Address") %></div>
+                <div style="font-size: 15px; font-family: Arial; color: #464a52; margin-top: 10px;">Mobile: <%= GetSetting("Phone") %></div>
+                <div style="font-size: 15px; font-family: Arial; color: #464a52; margin-top: 10px;">Email: <%= GetSetting("Email") %></div>
             </div>
-            
+
         </div>
     </div>
 
