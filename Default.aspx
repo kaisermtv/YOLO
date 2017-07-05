@@ -21,10 +21,33 @@
 
     <!-- Responsive -->
     <link rel="stylesheet" type="text/css" href="/css/responsive.css">
-    
+
     <link rel="stylesheet" type="text/css" href="/css/shortcodes.css">
-   <%-- <link rel="stylesheet" type="text/css" href="/css/style1.css">--%>
-    
+    <%-- <link rel="stylesheet" type="text/css" href="/css/style1.css">--%>
+
+    <!-- HIEU UNG CHU TREN ANH -->
+    <%--<style>
+        div.background {
+            border: 0px solid black;
+        }
+
+        div.transbox {
+            margin: 30px;
+            background-color: #ffffff;
+            opacity: 0.5;
+            filter: alpha(opacity=60); /* For IE8 and earlier */
+            margin-top:-150px;
+        }
+
+        div.transbox p {
+            margin: 5%;
+            font-weight: bold;
+            color: #000000;
+            width:50%;
+            border:solid 1px red;
+        }
+    </style>--%>
+    <!-- -->
 </asp:Content>
 <asp:Content ID="ScriptContent" ContentPlaceHolderID="ScriptContent" runat="server">
     <script type="text/javascript" src="../Scripts/jquery.flexslider-min.js"></script>
@@ -34,15 +57,22 @@
     <script type="text/javascript" src="../Scripts/main.js"></script>
 </asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    
+
     <uc1:SliderTwo runat="server" />
     <%--<uc1:SliderOne runat="server"  />--%>
-    
+
     <%--<uc1:CuocThiAnh runat="server" />--%>
 
     <!-- KHOI SO 2 - FANPER  -->
-    <div class="container" style="margin-top:30px">
-        <img src="<%=pic_cover %>" style="width:100%" />
+    <div class="container" style="margin-top: 30px">
+
+        <%--<div class="background" style="background-image: url(<%=pic_cover %>); background-repeat:no-repeat; width:100%!important;">--%>
+            <img src="<%=pic_cover %>" style="width: 100%;"  />
+           <%-- <div class="transbox">
+                <p>This is some text that is placed in the transparent box.</p>
+            </div>
+        </div>--%>
+
     </div>
     <!-- KET THUC KHOI SO 2 -->
 

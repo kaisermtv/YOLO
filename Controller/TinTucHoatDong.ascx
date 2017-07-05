@@ -5,7 +5,7 @@
 <div id="site-content">
     <section class="flat-row popup pad-top70px pad-bottom70px">
         <div class="container">
-            <div class="phoneHeader" id="newsHeader" style="min-height: 65px; background-color: #2c90f7; color: #fff; font-size: 30px; font-weight: bold; text-align: center; padding-top: 5px; margin-bottom: 30px;">
+            <div class="phoneHeader" id="newsHeader" style="min-height: 65px; background-color: #2c90f7; color: #fff; font-size: 30px; font-weight: bold; text-align: center; padding-top: 12px; margin-bottom: 30px;">
                 TIN TỨC, SỰ KIỆN
             </div>
 
