@@ -8,11 +8,12 @@ using System.Web.UI.WebControls;
 public partial class ajax_LoadMoreFacebook : System.Web.UI.Page
 {
     #region declare
-    FacebookAPI objFacebook = new FacebookAPI();
-
+    public FacebookAPI objFacebook = new FacebookAPI();
+    public Facebook.FacebookClient objFacebookClient = new Facebook.FacebookClient();
     public string nextUrl = "";
     #endregion
 
+    #region method Page_Load
     protected void Page_Load(object sender, EventArgs e)
     {
         try
@@ -20,7 +21,8 @@ public partial class ajax_LoadMoreFacebook : System.Web.UI.Page
             nextUrl = Request["after"].ToString();
         }
         catch { }
-    }
+    } 
+    #endregion
 
     #region Even Page_PreRender
     public void Page_PreRender(object sender, EventArgs e)

@@ -991,12 +991,15 @@
 	line-height: 30px;
 	font-family: Arial;
 	text-align: justify;
+	margin-bottom:15px;
 }
+
 
 #facebookMeaasge {
 	font-size: 15px;
 	font-family: Arial;
 	text-align: justify;
+	line-height:20px;
 }
 
 .fb_footer {
@@ -1005,7 +1008,7 @@
 	width: 100%;
 	background-color: #ffefef;
 	height: 30px !important;
-	margin-top: 10px;
+	margin-top: 20px;
 }
 
 .navbar {
