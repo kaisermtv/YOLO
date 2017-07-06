@@ -73,7 +73,6 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/ket-noi-facebook/">KẾT NỐI FANPAGE</a></li>
                     <asp:Repeater ID="dtlMenu" runat="server" EnableViewState="False">
                         <ItemTemplate>
                             <li><a href="<%# Eval("LINK") %>"><%# Eval("NAME").ToString().ToUpper() %></a></li>
