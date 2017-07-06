@@ -5,6 +5,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
+using Newtonsoft.Json.Linq;
+using Facebook;
+using System.IO;
+using System.Data;
 
 /// <summary>
 /// Summary description for FakebookAPI
@@ -16,7 +20,6 @@ public class FacebookAPI
     private static string Infofields = "id,name,picture,cover";
     private static string fields_album = "photos{images,name,link,likes.limit(0).summary(true), comments.limit(0).summary(true),  created_time}";          // chú ý không dùng created_time trong comments
     private static string token = "1972725952949362|91b3fca08e2a493e72610dad124d1beb";
-
     private static string PageName = "yolomobifone";
     private static string PageID = "296261680821719";
     private static string ApiUrl = @"https://graph.facebook.com/v2.9/";
@@ -95,7 +98,6 @@ public class FacebookAPI
             client.Headers.Add("Content-Type", "application/json");
             string txt = client.DownloadString(url);
 
-
             Debug.WriteLine(txt);
 
             //Debug.WriteLine("====== GET JSON STRING  " + json);
@@ -125,4 +127,54 @@ public class FacebookAPI
     }
     #endregion
 
+    #region method getCountLikesById
+    public string getCountLikesById(string post_id)
+    {
+        try
+        {
+            FacebookClient fb = new FacebookClient(token);
+            var like = fb.Get(post_id + "/likes?summary=true");
+            dynamic objData = JsonConvert.DeserializeObject(like.ToString());
+            return objData.summary.total_count;
+        }
+        catch
+        {
+            return "0";
+        }
+    } 
+    #endregion
+
+    #region method getCountSharesById
+    public string getCountSharesById(string post_id)
+    {
+        try
+        {
+            FacebookClient fb = new FacebookClient(token);
+            var like = fb.Get(post_id + "/share");
+            dynamic objData = JsonConvert.DeserializeObject(like.ToString());
+            return objData.summary.total_count;
+        }
+        catch
+        {
+            return "0";
+        }
+    }
+    #endregion
+
+    #region method getCountCommentsById
+    public string getCountCommentsById(string post_id)
+    {
+        try
+        {
+            FacebookClient fb = new FacebookClient(token);
+            var like = fb.Get(post_id + "/comments?summary=true");
+            dynamic objData = JsonConvert.DeserializeObject(like.ToString());
+            return objData.summary.total_count;
+        }
+        catch
+        {
+            return "0";
+        }
+    }
+    #endregion
 }
