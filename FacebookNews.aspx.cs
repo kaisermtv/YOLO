@@ -13,7 +13,7 @@ public partial class FacebookNews : System.Web.UI.Page
     public string pic_cover = "";
     public string nextUrl = "";
     public FacebookAPI objFacebook = new FacebookAPI();
-    public Facebook.FacebookClient objFacebookClient = new Facebook.FacebookClient();
+    //public Facebook.FacebookClient objFacebookClient = new Facebook.FacebookClient();
     #endregion
 
     #region Even Page_Load

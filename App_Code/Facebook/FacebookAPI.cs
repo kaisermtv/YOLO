@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using Newtonsoft.Json.Linq;
-using Facebook;
+//using Facebook;
 using System.IO;
 using System.Data;
 
@@ -16,7 +16,7 @@ using System.Data;
 public class FacebookAPI
 {
     #region static declare 
-    private static string fields = "id,type,name,full_picture,picture,link,permalink_url,message,created_time";
+    private static string fields = "id,type,name,full_picture,picture,link,permalink_url,message,shares,created_time,comments.summary(true).limit(0),likes.limit(0).summary(true)";
     private static string Infofields = "id,name,picture,cover";
     private static string fields_album = "photos{images,name,link,likes.limit(0).summary(true), comments.limit(0).summary(true),  created_time}";          // chú ý không dùng created_time trong comments
     private static string token = "1972725952949362|91b3fca08e2a493e72610dad124d1beb";
@@ -132,10 +132,13 @@ public class FacebookAPI
     {
         try
         {
-            FacebookClient fb = new FacebookClient(token);
-            var like = fb.Get(post_id + "/likes?summary=true");
-            dynamic objData = JsonConvert.DeserializeObject(like.ToString());
-            return objData.summary.total_count;
+            string url = ApiUrl + post_id + "/likes?summary=true&limit=0";
+
+            url += "&access_token=" + token;
+
+            dynamic ret = getUrlJson(url);
+
+            return ret.summary.total_count;
         }
         catch
         {
@@ -149,10 +152,20 @@ public class FacebookAPI
     {
         try
         {
-            FacebookClient fb = new FacebookClient(token);
-            var like = fb.Get(post_id + "/share");
-            dynamic objData = JsonConvert.DeserializeObject(like.ToString());
-            return objData.summary.total_count;
+            //string url = ApiUrl + post_id + "/share";
+
+            //url += "&access_token=" + token;
+
+            //dynamic ret = getUrlJson(url);
+
+            //return ret.summary.total_count;
+
+            //FacebookClient fb = new FacebookClient(token);
+            //var like = fb.Get(post_id + "/share");
+            //dynamic objData = JsonConvert.DeserializeObject(like.ToString());
+            //return objData.summary.total_count;
+
+            return "0";
         }
         catch
         {
@@ -166,10 +179,18 @@ public class FacebookAPI
     {
         try
         {
-            FacebookClient fb = new FacebookClient(token);
-            var like = fb.Get(post_id + "/comments?summary=true");
-            dynamic objData = JsonConvert.DeserializeObject(like.ToString());
-            return objData.summary.total_count;
+            string url = ApiUrl + post_id + "/comments?summary=true&limit=0";
+
+            url += "&access_token=" + token;
+
+            dynamic ret = getUrlJson(url);
+
+            return ret.summary.total_count;
+
+            //FacebookClient fb = new FacebookClient(token);
+            //var like = fb.Get(post_id + "/comments?summary=true");
+            //dynamic objData = JsonConvert.DeserializeObject(like.ToString());
+            //return objData.summary.total_count;
         }
         catch
         {

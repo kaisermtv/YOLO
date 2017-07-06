@@ -8,8 +8,8 @@ using System.Web.UI.WebControls;
 public partial class ajax_LoadMoreFacebook : System.Web.UI.Page
 {
     #region declare
-    public FacebookAPI objFacebook = new FacebookAPI();
-    public Facebook.FacebookClient objFacebookClient = new Facebook.FacebookClient();
+    private FacebookAPI objFacebook = new FacebookAPI();
+    //public Facebook.FacebookClient objFacebookClient = new Facebook.FacebookClient();
     public string nextUrl = "";
     #endregion
 

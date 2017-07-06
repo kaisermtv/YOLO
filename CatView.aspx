@@ -100,6 +100,15 @@
                         <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Số điện thoại" required>
                     </div>
                     <div class="form-group">
+                        <select class="form-control" id="tinhThanh" name="tinhThanh">
+                            <option value="0">Chọn tỉnh thành</option>
+                            <option value="1">Nghệ An</option>
+                            <option value="2">Hà Tĩnh</option>
+                            <option value="3">Thanh Hóa</option>
+                            <option value="4">Quảng Bình</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <input type="text" class="form-control" id="subject" name="subject" placeholder="Chủ đề" required>
                     </div>
                     <div class="form-group">

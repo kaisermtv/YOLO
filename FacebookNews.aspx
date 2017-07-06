@@ -44,6 +44,11 @@
             text-align: justify;
             line-height: 20px;
         }
+
+        .butonLoad{
+            text-align: center; margin-top: 20px;
+            height:40px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ScriptContent" runat="server">
@@ -66,6 +71,9 @@
             if (!isLoad) {
                 isLoad = true;
 
+                $("#loadmore").hide();
+                $("#loading").show();
+
                 $.get('/ajax/LoadMoreFacebook.aspx?after=' + url, returnJson)
             }
         }
@@ -75,10 +83,14 @@
                 //alert(data);
 
                 $("#loadmore").remove();
+                $("#loading").hide();
 
                 $("#fb_data").append(data);
             } else {
                 alert('Error occured');
+
+                $("#loadmore").show();
+                $("#loading").hide();
             }
 
             isLoad = false;
@@ -118,22 +130,22 @@
                                             </div>
                                             <div class="fb_footer">
                                                 <div style="float: left; margin-right:5px;">
-                                                    <img src="../images/facebook-new-like-symbol-32.png" style="width: 20px;">
+                                                    <img src="/images/facebook-new-like-symbol-32.png" style="width: 20px;">
                                                 </div>
                                                 <div style="float: left; font-size: 12px; padding-top:5px;">
-                                                    <%# this.objFacebook.getCountLikesById(Eval("Id").ToString()) %>
+                                                    <%# (((dynamic)Container.DataItem).likes != null)?Eval("likes.summary.total_count"):"0" %>
                                                 </div>
                                                 <div style="float: left; margin-left:10px; margin-right:5px;">
-                                                    <img src="../images/comments-512.png" style="width: 18px; margin-top:2px;">
+                                                    <img src="/images/comments-512.png" style="width: 18px; margin-top:2px;">
                                                 </div>
                                                 <div style="float: left; font-size: 12px; padding-top:5px;">
-                                                    <%# this.objFacebook.getCountCommentsById(Eval("Id").ToString()) %>
+                                                    <%# (((dynamic)Container.DataItem).comments != null)?Eval("comments.summary.total_count"):"0" %>
                                                 </div>
                                                  <div style="float: left; margin-left:10px; margin-right:5px;">
-                                                    <img src="../images/shares.png" style="width: 18px; margin-top:2px;">
+                                                    <img src="/images/shares.png" style="width: 18px; margin-top:2px;">
                                                 </div>
                                                 <div style="float: left; font-size: 12px; padding-top:5px;">
-                                                    <%# this.objFacebook.getCountSharesById(Eval("link").ToString()) %>
+                                                    <%# (((dynamic)Container.DataItem).shares != null)?Eval("shares.count"):"0" %>
                                                 </div>
                                                 <div style ="float:right; padding-top:5px; font-size: 12px; color:#849292;"><a href="<%# Eval("permalink_url") %>" style="float: right;">Xem trên facebook</a></div>
                                                 <%--<div class="fb-like" data-href="<%# Eval("link") %>" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false" style="width: 70%; float: left;"></div>--%>
@@ -141,7 +153,7 @@
                                         </ItemTemplate>
                                     </asp:Repeater>
 
-                                    <div id="loadmore" style="text-align: center; margin-top: 20px">
+                                    <div id="loadmore" class="butonLoad">
                                         <%--<asp:Button ID="prev" runat="server" OnClick="prev_Click" Text="Trước" />--%>
                                         <%--<asp:Button ID="next" runat="server" OnClick="next_Click" Text="Tiếp" />--%>
 
@@ -149,6 +161,9 @@
                                     </div>
                                 </div>
 
+                                <div id="loading" class="butonLoad" style="display:none;">
+                                    <img src="/images/loading.gif" />
+                                </div>
                                 <br />
                                 <hr />
                                 <div class="fb-comments"

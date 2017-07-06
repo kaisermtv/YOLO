@@ -67,7 +67,9 @@
     <div class="container" style="margin-top: 30px">
 
         <%--<div class="background" style="background-image: url(<%=pic_cover %>); background-repeat:no-repeat; width:100%!important;">--%>
-            <img src="<%=pic_cover %>" style="width: 100%;"  />
+        <a href="/ket-noi-facebook">
+            <img src="<%=pic_cover %>" style="width: 100%;" />
+        </a>
            <%-- <div class="transbox">
                 <p>This is some text that is placed in the transparent box.</p>
             </div>
