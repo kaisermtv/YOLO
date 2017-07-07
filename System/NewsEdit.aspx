@@ -114,6 +114,10 @@
         </div>
         <div class="AdminRightItem">
             <asp:CheckBox ID="ckbNoiBat" runat="server"></asp:CheckBox> Bài viết nổi bật
+
+            <% if(itemId == 0){ %>
+            <asp:CheckBox ID="chkShareFb" runat="server" style="margin-left:20px"></asp:CheckBox> Chia sẻ facebook
+            <% } %>
         </div>
     </div>
 

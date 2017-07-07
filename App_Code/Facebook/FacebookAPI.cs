@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 //using Facebook;
 using System.IO;
 using System.Data;
+using System.Dynamic;
 
 /// <summary>
 /// Summary description for FakebookAPI
@@ -97,7 +98,37 @@ public class FacebookAPI
             var client = new WebClient();
             client.Headers.Add("Content-Type", "application/json");
             string txt = client.DownloadString(url);
+            //client.
+            Debug.WriteLine(txt);
 
+            //Debug.WriteLine("====== GET JSON STRING  " + json);
+            return JsonConvert.DeserializeObject(txt);
+        }
+        catch (Exception e)
+        {
+            //Debug.WriteLine("[Error] Cannot download json : " + e.GetBaseException());
+
+            //throw e;
+            return null;
+        }
+    }
+    #endregion
+
+
+    #region postUrlJson
+    public dynamic postUrlJson(string url, dynamic param)
+    {
+        try
+        {
+            var client = new WebClient();
+            client.Headers.Add("Content-Type", "application/json");
+
+
+            string txt = client.UploadString(url, JsonConvert.SerializeObject(param));
+
+
+            //string txt = client.DownloadString(url);
+            //client.
             Debug.WriteLine(txt);
 
             //Debug.WriteLine("====== GET JSON STRING  " + json);
@@ -196,6 +227,27 @@ public class FacebookAPI
         {
             return "0";
         }
+    }
+    #endregion
+
+    #region Method 
+    public dynamic Share(string name, string mesage, string link, string picture, string caption = "", string description = "")
+    {
+        string url = ApiUrl + "me" + "/feed?access_token=EAACEdEose0cBAJyYMIcZAhlvZAWdvps3imqczEzH7P8vKGHZAcbxVT0UXzlsveNOvv54z1HBPcGMsmza4GbsRhK88WpPzEoSuK6R6Oy88X64je2lokvVE88ZBB7SyMh2lPsI8m9bm9ZAKXVxfiTTKTdpVk8wZC9uWlYYEe18E6qZAdRymzy353HMzEn4JMNsIQZD";// +token;
+
+        //string url = ApiUrl + PageID + "/feed?access_token=" +token;
+
+        dynamic parameters = new ExpandoObject();
+        parameters.message = mesage;
+        parameters.link = link;
+        parameters.picture = picture;
+        parameters.name = name;
+        if (caption != "") parameters.caption = caption;
+        if (description != "") parameters.description = description;
+
+        dynamic result = postUrlJson(url, parameters);
+
+        return result;
     }
     #endregion
 }
