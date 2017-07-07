@@ -84,6 +84,8 @@ public partial class CatView : System.Web.UI.Page
                 objComment["Name"] = Request.Form["name"];
                 objComment["Email"] = Request.Form["email"];
                 objComment["Phone"] = Request.Form["mobile"];
+                objComment["CityID"] = Request.Form["CityID"];
+                
                 objComment["NSTATUS"] = 0;
 
                 int ret = (int)objComment.setData();

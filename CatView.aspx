@@ -89,7 +89,7 @@
             <div class="form-area">
                 <form role="form" method="post">
                     <br style="clear: both">
-                    <h3 style="margin-bottom: 25px; text-align: center;" id = "H3CatView">THÔNG TIN PHẢN HỒI</h3>
+                    <h3 style="margin-bottom: 25px; text-align: center;" id = "H3CatView">ĐỂ ĐÓNG GÓP Ý KIẾN CỦA BẠN HAY ĐIỀN THÔNG TIN THEO MẪU</h3>
                     <div class="form-group">
                         <input type="text" class="form-control" id="name" name="name" placeholder="Họ và tên" required>
                     </div>
@@ -100,7 +100,7 @@
                         <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Số điện thoại" required>
                     </div>
                     <div class="form-group">
-                        <select class="form-control" id="tinhThanh" name="tinhThanh">
+                        <select class="form-control" id="city" name="CityID">
                             <option value="0">Chọn tỉnh thành</option>
                             <option value="1">Nghệ An</option>
                             <option value="2">Hà Tĩnh</option>
