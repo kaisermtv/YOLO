@@ -8,8 +8,48 @@ using System.Web;
 /// <summary>
 /// Summary description for DataNews
 /// </summary>
-public class DataNews : DataClass
+public class DataNews : DataAbstract
 {
+    #region method DataSlider
+    public DataNews()
+    {
+        keyTable = "Id";
+        nameTable = "tblNews";
+    }
+    #endregion
+
+    #region setData Atribute
+    protected override SqlDbType? GetTypeAtribute(string name)
+    {
+        switch (name)
+        {
+            case "Id":
+            case "CatId":
+            case "FacebookId":
+            case "NSTATUS":
+            case "UserPost":
+            case "UserEdit":
+                return SqlDbType.Int;
+            case "Title":
+            case "ShortContent":
+            case "Content":
+            case "ImgUrl":
+            case "tag":
+            case "Author":
+                return SqlDbType.NVarChar;
+            case "NoiBat":
+                return SqlDbType.Bit;
+            case "DayPost":
+            case "DayEdit":
+                return SqlDbType.DateTime;
+        }
+
+        return null;
+    }
+    #endregion
+
+
+
     #region method getData
     public DataRow getData(int id)
     {

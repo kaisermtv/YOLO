@@ -109,17 +109,36 @@ public partial class System_NewsEdit : System.Web.UI.Page
 
         if(itemId == 0)
         {
-            itemId = this.objNews.addData(this.txtTitle.Text, int.Parse(this.ddlGroup.SelectedValue.ToString()), this.txtShortContent.Text, this.txtContent.Text.Trim(), saveImage(FileUpload, htxtimg, htxtimg1), this.txtAuthor.Text, ckbNoiBat.Checked, txtTag.Text);
+            string linkImage = saveImage(FileUpload, htxtimg, htxtimg1);
+
+
+
+            itemId = this.objNews.addData(this.txtTitle.Text, int.Parse(this.ddlGroup.SelectedValue.ToString()), this.txtShortContent.Text, this.txtContent.Text.Trim(), linkImage, this.txtAuthor.Text, ckbNoiBat.Checked, txtTag.Text);
             if (itemId != 0)
             {
                 objSystemClass.addMessage("Đăng bài viết thành công.");
 
-                if(chkShareFb.Checked )
+                if (chkShareFb.Checked)
                 {
-                    FacebookAPI objFb = new FacebookAPI();
+                    try
+                    {
+                        FacebookAPI objFb = new FacebookAPI();
 
-                    //dynamic retdata = objFb.Share("", "", "", "", this.txtTitle.Text, this.txtShortContent.Text);
+                        dynamic retdata = objFb.Share("", "", "http://113.164.227.242:4083/" + SystemClass.convertToUnSign2(this.txtTitle.Text) + "-v" + itemId, "http://113.164.227.242:4083" + linkImage, this.txtTitle.Text, this.txtShortContent.Text);
 
+                        string idfb = retdata.id;
+
+                        if(idfb != "")
+                        {
+                            objNews["Id"] = itemId;
+                            objNews["FacebookId"] = idfb;
+                            objNews.setData();
+                        }
+                    }
+                    catch
+                    {
+                        objSystemClass.addMessage("Không thể đăng len facebook");
+                    }
                 }
 
 
