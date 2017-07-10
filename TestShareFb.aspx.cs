@@ -17,8 +17,10 @@ public partial class TestShareFb : System.Web.UI.Page
     {
         FacebookAPI objFb = new FacebookAPI();
 
+        dynamic retdata = objFb.Share("", "", "http://113.164.227.242:4083/" + SystemClass.convertToUnSign2("test") + "-v" + 1,"","123123","svsdjvsdv7ds7v");
+        output = JsonConvert.SerializeObject(retdata);
 
 
-        //output = JsonConvert.SerializeObject(objFb.Share(""));
+        //output = JsonConvert.SerializeObject(objFb.getTopPostPage());
     }
 }

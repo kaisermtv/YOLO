@@ -22,9 +22,9 @@
             </td>
             <td style="width:25%">
                 <select name="trangthai" onchange="SubmitForm('seachform');" class="form-control">
-                    <option value="-1">Tất cả</option>
-                    <option value="0">Chờ duyệt</option>
-                    <option value="2">Đã duyệt</option>
+                    <option value="-1"<%= (trangthai == -1)?"selected=\"selected\"":""  %>>Tất cả</option>
+                    <option value="0"<%= (trangthai == 0)?"selected=\"selected\"":""  %>>Chờ duyệt</option>
+                    <option value="2"<%= (trangthai == 2)?"selected=\"selected\"":""  %>>Đã duyệt</option>
                 </select>
             </td>
             <td style="width: 40px !important; text-align: center;">

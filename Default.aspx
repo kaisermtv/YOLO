@@ -48,6 +48,18 @@
         }
     </style>--%>
     <!-- -->
+
+    <style>
+        #myCarousel{
+            width:100%;position:absolute;top:0px;padding-left:120px;height:100%;overflow:hidden;
+        }
+
+        #myCarousel .item{
+            width:100%;
+            text-align:center;
+            vertical-align:central;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="ScriptContent" ContentPlaceHolderID="ScriptContent" runat="server">
     <script type="text/javascript" src="../Scripts/jquery.flexslider-min.js"></script>
@@ -64,12 +76,31 @@
     <%--<uc1:CuocThiAnh runat="server" />--%>
 
     <!-- KHOI SO 2 - FANPER  -->
-    <div class="container" style="margin-top: 30px">
+    <div class="container" style="margin-top: 30px;position:relative;">
 
         <%--<div class="background" style="background-image: url(<%=pic_cover %>); background-repeat:no-repeat; width:100%!important;">--%>
         <a href="/ket-noi-facebook">
             <img src="<%=pic_cover %>" style="width: 100%;" />
         </a>
+
+        <div style="position:absolute;bottom:0px;right:0px">
+            <img src="/images/pimgpsh_fullsize_distr.png" />
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <asp:Repeater ID="dtlNewsFacebook" runat="server">
+                        <ItemTemplate>
+                            <div class="item <%= i++ ==0?"active":"" %>">
+                                <h4><%# getTitle((dynamic)Container.DataItem) %></h4>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
+
+            </div>
+
+        </div>
+
            <%-- <div class="transbox">
                 <p>This is some text that is placed in the transparent box.</p>
             </div>

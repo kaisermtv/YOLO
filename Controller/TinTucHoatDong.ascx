@@ -38,8 +38,10 @@
                         <asp:Repeater ID="dtlData" runat="server" EnableViewState="False">
                             <ItemTemplate>
                                 <div class="flat-progress" style ="text-align:justify;">
+
                                     <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>">
-                                        <p class="name"><%# Eval("Title") %></p>
+                                        <img onerror="imgCatchError(this)" src="<%#Eval("ImgUrl")%>" style="width:80px;float:left;margin-bottom:10px" />
+                                        <p class="name" style="float:right;margin-left:-90px;padding-left:90px;width:100%;"><%# Eval("Title") %></p>
                                     </a>
                                     <div class="progress-bar" data-percent="90" data-waypoint-active="yes">
                                         <div class="progress-animate"></div>

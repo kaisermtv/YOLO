@@ -10,6 +10,7 @@ public partial class _Default : System.Web.UI.Page
     #region declare
     public string pic_cover = "";
 
+    public int i = 0;
     #endregion
 
     #region Even Page_Load
@@ -31,6 +32,39 @@ public partial class _Default : System.Web.UI.Page
             pic_cover = objData.cover.source;
         }
         catch { }
+
+
+        try
+        {
+            dynamic objData = objFacebook.getTopPostPage(5);
+
+            dtlNewsFacebook.DataSource = objData.data;
+            dtlNewsFacebook.DataBind();
+
+        }
+        catch { }
+    }
+    #endregion
+
+    #region Method getTitle
+    public string getTitle(dynamic objItem)
+    {
+        string name = "";
+
+        try
+        {
+            name = objItem.name;
+        }
+        catch{}
+
+        if (name == null || name == "" || name == "Timeline Photos")
+        {
+
+        }
+
+
+
+        return name;
     }
     #endregion
 }

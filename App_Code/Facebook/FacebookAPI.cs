@@ -22,8 +22,15 @@ public class FacebookAPI
     private static string fields_album = "photos{images,name,link,likes.limit(0).summary(true), comments.limit(0).summary(true),  created_time}";          // chú ý không dùng created_time trong comments
     private static string token = "1972725952949362|91b3fca08e2a493e72610dad124d1beb";
     private static string PageName = "yolomobifone";
-    private static string PageID = "296261680821719";
+    private static string PageID = "262884504159437";
+
+    //private static string PageName = "Học-Hợp-Ngữ-Assembly-570235299813675";
+    //private static string PageID = "570235299813675";
+
     private static string ApiUrl = @"https://graph.facebook.com/v2.9/";
+
+
+    public static string App_id = "1972725952949362";
     #endregion
 
     #region Even FacebookAPI
@@ -42,7 +49,7 @@ public class FacebookAPI
     #region Method getTopPostPage
     public dynamic getTopPostPage(int limit = 1,string after = "")
     {
-        string url = ApiUrl + PageName + "/posts?fields=" + fields; 
+        string url = ApiUrl + PageID + "/posts?fields=" + fields; 
 
         if(limit > 0)
         {
@@ -113,7 +120,6 @@ public class FacebookAPI
         }
     }
     #endregion
-
 
     #region postUrlJson
     public dynamic postUrlJson(string url, dynamic param)
@@ -233,9 +239,9 @@ public class FacebookAPI
     #region Method 
     public dynamic Share(string name, string mesage, string link, string picture, string caption = "", string description = "")
     {
-        string url = ApiUrl + "me" + "/feed?access_token=EAACEdEose0cBAJyYMIcZAhlvZAWdvps3imqczEzH7P8vKGHZAcbxVT0UXzlsveNOvv54z1HBPcGMsmza4GbsRhK88WpPzEoSuK6R6Oy88X64je2lokvVE88ZBB7SyMh2lPsI8m9bm9ZAKXVxfiTTKTdpVk8wZC9uWlYYEe18E6qZAdRymzy353HMzEn4JMNsIQZD";// +token;
+        //string url = ApiUrl + "me" + "/feed?access_token=EAACEdEose0cBAJyYMIcZAhlvZAWdvps3imqczEzH7P8vKGHZAcbxVT0UXzlsveNOvv54z1HBPcGMsmza4GbsRhK88WpPzEoSuK6R6Oy88X64je2lokvVE88ZBB7SyMh2lPsI8m9bm9ZAKXVxfiTTKTdpVk8wZC9uWlYYEe18E6qZAdRymzy353HMzEn4JMNsIQZD";// +token;
 
-        //string url = ApiUrl + PageID + "/feed?access_token=" +token;
+        string url = ApiUrl + PageID + "/feed?access_token=" +token;
 
         dynamic parameters = new ExpandoObject();
         parameters.message = mesage;

@@ -137,7 +137,7 @@ public partial class System_NewsEdit : System.Web.UI.Page
                     }
                     catch
                     {
-                        objSystemClass.addMessage("Không thể đăng len facebook");
+                        objSystemClass.addMessage("Không thể đăng lên facebook");
                     }
                 }
 

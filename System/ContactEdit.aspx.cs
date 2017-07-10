@@ -55,7 +55,7 @@ public partial class System_ContactEdit : System.Web.UI.Page
             this.txtContent.Focus();
             return;
         }
-
+         
         //this.objContact.setData(this.itemId, this.txtContent.Text, this.ckbState.Checked, DateTime.Now, 0);
 
         //Response.Redirect("ContactList.aspx");

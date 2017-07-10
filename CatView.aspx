@@ -3,6 +3,9 @@
 <%@ Register Src="~/Controller/Paging.ascx" TagPrefix="uc1" TagName="Paging" %>
 <asp:Content ID="head" ContentPlaceHolderID="HeadContent" runat="server">
 
+
+    <meta property="fb:app_id" content="<%= FacebookAPI.App_id %>" />
+
 <meta property="og:title" content="<%=objData["Title"] %>"/>
 <meta property="og:image" content="http://113.164.227.242:4083<%=objData["ImgUrl"] %>" />
 <meta property="og:description" content=" <%=objData["ShortContent"] %>"/>
@@ -63,10 +66,11 @@
         <a href="https://plus.google.com?&url=http://113.164.227.242:4083<%=Request.RawUrl %>"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
         <hr />
         <h3 class="tieu-de">Bình luận </h3>
-        <div class="fb-comments"
+        <fb:comments xid="<%=objData["Id"]  %>" data-width="100%"></fb:comments>
+        <%--<div class="fb-comments"
             data-href="http://113.164.227.242:4083<%=Request.RawUrl %>"
             data-width="auto">
-        </div>
+        </div>--%>
             <hr />
 
 <%--        <asp:Repeater ID="dtlComment" runat="server">

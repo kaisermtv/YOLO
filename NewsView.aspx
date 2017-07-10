@@ -5,6 +5,9 @@
     <link rel="stylesheet" type="text/css" href="/css/front-end.css">
     <link rel="stylesheet" type="text/css" href="/css/reset.css">
 
+    <meta property="fb:app_id" content="<%= FacebookAPI.App_id %>" />
+    <meta property="fb:admins" content="570235299813675"/>
+    
     
     <meta property="og:title" content="<%=objData["Title"] %>"/>
     <meta property="og:image" content="http://113.164.227.242:4083<%= objData["ImgUrl"] %>" />
@@ -52,18 +55,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" style="margin-top: 50px; margin-bottom: 50px;" id = "ShareToolNewsView">
+                            <div class="row" style="margin-top: 50px; margin-bottom: 50px;" id="ShareToolNewsView">
 
-                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <a href="https://www.facebook.com/sharer.php?&u=http://113.164.227.242:4083<%=Request.RawUrl %>"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
-	                                  <a href="https://twitter.com/intent/tweet?&url=http://113.164.227.242:4083<%=Request.RawUrl %>"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
-	                                <a href="https://plus.google.com?&url=http://113.164.227.242:4083<%=Request.RawUrl %>"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
-	                                <a href="javascript:;" id="btn-save" style="position:static !important"  title="Download"><img src="/images/word-download.png" style="height:35px" /></a>
-                                              <hr />
-                                    <h3 class="tieu-de" id ="BinhLuanNewsView">Bình luận </h3>
-                                  <div class="fb-comments"
-                                   data-href="http://113.164.227.242:4083<%=Request.RawUrl %>"
-                                   data-width="750"></div>
+                                    <a href="https://twitter.com/intent/tweet?&url=http://113.164.227.242:4083<%=Request.RawUrl %>"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+                                    <a href="https://plus.google.com?&url=http://113.164.227.242:4083<%=Request.RawUrl %>"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+                                    <a href="javascript:;" id="btn-save" style="position: static !important" title="Download">
+                                        <img src="/images/word-download.png" style="height: 35px" /></a>
+                                    <hr />
+                                    <h3 class="tieu-de" id="BinhLuanNewsView">Bình luận </h3>
+                                    <fb:comments data-id="570235299813675" data-width="100%"></fb:comments>
+
+                                    <%--<div class="fb-comments" data-href="http://113.164.227.242:4083<%=Request.RawUrl %>" data-width="750"></div>--%>
                                 </div>
                             </div>
                             <asp:Repeater ID="dtlTinMoi" runat="server" EnableViewState="False">
@@ -132,7 +136,7 @@
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=<%= FacebookAPI.App_id %>";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 

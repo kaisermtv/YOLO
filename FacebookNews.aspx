@@ -2,6 +2,9 @@
 
 <%@ Register Src="~/Controller/DanhMucTin.ascx" TagPrefix="uc1" TagName="DanhMucTin" %>
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
+    <meta property="fb:app_id" content="<%= FacebookAPI.App_id %>" />
+
+
     <link rel="stylesheet" type="text/css" href="/css/front-end.css">
     <link rel="stylesheet" type="text/css" href="/css/reset.css">
     <style>
@@ -119,7 +122,7 @@
                                             <hr />
                                             <div class="row fb_content">
                                                 <div class="image col-md-5">
-                                                    <img src="<%# Eval("full_picture") %>" />
+                                                    <img src="<%# (((dynamic)Container.DataItem).full_picture != null)?Eval("full_picture"):"" %>" />
                                                 </div>
                                                 <div class="fb_body col-md-7">
                                                     <div class="fb_header">
@@ -150,6 +153,11 @@
                                                 <div style ="float:right; padding-top:5px; font-size: 12px; color:#849292;"><a href="<%# Eval("permalink_url") %>" style="float: right;">Xem trên facebook</a></div>
                                                 <%--<div class="fb-like" data-href="<%# Eval("link") %>" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false" style="width: 70%; float: left;"></div>--%>
                                             </div>
+
+                                            <%--<div class="fb-comments"
+                                                data-href="<%# Eval("permalink_url") %>"
+                                                data-width="auto">
+                                            </div>--%>
                                         </ItemTemplate>
                                     </asp:Repeater>
 
@@ -170,6 +178,7 @@
                                     data-href="http://113.164.227.242:4083<%=Request.RawUrl %>"
                                     data-width="auto">
                                 </div>
+                                
                             </div>
 
                             <div class="cright col-xs-6 col-sm-4 col-md-4 hidden-xs" style="margin-top: 30px;">
