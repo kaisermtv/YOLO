@@ -50,8 +50,13 @@
     <!-- -->
 
     <style>
-        #myCarousel{
-            width:100%;position:absolute;top:0px;padding-left:120px;height:100%;overflow:hidden;
+        #myCarousel {
+            width: 100%;
+            position: absolute;
+            top: 0px;
+            padding-left: 120px;
+            height: 100%;
+            overflow: hidden;
         }
 
         #myCarousel .item{
@@ -77,13 +82,17 @@
 
     <!-- KHOI SO 2 - FANPER  -->
     <div class="container" style="margin-top: 30px;position:relative;">
+        <div class="phoneHeader" id="newsHeader" style="min-height: 65px; background-color: #2c90f7; color: #fff; font-size: 30px; font-weight: bold; text-align: center; padding-top: 12px; margin-bottom: 30px;">
+              <a href="https://www.Facebook.com/yolomobifone" style="color:white;">Facebook.com/yolomobifone</a>
+        </div>
+
 
         <%--<div class="background" style="background-image: url(<%=pic_cover %>); background-repeat:no-repeat; width:100%!important;">--%>
         <a href="/ket-noi-facebook">
             <img src="<%=pic_cover %>" style="width: 100%;" />
         </a>
 
-        <div style="position:absolute;bottom:0px;right:0px">
+        <div style="position:absolute;bottom:0px;right:15px">
             <img src="/images/pimgpsh_fullsize_distr.png" />
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Wrapper for slides -->
@@ -91,7 +100,7 @@
                     <asp:Repeater ID="dtlNewsFacebook" runat="server">
                         <ItemTemplate>
                             <div class="item <%= i++ ==0?"active":"" %>">
-                                <h4><%# getTitle((dynamic)Container.DataItem) %></h4>
+                                <a href="<%# Eval("link") %>"><h4><%# getTitle((dynamic)Container.DataItem) %></h4></a>
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>

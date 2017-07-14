@@ -86,7 +86,7 @@
                     </a>
                 </td>
                 <td class="DataListTableTdItemCenter" style="background-color:#e8ffe8;">
-                    <a href="#myModal" onclick="delmodal(<%# Eval("Id") %>,'<%# Eval("Question") %>')">
+                    <a href="#myModal" onclick="delmodal(<%# Eval("Id") %>,'<%# HttpUtility.JavaScriptStringEncode( Eval("Question").ToString()) %>')">
                         <img src="/Images/delete.png" alt="Xóa nhóm">
                     </a>
                 </td>

@@ -5,15 +5,17 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class System_SliderMove : System.Web.UI.Page
+public partial class System_NewsGroupMove : System.Web.UI.Page
 {
+
     #region declare
-    private DataSlider objSlider = new DataSlider();
+    //private DataMenu objMenu = new DataMenu();
+    private DataNewsGroup objNewsGroup = new DataNewsGroup();
     //private SystemClass objSystemClass = new SystemClass();
 
     public int itemId = 0;
     public int vtId = 0;
-    public int group = 0;
+    public int page = 1;
     #endregion
 
     protected void Page_Load(object sender, EventArgs e)
@@ -32,15 +34,15 @@ public partial class System_SliderMove : System.Web.UI.Page
 
         try
         {
-            this.group = int.Parse(Request["group"].ToString());
+            this.page = int.Parse(Request["page"].ToString());
         }
         catch { }
 
         if (!Page.IsPostBack && this.itemId != 0)
         {
-            objSlider.SliderMove(itemId, vtId, group);
+            objNewsGroup.MoveItem(itemId, vtId);
         }
 
-        Response.Redirect("SliderList.aspx" + ((group != 0)?"?type="+group:"") );
+        Response.Redirect("NewsGroupList.aspx" + (page > 1?"?page="+page:""));
     }
 }

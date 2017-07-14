@@ -10,6 +10,8 @@ public partial class App_Master_Site : System.Web.UI.MasterPage
 {
     #region declare 
     private DataSetting objSetting = new DataSetting();
+
+    private DataMenu objMenu = new DataMenu();
     #endregion
 
     #region Even Page_Load
@@ -22,9 +24,7 @@ public partial class App_Master_Site : System.Web.UI.MasterPage
     #region Event Page_PreRender()
     public void Page_PreRender(object sender, EventArgs e)
     {
-        DataMenu objMenu = new DataMenu();
-
-        DataTable objDataMenu = objMenu.getList();
+        DataTable objDataMenu = objMenu.getList(0,1,true);
         if (objDataMenu != null)
         {
             dtlMenu.DataSource = objDataMenu.DefaultView;
@@ -39,4 +39,12 @@ public partial class App_Master_Site : System.Web.UI.MasterPage
         return objSetting.getValue(key);
     }
     #endregion
+
+    #region Method getSubMenu
+    public DataTable getSubMenu(int id)
+    {
+        return objMenu.getList(id);
+    }
+    #endregion
+
 }

@@ -12,12 +12,23 @@ public partial class System_NewsGroupList : System.Web.UI.Page
     private DataNewsGroup objNewsGroup = new DataNewsGroup();
 
     public int index = 0;
+    public int beginItem = 0;
+    public int page = 1;
     #endregion
 
     #region method Page_Load
     protected void Page_Load(object sender, EventArgs e)
     {
         Context.Items["strTitle"] = "DANH SÁCH NHÓM TIN TỨC";
+        try
+        {
+            this.page = int.Parse(Request["page"].ToString());
+        }
+        catch { }
+
+        if (page < 1) page = 1;
+
+        if(page > 1) beginItem = (page - 1) * 15 ;
 
         if (!Page.IsPostBack)
         {
@@ -41,6 +52,8 @@ public partial class System_NewsGroupList : System.Web.UI.Page
         dtlData.DataSource = cpData.DataSourcePaged;
         dtlData.DataBind();
         index = 1;
+
+        
     }
     #endregion
 

@@ -66,6 +66,16 @@
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
+    <script type="text/javascript" src="/js/jquery.shorten.1.0.js"></script>
+
+    <script type="text/javascript">
+        $(".facebookMeaasge").shorten({
+            "showChars": 200,
+            "moreText": "Xem thêm",
+            "lessText": "Rút gọn",
+        });
+    </script>
+
     <script>
 
         var isLoad = false;
@@ -89,6 +99,12 @@
                 $("#loading").hide();
 
                 $("#fb_data").append(data);
+
+                $(".facebookMeaasge").shorten({
+                    "showChars": 200,
+                    "moreText": "Xem thêm",
+                    "lessText": "Rút gọn",
+                });
             } else {
                 alert('Error occured');
 
@@ -110,7 +126,7 @@
                         <div class="row show-grid">
                             <div class="clearfix visible"></div>
                             <div class="cleft col-xs-12 col-sm-8 col-md-8 ">
-                                <img id="facebookCover" src="<%=pic_cover %>" style="width: 100%; margin-top: 10px" />
+                                <img class="facebookCover" src="<%=pic_cover %>" style="width: 100%; margin-top: 10px" />
 
                                 <div style="text-align: center; background-color: #2c90f7; padding: 10px; margin-top: 10px;">
                                     <h3 style="margin: 0px; color: #ffffff;">Liên kết Facebook</h3>
@@ -127,8 +143,8 @@
                                                 <div class="fb_body col-md-7">
                                                     <div class="fb_header">
                                                     </div>
-                                                    <h5 id="facebookHeader"><%# (((dynamic)Container.DataItem).name != null)?Eval("name").ToString().Replace("Timeline Photos","Ảnh trên dòng thời gian"):"" %></h5>
-                                                    <p id="facebookMeaasge"><%# (((dynamic)Container.DataItem).message != null)?Eval("message").ToString().Replace("\n","<br>"):"" %></p>
+                                                    <h5 class="facebookHeader"><%# (((dynamic)Container.DataItem).name != null)?Eval("name").ToString().Replace("Timeline Photos",""):"" %></h5>
+                                                    <p class="facebookMeaasge"><%# (((dynamic)Container.DataItem).message != null)?Eval("message").ToString().Replace("\n","<br>"):"" %></p>
                                                 </div>
                                             </div>
                                             <div class="fb_footer">

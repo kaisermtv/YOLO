@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -47,7 +48,8 @@ public class DataNewsGroup :DataClass
                 Cmd.CommandText += id[i].ToString();
             }
 
-            Cmd.CommandText += ")";
+            Cmd.CommandText += ") ORDER BY IORDER ASC";
+
 
             DataTable ret = this.findAll(Cmd);
 
@@ -99,6 +101,8 @@ public class DataNewsGroup :DataClass
                 Cmd.CommandText += " WHERE P.NSTATUS = @NSTATUS";
                 Cmd.Parameters.Add("NSTATUS", SqlDbType.Int).Value = state;
             }
+
+            Cmd.CommandText += " ORDER BY P.IORDER ASC";
 
 
             DataTable ret = this.findAll(Cmd);
@@ -209,4 +213,55 @@ public class DataNewsGroup :DataClass
         }
     }
     #endregion
+
+
+    #region method MoveItem
+    public bool MoveItem(int Id, int vtid)
+    {
+        try
+        {
+            SqlCommand Cmd = this.getSQLConnect();
+            Cmd.CommandText = "SELECT ID FROM tblNewsGroup WHERE ID != @ID ORDER BY IORDER ASC";
+            Cmd.Parameters.Add("ID", SqlDbType.Int).Value = Id;
+            DataTable ret = this.findAll(Cmd);
+
+            ArrayList arr = new ArrayList();
+
+            int i = 1;
+            foreach (DataRow item in ret.Rows)
+            {
+                if (i++ == vtid)
+                {
+                    arr.Add(Id);
+                }
+                arr.Add(int.Parse(item["ID"].ToString()));
+            }
+            if (i <= vtid)
+            {
+                arr.Add(Id);
+            }
+
+            i = 1;
+            foreach (int a in arr)
+            {
+                Cmd = this.getSQLConnect();
+                Cmd.CommandText = "UPDATE tblNewsGroup SET IORDER = @IORDER WHERE ID = @ID";
+                Cmd.Parameters.Add("ID", SqlDbType.Int).Value = a;
+                Cmd.Parameters.Add("IORDER", SqlDbType.Int).Value = i++;
+                Cmd.ExecuteNonQuery();
+            }
+
+            this.SQLClose();
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            this.Message = ex.Message;
+            this.ErrorCode = ex.HResult;
+            return false;
+        }
+    }
+    #endregion
+
 }

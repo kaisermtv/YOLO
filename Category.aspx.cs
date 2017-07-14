@@ -49,7 +49,7 @@ public partial class Category : System.Web.UI.Page
         }
         else
         {
-            id = new int[4] { 50, 51, 52, 53 };
+            id = new int[4] { 53, 50, 51, 52 };
             maxPageItem = 3;
             maxItem = 3;
         }

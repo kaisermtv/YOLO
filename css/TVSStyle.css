@@ -975,7 +975,7 @@
 	margin-top: 30px;
 }
 
-#facebookCover {
+.facebookCover {
 	margin-top: 30px !important;
 }
 
@@ -985,7 +985,7 @@
 }
 
 
-#facebookHeader {
+.facebookHeader {
 	margin-top: -5px;
 	font-size: 22px;
 	line-height: 30px;
@@ -995,7 +995,7 @@
 }
 
 
-#facebookMeaasge {
+.facebookMeaasge {
 	font-size: 15px;
 	font-family: Arial;
 	text-align: justify;

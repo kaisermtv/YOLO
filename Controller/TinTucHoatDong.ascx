@@ -40,7 +40,7 @@
                                 <div class="flat-progress" style ="text-align:justify;">
 
                                     <a href="/<%# SystemClass.convertToUnSign2(Eval("Title").ToString()) %>-v<%#Eval("Id")%>">
-                                        <img onerror="imgCatchError(this)" src="<%#Eval("ImgUrl")%>" style="width:80px;float:left;margin-bottom:10px" />
+                                        <img onerror="imgCatchError(this)" src="<%#Eval("ImgUrl")%>" style="width:80px;float:left;margin-bottom:10px;border:2px solid" />
                                         <p class="name" style="float:right;margin-left:-90px;padding-left:90px;width:100%;"><%# Eval("Title") %></p>
                                     </a>
                                     <div class="progress-bar" data-percent="90" data-waypoint-active="yes">

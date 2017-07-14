@@ -20,6 +20,8 @@
                     <th class="DataListTableHeaderTdItemJustify" style="width: 20%;">Tên nhóm</th>
                     <th class="DataListTableHeaderTdItemJustify">Mô tả</th>
                     <th class="DataListTableHeaderTdItemJustify" style="width: 10%;">Trạng thái</th>
+                        <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Up</th>
+                        <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Down</th>
                     <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Sửa</th>
                     <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Xóa</th>
                 </tr>
@@ -31,12 +33,23 @@
                 <td class="DataListTableTdItemJustify"><%# Eval("DESCRIBE") %></td>
                 <td class="DataListTableTdItemJustify"><%# Eval("STATUS") %></td>
                 <td class="DataListTableTdItemCenter">
+                    <center>
+                        <a href="NewsGroupMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index-2 + beginItem %>&page=<%# page %>">
+                            <div class="arrow-up"></div>
+                        </a></center>
+                </td>
+                <td class="DataListTableTdItemCenter">
+                    <center><a href="NewsGroupMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index + beginItem %>&page=<%# page %>">
+                            <div class="arrow-down"></div>
+                        </a></center>
+                </td>
+                <td class="DataListTableTdItemCenter">
                     <a href="NewsGroupEdit.aspx?id=<%# Eval("ID") %>">
                         <img src="/Images/Edit.png" alt="Chỉnh sửa thông tin">
                     </a>
                 </td>
                 <td class="DataListTableTdItemCenter">
-                    <a href="#myModal" onclick="delmodal(<%# Eval("ID") %>,'<%# Eval("NAME") %>')">
+                    <a href="#myModal" onclick="delmodal(<%# Eval("ID") %>,'<%# HttpUtility.JavaScriptStringEncode( Eval("NAME").ToString()) %>')">
                         <img src="/Images/delete.png" alt="Xóa nhóm">
                     </a>
                 </td>

@@ -10,8 +10,8 @@
                                                 <div class="fb_body col-md-7">
                                                     <div class="fb_header">
                                                     </div>
-                                                    <h5 id="facebookHeader"><%# (((dynamic)Container.DataItem).name != null)?Eval("name").ToString().Replace("Timeline Photos","Ảnh trên dòng thời gian"):"" %></h5>
-                                                    <p id="facebookMeaasge"><%# (((dynamic)Container.DataItem).message != null)?Eval("message").ToString().Replace("\n","<br>"):"" %></p>
+                                                    <h5 class="facebookHeader"><%# (((dynamic)Container.DataItem).name != null)?Eval("name").ToString().Replace("Timeline Photos","Ảnh trên dòng thời gian"):"" %></h5>
+                                                    <p class="facebookMeaasge"><%# (((dynamic)Container.DataItem).message != null)?Eval("message").ToString().Replace("\n","<br>"):"" %></p>
                                                 </div>
                                             </div>
                                             <div class="fb_footer">

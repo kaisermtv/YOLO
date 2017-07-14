@@ -35,7 +35,7 @@
                 <tr class="DataListTableHeader">
                     <th class="DataListTableHeaderTdItemTT" style="width: 4%;">TT</th>
                     <th class="DataListTableHeaderTdItemJustify" >Tiêu đề</th>
-                    <th class="DataListTableHeaderTdItemJustify" style="width: 40%;">image</th>
+                    <th class="DataListTableHeaderTdItemJustify" style="width: 60%;">image</th>
                     <%--<th class="DataListTableHeaderTdItemJustify" style="width: 3%;">key</th>--%>
                     <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Up</th>
                     <th class="DataListTableHeaderTdItemCenter" style="width: 3%;">Down</th>
@@ -51,12 +51,12 @@
                 <%--<td class="DataListTableTdItemJustify"><%# Eval("NTYPE") %></td>--%>
                 <td class="DataListTableTdItemCenter">
                     <center>
-                        <a href="SliderMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index-2 %>">
+                        <a href="SliderMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index-2 %>&group=<%= type %>">
                             <div class="arrow-up"></div>
                         </a></center>
                 </td>
                 <td class="DataListTableTdItemCenter">
-                    <center><a href="SliderMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index %>">
+                    <center><a href="SliderMove.aspx?id=<%# Eval("ID") %>&vt=<%# this.index %>&group=<%= type %>">
                             <div class="arrow-down"></div>
                         </a></center>
                 </td>
@@ -66,7 +66,7 @@
                     </a>
                 </td>
                 <td class="DataListTableTdItemCenter">
-                    <a href="#myModal" onclick="delmodal(<%# Eval("ID") %>,'<%# Eval("TITLE") %>')">
+                    <a href="#myModal" onclick="delmodal(<%# Eval("ID") %>,'<%# HttpUtility.JavaScriptStringEncode( Eval("TITLE").ToString()) %>')">
                         <img src="/Images/delete.png" alt="Xóa nhóm">
                     </a>
                 </td>

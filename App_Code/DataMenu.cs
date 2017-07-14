@@ -154,30 +154,30 @@ public class DataMenu : DataClass
     #endregion
 
     #region method getList
-    public DataTable getList(int id = 0,int type = 1)
+    public DataTable getList(int id = 0,int type = 1,bool countchild = false)
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "SELECT ID,NAME,LINK,IORDER FROM tblMenu WHERE 1=1 ";
+            Cmd.CommandText = "SELECT P.ID,P.NAME,P.LINK,P.IORDER" + (countchild ? ",(SELECT COUNT(*) FROM tblMenu WHERE PID = P.ID) AS COUNTCHILD" : "") + " FROM tblMenu AS P WHERE 1=1 ";
 
             if (id == 0)
             {
-                Cmd.CommandText += " AND PID IS NULL";
+                Cmd.CommandText += " AND P.PID IS NULL";
             }
             else
             {
-                Cmd.CommandText += " AND PID = @PID";
+                Cmd.CommandText += " AND P.PID = @PID";
                 Cmd.Parameters.Add("PID", SqlDbType.Int).Value = id;
             }
 
             if (type != 0 && id == 0)
             {
-                Cmd.CommandText += " AND MenuID = @MenuID";
+                Cmd.CommandText += " AND P.MenuID = @MenuID";
                 Cmd.Parameters.Add("MenuID", SqlDbType.Int).Value = type;
             }
 
-            Cmd.CommandText += " ORDER BY IORDER ASC";
+            Cmd.CommandText += " ORDER BY P.IORDER ASC";
 
             DataTable ret = this.findAll(Cmd);
 

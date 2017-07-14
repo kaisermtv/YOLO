@@ -57,12 +57,17 @@ public partial class _Default : System.Web.UI.Page
         }
         catch{}
 
-        if (name == null || name == "" || name == "Timeline Photos")
+        try
         {
+            if (name == null || name == "" || name == "Timeline Photos")
+            {
+                string[] content = ((string)objItem.message).Split((char) 10);
+
+                name = content[0];
+            }
 
         }
-
-
+        catch { }
 
         return name;
     }

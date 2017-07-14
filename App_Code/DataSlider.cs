@@ -150,12 +150,20 @@ public class DataSlider : DataAbstract
     #endregion
 
     #region method MenuMove
-    public bool SliderMove(int Id, int vtid)
+    public bool SliderMove(int Id, int vtid,int group = 0)
     {
         try
         {
             SqlCommand Cmd = this.getSQLConnect();
-            Cmd.CommandText = "SELECT ID FROM tblSlider WHERE ID != @ID ORDER BY IORDER ASC";
+            Cmd.CommandText = "SELECT ID FROM tblSlider WHERE ID != @ID";
+            if (group != 0)
+            {
+                Cmd.CommandText += " AND NTYPE = @NTYPE";
+                Cmd.Parameters.Add("NTYPE", SqlDbType.Int).Value = group;
+            }
+
+            Cmd.CommandText += " ORDER BY IORDER ASC"; 
+
             Cmd.Parameters.Add("ID", SqlDbType.Int).Value = Id;
             DataTable ret = this.findAll(Cmd);
 

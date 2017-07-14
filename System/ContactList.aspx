@@ -55,7 +55,7 @@
                         </a>
                     </td>
                     <td class="DataListTableTdItemCenter">
-                        <a href="#myModal" onclick="delmodal(<%# Eval("Id") %>,'<%# Eval("Title") %>')">
+                        <a href="#myModal" onclick="delmodal(<%# Eval("Id") %>,'<%# HttpUtility.JavaScriptStringEncode( Eval("Title").ToString()) %>')">
                             <img src="/Images/delete.png" alt="">
                         </a>
                     </td>
