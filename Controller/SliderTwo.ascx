@@ -31,7 +31,7 @@
                 </asp:Repeater>
 
             </div>
-            <div class="kai_banner_bottombtns">
+            <div class="kai_banner_bottombtns hidden-xs hidden-sm">
                 <asp:Repeater ID="dtlSliderSmall" runat="server" EnableViewState="False">
                     <ItemTemplate>
                         <%--<span <%# (index++ == 1)?"class=\"highlight\" ":"" %><%# "style='background-image: url(" + Eval("IMG") + ")'" %>></span>--%>

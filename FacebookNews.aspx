@@ -170,6 +170,17 @@
                                                 <%--<div class="fb-like" data-href="<%# Eval("link") %>" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false" style="width: 70%; float: left;"></div>--%>
                                             </div>
 
+                                            <asp:Repeater runat="server" DataSource='<%# Eval("likes.data") %>'>
+                                                <ItemTemplate><%# Eval("name") %></ItemTemplate>
+                                                <SeparatorTemplate>,</SeparatorTemplate>
+                                            </asp:Repeater>
+
+                                            <asp:Repeater runat="server" DataSource='<%# Eval("comments.data") %>'>
+                                                <ItemTemplate>
+                                                    <p><b><%# Eval("from.name") %>(<%# Eval("created_time") %>): </b> <%# Eval("message") %></p>
+                                                </ItemTemplate>
+                                            </asp:Repeater>
+
                                             <%--<div class="fb-comments"
                                                 data-href="<%# Eval("permalink_url") %>"
                                                 data-width="auto">

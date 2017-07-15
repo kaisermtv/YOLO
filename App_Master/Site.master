@@ -97,7 +97,7 @@
                         <li><a runat="server" href="~/Contact">TIN TỨC</a></li>
                         <li><a runat="server" href="~/Contact">LIÊN HỆ</a></li>--%>
                 </ul>
-                <div class="nav navbar-nav navbar-right" id="nav_Search">
+                <div class="nav navbar-nav navbar-right hidden-md hidden-sm" id="nav_Search">
                     <div class="menuSearch">
                         <input type="text" id="txtSearch" placeholder="Nội dung tìm kiếm" />
                     </div>
