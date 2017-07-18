@@ -48,9 +48,10 @@
             line-height: 20px;
         }
 
-        .butonLoad{
-            text-align: center; margin-top: 20px;
-            height:40px;
+        .butonLoad {
+            text-align: center;
+            margin-top: 20px;
+            height: 40px;
         }
     </style>
 </asp:Content>
@@ -148,36 +149,36 @@
                                                 </div>
                                             </div>
                                             <div class="fb_footer">
-                                                <div style="float: left; margin-right:5px;">
+                                                <div style="float: left; margin-right: 5px;">
                                                     <img src="/images/facebook-new-like-symbol-32.png" style="width: 20px;">
                                                 </div>
-                                                <div style="float: left; font-size: 12px; padding-top:5px;">
+                                                <div style="float: left; font-size: 12px; padding-top: 5px;">
                                                     <%# (((dynamic)Container.DataItem).likes != null)?Eval("likes.summary.total_count"):"0" %>
                                                 </div>
-                                                <div style="float: left; margin-left:10px; margin-right:5px;">
-                                                    <img src="/images/comments-512.png" style="width: 18px; margin-top:2px;">
+                                                <div style="float: left; margin-left: 10px; margin-right: 5px;">
+                                                    <img src="/images/comments-512.png" style="width: 18px; margin-top: 2px;">
                                                 </div>
-                                                <div style="float: left; font-size: 12px; padding-top:5px;">
+                                                <div style="float: left; font-size: 12px; padding-top: 5px;">
                                                     <%# (((dynamic)Container.DataItem).comments != null)?Eval("comments.summary.total_count"):"0" %>
                                                 </div>
-                                                 <div style="float: left; margin-left:10px; margin-right:5px;">
-                                                    <img src="/images/shares.png" style="width: 18px; margin-top:2px;">
+                                                <div style="float: left; margin-left: 10px; margin-right: 5px;">
+                                                    <img src="/images/shares.png" style="width: 18px; margin-top: 2px;">
                                                 </div>
-                                                <div style="float: left; font-size: 12px; padding-top:5px;">
+                                                <div style="float: left; font-size: 12px; padding-top: 5px;">
                                                     <%# (((dynamic)Container.DataItem).shares != null)?Eval("shares.count"):"0" %>
                                                 </div>
-                                                <div style ="float:right; padding-top:5px; font-size: 12px; color:#849292;"><a href="<%# Eval("permalink_url") %>" style="float: right;">Xem trên facebook</a></div>
+                                                <div style="float: right; padding-top: 5px; font-size: 12px; color: #849292;"><a href="<%# Eval("permalink_url") %>" style="float: right;">Xem trên facebook</a></div>
                                                 <%--<div class="fb-like" data-href="<%# Eval("link") %>" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false" style="width: 70%; float: left;"></div>--%>
                                             </div>
 
-                                            <asp:Repeater runat="server" DataSource='<%# Eval("likes.data") %>'>
+                                           <%-- <asp:Repeater runat="server" DataSource='<%# Eval("likes.data") %>'>
                                                 <ItemTemplate><%# Eval("name") %></ItemTemplate>
                                                 <SeparatorTemplate>,</SeparatorTemplate>
-                                            </asp:Repeater>
+                                            </asp:Repeater>--%>
 
                                             <asp:Repeater runat="server" DataSource='<%# Eval("comments.data") %>'>
                                                 <ItemTemplate>
-                                                    <p><b><%# Eval("from.name") %>(<%# Eval("created_time") %>): </b> <%# Eval("message") %></p>
+                                                    <p class ="FaceComment"><b class ="from_name"><%# Eval("from.name") %>(<%# Eval("created_time") %>): </b><%# Eval("message") %></p>
                                                 </ItemTemplate>
                                             </asp:Repeater>
 
@@ -196,7 +197,7 @@
                                     </div>
                                 </div>
 
-                                <div id="loading" class="butonLoad" style="display:none;">
+                                <div id="loading" class="butonLoad" style="display: none;">
                                     <img src="/images/loading.gif" />
                                 </div>
                                 <br />
@@ -205,7 +206,7 @@
                                     data-href="http://113.164.227.242:4083<%=Request.RawUrl %>"
                                     data-width="auto">
                                 </div>
-                                
+
                             </div>
 
                             <div class="cright col-xs-6 col-sm-4 col-md-4 hidden-xs" style="margin-top: 30px;">

@@ -14,7 +14,7 @@
     <link href="/css/Site.css" rel="stylesheet" />
     <link href="/css/Slide.css" rel="stylesheet" />
     <link href="/css/Category.css" rel="stylesheet" />
-    <link href="../css/TVSStyle.css" rel="stylesheet" />
+    <link href="/css/TVSStyle.css" rel="stylesheet" />
     <script src="/js/jquery-2.1.1.min.js"></script>
 
     <script>
@@ -49,11 +49,14 @@
     </script>
 
     <div style="margin-bottom:5px;" id="topHeader">
-        <div class="container">
-            <div class="col-sm-6">
+        <div class="container" style="padding:5px 0px">
+            <div class="col-md-4 col-sm-6 phoncenter">
                 <a href="/"><img src="/images/mobifone-logo.png" alt="mobifone-logo" /></a>
             </div>
-            <div class="col-sm-6 hidden-xs hidden-sm" style="text-align:right">
+            <div class="col-md-6 col-sm-6 hidden-xs">
+                <div class="h2"><%= GetSetting("Name") %></div>
+            </div>
+            <div class="col-md-2 hidden-xs hidden-sm" style="text-align:right">
                 <img style="height: 100%" src="/images/yolo-logo.png" alt="mobifone-logo" />
             </div>
         </div>
@@ -68,7 +71,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" runat="server" href="~/" id="logoText">YOLO</a>
-                <a class="navbar-brand" runat="server" href="~/" id="logoImg"><img src="../images/yolo-logo.png" style ="width:55%!important; padding-left:10px; padding-top:5px;"></a>
+                <a class="navbar-brand" runat="server" href="~/" id="logoImg"><img src="/images/yolo-logo.png" style ="width:55%!important; padding-left:10px; padding-top:5px;"></a>
                 <a class="navbar-brand" runat="server" href="~/" id="logoMobifone">YOLO - DAMCHIASE.VN</a>
             </div>
             <div class="navbar-collapse collapse">

@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" Title="Trang chủ" AutoEventWireup="true" MasterPageFile="~/App_Master/Site.master" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
+<%@ Register Src="~/Controller/HomeBlockHeader.ascx" TagPrefix="ctl" TagName="Header" %>
 <%--<%@ Register Src="~/Controller/SliderOne.ascx" TagPrefix="uc1" TagName="SliderOne" %>--%>
 <%@ Register Src="~/Controller/SliderTwo.ascx" TagPrefix="uc1" TagName="SliderTwo" %>
 <%--<%@ Register Src="~/Controller/CuocThiAnh.ascx" TagPrefix="uc1" TagName="CuocThiAnh" %>--%>
@@ -82,10 +83,8 @@
 
     <!-- KHOI SO 2 - FANPER  -->
     <div class="container" style="margin-top: 30px;position:relative;">
-        <div class="BlockHeader">
-              <a href="https://www.Facebook.com/yolomobifone" style="color:white;">Facebook.com/yolomobifone</a>
-        </div>
 
+        <ctl:Header runat="server" text="Facebook.com/yolomobifone" link="https://www.Facebook.com/yolomobifone" />
 
         <%--<div class="background" style="background-image: url(<%=pic_cover %>); background-repeat:no-repeat; width:100%!important;">--%>
         <a href="/ket-noi-facebook">
