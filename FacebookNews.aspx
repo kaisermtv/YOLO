@@ -178,7 +178,7 @@
 
                                             <asp:Repeater runat="server" DataSource='<%# Eval("comments.data") %>'>
                                                 <ItemTemplate>
-                                                    <p class ="FaceComment"><b class ="from_name"><%# Eval("from.name") %>(<%# Eval("created_time") %>): </b><%# Eval("message") %></p>
+                                                    <p class ="FaceComment"><b class ="from_name"><%# Eval("from.name") %> (<%# Eval("created_time") %>): </b><%# Eval("message") %></p>
                                                 </ItemTemplate>
                                             </asp:Repeater>
 
