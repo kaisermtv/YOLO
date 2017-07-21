@@ -1,3 +1,8 @@
+.serviceBox {
+        border: solid 1px red;
+    }
+
+
 .serviceBoxIMG{
     position: absolute;
     width:100%;

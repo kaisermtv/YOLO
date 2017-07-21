@@ -69,7 +69,7 @@ public partial class _Default : System.Web.UI.Page
         }
         catch { }
 
-        return name;
+        return name.Trim().Replace("😮", "").Replace("🌱", "").Replace("😍", "").Replace("🎉", "");
     }
     #endregion
 }

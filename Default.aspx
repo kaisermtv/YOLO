@@ -55,7 +55,7 @@
             width: 100%;
             position: absolute;
             top: 0px;
-            padding-left: 120px;
+            /*padding-left: 120px;*/
             height: 100%;
             overflow: hidden;
         }
@@ -91,7 +91,24 @@
             <img src="<%=pic_cover %>" style="width: 100%;" />
         </a>
 
-        <div style="position:absolute;bottom:0px;right:15px">
+        <div style="position:absolute;bottom:30px;left:2.5%; margin:auto; width:95%; opacity: 0.5; background-color:#214264; height:50px;-moz-border-radius: 15px; -webkit-border-radius: 15px; -ms-border-radius: 15px; -o-border-radius: 15px; border-radius: 15px;">
+            <%--<img src="/images/pimgpsh_fullsize_distr.png" />--%>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <asp:Repeater ID="dtlNewsFacebook" runat="server">
+                        <ItemTemplate>
+                            <div class="item <%= i++ ==0?"active":"" %>">
+                                <a href="<%# Eval("link") %>" style="text-decoration:none;"><h4 style="color:white;text-transform: uppercase;font-size:20px;line-height:50px;vertical-align:central;margin:0px;"><%# getTitle((dynamic)Container.DataItem) %></h4></a>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
+            </div>
+
+        </div>
+
+        <%--<div style="position:absolute;bottom:0px;right:15px">
             <img src="/images/pimgpsh_fullsize_distr.png" />
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Wrapper for slides -->
@@ -99,7 +116,7 @@
                     <asp:Repeater ID="dtlNewsFacebook" runat="server">
                         <ItemTemplate>
                             <div class="item <%= i++ ==0?"active":"" %>">
-                                <a href="<%# Eval("link") %>"><h4><%# getTitle((dynamic)Container.DataItem) %></h4></a>
+                                <a href="<%# Eval("link") %>" style="text-decoration:none;"><h4><%# getTitle((dynamic)Container.DataItem) %></h4></a>
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>
@@ -107,7 +124,7 @@
 
             </div>
 
-        </div>
+        </div>--%>
 
            <%-- <div class="transbox">
                 <p>This is some text that is placed in the transparent box.</p>

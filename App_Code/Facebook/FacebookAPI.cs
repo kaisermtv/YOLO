@@ -17,7 +17,7 @@ using System.Dynamic;
 public class FacebookAPI
 {
     #region static declare 
-    private static string fields = "id,type,name,full_picture,picture,link,permalink_url,message,shares,created_time,comments.summary(true).limit(5),likes.limit(5).summary(true)";
+    private static string fields = "id,type,name,full_picture,picture,link,permalink_url,message,shares,created_time,comments.summary(true).limit(5){from{id,name,picture},created_time,message},likes.limit(5).summary(true)";
     private static string Infofields = "id,name,picture,cover";
     private static string fields_album = "photos{images,name,link,likes.limit(0).summary(true), comments.limit(0).summary(true),  created_time}";          // chú ý không dùng created_time trong comments
     private static string token = "1972725952949362|91b3fca08e2a493e72610dad124d1beb";
